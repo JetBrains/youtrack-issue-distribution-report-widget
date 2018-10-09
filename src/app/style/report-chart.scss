@@ -1,0 +1,178 @@
+@import '~@jetbrains/ring-ui/components/global/global';
+
+.report-chart {
+  $labels-width: 20 * $ring-unit;
+
+  &__title {
+    width: $labels-width;
+    margin-bottom: 2 * $ring-unit;
+
+    text-align: left;
+    white-space: nowrap;
+
+    font-weight: bold;
+  }
+
+  &__chart-type-switcher {
+    margin-right: $ring-unit;
+
+    font-weight: normal;
+  }
+
+  &__labels {
+    float: left;
+
+    width: $labels-width;
+
+    text-align: left;
+
+    font-size: $ring-font-size-smaller;
+  }
+
+  &__size {
+    float: right;
+
+    width: 3 * $ring-unit;
+    margin-left: 2 * $ring-unit;
+
+    text-align: right;
+
+    font-weight: bold;
+  }
+
+  &__size-in-percents {
+    float: right;
+
+    min-width: 3 * $ring-unit;
+    margin-left: $ring-unit;
+
+    text-align: right;
+
+    color: $ring-dark-gray-color;
+  }
+
+  &__size-description {
+    float: right;
+
+    width: 3 * $ring-unit;
+    margin-left: $ring-unit;
+
+    text-align: right;
+
+    font-weight: normal;
+  }
+
+  &__label {
+    float: left;
+    overflow-x: hidden;
+
+    max-width: 10 * $ring-unit;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &_title {
+      max-width: $labels-width - $ring-unit;
+
+      font-weight: bold;
+    }
+  }
+
+  &__body-wrapper {
+    margin-top: 12px;
+  }
+
+  $chart-margin-left: $labels-width + $ring-unit;
+
+  &__body {
+    margin-left: $chart-margin-left;
+  }
+
+  &__sort-order-bar {
+    height: 26px;
+  }
+
+  &__sort-order {
+    overflow: hidden;
+
+    cursor: default;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: $ring-dark-gray-color;
+
+    font-size: 10px;
+
+    &_main {
+      float: left;
+
+      width: $labels-width - 2 * $ring-unit;
+    }
+
+    &_secondary {
+      margin-left: $chart-margin-left + 4px;
+    }
+  }
+
+  &__sort-order-label {
+    margin-left: 4px;
+  }
+
+  &__table {
+    position: relative;
+    top: -2 * $ring-unit;
+
+    overflow: hidden;
+
+    border-spacing: 0;
+
+    border-collapse: collapse;
+
+    font-size: $ring-font-size-smaller;
+  }
+
+  &__table-cell {
+    position: relative;
+
+    padding-right: 10px;
+
+    text-align: right;
+
+    &:hover {
+      background-color: rgba($ring-pale-blue-color, 0.1);
+    }
+
+    &:hover::after {
+      position: absolute;
+      z-index: -1;
+      top: -5000px;
+      left: 0;
+
+      width: 100%;
+      width: calc(100% - 4px);
+      height: 10000px;
+
+      content: "";
+
+      border-right: 1px solid rgba($ring-pale-blue-color, 0.5);
+    }
+  }
+
+  &__table-row {
+    &:hover {
+      box-shadow: inset 0 -1px 0 0 rgba($ring-pale-blue-color, 0.5);
+    }
+  }
+
+  &__table-header {
+    overflow: hidden;
+
+    max-width: 8 * $ring-unit;
+    padding-right: $ring-unit;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-weight: normal;
+  }
+}

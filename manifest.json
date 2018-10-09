@@ -1,0 +1,24 @@
+{
+  "key": "youtrack-issue-distribution-report-widget",
+  "version": "0.0.1",
+  "name": "Issue Distribution Report",
+  "description": "Displays a distribution report for YouTrack issues. The widget settings let you build the report directly on a dashboard or project overview page.",
+  "applicationName": "YouTrack",
+  "author": "YouTrack Team",
+  "dependencies": {
+    "YouTrack": ">=2018.2.42584",
+    "Hub": ">=2018.1"
+  },
+  "products": {
+    "YouTrack": ">=2018.2.42584",
+    "Hub": ">=2018.1"
+  },
+  "capabilities": {
+    "topNavigation": true,
+    "popups": true
+  },
+  "view": {
+    "defaultWidth": 4,
+    "defaultHeight": 3
+  }
+}
