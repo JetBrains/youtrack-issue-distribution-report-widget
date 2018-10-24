@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2018-10-10 11:03\n"
+"PO-Revision-Date: 2018-10-10 18:45\n"
 
 #: src/app/report-chart.js:288
 msgid "1 issue total"
