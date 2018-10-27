@@ -52,13 +52,6 @@ function isTypeWithEditableXAxis(report) {
     report.$type === ISSUES_PER_TWO_FIELDS_REPORT_TYPE;
 }
 
-function isIssuesDistributionReport(report) {
-  return report.$type === ISSUES_PER_PROJECT_REPORT_TYPE ||
-    report.$type === ISSUES_PER_ASSIGNEE_REPORT_TYPE ||
-    report.$type === ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE ||
-    report.$type === ISSUES_PER_TWO_FIELDS_REPORT_TYPE;
-}
-
 
 export {
   REPORT_TYPES,
@@ -69,6 +62,5 @@ export {
 
   getReportTypePresentation,
   getReportTypeExampleLink,
-  isTypeWithEditableXAxis,
-  isIssuesDistributionReport
+  isTypeWithEditableXAxis
 };

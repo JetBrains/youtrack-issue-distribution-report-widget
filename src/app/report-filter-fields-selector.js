@@ -46,9 +46,6 @@ class ReportFilterFieldsSelector extends React.Component {
     return options;
   };
 
-  static getFieldPresentation = selectedField =>
-    (selectedField ? selectedField.presentation : i18n('Not set'));
-
   constructor(props) {
     super(props);
 
@@ -101,10 +98,6 @@ class ReportFilterFieldsSelector extends React.Component {
     if (!this.state.filterFields.length) {
       await this.loadFilterFields(this.state.projects);
     }
-  };
-
-  onRenderFilterFieldsSelector = filterFieldsSelector => {
-    this.filterFieldsSelector = filterFieldsSelector;
   };
 
   changeFilterField = selected => {

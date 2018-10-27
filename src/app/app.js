@@ -10,14 +10,14 @@ import {render} from 'react-dom';
 import DashboardAddons from 'hub-dashboard-addons';
 import {setLocale} from 'hub-dashboard-addons/dist/localization';
 
-import DistributionReportsWidget from './distribution-reports-widget';
+import Widget from './widget';
 import TRANSLATIONS from './translations';
 
 DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
   setLocale(DashboardAddons.locale, TRANSLATIONS);
 
   render(
-    <DistributionReportsWidget
+    <Widget
       dashboardApi={dashboardApi}
       registerWidgetApi={registerWidgetApi}
     />,

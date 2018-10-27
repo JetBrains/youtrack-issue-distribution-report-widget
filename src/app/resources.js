@@ -1,4 +1,4 @@
-import {REPORT_TYPES} from './ditribution-report-types';
+import {REPORT_TYPES} from './distribution-report-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
 
@@ -26,7 +26,7 @@ async function underlineAndSuggest(fetchYouTrack, query, caret) {
 }
 
 async function loadProjects(fetchYouTrack) {
-  return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}`);
+  return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
 }
 
 async function loadReportWithData(fetchYouTrack, reportId) {

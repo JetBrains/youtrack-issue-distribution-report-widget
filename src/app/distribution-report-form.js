@@ -23,7 +23,7 @@ import {
   isTypeWithEditableXAxis,
   ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
   ISSUES_PER_TWO_FIELDS_REPORT_TYPE
-} from './ditribution-report-types';
+} from './distribution-report-types';
 import ReportFilterFieldsSelector from './report-filter-fields-selector';
 import DistributionReportAxises from './distribution-report-axises';
 

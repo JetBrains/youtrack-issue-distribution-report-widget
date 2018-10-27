@@ -1,7 +1,7 @@
 import {
   getReportTypePresentation,
   isTypeWithEditableXAxis
-} from './ditribution-report-types';
+} from './distribution-report-types';
 
 const SortOrderComparators = {
   getAscComparatorForProperty: propertyName =>

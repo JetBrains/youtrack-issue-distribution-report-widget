@@ -25,9 +25,9 @@ import {
 import DistributionReportForm from './distribution-report-form';
 import {
   ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE
-} from './ditribution-report-types';
+} from './distribution-report-types';
 
-class DistributionReportsConfigurationForm extends React.Component {
+class Configuration extends React.Component {
   static propTypes = {
     reportId: PropTypes.string,
     refreshPeriod: PropTypes.number,
@@ -41,11 +41,11 @@ class DistributionReportsConfigurationForm extends React.Component {
   static NEW_REPORT_DEFAULT_AXIS_SORT_ORDER = 'COUNT_INDEX_DESC';
 
   static createNewReport = () => ({
-    id: DistributionReportsConfigurationForm.NEW_REPORT_ID,
+    id: Configuration.NEW_REPORT_ID,
     $type: ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
     name: '',
     projects: [],
-    xsortOrder: DistributionReportsConfigurationForm.
+    xsortOrder: Configuration.
       NEW_REPORT_DEFAULT_AXIS_SORT_ORDER,
     xaxis: {
       field: {
@@ -60,11 +60,11 @@ class DistributionReportsConfigurationForm extends React.Component {
 
   static makeReportsOptionsList = reports => {
     const reportsOptions = reports.map(
-      DistributionReportsConfigurationForm.reportToSelectItem
+      Configuration.reportToSelectItem
     );
-    const newReportOption = DistributionReportsConfigurationForm.
+    const newReportOption = Configuration.
       reportToSelectItem(
-        DistributionReportsConfigurationForm.createNewReport()
+        Configuration.createNewReport()
       );
     reportsOptions.unshift({
       rgItemType: List.ListProps.Type.TITLE,
@@ -113,7 +113,7 @@ class DistributionReportsConfigurationForm extends React.Component {
     };
     const selectedReport = props.reportId
       ? {id: props.reportId}
-      : DistributionReportsConfigurationForm.createNewReport();
+      : Configuration.createNewReport();
 
     this.state = {
       selectedYouTrack,
@@ -157,7 +157,7 @@ class DistributionReportsConfigurationForm extends React.Component {
       selectedReport: report,
       selectedReportSettingsAreChanged: false
     });
-    const settingsAlreadyLoaded = DistributionReportsConfigurationForm.
+    const settingsAlreadyLoaded = Configuration.
       areReportSettingsLoaded(report);
     if (!settingsAlreadyLoaded) {
       await this.loadReportSettings(report.id);
@@ -184,10 +184,10 @@ class DistributionReportsConfigurationForm extends React.Component {
             this.fetchYouTrack, currentReportId
           );
         } catch (err) {
-          return DistributionReportsConfigurationForm.createNewReport();
+          return Configuration.createNewReport();
         }
       }
-      return DistributionReportsConfigurationForm.createNewReport();
+      return Configuration.createNewReport();
     };
 
     const selectedReport = await getUpdatedCurrentReport(
@@ -301,7 +301,7 @@ class DistributionReportsConfigurationForm extends React.Component {
 
     const cloneReport = () => {
       const clonedReport = JSON.parse(JSON.stringify(reportWithSettings));
-      clonedReport.id = DistributionReportsConfigurationForm.NEW_REPORT_ID;
+      clonedReport.id = Configuration.NEW_REPORT_ID;
       clonedReport.name = `${reportWithSettings.name} - ${i18n('clone')}`;
       clonedReport.own = true;
       this.setState({
@@ -361,17 +361,17 @@ class DistributionReportsConfigurationForm extends React.Component {
       currentUser
     } = this.state;
 
-    const reportWithSettings = DistributionReportsConfigurationForm.
+    const reportWithSettings = Configuration.
       areReportSettingsLoaded(selectedReport) ? selectedReport : undefined;
 
     return (
       <div>
         <div className="ring-form__group">
           <Select
-            data={DistributionReportsConfigurationForm.makeReportsOptionsList(
+            data={Configuration.makeReportsOptionsList(
               reports
             )}
-            selected={DistributionReportsConfigurationForm.reportToSelectItem(
+            selected={Configuration.reportToSelectItem(
               selectedReport
             )}
             onSelect={this.changeReport}
@@ -482,4 +482,4 @@ class DistributionReportsConfigurationForm extends React.Component {
 }
 
 
-export default DistributionReportsConfigurationForm;
+export default Configuration;
