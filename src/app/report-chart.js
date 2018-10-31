@@ -20,6 +20,7 @@ class ReportChart extends React.Component {
     reportSecondarySortOrder: PropTypes.string,
     reportMainAxisLabel: PropTypes.string,
     reportSecondaryAxisLabel: PropTypes.string,
+    aggregationTitle: PropTypes.string,
     onChangeSortOrders: PropTypes.func,
     homeUrl: PropTypes.string
   };
@@ -44,13 +45,18 @@ class ReportChart extends React.Component {
         values: reportData.ycolumns.map(yCol => ({
           name: yCol.name,
           issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
-          size: reportData.counts[xCol.index][yCol.index]
+          size: (reportData.counts[xCol.index][yCol.index] || {}).value
         })),
         colorIndex: xCol.colorIndex
       }));
     }
     return [{
-      values: reportData.columns || []
+      values: (reportData.columns || []).map(xCol => ({
+        key: xCol.name,
+        issuesQuery: xCol.issuesQuery,
+        size: xCol.size.value,
+        colorIndex: xCol.colorIndex
+      }))
     }];
   };
 
@@ -146,10 +152,11 @@ class ReportChart extends React.Component {
     );
   };
 
-  renderLineLabel(column, totalIssuesCount) {
+  renderLineLabel(column, totalCount) {
     const toPercentsMultiplier = 100;
-    const getSizeInPercents = size =>
-      `${Math.round(size / totalIssuesCount * toPercentsMultiplier)}%`;
+    const getSizeInPercents = size => (totalCount
+      ? `${Math.round(size.value / totalCount * toPercentsMultiplier)}%`
+      : '');
 
     return (
       <div
@@ -160,7 +167,7 @@ class ReportChart extends React.Component {
           { getSizeInPercents(column.size) }
         </div>
         <div className="report-chart__size">
-          { column.size }
+          { column.size.presentation }
         </div>
         {
           !column.user &&
@@ -242,18 +249,18 @@ class ReportChart extends React.Component {
                         className="report-chart__table-cell"
                       >
                         {
-                          column.values[idx].size > 0 &&
+                          column.values[idx].size.value > 0 &&
                           <Link
                             pseudo={true}
                             href={ReportChart.getSearchUrl(
                               column.values[idx].issuesQuery, this.props.homeUrl
                             )}
                           >
-                            { column.values[idx].size }
+                            { column.values[idx].size.presentation }
                           </Link>
                         }
                         {
-                          column.values[idx].size === 0 && '-'
+                          column.values[idx].size.value === 0 && '-'
                         }
                       </td>
                     ))
@@ -279,14 +286,8 @@ class ReportChart extends React.Component {
     const columns = reportData.ycolumns || reportData.columns || [];
 
     const chartHeight = ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
-    const totalIssuesCount = columns.reduce(
-      (totalSize, column) => totalSize + column.size,
-      0
-    );
-
-    const title = totalIssuesCount === 1
-      ? i18n('1 issue total')
-      : i18n('{{totalIssuesCount}} issues total', {totalIssuesCount});
+    const totalCount = reportData.total.value;
+    const title = `${this.props.aggregationTitle || i18n('Total')}: ${reportData.total.presentation}`;
 
     const getOnChangeReportPresentationCallback = tabId =>
       () => this.setState({activeTab: tabId});
@@ -356,7 +357,7 @@ class ReportChart extends React.Component {
           >
             {
               columns.map(column =>
-                this.renderLineLabel(column, totalIssuesCount)
+                this.renderLineLabel(column, totalCount)
               )
             }
           </div>

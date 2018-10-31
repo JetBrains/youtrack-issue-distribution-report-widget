@@ -25,9 +25,7 @@ const ReportModel = {
       return false;
     }
     const reportData = report.data || {};
-    const totalColumnsSize = (reportData.columns || reportData.ycolumns || []).
-      map(column => column.size).reduce((a, b) => a + b, 0);
-    return !totalColumnsSize;
+    return !(reportData.columns || reportData.ycolumns || []).length;
   }
 };
 

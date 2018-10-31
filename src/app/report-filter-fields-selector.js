@@ -7,23 +7,22 @@ import List from '@jetbrains/ring-ui/components/list/list';
 import guid from 'mout/random/guid';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
-import {loadReportsFilterFields} from './resources';
-
 class ReportFilterFieldsSelector extends React.Component {
   static propTypes = {
     projects: PropTypes.array,
     onChange: PropTypes.func,
-    fetchYouTrack: PropTypes.func,
+    filterFieldsSource: PropTypes.func.isRequired,
     selectedField: PropTypes.object,
     canBeEmpty: PropTypes.bool,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    placeholder: PropTypes.string
   };
 
-  static EMPTY_OPTION = {
+  static getEmptyOption = emptyText => ({
     key: '-1',
-    label: i18n('No value'),
+    label: emptyText || i18n('No value'),
     model: null
-  };
+  });
 
   static toSelectOption = filterField => (
     filterField &&
@@ -34,14 +33,14 @@ class ReportFilterFieldsSelector extends React.Component {
     }
   );
 
-  static getFilterFieldsOptions = (filterFields, canBeEmpty) => {
+  static getFilterFieldsOptions = (filterFields, canBeEmpty, emptyText) => {
     const options = filterFields.map(ReportFilterFieldsSelector.toSelectOption);
     if (canBeEmpty) {
       options.unshift({
         rgItemType: List.ListProps.Type.MARGIN,
         key: guid()
       });
-      options.unshift(ReportFilterFieldsSelector.EMPTY_OPTION);
+      options.unshift(ReportFilterFieldsSelector.getEmptyOption(emptyText));
     }
     return options;
   };
@@ -52,7 +51,6 @@ class ReportFilterFieldsSelector extends React.Component {
     this.state = {
       projects: props.projects,
       selectedField: props.selectedField,
-      fetchYouTrack: props.fetchYouTrack,
       disabled: props.disabled,
       canBeEmpty: props.canBeEmpty,
       currentFieldIsValid: true,
@@ -83,9 +81,7 @@ class ReportFilterFieldsSelector extends React.Component {
   }
 
   loadFilterFields = async projects => {
-    const filterFields = await loadReportsFilterFields(
-      this.state.fetchYouTrack, projects
-    );
+    const filterFields = await this.props.filterFieldsSource(projects);
     const {selectedField} = this.state;
     const currentFieldIsValid = selectedField
       ? (filterFields || []).some(
@@ -133,14 +129,14 @@ class ReportFilterFieldsSelector extends React.Component {
           'distribution-reports-widget__filter-field-presentation_error': !currentFieldIsValid
         })}
         data={ReportFilterFieldsSelector.getFilterFieldsOptions(
-          filterFields, canBeEmpty
+          filterFields, canBeEmpty, this.props.placeholder
         )}
         selected={ReportFilterFieldsSelector.toSelectOption(selectedField)}
         loading={!filterFields.length}
         onSelect={this.changeFilterField}
         onOpen={this.openFilterFieldsSelector}
         filter={true}
-        label={'＋Add field'}
+        label={this.props.placeholder || i18n('＋Add field')}
         type={RerenderableSelect.Type.INLINE}
       />
     );

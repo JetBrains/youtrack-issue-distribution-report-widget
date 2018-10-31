@@ -10,10 +10,10 @@ const PROJECTS_FIELDS = 'id,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const REPORT_DATA_COLUMN_FIELDS = `id,name,size,naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder`;
+const REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
+const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder`;
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(tooBig,columns(${REPORT_DATA_COLUMN_FIELDS}),xcolumns(${REPORT_DATA_COLUMN_FIELDS}),ycolumns(${REPORT_DATA_COLUMN_FIELDS}),counts,issuesQueries),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(tooBig,total(value,presentation),columns(${REPORT_DATA_COLUMN_FIELDS}),xcolumns(${REPORT_DATA_COLUMN_FIELDS}),ycolumns(${REPORT_DATA_COLUMN_FIELDS}),counts(value,presentation),issuesQueries),status(${REPORT_STATUS_FIELDS})`;
 const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name)`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
@@ -63,12 +63,46 @@ async function loadReportsFilterFields(fetchYouTrack, projects) {
   ].filter(param => param.length > 0).join('&');
 
   return await fetchYouTrack(`api/filterFields?${params}`);
+}
 
-  function serializeArrayParameter(paramName, arr) {
-    return encodeURI(
-      arr.map(item => `${paramName}=${item}`).join('&')
-    );
+async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
+  const fieldTypes = serializeArrayParameter(
+    'fieldTypes', ['integer', 'float', 'period']
+  );
+  const fld = serializeArrayParameter('fld',
+    (projects || []).map(project => project.id)
+  );
+  const params = [
+    fieldTypes,
+    fld,
+    'includeNonFilterFields=true',
+    '$top=300',
+    'usage=true',
+    `fields=${REPORT_FILTER_FIELDS_FIELDS}`
+  ].filter(param => param.length > 0).join('&');
+
+  const aggregationFilterFields = (await fetchYouTrack(`api/filterFields?${params}`)) || [];
+
+  const configWithVotesPresentations = await fetchYouTrack('api/config?fields=l10n(predefinedQueries(votes))');
+  const votersPresentation = configWithVotesPresentations &&
+    configWithVotesPresentations.l10n &&
+    configWithVotesPresentations.l10n.predefinedQueries &&
+    configWithVotesPresentations.l10n.predefinedQueries.votes;
+
+  if (votersPresentation) {
+    return [{
+      presentation: votersPresentation,
+      id: votersPresentation,
+      $type: 'jetbrains.charisma.keyword.PredefinedFilterField'
+    }].concat(aggregationFilterFields);
   }
+  return aggregationFilterFields;
+}
+
+function serializeArrayParameter(paramName, arr) {
+  return encodeURI(
+    arr.map(item => `${paramName}=${item}`).join('&')
+  );
 }
 
 async function saveReportSettings(
@@ -145,6 +179,7 @@ export {
   loadIssuesDistributionReports,
   loadReportWithSettings,
   loadReportsFilterFields,
+  loadReportsAggregationFilterFields,
   saveReportSettings,
   recalculateReport,
   getYouTrackServices,

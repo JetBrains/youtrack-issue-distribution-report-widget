@@ -30,7 +30,7 @@ import {
 class Configuration extends React.Component {
   static propTypes = {
     reportId: PropTypes.string,
-    refreshPeriod: PropTypes.number,
+    refreshPeriod: PropTypes.number.isRequired,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     dashboardApi: PropTypes.object,

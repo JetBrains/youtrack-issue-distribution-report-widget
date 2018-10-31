@@ -71,7 +71,8 @@ class DistributionReportsWidget extends React.Component {
     this.state = {
       isConfiguring: false,
       isLoading: true,
-      error: ReportModel.ErrorTypes.OK
+      error: ReportModel.ErrorTypes.OK,
+      refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
     };
 
     registerWidgetApi({

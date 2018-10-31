@@ -114,6 +114,17 @@ class Content extends React.Component {
 
     const {SortOrder} = DistributionReportAxises;
 
+    const getAggregationTitle = () => {
+      if (!report.aggregationPolicy) {
+        return i18n('Total issues count');
+      }
+      if (!report.aggregationPolicy.field) {
+        return i18n('Total votes count', {total: ''});
+      }
+      const fieldName = report.aggregationPolicy.field.presentation;
+      return i18n('Total {{fieldName}}', {fieldName});
+    };
+
     return (
       <ReportChart
         reportData={report.data}
@@ -125,6 +136,7 @@ class Content extends React.Component {
         reportSecondaryAxisLabel={
           DistributionReportAxises.getSecondaryAxisPresentation(report)
         }
+        aggregationTitle={getAggregationTitle()}
         onChangeSortOrders={this.props.onChangeReportSortOrders}
         homeUrl={youTrack.homeUrl}
       />

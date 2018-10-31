@@ -16,7 +16,9 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import {
   loadProjects,
   loadUserGroups,
-  underlineAndSuggest
+  underlineAndSuggest,
+  loadReportsFilterFields,
+  loadReportsAggregationFilterFields
 } from './resources';
 import {
   getReportTypeExampleLink,
@@ -186,6 +188,17 @@ class DistributionReportForm extends React.Component {
     this.onReportEditOperation(report);
   };
 
+  changeAggregationPolicy = selected => {
+    const {report} = this.state;
+    if (selected) {
+      report.aggregationPolicy = report.aggregationPolicy || {};
+      report.aggregationPolicy.field = selected;
+    } else {
+      report.aggregationPolicy = null;
+    }
+    this.onReportEditOperation(report);
+  };
+
   changeAxisPlaces = () => {
     const {report} = this.state;
     if (!report.xaxis || !report.yaxis) {
@@ -232,7 +245,10 @@ class DistributionReportForm extends React.Component {
   }
 
   renderIssueDistributionFieldsEditableSelectors() {
-    const {report} = this.state;
+    const {report, fetchYouTrack} = this.state;
+
+    const filterFieldsSource = async projects =>
+      await loadReportsFilterFields(fetchYouTrack, projects);
 
     return (
       <div className="distribution-reports-widget__filter-fields">
@@ -255,7 +271,7 @@ class DistributionReportForm extends React.Component {
               }
               projects={report.projects}
               onChange={this.changeMainFilterField}
-              fetchYouTrack={this.state.fetchYouTrack}
+              filterFieldsSource={filterFieldsSource}
               canBeEmpty={false}
             />
           </span>
@@ -283,7 +299,7 @@ class DistributionReportForm extends React.Component {
                 }
                 projects={report.projects}
                 onChange={this.changeSplittingBarsFilterField}
-                fetchYouTrack={this.state.fetchYouTrack}
+                filterFieldsSource={filterFieldsSource}
                 canBeEmpty={DistributionReportForm.isNewReport(report)}
               />
             </span>
@@ -322,6 +338,30 @@ class DistributionReportForm extends React.Component {
       return this.renderIssueDistributionFieldsEditableSelectors();
     }
     return this.renderIssueDistributionFieldsReadonlyLabels();
+  }
+
+  renderAggregationPolicyBlock() {
+    const {report, disabled, fetchYouTrack} = this.state;
+
+    const aggregationFilterFieldsSource = async projects =>
+      await loadReportsAggregationFilterFields(fetchYouTrack, projects);
+
+    return (
+      <div className="distribution-reports-widget__filter-fields">
+        {
+          i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})
+        }
+        <ReportFilterFieldsSelector
+          selectedField={(report.aggregationPolicy || {}).field}
+          projects={report.projects}
+          onChange={this.changeAggregationPolicy}
+          filterFieldsSource={aggregationFilterFieldsSource}
+          canBeEmpty={true}
+          placeholder={i18n('Issues')}
+          disabled={disabled}
+        />
+      </div>
+    );
   }
 
   renderVisibilityBlock() {
@@ -461,9 +501,6 @@ class DistributionReportForm extends React.Component {
           </span>
         </span>
         {
-          this.renderIssueDistributionFieldsBlock()
-        }
-        {
           !disabled &&
           <Input
             size={InputSize.FULL}
@@ -472,9 +509,9 @@ class DistributionReportForm extends React.Component {
             onChange={this.changeReportName}
           />
         }
-        {
-          this.renderProjectsSelectorBlock()
-        }
+        {this.renderProjectsSelectorBlock()}
+        {this.renderIssueDistributionFieldsBlock()}
+        {this.renderAggregationPolicyBlock()}
         {
           this.renderFilterIssuesBlock()
         }
