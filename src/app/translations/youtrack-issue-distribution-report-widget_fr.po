@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2018-10-10 18:45\n"
+"PO-Revision-Date: 2018-10-31 14:20\n"
 
 #: src/app/report-chart.js:288
 msgid "1 issue total"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Calculate for all projects"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:476
+#: src/app/content.js:92
 msgid "Calculating..."
 msgstr ""
 
@@ -37,23 +37,23 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:407
+#: src/app/content.js:68
 msgid "Cannot find YouTrack installation"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:412
+#: src/app/content.js:73
 msgid "Cannot find any issue distribution report"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:416
+#: src/app/content.js:77
 msgid "Cannot load selected report"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:266
+#: src/app/configuration.js:266
 msgid "Cannot save report"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:275
+#: src/app/configuration.js:275
 msgid "Cannot update widget"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Edit report"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:398
+#: src/app/content.js:59
 msgid "Edit settings"
 msgstr ""
 
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Filter issues"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:191
+#: src/app/widget.js:48
 msgid "Issue Distribution Report"
 msgstr ""
 
@@ -89,8 +89,8 @@ msgstr ""
 msgid "Me only"
 msgstr ""
 
+#: src/app/configuration.js:94
 #: src/app/distribution-report-form.js:439
-#: src/app/distribution-reports-configuration-form.js:94
 msgid "New report"
 msgstr ""
 
@@ -98,23 +98,19 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:50
-msgid "Not set"
-msgstr ""
-
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:419
+#: src/app/content.js:80
 msgid "Oops... Something went wrong =("
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:341
+#: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:382
+#: src/app/content.js:43
 msgid "Remove widget"
 msgstr ""
 
@@ -138,11 +134,11 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:468
+#: src/app/configuration.js:468
 msgid "Select YouTrack"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:379
+#: src/app/configuration.js:379
 msgid "Select report"
 msgstr ""
 
@@ -170,23 +166,23 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:491
+#: src/app/content.js:107
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr ""
 
-#: src/app/distribution-reports-widget.js:496
+#: src/app/content.js:112
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:162
+#: src/app/report-filter-fields-selector.js:155
 msgid "This field does not exist in some of the selected projects"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:322
+#: src/app/configuration.js:322
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:93
+#: src/app/configuration.js:93
 msgid "Unnamed"
 msgstr ""
 
@@ -206,7 +202,7 @@ msgstr ""
 msgid "asc"
 msgstr ""
 
-#: src/app/ditribution-report-types.js:37
+#: src/app/distribution-report-types.js:37
 msgid "assignee"
 msgstr ""
 
@@ -214,7 +210,7 @@ msgstr ""
 msgid "by count"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:305
+#: src/app/configuration.js:305
 msgid "clone"
 msgstr ""
 
@@ -222,11 +218,11 @@ msgstr ""
 msgid "desc"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:71
+#: src/app/configuration.js:71
 msgid "existing reports"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:87
+#: src/app/configuration.js:87
 msgid "me"
 msgstr ""
 
@@ -234,12 +230,12 @@ msgstr ""
 msgid "natural"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:54
-#: src/app/ditribution-report-types.js:34
+#: src/app/configuration.js:54
+#: src/app/distribution-report-types.js:34
 msgid "project"
 msgstr ""
 
-#: src/app/distribution-reports-configuration-form.js:348
+#: src/app/configuration.js:348
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr ""
 
