@@ -11,21 +11,17 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2018-10-31 14:20\n"
+"PO-Revision-Date: 2018-11-01 12:57\n"
 
-#: src/app/report-chart.js:288
-msgid "1 issue total"
-msgstr ""
-
-#: src/app/distribution-report-form.js:393
+#: src/app/distribution-report-form.js:433
 msgid "Add project"
 msgstr ""
 
-#: src/app/report-chart.js:311
+#: src/app/report-chart.js:312
 msgid "Bars"
 msgstr ""
 
-#: src/app/distribution-report-form.js:394
+#: src/app/distribution-report-form.js:434
 msgid "Calculate for all projects"
 msgstr ""
 
@@ -57,7 +53,7 @@ msgstr ""
 msgid "Cannot update widget"
 msgstr ""
 
-#: src/app/distribution-report-form.js:440
+#: src/app/distribution-report-form.js:480
 msgid "Edit report"
 msgstr ""
 
@@ -65,12 +61,16 @@ msgstr ""
 msgid "Edit settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:421
+#: src/app/distribution-report-form.js:461
 msgid "Filter issues"
 msgstr ""
 
 #: src/app/widget.js:48
 msgid "Issue Distribution Report"
+msgstr ""
+
+#: src/app/distribution-report-form.js:360
+msgid "Issues"
 msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
@@ -81,20 +81,20 @@ msgstr ""
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr ""
 
-#: src/app/distribution-report-form.js:448
+#: src/app/distribution-report-form.js:488
 msgid "Learn more about this report"
 msgstr ""
 
-#: src/app/distribution-report-form.js:87
+#: src/app/distribution-report-form.js:89
 msgid "Me only"
 msgstr ""
 
 #: src/app/configuration.js:94
-#: src/app/distribution-report-form.js:439
+#: src/app/distribution-report-form.js:479
 msgid "New report"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:24
+#: src/app/report-filter-fields-selector.js:23
 msgid "No value"
 msgstr ""
 
@@ -114,19 +114,19 @@ msgstr ""
 msgid "Remove widget"
 msgstr ""
 
-#: src/app/distribution-report-form.js:436
+#: src/app/distribution-report-form.js:476
 msgid "Report"
 msgstr ""
 
-#: src/app/distribution-report-form.js:344
+#: src/app/distribution-report-form.js:384
 msgid "Report is private"
 msgstr ""
 
-#: src/app/distribution-report-form.js:343
+#: src/app/distribution-report-form.js:383
 msgid "Report is visible to members of {{visibilityPresentation}}"
 msgstr ""
 
-#: src/app/distribution-report-form.js:471
+#: src/app/distribution-report-form.js:508
 msgid "Report name"
 msgstr ""
 
@@ -142,16 +142,20 @@ msgstr ""
 msgid "Select report"
 msgstr ""
 
-#: src/app/distribution-report-form.js:241
+#: src/app/distribution-report-form.js:257
 msgid "Show distribution by {{field}}"
 msgstr ""
 
-#: src/app/distribution-report-form.js:309
+#: src/app/distribution-report-form.js:325
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr ""
 
-#: src/app/distribution-report-form.js:308
+#: src/app/distribution-report-form.js:324
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
+msgstr ""
+
+#: src/app/distribution-report-form.js:352
+msgid "Show totals for {{aggregationPolicy}}"
 msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
@@ -162,7 +166,7 @@ msgstr ""
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr ""
 
-#: src/app/report-chart.js:320
+#: src/app/report-chart.js:321
 msgid "Table"
 msgstr ""
 
@@ -174,12 +178,28 @@ msgstr ""
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:155
+#: src/app/report-filter-fields-selector.js:151
 msgid "This field does not exist in some of the selected projects"
 msgstr ""
 
 #: src/app/configuration.js:322
 msgid "This report is owned by {{ownerNamePlaceholder}}"
+msgstr ""
+
+#: src/app/report-chart.js:290
+msgid "Total"
+msgstr ""
+
+#: src/app/content.js:119
+msgid "Total issues count"
+msgstr ""
+
+#: src/app/content.js:122
+msgid "Total votes count"
+msgstr ""
+
+#: src/app/content.js:125
+msgid "Total {{fieldName}}"
 msgstr ""
 
 #: src/app/configuration.js:93
@@ -243,7 +263,7 @@ msgstr ""
 msgid "{{minutesCount}} min"
 msgstr ""
 
-#: src/app/report-chart.js:289
-msgid "{{totalIssuesCount}} issues total"
+#: src/app/report-filter-fields-selector.js:139
+msgid "＋Add field"
 msgstr ""
 
