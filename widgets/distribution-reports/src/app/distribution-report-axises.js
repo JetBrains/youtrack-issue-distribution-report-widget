@@ -6,10 +6,12 @@ import {
 const SortOrderComparators = {
   getAscComparatorForProperty: propertyName =>
     (firstColumn, secondColumn) => {
-      if (firstColumn[propertyName] === secondColumn[propertyName]) {
+      const firstValue = firstColumn[propertyName].value || firstColumn[propertyName];
+      const secondValue = secondColumn[propertyName].value || secondColumn[propertyName];
+      if (firstValue === secondValue) {
         return 0;
       }
-      return firstColumn[propertyName] < secondColumn[propertyName] ? -1 : 1;
+      return firstValue < secondValue ? -1 : 1;
     },
 
   countIndexAsc: (firstColumn, secondColumn) =>

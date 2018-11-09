@@ -1,10 +1,8 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
 .report-chart {
-  $labels-width: 20 * $ring-unit;
 
   &__title {
-    width: $labels-width;
     margin-bottom: 2 * $ring-unit;
 
     text-align: left;
@@ -20,20 +18,39 @@
   }
 
   &__labels {
-    float: left;
-
-    width: $labels-width;
+    width: 30%;
 
     text-align: left;
 
     font-size: $ring-font-size-smaller;
+
+    display: flex;
+
+    overflow: hidden;
+  }
+
+  &__labels-column {
+    &:first-child {
+      min-width: 45%;
+      max-width: 60%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:nth-child(2) {
+      min-width: 20%;
+      text-align: right;
+    }
+
+    &:nth-child(3) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 2px;
+    }
   }
 
   &__size {
-    float: right;
-
-    width: 3 * $ring-unit;
-    margin-left: 2 * $ring-unit;
+    width: 100%;
 
     text-align: right;
 
@@ -41,10 +58,9 @@
   }
 
   &__size-in-percents {
-    float: right;
-
-    min-width: 3 * $ring-unit;
-    margin-left: $ring-unit;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     text-align: right;
 
@@ -52,10 +68,9 @@
   }
 
   &__size-description {
-    float: right;
-
-    width: 3 * $ring-unit;
-    margin-left: $ring-unit;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     text-align: right;
 
@@ -65,31 +80,29 @@
   &__label {
     float: left;
     overflow-x: hidden;
-
-    max-width: 10 * $ring-unit;
+    max-width: 100%;
 
     white-space: nowrap;
     text-overflow: ellipsis;
 
     &_title {
-      max-width: $labels-width - $ring-unit;
-
       font-weight: bold;
     }
   }
 
   &__body-wrapper {
     margin-top: 12px;
+    display: flex;
+    width: 100%;
   }
 
-  $chart-margin-left: $labels-width + $ring-unit;
-
   &__body {
-    margin-left: $chart-margin-left;
+    width: 70%;
   }
 
   &__sort-order-bar {
     height: 26px;
+    display: flex;
   }
 
   &__sort-order {
@@ -104,13 +117,12 @@
     font-size: 10px;
 
     &_main {
-      float: left;
-
-      width: $labels-width - 2 * $ring-unit;
+      width: 30%;
+      min-width: 80px;
     }
 
     &_secondary {
-      margin-left: $chart-margin-left + 4px;
+      width: 70%;
     }
   }
 
@@ -174,5 +186,23 @@
     text-overflow: ellipsis;
 
     font-weight: normal;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .report-chart__labels-column:nth-child(2) {
+    display: block !important;
+  }
+  .report-chart__labels-column:nth-child(2) {
+    min-width: 20%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .report-chart__labels-column:last-child {
+    display: none !important;
+  }
+  .report-chart__labels-column:nth-child(2) {
+    min-width: 40%;
   }
 }

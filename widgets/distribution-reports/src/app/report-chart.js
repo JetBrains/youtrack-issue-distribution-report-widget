@@ -107,7 +107,7 @@ class ReportChart extends React.Component {
         margin({
           left: 5,
           top: 0,
-          right: X_AXIS_HEIGHT,
+          right: 0,
           bottom: X_AXIS_HEIGHT
         }).
         stacked(isStacked).
@@ -152,23 +152,9 @@ class ReportChart extends React.Component {
     );
   };
 
-  renderLineLabel(column, totalCount) {
-    const toPercentsMultiplier = 100;
-    const getSizeInPercents = size => (totalCount
-      ? `${Math.round(size.value / totalCount * toPercentsMultiplier)}%`
-      : '');
-
+  renderLineLabel(column) {
     return (
-      <div
-        key={`report-column-${column.index}`}
-        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
-      >
-        <div className="report-chart__size-in-percents">
-          { getSizeInPercents(column.size) }
-        </div>
-        <div className="report-chart__size">
-          { column.size.presentation }
-        </div>
+      <div style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}>
         {
           !column.user &&
           <div className="report-chart__label">
@@ -195,6 +181,33 @@ class ReportChart extends React.Component {
             </UserCardTooltip>
           </div>
         }
+      </div>
+    )
+  }
+
+  renderLineSize(column) {
+    return (
+      <div
+        className="report-chart__size"
+        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
+      >
+        { column.size.presentation }
+      </div>
+    );
+  }
+
+  renderLinePercents(column, totalCount) {
+    const toPercentsMultiplier = 100;
+    const getSizeInPercents = size => (totalCount
+      ? `${Math.round(size.value / totalCount * toPercentsMultiplier)}%`
+      : '');
+
+    return (
+      <div
+        className="report-chart__size-in-percents"
+        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
+      >
+        { getSizeInPercents(column.size) }
       </div>
     );
   }
@@ -355,11 +368,27 @@ class ReportChart extends React.Component {
             className="report-chart__labels"
             style={{height: chartHeight}}
           >
-            {
-              columns.map(column =>
-                this.renderLineLabel(column, totalCount)
-              )
-            }
+            <div className="report-chart__labels-column">
+              {
+                columns.map(column =>
+                  this.renderLineLabel(column)
+                )
+              }
+            </div>
+            <div className="report-chart__labels-column">
+              {
+                columns.map(column =>
+                  this.renderLineSize(column, totalCount)
+                )
+              }
+            </div>
+            <div className="report-chart__labels-column">
+              {
+                columns.map(column =>
+                  this.renderLinePercents(column, totalCount)
+                )
+              }
+            </div>
           </div>
           { this.renderChartBody(chartHeight) }
         </div>
