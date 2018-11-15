@@ -156,7 +156,8 @@ class ReportChart extends React.Component {
     return (
       <div
         key={`report-label-${column.name}`}
-        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}>
+        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
+      >
         {
           !column.user &&
           <div className="report-chart__label">
