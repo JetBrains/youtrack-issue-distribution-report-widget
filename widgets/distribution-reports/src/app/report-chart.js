@@ -51,12 +51,13 @@ class ReportChart extends React.Component {
       }));
     }
     return [{
-      values: (reportData.columns || []).map(xCol => ({
+      key: 'values',
+      values: ((reportData.columns || []).map(xCol => ({
         key: xCol.name,
         issuesQuery: xCol.issuesQuery,
         size: xCol.size.value,
         colorIndex: xCol.colorIndex
-      }))
+      })))
     }];
   };
 
@@ -154,7 +155,9 @@ class ReportChart extends React.Component {
 
   renderLineLabel(column) {
     return (
-      <div style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}>
+      <div
+        key={`report-label-${column.name}`}
+        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}>
         {
           !column.user &&
           <div className="report-chart__label">
@@ -189,6 +192,7 @@ class ReportChart extends React.Component {
     return (
       <div
         className="report-chart__size"
+        key={`report-label-size-${column.name}`}
         style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
         { column.size.presentation }
@@ -205,6 +209,7 @@ class ReportChart extends React.Component {
     return (
       <div
         className="report-chart__size-in-percents"
+        key={`report-label-percents-${column.name}`}
         style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
         { getSizeInPercents(column.size) }
