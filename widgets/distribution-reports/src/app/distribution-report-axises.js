@@ -6,8 +6,10 @@ import {
 const SortOrderComparators = {
   getAscComparatorForProperty: propertyName =>
     (firstColumn, secondColumn) => {
-      const firstValue = firstColumn[propertyName].value || firstColumn[propertyName];
-      const secondValue = secondColumn[propertyName].value || secondColumn[propertyName];
+      const firstValue = firstColumn[propertyName].value ||
+        firstColumn[propertyName];
+      const secondValue = secondColumn[propertyName].value ||
+        secondColumn[propertyName];
       if (firstValue === secondValue) {
         return 0;
       }

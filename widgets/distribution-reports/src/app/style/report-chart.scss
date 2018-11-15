@@ -1,7 +1,6 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
 .report-chart {
-
   &__title {
     margin-bottom: 2 * $ring-unit;
 
@@ -18,34 +17,39 @@
   }
 
   &__labels {
+    display: flex;
+
+    overflow: hidden;
+
     width: 30%;
 
     text-align: left;
 
     font-size: $ring-font-size-smaller;
-
-    display: flex;
-
-    overflow: hidden;
   }
 
   &__labels-column {
     &:first-child {
+      overflow: hidden;
+
       min-width: 45%;
       max-width: 60%;
-      overflow: hidden;
+
       text-overflow: ellipsis;
     }
 
     &:nth-child(2) {
       min-width: 20%;
+
       text-align: right;
     }
 
     &:nth-child(3) {
       overflow: hidden;
-      text-overflow: ellipsis;
+
       margin-left: 2px;
+
+      text-overflow: ellipsis;
     }
   }
 
@@ -58,21 +62,23 @@
   }
 
   &__size-in-percents {
-    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
+
+    width: 100%;
 
     text-align: right;
+    text-overflow: ellipsis;
 
     color: $ring-dark-gray-color;
   }
 
   &__size-description {
-    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
+
+    width: 100%;
 
     text-align: right;
+    text-overflow: ellipsis;
 
     font-weight: normal;
   }
@@ -80,6 +86,7 @@
   &__label {
     float: left;
     overflow-x: hidden;
+
     max-width: 100%;
 
     white-space: nowrap;
@@ -91,9 +98,11 @@
   }
 
   &__body-wrapper {
-    margin-top: 12px;
     display: flex;
+
     width: 100%;
+
+    margin-top: 12px;
   }
 
   &__body {
@@ -101,8 +110,9 @@
   }
 
   &__sort-order-bar {
-    height: 26px;
     display: flex;
+
+    height: 26px;
   }
 
   &__sort-order {
@@ -193,6 +203,7 @@
   .report-chart__labels-column:nth-child(2) {
     display: block !important;
   }
+
   .report-chart__labels-column:nth-child(2) {
     min-width: 20%;
   }
@@ -202,6 +213,7 @@
   .report-chart__labels-column:last-child {
     display: none !important;
   }
+
   .report-chart__labels-column:nth-child(2) {
     min-width: 40%;
   }

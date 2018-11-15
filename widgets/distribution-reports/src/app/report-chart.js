@@ -182,7 +182,7 @@ class ReportChart extends React.Component {
           </div>
         }
       </div>
-    )
+    );
   }
 
   renderLineSize(column) {
