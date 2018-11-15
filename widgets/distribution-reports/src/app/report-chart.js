@@ -50,15 +50,14 @@ class ReportChart extends React.Component {
         colorIndex: xCol.colorIndex
       }));
     }
-    return [{
-      key: 'values',
-      values: ((reportData.columns || []).map(xCol => ({
-        key: xCol.name,
-        issuesQuery: xCol.issuesQuery,
-        size: xCol.size.value,
-        colorIndex: xCol.colorIndex
-      })))
-    }];
+    return ((reportData.columns || []).map(xCol => ({
+      key: xCol.name,
+      values: (reportData.columns || []).map(yCol => ({
+        name: yCol.name,
+        issuesQuery: yCol.issuesQuery,
+        size: yCol.name === xCol.name ? yCol.size.value : 0
+      }))
+    })));
   };
 
   constructor(props) {
@@ -108,12 +107,12 @@ class ReportChart extends React.Component {
         margin({
           left: 5,
           top: 0,
-          right: 0,
+          right: X_AXIS_HEIGHT,
           bottom: X_AXIS_HEIGHT
         }).
-        stacked(isStacked).
+        stacked(true).
         state({
-          stacked: isStacked
+          stacked: true
         }). // workaround
         x(column => column.name).
         y(column => column.size).
