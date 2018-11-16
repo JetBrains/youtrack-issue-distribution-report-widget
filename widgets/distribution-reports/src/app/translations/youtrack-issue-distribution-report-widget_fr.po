@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2018-11-16 11:55\n"
+"PO-Revision-Date: 2018-11-16 13:59\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
 msgstr ""
 
-#: src/app/report-chart.js:343
+#: src/app/report-chart.js:363
 msgid "Bars"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr ""
 
-#: src/app/report-chart.js:352
+#: src/app/report-chart.js:372
 msgid "Table"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:151
+#: src/app/report-filter-fields-selector.js:155
 msgid "This field does not exist in some of the selected projects"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgstr ""
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr ""
 
-#: src/app/report-chart.js:321
+#: src/app/report-chart.js:341
 msgid "Total"
 msgstr ""
 
@@ -263,7 +263,7 @@ msgstr ""
 msgid "{{minutesCount}} min"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:139
+#: src/app/report-filter-fields-selector.js:143
 msgid "＋Add field"
 msgstr ""
 
