@@ -116,7 +116,7 @@ class ReportFilterFieldsSelector extends React.Component {
     if (disabled) {
       return (
         <span>
-          { selectedField ? selectedField.presentation : '' }
+          { selectedField ? selectedField.presentation : (this.props.placeholder || '') }
         </span>
       );
     }
