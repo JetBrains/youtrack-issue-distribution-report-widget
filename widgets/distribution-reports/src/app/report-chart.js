@@ -48,6 +48,9 @@ class ReportChart extends React.Component {
           issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
           size: ReportModel.getSizeValue(
             reportData.counts[xCol.index][yCol.index]
+          ),
+          presentation: ReportModel.getSizePresentation(
+            reportData.counts[xCol.index][yCol.index]
           )
         })),
         colorIndex: xCol.colorIndex
@@ -60,8 +63,12 @@ class ReportChart extends React.Component {
         issuesQuery: yCol.issuesQuery,
         size: yCol.name === xCol.name
           ? ReportModel.getSizeValue(yCol.size)
+          : 0,
+        presentation: yCol.name === xCol.name
+          ? ReportModel.getSizePresentation(yCol.size)
           : 0
-      }))
+      })),
+      colorIndex: 1
     })));
   };
 
@@ -104,6 +111,14 @@ class ReportChart extends React.Component {
     }
 
     const {reportData} = this.state;
+    const chartModel = ReportChart.getBarsChartModel(reportData);
+    const valueToPresentationMap = chartModel.reduce((resultMap, columnX) => {
+      columnX.values.reduce((result, columnY) => {
+        result[columnY.size] = columnY.presentation;
+        return result;
+      }, resultMap);
+      return resultMap;
+    }, {});
 
     nv.addGraph(() => {
       const isStacked = ReportChart.isStackedChart(reportData);
@@ -132,10 +147,10 @@ class ReportChart extends React.Component {
       );
 
       chart.xAxis.tickFormat(d => d);
-      chart.yAxis.tickFormat(d3.format('d'));
+      chart.yAxis.tickFormat(d => valueToPresentationMap[d] || '');
 
       d3.select(barChartNode).
-        datum(ReportChart.getBarsChartModel(reportData)).
+        datum(chartModel).
         call(chart);
 
       nv.utils.windowResize(chart.update);
@@ -194,13 +209,18 @@ class ReportChart extends React.Component {
   }
 
   renderLineSize(column) {
+    const sizePresentation = `${ReportModel.getSizePresentation(column.size)}`;
+    if (`${ReportModel.getSizeValue(column.size)}` !== sizePresentation) {
+      return '';
+    }
+
     return (
       <div
         className="report-chart__size"
         key={`report-label-size-${column.name}`}
         style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
-        { ReportModel.getSizePresentation(column.size) || column.size }
+        { sizePresentation }
       </div>
     );
   }

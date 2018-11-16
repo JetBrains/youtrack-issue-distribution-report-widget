@@ -33,21 +33,21 @@
       overflow: hidden;
 
       min-width: 45%;
-      max-width: 60%;
+      max-width: 80%;
 
       text-overflow: ellipsis;
     }
 
     &:nth-child(2) {
-      min-width: 20%;
-
       text-align: right;
     }
 
     &:nth-child(3) {
       overflow: hidden;
 
-      margin-left: 2px;
+      min-width: 28px;
+
+      margin-left: 4px;
 
       text-overflow: ellipsis;
     }
@@ -203,18 +203,10 @@
   .report-chart__labels-column:nth-child(2) {
     display: block !important;
   }
-
-  .report-chart__labels-column:nth-child(2) {
-    min-width: 20%;
-  }
 }
 
 @media only screen and (max-width: 450px) {
-  .report-chart__labels-column:last-child {
-    display: none !important;
-  }
-
   .report-chart__labels-column:nth-child(2) {
-    min-width: 40%;
+    display: none !important;
   }
 }
