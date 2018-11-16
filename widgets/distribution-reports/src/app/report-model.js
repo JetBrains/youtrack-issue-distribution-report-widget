@@ -26,7 +26,18 @@ const ReportModel = {
     }
     const reportData = report.data || {};
     return !(reportData.columns || reportData.ycolumns || []).length;
-  }
+  },
+
+  getSizeValue: size =>
+    ((typeof size === 'number')
+      ? size
+      : ((size || {}).value || 0)),
+
+  getSizePresentation: size =>
+    ((typeof size === 'number')
+      ? size
+      : ((size || {}).presentation || 0))
+
 };
 
 export default ReportModel;

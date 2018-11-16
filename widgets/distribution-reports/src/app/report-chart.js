@@ -8,6 +8,7 @@ import {UserCardTooltip} from '@jetbrains/ring-ui/components/user-card/user-card
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import ReportChartSortOrder from './report-chart-sort-order';
+import ReportModel from './report-model';
 
 const nv = window.nv;
 const GRAPH_TRANSITION_DURATION = 350;
@@ -45,7 +46,9 @@ class ReportChart extends React.Component {
         values: reportData.ycolumns.map(yCol => ({
           name: yCol.name,
           issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
-          size: (reportData.counts[xCol.index][yCol.index] || {}).value
+          size: ReportModel.getSizeValue(
+            reportData.counts[xCol.index][yCol.index]
+          )
         })),
         colorIndex: xCol.colorIndex
       }));
@@ -55,7 +58,9 @@ class ReportChart extends React.Component {
       values: (reportData.columns || []).map(yCol => ({
         name: yCol.name,
         issuesQuery: yCol.issuesQuery,
-        size: yCol.name === xCol.name ? yCol.size.value : 0
+        size: yCol.name === xCol.name
+          ? ReportModel.getSizeValue(yCol.size)
+          : 0
       }))
     })));
   };
@@ -195,7 +200,7 @@ class ReportChart extends React.Component {
         key={`report-label-size-${column.name}`}
         style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
-        { column.size.presentation }
+        { ReportModel.getSizePresentation(column.size) || column.size }
       </div>
     );
   }
@@ -203,7 +208,7 @@ class ReportChart extends React.Component {
   renderLinePercents(column, totalCount) {
     const toPercentsMultiplier = 100;
     const getSizeInPercents = size => (totalCount
-      ? `${Math.round(size.value / totalCount * toPercentsMultiplier)}%`
+      ? `${Math.round(ReportModel.getSizeValue(size) / totalCount * toPercentsMultiplier)}%`
       : '');
 
     return (
@@ -267,18 +272,26 @@ class ReportChart extends React.Component {
                         className="report-chart__table-cell"
                       >
                         {
-                          column.values[idx].size.value > 0 &&
+                          (ReportModel.getSizeValue(
+                            column.values[idx].size
+                          ) > 0) &&
                           <Link
                             pseudo={true}
                             href={ReportChart.getSearchUrl(
                               column.values[idx].issuesQuery, this.props.homeUrl
                             )}
                           >
-                            { column.values[idx].size.presentation }
+                            {
+                              ReportModel.getSizePresentation(
+                                column.values[idx].size
+                              )
+                            }
                           </Link>
                         }
                         {
-                          column.values[idx].size.value === 0 && '-'
+                          (ReportModel.getSizeValue(
+                            column.values[idx].size
+                          ) === 0) && '-'
                         }
                       </td>
                     ))
@@ -304,8 +317,8 @@ class ReportChart extends React.Component {
     const columns = reportData.ycolumns || reportData.columns || [];
 
     const chartHeight = ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
-    const totalCount = reportData.total.value;
-    const title = `${this.props.aggregationTitle || i18n('Total')}: ${reportData.total.presentation}`;
+    const totalCount = ReportModel.getSizeValue(reportData.total);
+    const title = `${this.props.aggregationTitle || i18n('Total')}: ${ReportModel.getSizePresentation(reportData.total)}`;
 
     const getOnChangeReportPresentationCallback = tabId =>
       () => this.setState({activeTab: tabId});

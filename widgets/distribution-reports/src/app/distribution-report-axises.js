@@ -2,14 +2,13 @@ import {
   getReportTypePresentation,
   isTypeWithEditableXAxis
 } from './distribution-report-types';
+import ReportModel from './report-model';
 
 const SortOrderComparators = {
   getAscComparatorForProperty: propertyName =>
     (firstColumn, secondColumn) => {
-      const firstValue = firstColumn[propertyName].value ||
-        firstColumn[propertyName];
-      const secondValue = secondColumn[propertyName].value ||
-        secondColumn[propertyName];
+      const firstValue = ReportModel.getSizeValue(firstColumn[propertyName]);
+      const secondValue = ReportModel.getSizeValue(secondColumn[propertyName]);
       if (firstValue === secondValue) {
         return 0;
       }
