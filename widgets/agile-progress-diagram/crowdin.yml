@@ -1,0 +1,13 @@
+"project_identifier" : "youtrackjetbrains"
+"api_key_env" : CROWDIN_API_KEY
+"base_path_env" : CROWDIN_BASE_PATH
+
+"preserve_hierarchy": true
+
+files: [
+ {
+  "source" : "/src/app/translations/agile-progress-diagram-widget.pot",
+  "dest": "/widgets/agile-progress-diagram-widget/agile-progress-diagram-widget.pot",
+  "translation" : "/src/app/translations/agile-progress-diagram-widget_%two_letters_code%.po",
+ }
+]

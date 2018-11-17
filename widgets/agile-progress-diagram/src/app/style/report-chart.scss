@@ -1,0 +1,20 @@
+@import '~@jetbrains/ring-ui/components/global/global';
+
+.report-chart {
+  &__title {
+    margin-bottom: 2 * $ring-unit;
+
+    text-align: left;
+    white-space: nowrap;
+
+    font-weight: bold;
+  }
+
+  &__body {
+    position: fixed;
+    top: 6 * $ring-unit;
+    right: 0;
+    bottom: 3 * $ring-unit;
+    left: 0;
+  }
+}

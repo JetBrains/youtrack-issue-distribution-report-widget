@@ -1,0 +1,24 @@
+{
+  "key": "agile-progress-diagram",
+  "version": "0.0.1",
+  "name": "Agile Progress Diagram",
+  "description": "Displays a Burn Down Chart or Cumulative Flow Diagram for your sprint.",
+  "applicationName": "YouTrack",
+  "author": "YouTrack Team",
+  "dependencies": {
+    "YouTrack": ">=2018.2.42584",
+    "Hub": ">=2018.1"
+  },
+  "products": {
+    "YouTrack": ">=2018.2.42584",
+    "Hub": ">=2018.1"
+  },
+  "capabilities": {
+    "topNavigation": true,
+    "popups": true
+  },
+  "view": {
+    "defaultWidth": 4,
+    "defaultHeight": 3
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "youtrack-report-widgets-components",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "presets": "@jetbrains/jetbrains"
+  },
+  "dependencies": {
+    "@jetbrains/ring-ui": "1.0.1",
+    "@jetbrains/babel-preset-jetbrains": "1.0.1",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-polyfill": "6.26.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "mout": "0.11.0",
+    "hub-dashboard-addons": "0.1.2"
+  }
+}
