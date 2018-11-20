@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2018-11-16 13:59\n"
+"PO-Revision-Date: 2018-11-16 21:09\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
