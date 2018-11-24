@@ -1,3 +1,5 @@
+import {getCurrentSprint} from '../agile-board-model/agile-board-model';
+
 const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
 const INDEPENDENT_BURNDOWN_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.agile.burndown.gap.IndependentBurndownReport';
 
@@ -32,6 +34,14 @@ async function loadProjects(fetchYouTrack) {
 
 async function loadAgiles(fetchYouTrack) {
   return await fetchYouTrack(`api/agiles?fields=${AGILE_FIELDS}&$top=-1`);
+}
+
+async function loadSprint(fetchYouTrack, agileId, sprintId) {
+  if (sprintId) {
+    return await fetchYouTrack(`api/agiles/${agileId}/sprints/${sprintId}?fields=${SPRINT_FIELDS}`);
+  }
+  const agile = await fetchYouTrack(`api/agiles/${agileId}?fields=${AGILE_FIELDS}`);
+  return getCurrentSprint(agile);
 }
 
 async function loadReportWithData(fetchYouTrack, reportId) {
@@ -180,6 +190,7 @@ export {
   underlineAndSuggest,
   loadProjects,
   loadAgiles,
+  loadSprint,
   loadUserGroups,
   loadCurrentUser,
 

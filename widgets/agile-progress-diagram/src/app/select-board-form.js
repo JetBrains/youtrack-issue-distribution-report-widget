@@ -10,18 +10,15 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import {
   loadAgiles
 } from '../../../../components/src/resources/resources';
-
 import {
   areSprintsEnabled,
-  isCurrentSprint,
   getCurrentSprint
-} from './agile-board-model';
+} from '../../../../components/src/agile-board-model/agile-board-model';
 
 class SelectBoardForm extends React.Component {
   static propTypes = {
-    agile: PropTypes.object,
-    sprint: PropTypes.object,
-    currentSprintMode: PropTypes.bool,
+    agileId: PropTypes.string,
+    sprintId: PropTypes.string,
     onChange: PropTypes.func,
     dashboardApi: PropTypes.object,
     youTrackId: PropTypes.string
@@ -40,6 +37,17 @@ class SelectBoardForm extends React.Component {
     description: currentSprint ? currentSprint.name : ''
   });
 
+  static findSprintById = (sprintId, agile) => {
+    if (!agile) {
+      return null;
+    }
+    if (!sprintId) {
+      return getCurrentSprint(agile);
+    }
+    return (agile.sprints || []).
+      filter(sprint => sprint.id === sprintId)[0];
+  };
+
   constructor(props) {
     super(props);
 
@@ -47,9 +55,8 @@ class SelectBoardForm extends React.Component {
       id: props.youTrackId
     };
     this.state = {
-      selectedAgile: props.agile,
-      selectedSprint: props.sprint,
-      currentSprintMode: props.currentSprintMode,
+      selectedAgile: null,
+      selectedSprint: null,
       agiles: [],
       selectedYouTrack
     };
@@ -60,18 +67,16 @@ class SelectBoardForm extends React.Component {
   }
 
   async loadAgiles() {
-    const {selectedAgile, selectedSprint} = this.state;
-    this.setState({agiles: [], selectedAgile: null, selectedSprint: null});
     const agiles = await loadAgiles(this.fetchYouTrack);
-    const hasRememberedAgileInNewAgilesList = (agiles || []).
-      some(agile => selectedAgile && selectedAgile.id === agile.id);
-    this.setState({agiles});
-    if (hasRememberedAgileInNewAgilesList) {
-      this.setState({
-        selectedAgile,
-        selectedSprint
-      });
-    } else if (agiles.length) {
+    const selectedAgile = (agiles || []).filter(
+      agile => this.props.agileId && this.props.agileId === agile.id
+    )[0];
+    const selectedSprint = SelectBoardForm.findSprintById(
+      this.props.agileId, selectedAgile
+    );
+    this.setState({agiles, selectedAgile, selectedSprint});
+    this.onChange(selectedAgile, selectedSprint);
+    if (!selectedAgile) {
       this.changeAgile(agiles[0]);
     }
   }
@@ -82,33 +87,38 @@ class SelectBoardForm extends React.Component {
     return await dashboardApi.fetch(selectedYouTrack.id, url, params);
   };
 
+  onChange = (selectedAgile, selectedSprint) =>
+    this.props.onChange({
+      agileId: (selectedAgile || {}).id,
+      sprintId: (selectedSprint || {}).id
+    });
+
   changeAgile = selected => {
     const selectedAgile = selected.model || selected;
     const sprints = selectedAgile && selectedAgile.sprints || [];
+    let updatedSprint = null;
     if (sprints.length) {
-      const hasCurrentSprint = selectedAgile.currentSprint ||
-        sprints.some(isCurrentSprint);
-      this.changeSprint(
-        hasCurrentSprint
-          ? SelectBoardForm.getCurrentSprintSelectOption()
-          : sprints[0]
-      );
+      const hasCurrentSprint = !!getCurrentSprint(selectedAgile);
+      updatedSprint = hasCurrentSprint
+        ? SelectBoardForm.getCurrentSprintSelectOption()
+        : sprints[0];
+      this.setSprint(updatedSprint);
     }
     this.setState({selectedAgile});
+    this.onChange(selectedAgile, updatedSprint);
+  };
+
+  setSprint = selectedOption => {
+    this.setState({
+      selectedSprint: selectedOption.key === 'current-sprint'
+        ? null
+        : selectedOption.model || selectedOption
+    });
   };
 
   changeSprint = selected => {
-    if (selected.key === 'current-sprint') {
-      this.setState({
-        selectedSprint: null,
-        currentSprintMode: true
-      });
-    } else {
-      this.setState({
-        selectedSprint: selected.model || selected,
-        currentSprintMode: false
-      });
-    }
+    this.setSprint(selected);
+    this.onChange(this.state.selectedAgile, selected.model || selected);
   };
 
   renderNoBoardsMessage() {
@@ -130,7 +140,6 @@ class SelectBoardForm extends React.Component {
     const {
       selectedAgile,
       selectedSprint,
-      currentSprintMode,
       agiles
     } = this.state;
 
@@ -147,6 +156,18 @@ class SelectBoardForm extends React.Component {
         );
       }
       return sprintsOptions;
+    };
+
+    const getSelectedSprintOption = () => {
+      if (selectedSprint) {
+        return SelectBoardForm.toSelectItem(selectedSprint);
+      }
+      if (!selectedAgile || !selectedAgile.sprints) {
+        return undefined;
+      }
+      return getCurrentSprint(selectedAgile)
+        ? SelectBoardForm.getCurrentSprintSelectOption()
+        : SelectBoardForm.toSelectItem(selectedAgile.sprints[0]);
     };
 
     return (
@@ -167,11 +188,7 @@ class SelectBoardForm extends React.Component {
             <Select
               size={Select.Size.FULL}
               data={getSprintsOptions()}
-              selected={
-                currentSprintMode
-                  ? SelectBoardForm.getCurrentSprintSelectOption()
-                  : SelectBoardForm.toSelectItem(selectedSprint)
-              }
+              selected={getSelectedSprintOption()}
               onSelect={this.changeSprint}
               filter={true}
               label={i18n('Select sprint')}

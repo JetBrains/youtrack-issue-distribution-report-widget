@@ -245,7 +245,17 @@ class Configuration extends React.Component {
       isLoading: false, errorMessage
     });
 
-  submitForm = async () => {
+  onSubmit = async (settings, refreshPeriod, selectedYouTrack) => {
+    try {
+      return await this.props.onSubmit(
+        settings, refreshPeriod, selectedYouTrack
+      );
+    } catch (err) {
+      return this.setErrorMessage(`${i18n('Cannot update widget')}: ${HttpErrorHandler.getMessage(err)}`);
+    }
+  };
+
+  submitReportForm = async () => {
     const {
       selectedReport,
       refreshPeriod,
@@ -266,15 +276,27 @@ class Configuration extends React.Component {
       }
     }
 
-    try {
-      await this.props.onSubmit(
-        reportId, refreshPeriod, selectedYouTrack
-      );
-    } catch (err) {
-      return this.setErrorMessage(`${i18n('Cannot update widget')}: ${HttpErrorHandler.getMessage(err)}`);
-    }
-
+    await this.onSubmit({reportId}, refreshPeriod, selectedYouTrack);
     return this.setState({isLoading: false});
+  };
+
+  submitAgileForm = async () => {
+    const {
+      boardFormSettings,
+      refreshPeriod,
+      selectedYouTrack
+    } = this.state;
+
+    this.setState({isLoading: true});
+    await this.onSubmit(boardFormSettings, refreshPeriod, selectedYouTrack);
+    return this.setState({isLoading: false});
+  };
+
+  submitForm = async () => {
+    if (this.state.tab === Configuration.TABS.CUSTOM_CHART) {
+      return this.submitReportForm();
+    }
+    return this.submitAgileForm();
   };
 
   async onAfterYouTrackChanged() {
@@ -439,18 +461,42 @@ class Configuration extends React.Component {
       boardFormSettings
     } = this.state;
 
-    const onChangeBoardFormSettings = settings =>
+    const onChangeBoardFormSettings = settings => {
       this.setState({boardFormSettings: settings});
+    };
 
     return (
       <SelectBoardForm
-        agile={boardFormSettings.agile}
-        sprint={boardFormSettings.sprint}
-        currentSprintMode={boardFormSettings.currentSprintMode}
+        agileId={boardFormSettings.agileId}
+        sprintId={boardFormSettings.sprintId}
         onChange={onChangeBoardFormSettings}
         dashboardApi={this.props.dashboardApi}
         youTrackId={selectedYouTrack.id}
       />
+    );
+  }
+
+  renderTabs() {
+    const {tab} = this.state;
+
+    return (
+      <Tabs
+        selected={tab}
+        onSelect={this.changeTab}
+      >
+        <Tab
+          id={Configuration.TABS.AGILE_BASED_CHART}
+          title={i18n('For Existing Board')}
+        >
+          { this.renderSelectSprintSettings() }
+        </Tab>
+        <Tab
+          id={Configuration.TABS.CUSTOM_CHART}
+          title={i18n('For Custom Set of Issues')}
+        >
+          { this.renderReportsSettings() }
+        </Tab>
+      </Tabs>
     );
   }
 
@@ -461,7 +507,9 @@ class Configuration extends React.Component {
       errorMessage,
       reports,
       selectedReport,
-      selectedReportIsValid
+      selectedReportIsValid,
+      tab,
+      boardFormSettings
     } = this.state;
 
     const youTrackServiceToSelectItem = it => it && {
@@ -471,10 +519,16 @@ class Configuration extends React.Component {
       model: it
     };
 
+    const isFormInvalid = errorMessage || (
+      tab === Configuration.TABS.AGILE_BASED_CHART
+        ? !boardFormSettings
+        : !selectedReport || !selectedReportIsValid
+    );
+
     return (
       <ConfigurationForm
         warning={errorMessage}
-        isInvalid={errorMessage || !selectedReport || !selectedReportIsValid}
+        isInvalid={isFormInvalid}
         isLoading={this.state.isLoading}
         panelControls={this.renderRefreshPeriod()}
         onSave={this.submitForm}
@@ -494,27 +548,9 @@ class Configuration extends React.Component {
           </div>
         }
         {
-          reports &&
-          <Tabs
-            selected={this.state.tab}
-            onSelect={this.changeTab}
-          >
-            <Tab
-              id={Configuration.TABS.AGILE_BASED_CHART}
-              title={i18n('For Existing Board')}
-            >
-              { this.renderSelectSprintSettings() }
-            </Tab>
-            <Tab
-              id={Configuration.TABS.CUSTOM_CHART}
-              title={i18n('For Custom Set of Issues')}
-            >
-              { this.renderReportsSettings() }
-            </Tab>
-          </Tabs>
-        }
-        {
-          !errorMessage && !reports && <LoaderInline/>
+          reports
+            ? this.renderTabs()
+            : (!errorMessage && <LoaderInline/>)
         }
       </ConfigurationForm>
     );

@@ -9,7 +9,8 @@ import {
   loadReportWithData,
   recalculateReport,
   getYouTrackService,
-  loadIndependentBurnDownReports
+  loadIndependentBurnDownReports,
+  loadSprint
 } from '../../../../components/src/resources/resources';
 
 import Configuration
@@ -35,6 +36,16 @@ class AgileProgressDiagramWidget extends React.Component {
       };
     }
     return AgileProgressDiagramWidget.getDefaultWidgetTitle();
+  };
+
+  static getSelectedReportId = async (fetchYouTrack, settings) => {
+    if (settings.agileId) {
+      const sprint = await loadSprint(
+        fetchYouTrack, settings.agileId, settings.sprintId
+      );
+      return sprint && sprint.report && sprint.report.id;
+    }
+    return settings.reportId;
   };
 
   static propTypes = {
@@ -97,7 +108,10 @@ class AgileProgressDiagramWidget extends React.Component {
 
     this.setState({config});
 
-    const configReportId = config.reportId;
+    const configReportId =
+      await AgileProgressDiagramWidget.getSelectedReportId(
+        this.fetchYouTrack, config.settings
+      );
     const report = (configReportId && {id: configReportId}) ||
       (await loadIndependentBurnDownReports(this.fetchYouTrack))[0];
 
@@ -202,10 +216,10 @@ class AgileProgressDiagramWidget extends React.Component {
     return await this.loadReport(reportId, optionalYouTrack);
   }
 
-  saveConfig = async () => {
-    const {report, refreshPeriod, youTrack} = this.state;
+  saveConfig = async settings => {
+    const {refreshPeriod, youTrack} = this.state;
     await this.props.dashboardApi.storeConfig({
-      reportId: report.id, youTrack, refreshPeriod
+      settings, youTrack, refreshPeriod
     });
     this.setState({isConfiguring: false});
   };
@@ -230,14 +244,20 @@ class AgileProgressDiagramWidget extends React.Component {
   };
 
   renderConfigurationForm() {
-    const submitForm = async (selectedReportId, refreshPeriod, youTrack) => {
-      const reportIsChanged = selectedReportId !== (this.state.report || {}).id;
+
+    const submitForm = async (settings, refreshPeriod, youTrack) => {
+      const reportIsChanged =
+        settings.reportId !== (this.state.report || {}).id;
       this.setState({
         youTrack,
         isLoading: reportIsChanged,
         report: reportIsChanged ? null : this.state.report,
         error: ReportModel.ErrorTypes.OK
       }, async () => {
+        const selectedReportId =
+          await AgileProgressDiagramWidget.getSelectedReportId(
+            this.fetchYouTrack, settings
+          );
         const reportWithData = await this.loadReportWithAppliedConfigSettings(
           selectedReportId, youTrack
         );
@@ -247,7 +267,7 @@ class AgileProgressDiagramWidget extends React.Component {
             isLoading: false,
             isNewWidget: false,
             refreshPeriod
-          }, async () => await this.saveConfig());
+          }, async () => await this.saveConfig(settings));
         }
       });
     };
