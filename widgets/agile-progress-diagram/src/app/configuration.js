@@ -22,9 +22,9 @@ import {
   loadReportWithSettings,
   loadIndependentBurnDownReports,
   loadCurrentUser,
-  makeYouTrackFetcher,
-  INDEPENDENT_BURNDOWN_REPORT_TYPE
+  makeYouTrackFetcher
 } from '../../../../components/src/resources/resources';
+import ReportModel from '../../../../components/src/report-model/report-model';
 
 import BurnDownChartForm from './burn-down-chart-form';
 import SelectBoardForm from './select-board-form';
@@ -46,14 +46,11 @@ class Configuration extends React.Component {
     CUSTOM_CHART: 'custom-chart'
   };
 
-  static createNewReport = () => ({
-    id: Configuration.NEW_REPORT_ID,
-    $type: INDEPENDENT_BURNDOWN_REPORT_TYPE,
-    name: '',
-    projects: [],
-    query: '',
-    own: true
-  });
+  static createNewReport = isCumulativeFlow =>
+    (isCumulativeFlow
+      ? ReportModel.NewReport.cumulativeFlow()
+      : ReportModel.NewReport.burnDown()
+    );
 
   static makeReportsOptionsList = reports => {
     const reportsOptions = reports.map(
@@ -192,8 +189,13 @@ class Configuration extends React.Component {
     const selectedReport = await getUpdatedCurrentReport(
       (this.state.selectedReport || {}).id
     );
+    const tab = (
+      !selectedReport.id ||
+      ReportModel.ReportTypes.isSprintBased(selectedReport)
+    ) ? Configuration.TABS.AGILE_BASED_CHART
+      : Configuration.TABS.CUSTOM_CHART;
     this.setState(
-      {selectedReport},
+      {selectedReport, tab},
       async () => await this.changeReport(selectedReport)
     );
 

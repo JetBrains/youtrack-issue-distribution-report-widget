@@ -12,10 +12,11 @@ import {
   loadIndependentBurnDownReports,
   loadSprint
 } from '../../../../components/src/resources/resources';
+import ReportModel
+  from '../../../../components/src/report-model/report-model';
 
 import Configuration
   from './configuration';
-import ReportModel from './report-model';
 import Content from './content';
 
 class AgileProgressDiagramWidget extends React.Component {
