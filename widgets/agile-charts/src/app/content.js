@@ -12,6 +12,7 @@ import ReportModel
   from '../../../../components/src/report-model/report-model';
 
 import BurnDownChart from './burn-down-chart';
+import CumulativeFlowChart from './cumulative-flow-chart';
 
 class Content extends React.Component {
   static propTypes = {
@@ -112,8 +113,16 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
+    if (ReportModel.ReportTypes.isBurnDown(report)) {
+      return (
+        <BurnDownChart
+          reportData={report.data}
+        />
+      );
+    }
+
     return (
-      <BurnDownChart
+      <CumulativeFlowChart
         reportData={report.data}
       />
     );

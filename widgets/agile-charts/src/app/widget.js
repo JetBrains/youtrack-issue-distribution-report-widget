@@ -26,7 +26,7 @@ class AgileProgressDiagramWidget extends React.Component {
   static PROGRESS_BAR_REFRESH_PERIOD = 0.5;
 
   static getDefaultWidgetTitle = () =>
-    i18n('Agile Progress Diagram');
+    i18n('Agile Charts');
 
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {

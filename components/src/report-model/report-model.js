@@ -64,6 +64,15 @@ const NewReport = {
   })
 };
 
+const ReportDataValidity = {
+  cumulativeFlow: reportData =>
+    !(reportData.sample || []).length ||
+    !reportData.colors || !reportData.names,
+
+  burnDown: reportData =>
+    !(reportData.remainingEstimation || []).length
+};
+
 const ReportModel = {
   ErrorTypes: {
     OK: 0,
@@ -90,8 +99,15 @@ const ReportModel = {
     if (ReportModel.isTooBigReportDataError(report)) {
       return false;
     }
+    return ReportModel.isValidReportData(report);
+  },
+
+  isValidReportData: report => {
     const reportData = report.data || {};
-    return !(reportData.remainingEstimation || []).length;
+    if (ReportTypes.isCumulativeFlow(report)) {
+      return ReportDataValidity.cumulativeFlow(reportData);
+    }
+    return ReportDataValidity.burnDown(reportData);
   },
 
   getSizeValue: size =>
@@ -105,6 +121,8 @@ const ReportModel = {
       : ((size || {}).presentation || 0)),
 
   ReportTypes,
+
+  ReportDataValidity,
 
   NewReport
 };

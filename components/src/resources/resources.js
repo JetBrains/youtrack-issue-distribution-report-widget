@@ -1,7 +1,6 @@
 import {getCurrentSprint} from '../agile-board-model/agile-board-model';
 
 const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
-const INDEPENDENT_BURNDOWN_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.agile.burndown.gap.IndependentBurndownReport';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
@@ -12,8 +11,13 @@ const PROJECTS_FIELDS = 'id,name,shortName';
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder`;
+
 const BURN_DOWN_REPORT_POINT = 'time,value';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT}),remainingEstimation(${BURN_DOWN_REPORT_POINT}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT}))`;
+const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT}),remainingEstimation(${BURN_DOWN_REPORT_POINT}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT})`;
+const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
+const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors`;
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS})`;
+
 const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name)`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
@@ -177,8 +181,6 @@ function makeYouTrackFetcher(dashboardApi, youTrack) {
 }
 
 export {
-  INDEPENDENT_BURNDOWN_REPORT_TYPE,
-
   loadReportWithData,
   loadIndependentBurnDownReports,
   loadReportWithSettings,

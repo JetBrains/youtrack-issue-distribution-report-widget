@@ -16,73 +16,37 @@ class CumulativeFlowChart extends React.Component {
     reportData: PropTypes.object
   };
 
-  static ChartColor = {
-    Ideal: '#76a800',
-    Remaining: '#25b7ff',
-    Spent: '#c6dbef',
-    Overdue: '#fd8d3c'
-  };
-
   static getChartModelData = reportData => {
+    let hasPredefinedColor = false;
     const format = d3.time.format('%Y-%m-%d');
-    const convertPoint = rawPoint => ({
-      date: format.parse(rawPoint.time),
-      value: rawPoint.value
-    });
 
-    const sprintFinishDate = format.parse(reportData.sprintFinish);
-    const idealBurndown = reportData.ideal.map(convertPoint);
-    const remainingEstimation =
-      reportData.remainingEstimation.map(convertPoint);
-    const remainingInSprint = remainingEstimation.filter(
-      point => point.date <= sprintFinishDate
-    );
-    const remainingOutSprint = remainingEstimation.filter(
-      point => point.date >= sprintFinishDate
-    );
-    const data = [{
-      key: i18n('Ideal Burndown'),
-      values: idealBurndown,
-      color: CumulativeFlowChart.ChartColor.Ideal
-    }, {
-      key: i18n('Remaining Effort'),
-      values: remainingInSprint,
-      color: CumulativeFlowChart.ChartColor.Remaining
-    }];
+    return reportData.names.map((name, i) => {
+      const colorIndex = reportData.colors[i];
+      hasPredefinedColor = hasPredefinedColor || colorIndex > 0;
+      const values = reportData.sample.map(dayData => ({
+        date: format.parse(dayData.date),
+        value: dayData.values[i].value,
+        presentation: dayData.values[i].presentation
+      }));
 
-    if (reportData.cumulativeSpentTime &&
-      reportData.cumulativeSpentTime.length > 0) {
-      data.push({
-        key: i18n('Spent time'),
-        values: reportData.cumulativeSpentTime.map(convertPoint),
-        color: CumulativeFlowChart.ChartColor.Spent
-      });
-    }
-    if (remainingOutSprint.length > 0) {
-      data.push({
-        key: i18n('Overdue effort'),
-        values: remainingOutSprint,
-        color: CumulativeFlowChart.ChartColor.Overdue
-      });
-    }
-
-    return data;
+      return {key: name, values, colorIndex};
+    }).reverse();
   };
 
   static getChartModelDomain = chartModelData => {
-    let domain = (chartModelData.length === 0)
-      ? null
-      : d3.extent(
-        d3.merge(
-          chartModelData.map(
-            series => series.values.map(d => d.value)
-          )
+    let domain = (chartModelData.length === 0) ? null : d3.extent(
+      d3.merge(
+        chartModelData.map(
+          series => series.values.map(d => d.value)
         )
-      );
+      )
+    );
 
-    const DOMAIN_GAP = 15;
     if (domain && (domain[0] || domain[0] === 0) && (domain[0] === domain[1])) {
+      const DOMAIN_GAP = 15;
       domain = [domain[0], domain[0] + DOMAIN_GAP];
+    } else {
+      domain = null;
     }
 
     return domain;
