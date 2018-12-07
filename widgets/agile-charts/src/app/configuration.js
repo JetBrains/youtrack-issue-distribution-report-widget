@@ -32,6 +32,8 @@ import SelectBoardForm from './select-board-form';
 class Configuration extends React.Component {
   static propTypes = {
     reportId: PropTypes.string,
+    agileId: PropTypes.string,
+    sprintId: PropTypes.string,
     refreshPeriod: PropTypes.number.isRequired,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -115,8 +117,13 @@ class Configuration extends React.Component {
       youTracks: [selectedYouTrack],
       currentUser: null,
       refreshPeriod: props.refreshPeriod,
-      tab: Configuration.TABS.AGILE_BASED_CHART,
-      boardFormSettings: {}
+      tab: props.reportId
+        ? Configuration.TABS.CUSTOM_CHART
+        : Configuration.TABS.AGILE_BASED_CHART,
+      boardFormSettings: {
+        agileId: props.agileId,
+        sprintId: props.sprintId
+      }
     };
   }
 

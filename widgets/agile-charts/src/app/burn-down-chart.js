@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import d3 from 'd3/d3';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
+import ChartPresentationModel from './chart-presentation-model';
 import './nv-burn-down-chart';
 
 const nv = window.nv;
@@ -13,79 +14,12 @@ const CHART_MARGIN = 22;
 
 class BurnDownChart extends React.Component {
   static propTypes = {
-    reportData: PropTypes.object
+    reportData: PropTypes.object,
+    datePattern: PropTypes.string
   };
 
-  static ChartColor = {
-    Ideal: '#76a800',
-    Remaining: '#25b7ff',
-    Spent: '#c6dbef',
-    Overdue: '#fd8d3c'
-  };
-
-  static getChartModelData = reportData => {
-    const format = d3.time.format('%Y-%m-%d');
-    const convertPoint = rawPoint => ({
-      date: format.parse(rawPoint.time),
-      value: rawPoint.value
-    });
-
-    const sprintFinishDate = format.parse(reportData.sprintFinish);
-    const idealBurndown = reportData.ideal.map(convertPoint);
-    const remainingEstimation =
-      reportData.remainingEstimation.map(convertPoint);
-    const remainingInSprint = remainingEstimation.filter(
-      point => point.date <= sprintFinishDate
-    );
-    const remainingOutSprint = remainingEstimation.filter(
-      point => point.date >= sprintFinishDate
-    );
-    const data = [{
-      key: i18n('Ideal Burndown'),
-      values: idealBurndown,
-      color: BurnDownChart.ChartColor.Ideal
-    }, {
-      key: i18n('Remaining Effort'),
-      values: remainingInSprint,
-      color: BurnDownChart.ChartColor.Remaining
-    }];
-
-    if (reportData.cumulativeSpentTime &&
-      reportData.cumulativeSpentTime.length > 0) {
-      data.push({
-        key: i18n('Spent time'),
-        values: reportData.cumulativeSpentTime.map(convertPoint),
-        color: BurnDownChart.ChartColor.Spent
-      });
-    }
-    if (remainingOutSprint.length > 0) {
-      data.push({
-        key: i18n('Overdue effort'),
-        values: remainingOutSprint,
-        color: BurnDownChart.ChartColor.Overdue
-      });
-    }
-
-    return data;
-  };
-
-  static getChartModelDomain = chartModelData => {
-    let domain = (chartModelData.length === 0)
-      ? null
-      : d3.extent(
-        d3.merge(
-          chartModelData.map(
-            series => series.values.map(d => d.value)
-          )
-        )
-      );
-
-    const DOMAIN_GAP = 15;
-    if (domain && (domain[0] || domain[0] === 0) && (domain[0] === domain[1])) {
-      domain = [domain[0], domain[0] + DOMAIN_GAP];
-    }
-
-    return domain;
+  static defaultProps = {
+    datePattern: 'YYYY-MM-DD'
   };
 
   constructor(props) {
@@ -112,13 +46,17 @@ class BurnDownChart extends React.Component {
     }
 
     const {reportData} = this.state;
-    const chartModelData = BurnDownChart.getChartModelData(reportData);
+    const chartModelData =
+      ChartPresentationModel.getBurnDownChartModelData(reportData);
 
     nv.addGraph(() => {
       const multiBarHorizontalChart = nv.models.burnDownChart();
       const chart = multiBarHorizontalChart.
         margin({
-          top: 0, left: CHART_MARGIN, right: CHART_MARGIN, bottom: CHART_MARGIN
+          top: 0,
+          left: CHART_MARGIN + CHART_MARGIN,
+          right: CHART_MARGIN + CHART_MARGIN,
+          bottom: CHART_MARGIN
         }).
         x(d => d.date).
         y(d => d.value).
@@ -130,19 +68,23 @@ class BurnDownChart extends React.Component {
         aheadOfScheduleKey(i18n('Ahead of Schedule'));
 
       const chartModelDomain =
-        BurnDownChart.getChartModelDomain(chartModelData);
+        ChartPresentationModel.getChartModelDomain(chartModelData);
       if (chartModelDomain) {
         chart.yDomain(chartModelDomain);
       }
 
       chart.xAxis.
         axisLabel(reportData.xlabel).
-        tickFormat(d3.format(',.2f')).
+        tickFormat(
+          ChartPresentationModel.getXAxisTickFormat(this.props.datePattern)
+        ).
         showMaxMin(false);
 
       chart.yAxis.
         axisLabel(reportData.ylabel).
-        tickFormat(d3.format('d'));
+        tickFormat(
+          ChartPresentationModel.getYAxisTickFormat(reportData.yaxisType)
+        );
 
       d3.select(barChartNode).
         datum(chartModelData).
@@ -168,15 +110,8 @@ class BurnDownChart extends React.Component {
   }
 
   render() {
-    const title = i18n('Total');
-
     return (
       <div className="report-chart">
-        <div
-          className="report-chart__title"
-        >
-          { title }
-        </div>
         { this.renderChartBody() }
       </div>
     );

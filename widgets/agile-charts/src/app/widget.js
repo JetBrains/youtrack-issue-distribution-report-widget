@@ -28,13 +28,29 @@ class AgileProgressDiagramWidget extends React.Component {
   static getDefaultWidgetTitle = () =>
     i18n('Agile Charts');
 
+  static getAgileBoardTitle = (homeUrl, agile, sprint) => ({
+    text: agile.sprintsSettings.disableSprints
+      ? agile.name
+      : `${agile.name}: ${sprint.name}`,
+    href: homeUrl && `${homeUrl}/agiles/${agile.id}/${sprint.id}?chart`
+  });
+
+  static getReportTitle = (homeUrl, report) => ({
+    text: report.name,
+    href: homeUrl && `${homeUrl}/reports/burndown/${report.id}`
+  });
+
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {
       const homeUrl = (youTrack || {}).homeUrl;
-      return {
-        text: report.name,
-        href: homeUrl && `${homeUrl}/reports/burndown/${report.id}`
-      };
+      if (report.sprint && report.sprint.agile) {
+        return AgileProgressDiagramWidget.getAgileBoardTitle(
+          homeUrl, report.sprint.agile, report.sprint
+        );
+      }
+      return AgileProgressDiagramWidget.getReportTitle(
+        homeUrl, report
+      );
     }
     return AgileProgressDiagramWidget.getDefaultWidgetTitle();
   };
@@ -164,6 +180,8 @@ class AgileProgressDiagramWidget extends React.Component {
       isConfiguring
     } = this.state;
 
+    //TODO:: if agile board mode, check the updated report id first
+
     if (isLoading || isConfiguring || !report || !report.status ||
       ReportModel.isReportCalculation(report)) {
       return;
@@ -219,10 +237,13 @@ class AgileProgressDiagramWidget extends React.Component {
 
   saveConfig = async settings => {
     const {refreshPeriod, youTrack} = this.state;
-    await this.props.dashboardApi.storeConfig({
+    const newConfig = {
       settings, youTrack, refreshPeriod
+    };
+    await this.props.dashboardApi.storeConfig(newConfig);
+    this.setState({
+      isConfiguring: false, config: newConfig
     });
-    this.setState({isConfiguring: false});
   };
 
   cancelConfig = async () => {
@@ -274,13 +295,16 @@ class AgileProgressDiagramWidget extends React.Component {
     };
 
     const {
-      report, refreshPeriod, youTrack
+      config, refreshPeriod, youTrack
     } = this.state;
+    const settings = config && config.settings || {};
 
     return (
       <div>
         <Configuration
-          reportId={(report || {}).id}
+          reportId={settings.reportId}
+          agileId={settings.agileId}
+          sprintId={settings.sprintId}
           refreshPeriod={refreshPeriod}
           onSubmit={submitForm}
           onCancel={this.cancelConfig}

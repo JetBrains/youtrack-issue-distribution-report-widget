@@ -3,8 +3,8 @@ import './style/report-chart.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 import d3 from 'd3/d3';
-import {i18n} from 'hub-dashboard-addons/dist/localization';
 
+import ChartPresentationModel from './chart-presentation-model';
 import './nv-burn-down-chart';
 
 const nv = window.nv;
@@ -13,43 +13,12 @@ const CHART_MARGIN = 22;
 
 class CumulativeFlowChart extends React.Component {
   static propTypes = {
-    reportData: PropTypes.object
+    reportData: PropTypes.object,
+    datePattern: PropTypes.string
   };
 
-  static getChartModelData = reportData => {
-    let hasPredefinedColor = false;
-    const format = d3.time.format('%Y-%m-%d');
-
-    return reportData.names.map((name, i) => {
-      const colorIndex = reportData.colors[i];
-      hasPredefinedColor = hasPredefinedColor || colorIndex > 0;
-      const values = reportData.sample.map(dayData => ({
-        date: format.parse(dayData.date),
-        value: dayData.values[i].value,
-        presentation: dayData.values[i].presentation
-      }));
-
-      return {key: name, values, colorIndex};
-    }).reverse();
-  };
-
-  static getChartModelDomain = chartModelData => {
-    let domain = (chartModelData.length === 0) ? null : d3.extent(
-      d3.merge(
-        chartModelData.map(
-          series => series.values.map(d => d.value)
-        )
-      )
-    );
-
-    if (domain && (domain[0] || domain[0] === 0) && (domain[0] === domain[1])) {
-      const DOMAIN_GAP = 15;
-      domain = [domain[0], domain[0] + DOMAIN_GAP];
-    } else {
-      domain = null;
-    }
-
-    return domain;
+  static defaultProps = {
+    datePattern: 'YYYY-MM-DD'
   };
 
   constructor(props) {
@@ -76,13 +45,17 @@ class CumulativeFlowChart extends React.Component {
     }
 
     const {reportData} = this.state;
-    const chartModelData = CumulativeFlowChart.getChartModelData(reportData);
+    const chartModelData =
+      ChartPresentationModel.getCumulativeFlowChartModelData(reportData);
 
     nv.addGraph(() => {
 
       const chart = nv.models.stackedAreaChart().
         margin({
-          top: 0, left: CHART_MARGIN, right: CHART_MARGIN, bottom: CHART_MARGIN
+          top: 0,
+          left: CHART_MARGIN + CHART_MARGIN,
+          right: CHART_MARGIN + CHART_MARGIN,
+          bottom: CHART_MARGIN
         }).
         x(d => d.date).
         y(d => d.value).
@@ -94,13 +67,18 @@ class CumulativeFlowChart extends React.Component {
         clipEdge(true);
 
       const chartModelDomain =
-        CumulativeFlowChart.getChartModelDomain(chartModelData);
+        ChartPresentationModel.getChartModelDomain(chartModelData);
       if (chartModelDomain) {
         chart.yDomain(chartModelDomain);
       }
 
-      chart.xAxis.tickFormat(d3.format(',.2f')).showMaxMin(true);
-      chart.yAxis.tickFormat(d3.format('d'));
+      chart.xAxis.tickFormat(
+        ChartPresentationModel.getXAxisTickFormat(this.props.datePattern)
+      ).showMaxMin(true);
+
+      chart.yAxis.tickFormat(
+        ChartPresentationModel.getYAxisTickFormat(reportData.yaxisType)
+      );
 
       d3.select(barChartNode).
         datum(chartModelData).
@@ -126,15 +104,8 @@ class CumulativeFlowChart extends React.Component {
   }
 
   render() {
-    const title = i18n('Total');
-
     return (
       <div className="report-chart">
-        <div
-          className="report-chart__title"
-        >
-          { title }
-        </div>
         { this.renderChartBody() }
       </div>
     );

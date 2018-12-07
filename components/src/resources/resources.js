@@ -16,7 +16,8 @@ const BURN_DOWN_REPORT_POINT = 'time,value';
 const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT}),remainingEstimation(${BURN_DOWN_REPORT_POINT}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT})`;
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors`;
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS})`;
+const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS})`;
 
 const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name)`;
 
