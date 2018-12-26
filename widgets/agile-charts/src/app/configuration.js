@@ -480,7 +480,7 @@ class Configuration extends React.Component {
         sprintId={boardFormSettings.sprintId}
         onChange={onChangeBoardFormSettings}
         dashboardApi={this.props.dashboardApi}
-        youTrackId={selectedYouTrack.id}
+        youTrack={selectedYouTrack}
       />
     );
   }

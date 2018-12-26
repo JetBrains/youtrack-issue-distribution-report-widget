@@ -21,7 +21,7 @@ class SelectBoardForm extends React.Component {
     sprintId: PropTypes.string,
     onChange: PropTypes.func,
     dashboardApi: PropTypes.object,
-    youTrackId: PropTypes.string
+    youTrack: PropTypes.string
   };
 
   static toSelectItem = it => it && {
@@ -51,14 +51,11 @@ class SelectBoardForm extends React.Component {
   constructor(props) {
     super(props);
 
-    const selectedYouTrack = {
-      id: props.youTrackId
-    };
     this.state = {
       selectedAgile: null,
       selectedSprint: null,
       agiles: [],
-      selectedYouTrack
+      selectedYouTrack: props.youTrack
     };
   }
 
