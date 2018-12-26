@@ -104,14 +104,29 @@ const ChartPresentationModel = {
     },
 
   getYAxisTickFormat: yaxisType => {
-    if (!yaxisType || yaxisType.name === 'integer') {
-      return d3.format(',.1f');
+    const typeName = ((yaxisType || {}).name || '').toLowerCase();
+
+    if (typeName === 'float') {
+      return d3.format('r');
     }
-    if (yaxisType.name === 'period') {
-      //TODO: implement for period
-      return d3.format('d');
+
+    if (typeName === 'period') {
+      const minInHour = 60;
+      const units = i18n('h|m').split('|');
+
+      return value => {
+        if (!value) {
+          return '0';
+        }
+        const hours = Math.floor(value / minInHour);
+        const minutes = value % minInHour;
+        return [hours, minutes].map(
+          (timeValue, idx) => (timeValue ? `${timeValue}${units[idx]}` : '')
+        ).join('') || '0';
+      };
     }
-    return d3.format(',.2f');
+
+    return d3.format('d');
   }
 };
 

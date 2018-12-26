@@ -12,10 +12,11 @@ const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder`;
 
-const BURN_DOWN_REPORT_POINT = 'time,value';
-const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT}),remainingEstimation(${BURN_DOWN_REPORT_POINT}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT})`;
+const Y_AXIS_TYPE_FIELDS = 'yaxisType(id,name)';
+const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';
+const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT_FIELDS}),remainingEstimation(${BURN_DOWN_REPORT_POINT_FIELDS}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT_FIELDS}),${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
-const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors`;
+const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
 const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS})`;
 
