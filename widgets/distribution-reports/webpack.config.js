@@ -33,7 +33,10 @@ const webpackConfig = () => ({
       ...ringUiWebpackConfig.config.module.rules,
       {
         test: /\.scss$/,
-        include: componentsPath,
+        include: [
+          componentsPath,
+          join(__dirname, '../../components')
+        ],
         use: [
           'style-loader',
           'css-loader',
@@ -50,6 +53,7 @@ const webpackConfig = () => ({
         test: /\.js$/,
         include: [
           join(__dirname, 'node_modules/chai-as-promised'),
+          join(__dirname, '../../components'),
           componentsPath
         ],
         loader: 'babel-loader?cacheDirectory'

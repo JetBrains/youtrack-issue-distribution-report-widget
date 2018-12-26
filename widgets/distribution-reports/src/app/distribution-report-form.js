@@ -13,6 +13,9 @@ import {
 } from '@jetbrains/ring-ui/components/icon';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
+import FilterFieldsSelector
+  from '../../../../components/src/filter-fields-selector/filter-fields-selector';
+
 import {
   loadProjects,
   loadUserGroups,
@@ -26,7 +29,6 @@ import {
   ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
   ISSUES_PER_TWO_FIELDS_REPORT_TYPE
 } from './distribution-report-types';
-import ReportFilterFieldsSelector from './report-filter-fields-selector';
 import DistributionReportAxises from './distribution-report-axises';
 
 class DistributionReportForm extends React.Component {
@@ -265,7 +267,7 @@ class DistributionReportForm extends React.Component {
                 {'↓'}
               </span>
             }
-            <ReportFilterFieldsSelector
+            <FilterFieldsSelector
               selectedField={
                 DistributionReportAxises.getMainAxis(report).field
               }
@@ -290,7 +292,7 @@ class DistributionReportForm extends React.Component {
               <span className="distribution-reports-widget__axis-label">
                 {report.yaxis ? '→' : ''}
               </span>
-              <ReportFilterFieldsSelector
+              <FilterFieldsSelector
                 selectedField={
                   report.yaxis
                     ? DistributionReportAxises.
@@ -351,7 +353,7 @@ class DistributionReportForm extends React.Component {
         {
           i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})
         }
-        <ReportFilterFieldsSelector
+        <FilterFieldsSelector
           selectedField={(report.aggregationPolicy || {}).field}
           projects={report.projects}
           onChange={this.changeAggregationPolicy}
