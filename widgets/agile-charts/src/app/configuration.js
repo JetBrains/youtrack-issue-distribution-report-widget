@@ -29,6 +29,8 @@ import ReportModel from '../../../../components/src/report-model/report-model';
 import BurnDownChartForm from './burn-down-chart-form';
 import SelectBoardForm from './select-board-form';
 
+const CREATE_INDEPENDENT_REPORT_FEATURE_FLAG = false;
+
 class Configuration extends React.Component {
   static propTypes = {
     reportId: PropTypes.string,
@@ -485,7 +487,11 @@ class Configuration extends React.Component {
     );
   }
 
-  renderTabs() {
+  renderGeneralSettings() {
+    if (!CREATE_INDEPENDENT_REPORT_FEATURE_FLAG) {
+      return this.renderSelectSprintSettings();
+    }
+
     const {tab} = this.state;
 
     return (
@@ -558,7 +564,7 @@ class Configuration extends React.Component {
         }
         {
           reports
-            ? this.renderTabs()
+            ? this.renderGeneralSettings()
             : (!errorMessage && <LoaderInline/>)
         }
       </ConfigurationForm>
