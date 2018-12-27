@@ -127,6 +127,79 @@ const ChartPresentationModel = {
     }
 
     return d3.format('d');
+  },
+
+  getXScale: () =>
+    d3.time.scale(),
+
+  getYScale: yaxisType => {
+    const typeName = ((yaxisType || {}).name || '').toLowerCase();
+
+    return typeName === 'period'
+      ? periodLinearScale([0, 1], [0, 1])
+      : d3.scale.linear();
+
+    function periodLinearScale(initialDomain, initialRange) {
+      let domain = initialDomain;
+      let range = initialRange;
+      let output;
+      let input;
+
+      function linear(uninterpolate, interpolate) {
+        const u = uninterpolate(domain[0], domain[1]);
+        const i = interpolate(range[0], range[1]);
+        return x => i(u(x));
+      }
+
+      function uninterpolateNumber(a, b) {
+        // eslint-disable-next-line no-param-reassign
+        return x => ((x - a) * (b - (a = +a) ? 1 / (b - a) : 0));
+      }
+
+      function rescale() {
+        output = linear(uninterpolateNumber, d3.interpolateNumber);
+        input = linear(uninterpolateNumber, d3.interpolateNumber);
+        return scale;
+      }
+
+      function scale(x) {
+        return output(x);
+      }
+
+      scale.invert = y => input(y);
+      scale.domain = x => {
+        if (!x) {
+          return domain;
+        }
+        domain = x.map(Number);
+        return rescale();
+      };
+      scale.range = x => {
+        if (!x) {
+          return range;
+        }
+        range = x;
+        return rescale();
+      };
+      scale.ticks = m => {
+        const start = domain[0];
+        const stop = domain[1];
+        const extent = start < stop ? [start, stop] : [stop, start];
+        const minInHour = 60;
+        const defaultM = 10;
+        const scaledMinutes = Math.floor(
+          (extent[1] - extent[0]) / (m || defaultM)
+        );
+        const hours = Math.floor(scaledMinutes / minInHour);
+        const step = hours ? hours * minInHour : (scaledMinutes % minInHour);
+        extent[0] = Math.ceil(extent[0] / step) * step;
+        // eslint-disable-next-line no-magic-numbers
+        extent[1] = Math.floor(extent[1] / step) * step + 0.5 * step;
+        return d3.range(extent[0], extent[1], step);
+      };
+      scale.copy = () => periodLinearScale(domain, range);
+      return rescale();
+    }
   }
 };
 

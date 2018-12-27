@@ -64,6 +64,8 @@ class CumulativeFlowChart extends React.Component {
         showControls(false).
         showLegend(true).
         transitionDuration(GRAPH_TRANSITION_DURATION).
+        xScale(ChartPresentationModel.getXScale()).
+        yScale(ChartPresentationModel.getYScale(reportData.yaxisType)).
         clipEdge(true);
 
       const chartModelDomain =

@@ -62,8 +62,8 @@ class BurnDownChart extends React.Component {
         y(d => d.value).
         useInteractiveGuideline(true).
         transitionDuration(GRAPH_TRANSITION_DURATION).
-        xScale(d3.time.scale()).
-        yScale(d3.scale.linear()).
+        xScale(ChartPresentationModel.getXScale()).
+        yScale(ChartPresentationModel.getYScale(reportData.yaxisType)).
         behindScheduleKey(i18n('Behind Schedule')).
         aheadOfScheduleKey(i18n('Ahead of Schedule'));
 
