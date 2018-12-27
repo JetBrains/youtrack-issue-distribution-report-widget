@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import List from '@jetbrains/ring-ui/components/list/list';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {
@@ -55,7 +56,8 @@ class SelectBoardForm extends React.Component {
       selectedAgile: null,
       selectedSprint: null,
       agiles: [],
-      selectedYouTrack: props.youTrack
+      selectedYouTrack: props.youTrack,
+      isLoading: true
     };
   }
 
@@ -65,13 +67,15 @@ class SelectBoardForm extends React.Component {
 
   async loadAgiles() {
     const agiles = await loadAgiles(this.fetchYouTrack);
+
     const selectedAgile = (agiles || []).filter(
       agile => this.props.agileId && this.props.agileId === agile.id
     )[0];
     const selectedSprint = SelectBoardForm.findSprintById(
       this.props.agileId, selectedAgile
     );
-    this.setState({agiles, selectedAgile, selectedSprint});
+
+    this.setState({agiles, selectedAgile, selectedSprint, isLoading: false});
     this.onChange(selectedAgile, selectedSprint);
     if (!selectedAgile) {
       this.changeAgile(agiles[0]);
@@ -197,6 +201,9 @@ class SelectBoardForm extends React.Component {
   }
 
   render() {
+    if (this.isLoading) {
+      return <LoaderInline/>;
+    }
     if ((this.state.agiles || []).length > 0) {
       return this.renderBoardsSelectors();
     }
