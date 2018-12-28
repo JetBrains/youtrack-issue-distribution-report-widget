@@ -201,7 +201,7 @@ class SelectBoardForm extends React.Component {
   }
 
   render() {
-    if (this.isLoading) {
+    if (this.state.isLoading) {
       return <LoaderInline/>;
     }
     if ((this.state.agiles || []).length > 0) {
