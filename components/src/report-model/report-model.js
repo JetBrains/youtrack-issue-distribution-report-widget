@@ -39,18 +39,25 @@ const ReportTypes = {
 const NewReport = {
   NEW_REPORT_ID: undefined,
 
-  cumulativeFlow: () => ({
+  cumulativeFlow: sprint => ({
     id: NewReport.NEW_REPORT_ID,
-    $type: BackendTypes.IndependentCumulativeFlowReport,
+    $type: sprint
+      ? BackendTypes.SprintBasedCumulativeFlowReport
+      : BackendTypes.IndependentCumulativeFlowReport,
     name: '',
     projects: [],
     query: '',
-    own: true
+    own: sprint ? undefined : true,
+    sprint: sprint && sprint.id && {
+      id: sprint.id
+    }
   }),
 
-  burnDown: () => ({
+  burnDown: sprint => ({
     id: NewReport.NEW_REPORT_ID,
-    $type: BackendTypes.IndependentBurnDownReport,
+    $type: sprint
+      ? BackendTypes.SprintBasedBurnDownReport
+      : BackendTypes.IndependentBurnDownReport,
     name: '',
     projects: [],
     query: '',
@@ -60,7 +67,10 @@ const NewReport = {
         id: (ReportNamedTimeRanges.severalDaysRanges()[0]).id
       }
     },
-    own: true
+    own: sprint ? undefined : true,
+    sprint: sprint && sprint.id && {
+      id: sprint.id
+    }
   })
 };
 

@@ -18,7 +18,8 @@ const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortP
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS})`;
+const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
 const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name)`;
 
@@ -26,6 +27,7 @@ const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggest
 
 const SPRINT_FIELDS = 'id,name,start,finish,report(id)';
 const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName)`;
+const AGILE_REPORT_SETTINGS_FIELDS = 'extensions(reportSettings(doNotUseBurndown))';
 
 async function underlineAndSuggest(fetchYouTrack, query, caret) {
   return await fetchYouTrack(`api/search/assist?fields=${QUERY_ASSIST_FIELDS}`, {
@@ -40,6 +42,12 @@ async function loadProjects(fetchYouTrack) {
 
 async function loadAgiles(fetchYouTrack) {
   return await fetchYouTrack(`api/agiles?fields=${AGILE_FIELDS}&$top=-1`);
+}
+
+async function loadAgileReportSettings(fetchYouTrack, agileId) {
+  const agileSettings = await fetchYouTrack(`api/agiles/${agileId}?fields=${AGILE_REPORT_SETTINGS_FIELDS}&$top=-1`);
+  return agileSettings && agileSettings.extensions &&
+    agileSettings.extensions.reportSettings;
 }
 
 async function loadSprint(fetchYouTrack, agileId, sprintId) {
@@ -194,6 +202,7 @@ export {
   underlineAndSuggest,
   loadProjects,
   loadAgiles,
+  loadAgileReportSettings,
   loadSprint,
   loadUserGroups,
   loadCurrentUser,

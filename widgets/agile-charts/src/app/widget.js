@@ -10,7 +10,9 @@ import {
   recalculateReport,
   getYouTrackService,
   loadIndependentBurnDownReports,
-  loadSprint
+  loadSprint,
+  saveReportSettings,
+  loadAgileReportSettings
 } from '../../../../components/src/resources/resources';
 import ReportModel
   from '../../../../components/src/report-model/report-model';
@@ -60,7 +62,18 @@ class AgileProgressDiagramWidget extends React.Component {
       const sprint = await loadSprint(
         fetchYouTrack, settings.agileId, settings.sprintId
       );
-      return sprint && sprint.report && sprint.report.id;
+      if (sprint) {
+        if (!sprint.report) {
+          const agileReportSettings = await loadAgileReportSettings(
+            fetchYouTrack, settings.agileId
+          );
+          const newReport = agileReportSettings.doNotUseBurndown
+            ? ReportModel.NewReport.cumulativeFlow(sprint)
+            : ReportModel.NewReport.burnDown(sprint);
+          sprint.report = await saveReportSettings(fetchYouTrack, newReport);
+        }
+        return sprint.report && sprint.report.id;
+      }
     }
     return settings.reportId;
   };
@@ -133,7 +146,7 @@ class AgileProgressDiagramWidget extends React.Component {
       (await loadIndependentBurnDownReports(this.fetchYouTrack))[0];
 
     if (report) {
-      const reportWithData = await this.loadReportWithAppliedConfigSettings(
+      const reportWithData = await this.loadReport(
         report.id, ytTrackService, config
       );
       const refreshPeriod = config.refreshPeriod ||
@@ -200,7 +213,7 @@ class AgileProgressDiagramWidget extends React.Component {
 
     if (!isConfiguring && report) {
       const reportWithData =
-        await this.loadReportWithAppliedConfigSettings(report.id);
+        await this.loadReport(report.id);
 
       if (reportWithData) {
         this.setState({
@@ -227,12 +240,6 @@ class AgileProgressDiagramWidget extends React.Component {
       this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
       return undefined;
     }
-  }
-
-  async loadReportWithAppliedConfigSettings(
-    reportId, optionalYouTrack
-  ) {
-    return await this.loadReport(reportId, optionalYouTrack);
   }
 
   saveConfig = async settings => {
@@ -280,7 +287,7 @@ class AgileProgressDiagramWidget extends React.Component {
           await AgileProgressDiagramWidget.getSelectedReportId(
             this.fetchYouTrack, settings
           );
-        const reportWithData = await this.loadReportWithAppliedConfigSettings(
+        const reportWithData = await this.loadReport(
           selectedReportId, youTrack
         );
         if (reportWithData) {
@@ -288,6 +295,7 @@ class AgileProgressDiagramWidget extends React.Component {
             report: reportWithData,
             isLoading: false,
             isNewWidget: false,
+            isCalculationCompleted: false,
             refreshPeriod
           }, async () => await this.saveConfig(settings));
         }
