@@ -26,7 +26,7 @@ class AgileProgressDiagramWidget extends React.Component {
   static PROGRESS_BAR_REFRESH_PERIOD = 0.5;
 
   static getDefaultWidgetTitle = () =>
-    i18n('Agile Charts');
+    i18n('Agile Chart');
 
   static getAgileBoardTitle = (homeUrl, agile, sprint) => ({
     text: agile.sprintsSettings.disableSprints
