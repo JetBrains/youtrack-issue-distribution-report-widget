@@ -74,22 +74,22 @@ const ChartPresentationModel = {
   },
 
   getChartModelDomain: chartModelData => {
-    let domain = (chartModelData.length === 0)
-      ? null
-      : d3.extent(
-        d3.merge(
-          chartModelData.map(
-            series => series.values.map(d => d.value)
-          )
-        )
-      );
-
-    const DOMAIN_GAP = 15;
-    if (domain && (domain[0] || domain[0] === 0) && (domain[0] === domain[1])) {
-      domain = [domain[0], domain[0] + DOMAIN_GAP];
+    if (!chartModelData.length) {
+      return null;
     }
 
-    return domain;
+    const domain = d3.extent(
+      d3.merge(
+        chartModelData.map(
+          series => series.values.map(d => d.value)
+        )
+      )
+    );
+
+    const DOMAIN_GAP = 15;
+    return (domain && Number.isInteger(domain[0]) && domain[0] === domain[1])
+      ? [domain[0], domain[0] + DOMAIN_GAP]
+      : null;
   },
 
   getXAxisTickFormat: datePattern =>
