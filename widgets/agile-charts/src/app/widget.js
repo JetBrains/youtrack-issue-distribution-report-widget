@@ -188,20 +188,25 @@ class AgileProgressDiagramWidget extends React.Component {
   async recalculateReport() {
     const {
       report,
+      config,
       isLoading,
       refreshPeriod,
       isConfiguring
     } = this.state;
 
-    //TODO:: if agile board mode, check the updated report id first
+    const updatedReportEntityId =
+      await AgileProgressDiagramWidget.getSelectedReportId(
+        this.fetchYouTrack, config.settings
+      );
 
-    if (isLoading || isConfiguring || !report || !report.status ||
-      ReportModel.isReportCalculation(report)) {
-      return;
+    if (!report || report.id !== updatedReportEntityId) {
+      const newReportEntity = await this.loadReport(updatedReportEntityId);
+      this.setState({report: newReportEntity, refreshPeriod});
+    } else if (!isLoading && !isConfiguring &&
+      !ReportModel.isReportCalculation(report)) {
+      report.status = await recalculateReport(this.fetchYouTrack, report);
+      this.setState({report, refreshPeriod});
     }
-
-    report.status = await recalculateReport(this.fetchYouTrack, report);
-    this.setState({report, refreshPeriod});
   }
 
   onWidgetRefresh = async () => {
