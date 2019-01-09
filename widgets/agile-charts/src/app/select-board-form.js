@@ -71,9 +71,10 @@ class SelectBoardForm extends React.Component {
     const selectedAgile = (agiles || []).filter(
       agile => this.props.agileId && this.props.agileId === agile.id
     )[0];
-    const selectedSprint = SelectBoardForm.findSprintById(
-      this.props.sprintId, selectedAgile
-    );
+
+    const selectedSprint = this.props.sprintId
+      ? SelectBoardForm.findSprintById(this.props.sprintId, selectedAgile)
+      : null;
 
     this.setState({agiles, selectedAgile, selectedSprint, isLoading: false});
     this.onChange(selectedAgile, selectedSprint);
