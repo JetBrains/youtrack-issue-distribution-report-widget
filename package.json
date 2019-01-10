@@ -10,7 +10,7 @@
     "ci-test": "npm run lint && lerna run ci-test",
     "start": "lerna run start",
     "i18n:extract": "lerna run i18n:extract",
-    "clean": "rm -rf node_modules && lerna run clean"
+    "clean": "lerna run clean && rm -rf node_modules"
   },
   "devDependencies": {
     "@jetbrains/eslint-config": "1.0.0",
