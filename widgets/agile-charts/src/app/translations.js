@@ -1,8 +1,8 @@
-import de from './translations/agile-progress-diagram-widget_de.po';
-import es from './translations/agile-progress-diagram-widget_es.po';
-import fr from './translations/agile-progress-diagram-widget_fr.po';
-import ru from './translations/agile-progress-diagram-widget_ru.po';
-import ja from './translations/agile-progress-diagram-widget_ja.po';
+import de from './translations/youtrack-agile-chart-widget_de.po';
+import es from './translations/youtrack-agile-chart-widget_es.po';
+import fr from './translations/youtrack-agile-chart-widget_fr.po';
+import ru from './translations/youtrack-agile-chart-widget_ru.po';
+import ja from './translations/youtrack-agile-chart-widget_ja.po';
 
 export default {
   de: de.de_DE,

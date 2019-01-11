@@ -6,8 +6,8 @@
 
 files: [
  {
-  "source" : "/src/app/translations/agile-progress-diagram-widget.pot",
-  "dest": "/widgets/agile-progress-diagram-widget/agile-progress-diagram-widget.pot",
-  "translation" : "/src/app/translations/agile-progress-diagram-widget_%two_letters_code%.po",
+  "source" : "/src/app/translations/youtrack-agile-chart-widget.pot",
+  "dest": "/widgets/youtrack-agile-chart-widget/youtrack-agile-chart-widget.pot",
+  "translation" : "/src/app/translations/youtrack-agile-chart-widget_%two_letters_code%.po",
  }
 ]
