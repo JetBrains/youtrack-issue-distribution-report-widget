@@ -6,6 +6,7 @@ import Select from '@jetbrains/ring-ui/components/select/select';
 import List from '@jetbrains/ring-ui/components/list/list';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
+import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {
@@ -21,8 +22,8 @@ class SelectBoardForm extends React.Component {
     agileId: PropTypes.string,
     sprintId: PropTypes.string,
     onChange: PropTypes.func,
-    dashboardApi: PropTypes.object,
-    youTrack: PropTypes.string
+    dashboardApi: PropTypes.object.isRequired,
+    youTrack: PropTypes.object.isRequired
   };
 
   static toSelectItem = it => it && {
@@ -65,8 +66,26 @@ class SelectBoardForm extends React.Component {
     this.loadAgiles();
   }
 
+  componentWillReceiveProps(props) {
+    if (props.youTrack &&
+      props.youTrack.id !== this.state.selectedYouTrack.id) {
+      this.setState(
+        {selectedYouTrack: props.youTrack},
+        () => this.loadAgiles()
+      );
+    }
+  }
+
   async loadAgiles() {
-    const agiles = await loadAgiles(this.fetchYouTrack);
+    this.setState({isLoading: true});
+
+    let agiles = [];
+    let loadAgilesErrorMessage = '';
+    try {
+      agiles = await loadAgiles(this.fetchYouTrack);
+    } catch (err) {
+      loadAgilesErrorMessage = HttpErrorHandler.getMessage(err);
+    }
 
     const selectedAgile = (agiles || []).filter(
       agile => this.props.agileId && this.props.agileId === agile.id
@@ -76,7 +95,13 @@ class SelectBoardForm extends React.Component {
       ? SelectBoardForm.findSprintById(this.props.sprintId, selectedAgile)
       : null;
 
-    this.setState({agiles, selectedAgile, selectedSprint, isLoading: false});
+    this.setState({
+      agiles,
+      selectedAgile,
+      selectedSprint,
+      loadAgilesErrorMessage,
+      isLoading: false
+    });
     this.onChange(selectedAgile, selectedSprint);
     if (!selectedAgile) {
       this.changeAgile(agiles[0]);
@@ -134,6 +159,15 @@ class SelectBoardForm extends React.Component {
         >
           {i18n('Create board')}
         </Link>
+      </div>
+    );
+  }
+
+  renderLoadingAgilesError() {
+    return (
+      <div className="ring-form__group">
+        <span>{this.state.loadAgilesErrorMessage}</span>&nbsp;
+        <span>{i18n('Cannot load list of agile boards.')}</span>
       </div>
     );
   }
@@ -207,6 +241,9 @@ class SelectBoardForm extends React.Component {
     }
     if ((this.state.agiles || []).length > 0) {
       return this.renderBoardsSelectors();
+    }
+    if (this.state.loadAgilesErrorMessage) {
+      return this.renderLoadingAgilesError();
     }
     return this.renderNoBoardsMessage();
   }

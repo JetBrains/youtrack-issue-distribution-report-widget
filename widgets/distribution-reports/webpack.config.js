@@ -82,7 +82,8 @@ const webpackConfig = () => ({
       chunks: false,
       hash: false,
       version: false
-    }
+    },
+    disableHostCheck: true
   },
   plugins: [
     new HtmlWebpackPlugin({
