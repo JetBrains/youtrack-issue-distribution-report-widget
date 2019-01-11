@@ -35,7 +35,7 @@
     "d3": "3.5.16",
     "fecha": "2.3.3",
     "html-loader": "0.4.4",
-    "hub-dashboard-addons": "0.1.2",
+    "hub-dashboard-addons": "0.2.0",
     "json-loader": "0.5.7",
     "mout": "0.11.0",
     "nvd3": "github:JetBrains/nvd3",

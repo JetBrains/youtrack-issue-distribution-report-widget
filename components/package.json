@@ -19,6 +19,6 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "mout": "0.11.0",
-    "hub-dashboard-addons": "0.1.2"
+    "hub-dashboard-addons": "0.2.0"
   }
 }
