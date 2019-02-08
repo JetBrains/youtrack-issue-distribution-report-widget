@@ -17,4 +17,15 @@
     bottom: 3 * $ring-unit;
     left: 0;
   }
+
+  svg text {
+    fill: var(--ring-text-color);
+  }
+
+  .nvtooltip.xy-tooltip {
+    color: var(--ring-text-color);
+    border-color: var(--ring-borders-color);
+    border-radius: var(--ring-border-radius);
+    background-color: var(--ring-popup-background-color);
+  }
 }

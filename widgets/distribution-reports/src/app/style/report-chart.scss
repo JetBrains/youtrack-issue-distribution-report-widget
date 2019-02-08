@@ -211,6 +211,17 @@
 
     font-weight: normal;
   }
+
+  .nvtooltip.xy-tooltip {
+    color: var(--ring-text-color);
+    border-color: var(--ring-borders-color);
+    border-radius: var(--ring-border-radius);
+    background-color: var(--ring-popup-background-color);
+
+    h3 {
+      background-color: transparent;
+    }
+  }
 }
 
 @media only screen and (min-width: 451px) {

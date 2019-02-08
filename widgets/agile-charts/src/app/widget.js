@@ -20,6 +20,7 @@ import ReportModel
 import Configuration
   from './configuration';
 import Content from './content';
+import './style/agile-chart-widget.scss';
 
 class AgileProgressDiagramWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
@@ -313,18 +314,16 @@ class AgileProgressDiagramWidget extends React.Component {
     const settings = config && config.settings || {};
 
     return (
-      <div>
-        <Configuration
-          reportId={settings.reportId}
-          agileId={settings.agileId}
-          sprintId={settings.sprintId}
-          refreshPeriod={refreshPeriod}
-          onSubmit={submitForm}
-          onCancel={this.cancelConfig}
-          dashboardApi={this.props.dashboardApi}
-          youTrackId={youTrack.id}
-        />
-      </div>
+      <Configuration
+        reportId={settings.reportId}
+        agileId={settings.agileId}
+        sprintId={settings.sprintId}
+        refreshPeriod={refreshPeriod}
+        onSubmit={submitForm}
+        onCancel={this.cancelConfig}
+        dashboardApi={this.props.dashboardApi}
+        youTrackId={youTrack.id}
+      />
     );
   }
 
@@ -375,13 +374,15 @@ class AgileProgressDiagramWidget extends React.Component {
     const content = withWidgetLoaderHOC(() => this.renderContent());
 
     return (
-      <ConfigurableWidget
-        isConfiguring={this.state.isConfiguring}
-        dashboardApi={this.props.dashboardApi}
-        widgetTitle={widgetTitle}
-        Configuration={configuration}
-        Content={content}
-      />
+      <div className="agile-chart-widget">
+        <ConfigurableWidget
+          isConfiguring={this.state.isConfiguring}
+          dashboardApi={this.props.dashboardApi}
+          widgetTitle={widgetTitle}
+          Configuration={configuration}
+          Content={content}
+        />
+      </div>
     );
   }
 }
