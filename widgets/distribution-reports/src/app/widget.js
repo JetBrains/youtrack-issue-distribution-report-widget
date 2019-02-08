@@ -300,16 +300,14 @@ class DistributionReportsWidget extends React.Component {
     } = this.state;
 
     return (
-      <div>
-        <Configuration
-          reportId={(report || {}).id}
-          refreshPeriod={refreshPeriod}
-          onSubmit={submitForm}
-          onCancel={this.cancelConfig}
-          dashboardApi={this.props.dashboardApi}
-          youTrackId={youTrack.id}
-        />
-      </div>
+      <Configuration
+        reportId={(report || {}).id}
+        refreshPeriod={refreshPeriod}
+        onSubmit={submitForm}
+        onCancel={this.cancelConfig}
+        dashboardApi={this.props.dashboardApi}
+        youTrackId={youTrack.id}
+      />
     );
   }
 
@@ -361,13 +359,15 @@ class DistributionReportsWidget extends React.Component {
     const content = withWidgetLoaderHOC(() => this.renderContent());
 
     return (
-      <ConfigurableWidget
-        isConfiguring={this.state.isConfiguring}
-        dashboardApi={this.props.dashboardApi}
-        widgetTitle={widgetTitle}
-        Configuration={configuration}
-        Content={content}
-      />
+      <div className="distribution-reports-widget">
+        <ConfigurableWidget
+          isConfiguring={this.state.isConfiguring}
+          dashboardApi={this.props.dashboardApi}
+          widgetTitle={widgetTitle}
+          Configuration={configuration}
+          Content={content}
+        />
+      </div>
     );
   }
 }
