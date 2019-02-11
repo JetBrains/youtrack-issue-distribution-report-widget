@@ -1,6 +1,6 @@
 {
   "key": "agile-chart",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "name": "Agile Chart",
   "description": "Displays a Burn Down Chart or Cumulative Flow Diagram for your sprint.",
   "applicationName": "YouTrack",
