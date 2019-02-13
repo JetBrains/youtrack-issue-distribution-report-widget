@@ -10,7 +10,7 @@ const PROJECTS_FIELDS = 'id,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder`;
+const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS})`;
 
 const Y_AXIS_TYPE_FIELDS = 'yaxisType(id,name)';
 const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';

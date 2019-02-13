@@ -30,7 +30,7 @@ class FilterFieldsSelector extends React.Component {
     filterField &&
     {
       key: filterField.id,
-      label: filterField.presentation,
+      label: filterField.presentation || filterField.name,
       model: filterField
     }
   );

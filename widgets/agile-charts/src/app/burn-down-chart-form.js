@@ -135,10 +135,12 @@ class BurnDownChartForm extends React.Component {
   changeAggregationPolicy = selected => {
     const {report} = this.state;
     if (selected) {
-      report.aggregationPolicy = report.aggregationPolicy || {};
-      report.aggregationPolicy.field = selected;
+      report.customField = {
+        id: selected.id,
+        name: selected.name
+      };
     } else {
-      report.aggregationPolicy = null;
+      report.customField = null;
     }
     this.onReportEditOperation(report);
   };
@@ -189,7 +191,7 @@ class BurnDownChartForm extends React.Component {
           i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})
         }
         <FilterFieldsSelector
-          selectedField={(report.aggregationPolicy || {}).field}
+          selectedField={report.customField}
           projects={report.projects}
           onChange={this.changeAggregationPolicy}
           filterFieldsSource={aggregationFilterFieldsSource}
