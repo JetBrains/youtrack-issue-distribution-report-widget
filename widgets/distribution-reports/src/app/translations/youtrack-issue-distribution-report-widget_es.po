@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-02-11 21:04\n"
+"PO-Revision-Date: 2019-02-15 17:52\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Añadir proyecto"
 
-#: src/app/report-chart.js:363
+#: src/app/report-chart.js:375
 msgid "Bars"
 msgstr "Barras"
 
@@ -162,7 +162,7 @@ msgstr "Domingo|Lunes|Martes|Miércoles|Jueves|Viernes|Sábado"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 
-#: src/app/report-chart.js:372
+#: src/app/report-chart.js:384
 msgid "Table"
 msgstr "Tabla"
 
@@ -178,7 +178,7 @@ msgstr "No hay ninguna incidencia que coincida con los filtros de la configuraci
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "El propietario de este informe es {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:341
+#: src/app/report-chart.js:352
 msgid "Total"
 msgstr "Total"
 
