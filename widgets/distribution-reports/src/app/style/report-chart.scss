@@ -2,12 +2,17 @@
 
 .report-chart {
   &__title {
+    margin-right: $ring-unit;
     margin-bottom: 2 * $ring-unit;
 
     text-align: left;
     white-space: nowrap;
 
     font-weight: bold;
+  }
+
+  &__title-settings {
+    float: right;
   }
 
   &__chart-type-switcher {
@@ -23,6 +28,9 @@
 
     width: 30%;
 
+    padding-top: 3 * $ring-unit;
+    padding-right: $ring-unit;
+
     text-align: left;
 
     font-size: var(--ring-font-size-smaller);
@@ -32,7 +40,7 @@
     &:first-child {
       overflow: hidden;
 
-      min-width: 45%;
+      min-width: 35%;
       max-width: 80%;
 
       text-overflow: ellipsis;
@@ -87,27 +95,9 @@
 
   &__label {
     float: left;
-    overflow-x: hidden;
-
-    max-width: 100%;
-
-    white-space: nowrap;
-    text-overflow: ellipsis;
 
     &_title {
       font-weight: bold;
-    }
-
-    & > div {
-      max-width: 100%;
-
-      button {
-        overflow: hidden;
-
-        max-width: 100%;
-
-        text-overflow: ellipsis;
-      }
     }
   }
 
@@ -115,18 +105,18 @@
     display: flex;
 
     width: 100%;
-
-    margin-top: 12px;
   }
 
   &__body {
+    overflow: auto;
+
     width: 70%;
+
+    padding-top: 3 * $ring-unit;
   }
 
   &__sort-order-bar {
     display: flex;
-
-    height: 26px;
   }
 
   &__sort-order {
@@ -156,13 +146,14 @@
 
   &__table {
     position: relative;
-    top: -2 * $ring-unit;
+    top: -22px;
 
     overflow: hidden;
 
     border-spacing: 0;
 
     border-collapse: collapse;
+    border-bottom: 1px solid var(--ring-line-color);
 
     font-size: var(--ring-font-size-smaller);
   }
@@ -172,10 +163,22 @@
 
     padding-right: 10px;
 
+    cursor: default;
+
     text-align: right;
 
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+
+    font-size: var(--ring-font-size-smaller);
+
     &:hover {
-      background-color: var(--ring-hover-background-color);
+      border-top: 1px solid var(--ring-borders-color);
+      border-left: 1px solid var(--ring-borders-color);
+
+      button {
+        color: var(--ring-link-hover-color);
+      }
     }
 
     &:hover::after {
@@ -190,13 +193,13 @@
 
       content: "";
 
-      border-right: 1px solid var(--ring-selected-background-color);
+      border-right: 1px solid var(--ring-borders-color);
     }
   }
 
   &__table-row {
     &:hover {
-      box-shadow: inset 0 -1px 0 0 var(--ring-selected-background-color);
+      box-shadow: inset 0 -1px 0 0 var(--ring-borders-color);
     }
   }
 
@@ -204,11 +207,14 @@
     overflow: hidden;
 
     max-width: 8 * $ring-unit;
-    padding-right: $ring-unit;
+    padding: 3px $ring-unit 3px 0;
 
     white-space: nowrap;
     text-overflow: ellipsis;
 
+    border-bottom: 1px solid var(--ring-line-color);
+
+    font-size: var(--ring-font-size-smaller);
     font-weight: normal;
   }
 
