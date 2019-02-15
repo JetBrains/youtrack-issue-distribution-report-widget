@@ -1,8 +1,5 @@
 import 'babel-polyfill';
 import 'hub-dashboard-addons/dashboard.css';
-import 'd3/d3';
-import 'nvd3/nv.d3';
-import 'nvd3/nv.d3.css';
 
 import React from 'react';
 import {render} from 'react-dom';

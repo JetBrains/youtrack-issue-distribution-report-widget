@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import ConfigurableWidget from '@jetbrains/hub-widget-ui/dist/configurable-widget';
 import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-loader';
+import 'd3/d3';
+import 'nvd3/nv.d3';
+import 'nvd3/nv.d3.css';
 
 import {
   loadReportWithData,

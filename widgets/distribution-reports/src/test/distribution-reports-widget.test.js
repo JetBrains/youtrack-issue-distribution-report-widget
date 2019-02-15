@@ -8,7 +8,7 @@ import {
   getDashboardApiMock, getRegisterWidgetApiMock
 } from './mocks';
 
-describe('IssuesListWidget', () => {
+describe('DistributionReportWidget', () => {
 
   let dashboardApiMock;
   let registerWidgetApiMock;

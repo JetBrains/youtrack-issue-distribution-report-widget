@@ -115,6 +115,18 @@
     padding-top: 3 * $ring-unit;
   }
 
+  &__body_fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    padding: 0;
+  }
+
   &__sort-order-bar {
     display: flex;
   }

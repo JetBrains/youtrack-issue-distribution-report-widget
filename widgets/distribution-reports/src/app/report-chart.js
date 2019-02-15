@@ -12,6 +12,7 @@ import FilterFieldValue from '../../../../components/src/filter-field-value/filt
 
 import ReportChartSortOrder from './report-chart-sort-order';
 import ReportModel from './report-model';
+import './nv-flex-pie-chart';
 
 const nv = window.nv;
 const GRAPH_TRANSITION_DURATION = 350;
@@ -31,10 +32,14 @@ class ReportChart extends React.Component {
 
   static Tabs = {
     Bars: 'bars',
-    Table: 'table'
+    Table: 'table',
+    Pie: 'pie'
   };
 
   static LineHeight = 22; // eslint-disable-line no-magic-numbers
+
+  static getBarsChartHeight = columns =>
+    ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
 
   static getSearchUrl = (columnUrl, homeUrl) =>
     `${homeUrl}/issues?q=${encodeURIComponent(columnUrl)}`;
@@ -45,9 +50,11 @@ class ReportChart extends React.Component {
   static getBarsChartModel = reportData => {
     if (ReportChart.isStackedChart(reportData)) {
       return reportData.xcolumns.map(xCol => ({
+        key: xCol.name,
         name: xCol.name,
         user: xCol.user,
         values: reportData.ycolumns.map(yCol => ({
+          key: yCol.name,
           name: yCol.name,
           user: yCol.user,
           issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
@@ -62,7 +69,6 @@ class ReportChart extends React.Component {
       }));
     }
     return ((reportData.columns || []).map(xCol => ({
-      name: xCol.name,
       user: xCol.user,
       values: (reportData.columns || []).map(yCol => ({
         name: yCol.name,
@@ -78,6 +84,16 @@ class ReportChart extends React.Component {
       colorIndex: 1
     })));
   };
+
+  static getPieChartModel = reportData =>
+    ((reportData.columns || []).
+      map(xCol => ({
+        name: xCol.name,
+        issuesQuery: xCol.issuesQuery,
+        size: ReportModel.getSizeValue(xCol.size),
+        colorIndex: xCol.colorIndex
+      }))
+    );
 
   constructor(props) {
     super(props);
@@ -112,7 +128,7 @@ class ReportChart extends React.Component {
   };
 
   drawBarChart = () => {
-    const barChartNode = this.barChartNode;
+    const barChartNode = this.chartNode;
     if (!barChartNode) {
       return;
     }
@@ -164,9 +180,57 @@ class ReportChart extends React.Component {
     });
   };
 
+  drawPieChart = () => {
+    const pieChartNode = this.chartNode;
+    if (!pieChartNode) {
+      return;
+    }
+
+    const {reportData} = this.state;
+    const chartModel = ReportChart.getPieChartModel(reportData);
+
+    const totalSize = ReportModel.getSizeValue(reportData.total);
+    const toPercents = 100;
+    const duration = 350;
+
+    nv.addGraph(() => {
+      const chart = nv.models.flexPieChart().
+        x(d => d.name).
+        y(d => d.size).
+        valueFormat(value =>
+          `${value} (${Math.round((value * toPercents) / totalSize)}%)`
+        ).
+        showLegend(false).
+        showLabels(false);
+
+      chart.getUrl(column =>
+        ReportChart.getSearchUrl(column.issuesQuery, this.props.homeUrl)
+      );
+
+      d3.select(pieChartNode).
+        datum(chartModel).
+        transition().
+        duration(duration).
+        call(chart);
+
+      nv.utils.windowResize(chart.update);
+
+      return chart;
+    });
+  };
+
   onGetSvgNode = barChartNode => {
-    this.barChartNode = barChartNode;
-    this.drawBarChart();
+    if (barChartNode) {
+      this.chartNode = barChartNode;
+      this.drawBarChart();
+    }
+  };
+
+  onGetSvgNodeForPie = pieChartNode => {
+    if (pieChartNode) {
+      this.chartNode = pieChartNode;
+      this.drawPieChart();
+    }
   };
 
   onChangeSecondarySortOrder = newSecondarySortOrder => {
@@ -230,6 +294,20 @@ class ReportChart extends React.Component {
         style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
         { getSizeInPercents(column.size) }
+      </div>
+    );
+  }
+
+  renderPieChart() {
+    const verticalPadding = 65;
+    const height = `${window.innerHeight - verticalPadding}px`;
+
+    return (
+      <div
+        className="report-chart__body report-chart__body_fixed"
+        style={{height}}
+      >
+        <svg ref={this.onGetSvgNodeForPie}/>
       </div>
     );
   }
@@ -340,16 +418,66 @@ class ReportChart extends React.Component {
     if (this.state.activeTab === ReportChart.Tabs.Bars) {
       return this.renderBarsChart(chartHeight);
     }
+    if (this.state.activeTab === ReportChart.Tabs.Pie) {
+      return this.renderPieChart();
+    }
     return this.renderTable();
+  }
+
+  renderLinesLabels() {
+    const reportData = this.state.reportData || {};
+    const columns = reportData.ycolumns || reportData.columns || [];
+
+    const chartHeight = ReportChart.getBarsChartHeight(columns);
+    const totalCount = ReportModel.getSizeValue(reportData.total);
+
+    return (
+      <div>
+        <div className="report-chart__body-wrapper">
+          <div
+            className="report-chart__labels"
+            style={{height: chartHeight}}
+          >
+            <div className="report-chart__labels-column">
+              {
+                columns.map((column, idx) =>
+                  this.renderLineLabel(column, idx)
+                )
+              }
+            </div>
+            <div className="report-chart__labels-column">
+              {
+                columns.map(column =>
+                  this.renderLineSize(column, totalCount)
+                )
+              }
+            </div>
+            <div className="report-chart__labels-column">
+              {
+                columns.map(column =>
+                  this.renderLinePercents(column, totalCount)
+                )
+              }
+            </div>
+          </div>
+          { this.renderChartBody(chartHeight) }
+        </div>
+      </div>
+    );
+  }
+
+  renderChartArea() {
+    if (this.state.activeTab === ReportChart.Tabs.Pie) {
+      return this.renderPieChart();
+    }
+    return this.renderLinesLabels();
   }
 
   render() {
     const reportData = this.state.reportData || {};
-    const columns = reportData.ycolumns || reportData.columns || [];
-
-    const chartHeight = ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
-    const totalCount = ReportModel.getSizeValue(reportData.total);
     const title = `${this.props.aggregationTitle || i18n('Total')}: ${ReportModel.getSizePresentation(reportData.total)}`;
+
+    const isTwoDimensionalChart = ReportChart.isStackedChart(reportData);
 
     const getOnChangeReportPresentationCallback = tabId =>
       () => this.setState({activeTab: tabId});
@@ -374,15 +502,30 @@ class ReportChart extends React.Component {
               >
                 { i18n('Bars') }
               </Button>
-              <Button
-                className="report-chart__chart-type-switcher"
-                active={this.state.activeTab === ReportChart.Tabs.Table}
-                onClick={
-                  getOnChangeReportPresentationCallback(ReportChart.Tabs.Table)
-                }
-              >
-                { i18n('Table') }
-              </Button>
+              {
+                isTwoDimensionalChart &&
+                <Button
+                  className="report-chart__chart-type-switcher"
+                  active={this.state.activeTab === ReportChart.Tabs.Table}
+                  onClick={getOnChangeReportPresentationCallback(
+                    ReportChart.Tabs.Table
+                  )}
+                >
+                  { i18n('Table') }
+                </Button>
+              }
+              {
+                !isTwoDimensionalChart &&
+                <Button
+                  className="report-chart__chart-type-switcher"
+                  active={this.state.activeTab === ReportChart.Tabs.Pie}
+                  onClick={
+                    getOnChangeReportPresentationCallback(ReportChart.Tabs.Pie)
+                  }
+                >
+                  { i18n('Pie chart') }
+                </Button>
+              }
             </ButtonGroup>
           </div>
         </div>
@@ -414,35 +557,7 @@ class ReportChart extends React.Component {
             }
           </div>
         </div>
-        <div className="report-chart__body-wrapper">
-          <div
-            className="report-chart__labels"
-            style={{height: chartHeight}}
-          >
-            <div className="report-chart__labels-column">
-              {
-                columns.map((column, idx) =>
-                  this.renderLineLabel(column, idx)
-                )
-              }
-            </div>
-            <div className="report-chart__labels-column">
-              {
-                columns.map(column =>
-                  this.renderLineSize(column, totalCount)
-                )
-              }
-            </div>
-            <div className="report-chart__labels-column">
-              {
-                columns.map(column =>
-                  this.renderLinePercents(column, totalCount)
-                )
-              }
-            </div>
-          </div>
-          { this.renderChartBody(chartHeight) }
-        </div>
+        {this.renderChartArea()}
       </div>
     );
   }
