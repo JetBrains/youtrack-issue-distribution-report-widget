@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-02-11 21:05\n"
+"PO-Revision-Date: 2019-02-15 17:52\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Добавить проект"
 
-#: src/app/report-chart.js:363
+#: src/app/report-chart.js:375
 msgid "Bars"
 msgstr "Столбики"
 
@@ -162,7 +162,7 @@ msgstr "воскресенье|понедельник|вторник|среда|
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
-#: src/app/report-chart.js:372
+#: src/app/report-chart.js:384
 msgid "Table"
 msgstr "Таблица"
 
@@ -178,7 +178,7 @@ msgstr "Нет задач, соответствующих фильтрам в н
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:341
+#: src/app/report-chart.js:352
 msgid "Total"
 msgstr "Всего"
 

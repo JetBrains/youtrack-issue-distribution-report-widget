@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2019-02-11 21:05\n"
+"PO-Revision-Date: 2019-02-15 18:06\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "プロジェクトの追加"
 
-#: src/app/report-chart.js:363
+#: src/app/report-chart.js:375
 msgid "Bars"
 msgstr "バー"
 
@@ -162,7 +162,7 @@ msgstr "日曜日|月曜日|火曜日|水曜日|木曜日|金曜日|土曜日"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "日|月|火|水|木|金|土"
 
-#: src/app/report-chart.js:372
+#: src/app/report-chart.js:384
 msgid "Table"
 msgstr "テーブル"
 
@@ -178,7 +178,7 @@ msgstr "レポート設定のフィルタと一致する課題はありません
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "このレポートは{{ownerNamePlaceholder}}さんが所有しています"
 
-#: src/app/report-chart.js:341
+#: src/app/report-chart.js:352
 msgid "Total"
 msgstr "合計"
 
