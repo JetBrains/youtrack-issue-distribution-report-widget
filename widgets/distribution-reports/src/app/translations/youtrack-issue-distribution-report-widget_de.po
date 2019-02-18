@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2019-02-15 17:52\n"
+"PO-Revision-Date: 2019-02-18 12:10\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Projekt hinzufügen"
 
-#: src/app/report-chart.js:375
+#: src/app/report-chart.js:503
 msgid "Bars"
 msgstr "Balken"
 
@@ -65,7 +65,7 @@ msgstr "Einstellungen bearbeiten"
 msgid "Filter issues"
 msgstr "Tickets filtern"
 
-#: src/app/widget.js:48
+#: src/app/widget.js:51
 msgid "Issue Distribution Report"
 msgstr "Ticketverteilungsbericht"
 
@@ -105,6 +105,10 @@ msgstr "Entschuldigung! Etwas ist schiefgegangen =("
 #: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Nur Besitzer können können die Berichtseinstellungen bearbeiten. Wenn Sie Ihre eigene Kopie dieses Berichts an Ihren Bedarf anpassen möchten, {{cloneItPlaceholder}}"
+
+#: src/app/report-chart.js:526
+msgid "Pie chart"
+msgstr ""
 
 #: src/app/content.js:43
 msgid "Remove widget"
@@ -162,7 +166,7 @@ msgstr "Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "So|Mo|Di|Mi|Do|Fr|Sa"
 
-#: src/app/report-chart.js:384
+#: src/app/report-chart.js:514
 msgid "Table"
 msgstr "Tabelle"
 
@@ -178,7 +182,7 @@ msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstell
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Dieser Bericht gehört {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:352
+#: src/app/report-chart.js:478
 msgid "Total"
 msgstr "Gesamt"
 

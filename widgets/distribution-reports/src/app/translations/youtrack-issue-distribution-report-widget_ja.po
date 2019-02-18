@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2019-02-15 18:06\n"
+"PO-Revision-Date: 2019-02-18 12:11\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "プロジェクトの追加"
 
-#: src/app/report-chart.js:375
+#: src/app/report-chart.js:503
 msgid "Bars"
 msgstr "バー"
 
@@ -65,7 +65,7 @@ msgstr "設定の編集"
 msgid "Filter issues"
 msgstr "課題をフィルタリング"
 
-#: src/app/widget.js:48
+#: src/app/widget.js:51
 msgid "Issue Distribution Report"
 msgstr "課題配布レポート"
 
@@ -105,6 +105,10 @@ msgstr "不明なエラーが発生しました =("
 #: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "オーナーのみが、レポート設定を編集できます。このレポートのコピーをカスタマイズしたい場合は、{{cloneItPlaceholder}}"
+
+#: src/app/report-chart.js:526
+msgid "Pie chart"
+msgstr ""
 
 #: src/app/content.js:43
 msgid "Remove widget"
@@ -162,7 +166,7 @@ msgstr "日曜日|月曜日|火曜日|水曜日|木曜日|金曜日|土曜日"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "日|月|火|水|木|金|土"
 
-#: src/app/report-chart.js:384
+#: src/app/report-chart.js:514
 msgid "Table"
 msgstr "テーブル"
 
@@ -178,7 +182,7 @@ msgstr "レポート設定のフィルタと一致する課題はありません
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "このレポートは{{ownerNamePlaceholder}}さんが所有しています"
 
-#: src/app/report-chart.js:352
+#: src/app/report-chart.js:478
 msgid "Total"
 msgstr "合計"
 

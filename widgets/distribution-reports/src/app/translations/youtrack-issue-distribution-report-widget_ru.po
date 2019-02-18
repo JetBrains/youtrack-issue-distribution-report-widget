@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-02-15 17:52\n"
+"PO-Revision-Date: 2019-02-18 12:11\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Добавить проект"
 
-#: src/app/report-chart.js:375
+#: src/app/report-chart.js:503
 msgid "Bars"
 msgstr "Столбики"
 
@@ -65,7 +65,7 @@ msgstr "Изменить параметры"
 msgid "Filter issues"
 msgstr "Фильтровать задачи"
 
-#: src/app/widget.js:48
+#: src/app/widget.js:51
 msgid "Issue Distribution Report"
 msgstr "Отчет о распределении задач"
 
@@ -105,6 +105,10 @@ msgstr "К сожалению, возникла какая-то проблема
 #: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Изменять параметры отчета могут только владельцы. Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
+
+#: src/app/report-chart.js:526
+msgid "Pie chart"
+msgstr ""
 
 #: src/app/content.js:43
 msgid "Remove widget"
@@ -162,7 +166,7 @@ msgstr "воскресенье|понедельник|вторник|среда|
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
-#: src/app/report-chart.js:384
+#: src/app/report-chart.js:514
 msgid "Table"
 msgstr "Таблица"
 
@@ -178,7 +182,7 @@ msgstr "Нет задач, соответствующих фильтрам в н
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:352
+#: src/app/report-chart.js:478
 msgid "Total"
 msgstr "Всего"
 
