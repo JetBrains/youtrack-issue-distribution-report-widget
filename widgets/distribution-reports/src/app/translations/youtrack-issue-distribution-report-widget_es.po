@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-02-15 17:52\n"
+"PO-Revision-Date: 2019-02-18 12:10\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Añadir proyecto"
 
-#: src/app/report-chart.js:375
+#: src/app/report-chart.js:503
 msgid "Bars"
 msgstr "Barras"
 
@@ -65,7 +65,7 @@ msgstr "Editar configuración"
 msgid "Filter issues"
 msgstr "Filtrar incidencias"
 
-#: src/app/widget.js:48
+#: src/app/widget.js:51
 msgid "Issue Distribution Report"
 msgstr "Informe de distribución de incidencias"
 
@@ -105,6 +105,10 @@ msgstr "¡Uy!... Algo ha salido mal =("
 #: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Los propietarios tienen acceso exclusivo para editar la configuración de informes. Si desea personalizar su propia copia de este informe, {{cloneItPlaceholder}}"
+
+#: src/app/report-chart.js:526
+msgid "Pie chart"
+msgstr ""
 
 #: src/app/content.js:43
 msgid "Remove widget"
@@ -162,7 +166,7 @@ msgstr "Domingo|Lunes|Martes|Miércoles|Jueves|Viernes|Sábado"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 
-#: src/app/report-chart.js:384
+#: src/app/report-chart.js:514
 msgid "Table"
 msgstr "Tabla"
 
@@ -178,7 +182,7 @@ msgstr "No hay ninguna incidencia que coincida con los filtros de la configuraci
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "El propietario de este informe es {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:352
+#: src/app/report-chart.js:478
 msgid "Total"
 msgstr "Total"
 
