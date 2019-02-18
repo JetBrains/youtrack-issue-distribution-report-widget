@@ -21,19 +21,21 @@ const X_AXIS_HEIGHT = 22;
 class ReportChart extends React.Component {
   static propTypes = {
     reportData: PropTypes.object,
+    presentationMode: PropTypes.string,
     reportMainSortOrder: PropTypes.string,
     reportSecondarySortOrder: PropTypes.string,
     reportMainAxisLabel: PropTypes.string,
     reportSecondaryAxisLabel: PropTypes.string,
     aggregationTitle: PropTypes.string,
     onChangeSortOrders: PropTypes.func,
+    onChangePresentationMode: PropTypes.func,
     homeUrl: PropTypes.string
   };
 
-  static Tabs = {
-    Bars: 'bars',
-    Table: 'table',
-    Pie: 'pie'
+  static PresentationModes = {
+    Bars: 'DEFAULT',
+    Table: 'MATRIX',
+    Pie: 'PIE'
   };
 
   static LineHeight = 22; // eslint-disable-line no-magic-numbers
@@ -103,8 +105,7 @@ class ReportChart extends React.Component {
       reportMainSortOrder: props.reportMainSortOrder,
       reportSecondarySortOrder: props.reportSecondarySortOrder,
       reportMainAxisLabel: props.reportMainAxisLabel,
-      reportSecondaryAxisLabel: props.reportSecondaryAxisLabel,
-      activeTab: ReportChart.Tabs.Bars
+      reportSecondaryAxisLabel: props.reportSecondaryAxisLabel
     };
   }
 
@@ -415,10 +416,10 @@ class ReportChart extends React.Component {
   }
 
   renderChartBody(chartHeight) {
-    if (this.state.activeTab === ReportChart.Tabs.Bars) {
+    if (this.props.presentationMode === ReportChart.PresentationModes.Bars) {
       return this.renderBarsChart(chartHeight);
     }
-    if (this.state.activeTab === ReportChart.Tabs.Pie) {
+    if (this.props.presentationMode === ReportChart.PresentationModes.Pie) {
       return this.renderPieChart();
     }
     return this.renderTable();
@@ -467,20 +468,23 @@ class ReportChart extends React.Component {
   }
 
   renderChartArea() {
-    if (this.state.activeTab === ReportChart.Tabs.Pie) {
+    if (this.props.presentationMode === ReportChart.PresentationModes.Pie) {
       return this.renderPieChart();
     }
     return this.renderLinesLabels();
   }
 
   render() {
+    const {presentationMode: mode} = this.props;
     const reportData = this.state.reportData || {};
     const title = `${this.props.aggregationTitle || i18n('Total')}: ${ReportModel.getSizePresentation(reportData.total)}`;
 
     const isTwoDimensionalChart = ReportChart.isStackedChart(reportData);
 
-    const getOnChangeReportPresentationCallback = tabId =>
-      () => this.setState({activeTab: tabId});
+    const getOnChangeReportPresentationCallback = presentationMode =>
+      () => this.props.onChangePresentationMode(
+        presentationMode
+      );
 
     return (
       <div className="report-chart">
@@ -495,10 +499,10 @@ class ReportChart extends React.Component {
             <ButtonGroup>
               <Button
                 className="report-chart__chart-type-switcher"
-                active={this.state.activeTab === ReportChart.Tabs.Bars}
-                onClick={
-                  getOnChangeReportPresentationCallback(ReportChart.Tabs.Bars)
-                }
+                active={mode === ReportChart.PresentationModes.Bars}
+                onClick={getOnChangeReportPresentationCallback(
+                  ReportChart.PresentationModes.Bars
+                )}
               >
                 { i18n('Bars') }
               </Button>
@@ -506,9 +510,9 @@ class ReportChart extends React.Component {
                 isTwoDimensionalChart &&
                 <Button
                   className="report-chart__chart-type-switcher"
-                  active={this.state.activeTab === ReportChart.Tabs.Table}
+                  active={mode === ReportChart.PresentationModes.Table}
                   onClick={getOnChangeReportPresentationCallback(
-                    ReportChart.Tabs.Table
+                    ReportChart.PresentationModes.Table
                   )}
                 >
                   { i18n('Table') }
@@ -518,10 +522,10 @@ class ReportChart extends React.Component {
                 !isTwoDimensionalChart &&
                 <Button
                   className="report-chart__chart-type-switcher"
-                  active={this.state.activeTab === ReportChart.Tabs.Pie}
-                  onClick={
-                    getOnChangeReportPresentationCallback(ReportChart.Tabs.Pie)
-                  }
+                  active={mode === ReportChart.PresentationModes.Pie}
+                  onClick={getOnChangeReportPresentationCallback(
+                    ReportChart.PresentationModes.Pie
+                  )}
                 >
                   { i18n('Pie chart') }
                 </Button>

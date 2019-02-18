@@ -43,6 +43,9 @@ class DistributionReportsWidget extends React.Component {
           report, config.secondaryAxisSortOrder
         );
       }
+      if (config.presentation) {
+        report.presentation = config.presentation;
+      }
     }
     return report;
   };
@@ -261,19 +264,37 @@ class DistributionReportsWidget extends React.Component {
   onChangeReportSortOrders =
     async (mainAxisSortOrder, secondaryAxisSortOrder) => {
       const {SortOrder} = DistributionReportAxises;
-      const {report} = this.state;
+      const {report, config} = this.state;
+
       SortOrder.setMainAxisSortOrder(report, mainAxisSortOrder);
       SortOrder.setSecondaryAxisSortOrder(report, secondaryAxisSortOrder);
-      this.setState({report});
+
+      config.mainAxisSortOrder = mainAxisSortOrder;
+      config.secondaryAxisSortOrder = secondaryAxisSortOrder;
+
+      this.setState({report, config});
 
       if (SortOrder.isEditable(report)) {
         return await saveReportSettings(this.fetchYouTrack, report, true);
-      } else {
-        return await this.props.dashboardApi.storeConfig({
-          reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
-        });
       }
+
+      return await this.props.dashboardApi.storeConfig({
+        reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
+      });
     };
+
+  onChangeReportPresentation = async presentation => {
+    const {report, config} = this.state;
+    config.presentation = report.presentation = presentation;
+    this.setState({report, config});
+
+    if (report.own) {
+      return await saveReportSettings(this.fetchYouTrack, report, true);
+    }
+    return await this.props.dashboardApi.storeConfig({
+      reportId: report.id, presentation
+    });
+  };
 
   renderConfigurationForm() {
     const submitForm = async (selectedReportId, refreshPeriod, youTrack) => {
@@ -348,6 +369,7 @@ class DistributionReportsWidget extends React.Component {
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
         onChangeReportSortOrders={this.onChangeReportSortOrders}
+        onChangePresentationMode={this.onChangeReportPresentation}
       />
     );
   }

@@ -20,7 +20,8 @@ class Content extends React.Component {
     dashboardApi: PropTypes.object,
 
     onOpenSettings: PropTypes.func,
-    onChangeReportSortOrders: PropTypes.func
+    onChangeReportSortOrders: PropTypes.func,
+    onChangePresentationMode: PropTypes.func
   };
 
   renderLoader() {
@@ -128,6 +129,7 @@ class Content extends React.Component {
     return (
       <ReportChart
         reportData={report.data}
+        presentationMode={report.presentation}
         reportMainSortOrder={SortOrder.getMainAxisSortOrder(report)}
         reportSecondarySortOrder={SortOrder.getSecondaryAxisSortOrder(report)}
         reportMainAxisLabel={
@@ -138,6 +140,7 @@ class Content extends React.Component {
         }
         aggregationTitle={getAggregationTitle()}
         onChangeSortOrders={this.props.onChangeReportSortOrders}
+        onChangePresentationMode={this.props.onChangePresentationMode}
         homeUrl={youTrack.homeUrl}
       />
     );
