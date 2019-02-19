@@ -111,6 +111,7 @@ class DistributionReportsWidget extends React.Component {
       this.setYouTrack(ytTrackService);
     } else {
       this.setError(ReportModel.ErrorTypes.NO_YOUTRACK);
+      this.setState({config: config || {}});
       return;
     }
     const isNewWidget = !config;
@@ -118,6 +119,7 @@ class DistributionReportsWidget extends React.Component {
       this.openWidgetsSettings();
       this.setState({
         isNewWidget,
+        config: {},
         refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
       });
       return;

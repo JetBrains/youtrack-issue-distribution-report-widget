@@ -247,11 +247,13 @@ class ReportChart extends React.Component {
   clearActiveLineIndex = () =>
     this.setState({activeLineIdx: null});
 
-  renderLineLabel(column) {
+  renderLineLabel(column, idx) {
+    const isActiveIdx = this.state.activeLineIdx === idx;
+
     return (
       <div
         key={`report-label-${column.name}`}
-        className="report-chart__line-label"
+        className={`report-chart__line-label${isActiveIdx ? ' report-chart__line-label_active' : ''}`}
       >
         <FilterFieldValue
           value={column}
@@ -261,32 +263,36 @@ class ReportChart extends React.Component {
     );
   }
 
-  renderLineSize(column) {
+  renderLineSize(column, idx) {
     const sizePresentation = `${ReportModel.getSizePresentation(column.size)}`;
     if (`${ReportModel.getSizeValue(column.size)}` !== sizePresentation) {
       return '';
     }
 
+    const isActiveIdx = this.state.activeLineIdx === idx;
+
     return (
       <div
-        className="report-chart__size"
-        key={`report-label-size-${column.name}`}
+        className={`report-chart__size${isActiveIdx ? ' report-chart__size_active' : ''}`}
+        key={`report-label-size-${idx}`}
       >
         { sizePresentation }
       </div>
     );
   }
 
-  renderLinePercents(column, totalCount) {
+  renderLinePercents(column, totalCount, idx) {
     const toPercentsMultiplier = 100;
     const getSizeInPercents = size => (totalCount
       ? `${Math.round(ReportModel.getSizeValue(size) / totalCount * toPercentsMultiplier)}%`
       : '');
 
+    const isActiveIdx = this.state.activeLineIdx === idx;
+
     return (
       <div
-        className="report-chart__size-in-percents"
-        key={`report-label-percents-${column.name}`}
+        className={`report-chart__size-in-percents${isActiveIdx ? ' report-chart__size-in-percents_active' : ''}`}
+        key={`report-label-percents-${idx}`}
       >
         { getSizeInPercents(column.size) }
       </div>
@@ -318,18 +324,18 @@ class ReportChart extends React.Component {
     );
   }
 
-  renderTableCell(column, rowIdx) {
+  renderTableCell(row, rowIdx) {
     const sizeValue = ReportModel.getSizeValue(
-      column.values[rowIdx].size
+      row.size
     );
     const sizePresentation = sizeValue
-      ? ReportModel.getSizePresentation(column.values[rowIdx].size)
+      ? ReportModel.getSizePresentation(row.size)
       : '-';
 
     const onClick = () => {
       if (sizeValue) {
         const url = ReportChart.getSearchUrl(
-          column.values[rowIdx].issuesQuery, this.props.homeUrl
+          row.issuesQuery, this.props.homeUrl
         );
         window.open(url, '_blank');
       }
@@ -338,10 +344,12 @@ class ReportChart extends React.Component {
     const onMouseOver = () =>
       this.setState({activeLineIdx: rowIdx});
 
+    const isActiveIdx = this.state.activeLineIdx === rowIdx;
+
     return (
-      <td
-        key={`column-row-key-${column.name}-${rowIdx}`}
-        className="report-chart__table-cell"
+      <div
+        key={`column-row-key-${rowIdx}`}
+        className={`report-chart__table-cell${isActiveIdx ? ' report-chart__table-cell_active' : ''}`}
         onMouseOver={onMouseOver}
         onClick={onClick}
       >
@@ -355,7 +363,28 @@ class ReportChart extends React.Component {
           (sizeValue === 0) &&
           <span>{sizePresentation}</span>
         }
-      </td>
+      </div>
+    );
+  }
+
+  renderColumn(column) {
+    return (
+      <div className="report-chart__table-column">
+        <div
+          key={`column-key-${column.name}`}
+          className="report-chart__table-header-cell"
+        >
+          <FilterFieldValue
+            value={column}
+            homeUrl={this.props.homeUrl}
+          />
+        </div>
+        {
+          column.values.map((row, idx) =>
+            this.renderTableCell(row, idx)
+          )
+        }
+      </div>
     );
   }
 
@@ -367,43 +396,14 @@ class ReportChart extends React.Component {
       <div
         className="report-chart__body"
       >
-        <table
+        <div
           className="report-chart__table"
           onMouseLeave={this.clearActiveLineIndex}
         >
-          <thead>
-            <tr>
-              {
-                model.map(column => (
-                  <th
-                    key={`column-key-${column.name}`}
-                    className="report-chart__table-header"
-                  >
-                    <FilterFieldValue
-                      value={column}
-                      homeUrl={this.props.homeUrl}
-                    />
-                  </th>
-                ))
-              }
-            </tr>
-          </thead>
-
-          <tbody>
-            {
-              model[0].values.map((row, idx) => (
-                <tr
-                  className="report-chart__table-row"
-                  key={`row-key-${row.name}`}
-                >
-                  {
-                    model.map(column => this.renderTableCell(column, idx))
-                  }
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
+          {
+            model.map(column => this.renderColumn(column))
+          }
+        </div>
       </div>
     );
   }
@@ -441,15 +441,15 @@ class ReportChart extends React.Component {
             </div>
             <div className="report-chart__labels-column">
               {
-                columns.map(column =>
-                  this.renderLineSize(column, totalCount)
+                columns.map((column, idx) =>
+                  this.renderLineSize(column, idx)
                 )
               }
             </div>
             <div className="report-chart__labels-column">
               {
-                columns.map(column =>
-                  this.renderLinePercents(column, totalCount)
+                columns.map((column, idx) =>
+                  this.renderLinePercents(column, totalCount, idx)
                 )
               }
             </div>

@@ -65,14 +65,14 @@
     width: 100%;
 
     height: 21px;
-    line-height: 22px;
-    border-bottom: 1px solid transparent;
 
     text-align: right;
 
     color: var(--ring-secondary-color);
+    border-bottom: 1px solid transparent;
 
     font-weight: bold;
+    line-height: 22px;
 
     &_active {
       border-bottom: 1px solid var(--ring-borders-color);
@@ -85,13 +85,14 @@
     width: 100%;
 
     height: 21px;
-    line-height: 22px;
-    border-bottom: 1px solid transparent;
 
     text-align: right;
     text-overflow: ellipsis;
 
     color: var(--ring-text-color);
+    border-bottom: 1px solid transparent;
+
+    line-height: 22px;
 
     &_active {
       border-bottom: 1px solid var(--ring-borders-color);
@@ -174,53 +175,45 @@
 
   &__table {
     position: relative;
-    top: -22px;
+    top: -24px;
 
-    overflow: hidden;
-
-    border-spacing: 0;
-
-    border-collapse: collapse;
-    border-bottom: 1px solid var(--ring-line-color);
+    display: flex;
 
     font-size: var(--ring-font-size-smaller);
   }
 
   &__table-cell {
-    position: relative;
+    overflow: hidden;
 
+    width: 60px;
+    height: 21px;
     padding-right: 10px;
 
     cursor: default;
 
     text-align: right;
 
+    border-bottom: 1px solid transparent;
+
     font-size: var(--ring-font-size-smaller);
+
+    line-height: 22px;
+
+    &_active {
+      border-bottom: 1px solid var(--ring-borders-color);
+    }
 
     &:hover button {
       color: var(--ring-link-hover-color);
     }
-
-    &:hover::after {
-      position: absolute;
-      z-index: -1;
-      top: -5000px;
-      left: 0;
-
-      width: 100%;
-      width: calc(100% - 4px);
-      height: 10000px;
-
-      content: "";
-
-      border-right: 1px solid var(--ring-borders-color);
-    }
   }
 
   &__table-row {
-    height: 20px;
-    line-height: 20px;
     overflow: hidden;
+
+    height: 20px;
+
+    line-height: 20px;
 
     &:hover {
       box-shadow: inset 0 -1px 0 0 var(--ring-borders-color);
@@ -228,25 +221,47 @@
   }
 
   &__table-header {
+    text-align: right;
+    white-space: nowrap;
+
+    font-size: var(--ring-font-size-smaller);
+  }
+
+  &__table-header-cell {
+    display: inline-block;
     overflow: hidden;
 
-    max-width: 8 * $ring-unit;
-    padding: 3px $ring-unit 3px 0;
+    width: 60px;
+    padding: 3px 0 3px $ring-unit;
 
+    text-align: right;
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    border-bottom: 1px solid var(--ring-line-color);
+    font-weight: bold;
 
-    font-size: var(--ring-font-size-smaller);
-    font-weight: normal;
+    .filter-field-label {
+      width: 100%;
+    }
+  }
+
+  &__table-column {
+    border-right: 1px solid transparent;
+    border-left: 0;
+
+    &:hover {
+      border-right: 1px solid var(--ring-borders-color);
+    }
   }
 
   &__line-label {
-    height: 21px;
-    line-height: 22px;
     overflow: hidden;
+
+    height: 21px;
+
     border-bottom: 1px solid transparent;
+
+    line-height: 22px;
 
     &_active {
       border-bottom: 1px solid var(--ring-borders-color);
