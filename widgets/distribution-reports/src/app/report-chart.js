@@ -370,15 +370,6 @@ class ReportChart extends React.Component {
   renderColumn(column) {
     return (
       <div className="report-chart__table-column">
-        <div
-          key={`column-key-${column.name}`}
-          className="report-chart__table-header-cell"
-        >
-          <FilterFieldValue
-            value={column}
-            homeUrl={this.props.homeUrl}
-          />
-        </div>
         {
           column.values.map((row, idx) =>
             this.renderTableCell(row, idx)
@@ -396,6 +387,21 @@ class ReportChart extends React.Component {
       <div
         className="report-chart__body"
       >
+        <div className="report-chart__table-header">
+          {
+            model.map(column => (
+              <div
+                key={`column-key-${column.name}`}
+                className="report-chart__table-header-cell"
+              >
+                <FilterFieldValue
+                  value={column}
+                  homeUrl={this.props.homeUrl}
+                />
+              </div>
+            ))
+          }
+        </div>
         <div
           className="report-chart__table"
           onMouseLeave={this.clearActiveLineIndex}

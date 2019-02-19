@@ -33,6 +33,8 @@
 
     text-align: left;
 
+    border-top: 1px solid transparent;
+
     font-size: var(--ring-font-size-smaller);
   }
 
@@ -174,9 +176,6 @@
   }
 
   &__table {
-    position: relative;
-    top: -24px;
-
     display: flex;
 
     font-size: var(--ring-font-size-smaller);
@@ -221,6 +220,9 @@
   }
 
   &__table-header {
+    position: absolute;
+    top: 73px;
+
     text-align: right;
     white-space: nowrap;
 
@@ -246,10 +248,13 @@
   }
 
   &__table-column {
+    border-top: 1px solid transparent;
     border-right: 1px solid transparent;
     border-left: 0;
+    border-top-right-radius: var(--ring-border-radius);
 
     &:hover {
+      border-top: 1px solid var(--ring-borders-color);
       border-right: 1px solid var(--ring-borders-color);
     }
   }
