@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2019-02-18 12:09\n"
+"PO-Revision-Date: 2019-02-19 16:22\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Ajouter un projet"
 
-#: src/app/report-chart.js:503
+#: src/app/report-chart.js:500
 msgid "Bars"
 msgstr "Barres"
 
@@ -25,7 +25,7 @@ msgstr "Barres"
 msgid "Calculate for all projects"
 msgstr "Calculer pour tous les projets"
 
-#: src/app/content.js:92
+#: src/app/content.js:93
 msgid "Calculating..."
 msgstr "Calcul..."
 
@@ -33,15 +33,15 @@ msgstr "Calcul..."
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/app/content.js:68
+#: src/app/content.js:69
 msgid "Cannot find YouTrack installation"
 msgstr "Impossible de trouver une installation de YouTrack"
 
-#: src/app/content.js:73
+#: src/app/content.js:74
 msgid "Cannot find any issue distribution report"
 msgstr "Impossible de trouver un rapport de distribution des tickets"
 
-#: src/app/content.js:77
+#: src/app/content.js:78
 msgid "Cannot load selected report"
 msgstr "Impossible de charger le rapport sélectionné"
 
@@ -57,7 +57,7 @@ msgstr "Impossible de mettre à jour le widget"
 msgid "Edit report"
 msgstr "Modifier le rapport"
 
-#: src/app/content.js:59
+#: src/app/content.js:60
 msgid "Edit settings"
 msgstr "Modifier les paramètres"
 
@@ -65,7 +65,7 @@ msgstr "Modifier les paramètres"
 msgid "Filter issues"
 msgstr "Filtrer les tickets"
 
-#: src/app/widget.js:51
+#: src/app/widget.js:54
 msgid "Issue Distribution Report"
 msgstr "Rapport de distribution de ticket"
 
@@ -98,7 +98,7 @@ msgstr "Nouveau rapport"
 msgid "Oops! Something went wrong..."
 msgstr "Oups ! Un problème est survenu..."
 
-#: src/app/content.js:80
+#: src/app/content.js:81
 msgid "Oops... Something went wrong =("
 msgstr "Oups ! Un problème est survenu =("
 
@@ -106,11 +106,11 @@ msgstr "Oups ! Un problème est survenu =("
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Les propriétaires possèdent un accès exclusif leur permettant de modifier les paramètres du rapport. Si vous souhaitez personnaliser votre propre copie de ce rapport, {{cloneItPlaceholder}}"
 
-#: src/app/report-chart.js:526
+#: src/app/report-chart.js:523
 msgid "Pie chart"
 msgstr ""
 
-#: src/app/content.js:43
+#: src/app/content.js:44
 msgid "Remove widget"
 msgstr "Supprimer le gadget"
 
@@ -166,15 +166,15 @@ msgstr "Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dim|Lun|Mar|Mer|Jeu|Ven|Sam"
 
-#: src/app/report-chart.js:514
+#: src/app/report-chart.js:511
 msgid "Table"
 msgstr "Tableau"
 
-#: src/app/content.js:107
+#: src/app/content.js:108
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "Impossible de calculer le rapport : les filtres des paramètres du rapport renvoient trop de tickets"
 
-#: src/app/content.js:112
+#: src/app/content.js:113
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Aucun ticket ne correspond aux filtres des paramètres du rapport"
 
@@ -182,19 +182,19 @@ msgstr "Aucun ticket ne correspond aux filtres des paramètres du rapport"
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Ce rapport est la propriété de {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:478
+#: src/app/report-chart.js:473
 msgid "Total"
 msgstr "Total"
 
-#: src/app/content.js:119
+#: src/app/content.js:120
 msgid "Total issues count"
 msgstr "Total des tickets"
 
-#: src/app/content.js:122
+#: src/app/content.js:123
 msgid "Total votes count"
 msgstr "Total des votes"
 
-#: src/app/content.js:125
+#: src/app/content.js:126
 msgid "Total {{fieldName}}"
 msgstr "Total {{fieldName}}"
 
