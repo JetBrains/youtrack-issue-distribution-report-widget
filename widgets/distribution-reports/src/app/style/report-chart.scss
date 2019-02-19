@@ -64,11 +64,19 @@
   &__size {
     width: 100%;
 
+    height: 21px;
+    line-height: 22px;
+    border-bottom: 1px solid transparent;
+
     text-align: right;
 
     color: var(--ring-secondary-color);
 
     font-weight: bold;
+
+    &_active {
+      border-bottom: 1px solid var(--ring-borders-color);
+    }
   }
 
   &__size-in-percents {
@@ -76,10 +84,18 @@
 
     width: 100%;
 
+    height: 21px;
+    line-height: 22px;
+    border-bottom: 1px solid transparent;
+
     text-align: right;
     text-overflow: ellipsis;
 
     color: var(--ring-text-color);
+
+    &_active {
+      border-bottom: 1px solid var(--ring-borders-color);
+    }
   }
 
   &__size-description {
@@ -179,18 +195,10 @@
 
     text-align: right;
 
-    border-top: 1px solid transparent;
-    border-left: 1px solid transparent;
-
     font-size: var(--ring-font-size-smaller);
 
-    &:hover {
-      border-top: 1px solid var(--ring-borders-color);
-      border-left: 1px solid var(--ring-borders-color);
-
-      button {
-        color: var(--ring-link-hover-color);
-      }
+    &:hover button {
+      color: var(--ring-link-hover-color);
     }
 
     &:hover::after {
@@ -210,6 +218,10 @@
   }
 
   &__table-row {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+
     &:hover {
       box-shadow: inset 0 -1px 0 0 var(--ring-borders-color);
     }
@@ -228,6 +240,17 @@
 
     font-size: var(--ring-font-size-smaller);
     font-weight: normal;
+  }
+
+  &__line-label {
+    height: 21px;
+    line-height: 22px;
+    overflow: hidden;
+    border-bottom: 1px solid transparent;
+
+    &_active {
+      border-bottom: 1px solid var(--ring-borders-color);
+    }
   }
 
   .nvtooltip.xy-tooltip {

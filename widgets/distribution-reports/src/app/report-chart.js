@@ -247,15 +247,11 @@ class ReportChart extends React.Component {
   clearActiveLineIndex = () =>
     this.setState({activeLineIdx: null});
 
-  renderLineLabel(column, idx) {
-    const color = idx === this.state.activeLineIdx
-      ? 'var(--ring-link-hover-color)'
-      : undefined;
-
+  renderLineLabel(column) {
     return (
       <div
         key={`report-label-${column.name}`}
-        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`, overflow: 'hidden', color}}
+        className="report-chart__line-label"
       >
         <FilterFieldValue
           value={column}
@@ -275,7 +271,6 @@ class ReportChart extends React.Component {
       <div
         className="report-chart__size"
         key={`report-label-size-${column.name}`}
-        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
         { sizePresentation }
       </div>
@@ -292,7 +287,6 @@ class ReportChart extends React.Component {
       <div
         className="report-chart__size-in-percents"
         key={`report-label-percents-${column.name}`}
-        style={{height: ReportChart.LineHeight, lineHeight: `${ReportChart.LineHeight}px`}}
       >
         { getSizeInPercents(column.size) }
       </div>
@@ -400,7 +394,6 @@ class ReportChart extends React.Component {
               model[0].values.map((row, idx) => (
                 <tr
                   className="report-chart__table-row"
-                  style={{height: ReportChart.LineHeight}}
                   key={`row-key-${row.name}`}
                 >
                   {
