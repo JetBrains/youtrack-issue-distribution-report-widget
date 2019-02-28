@@ -2,7 +2,6 @@ import './style/report-chart.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import d3 from 'd3/d3';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import ButtonGroup from '@jetbrains/ring-ui/components/button-group/button-group';
 import Button from '@jetbrains/ring-ui/components/button/button';
@@ -13,10 +12,9 @@ import FilterFieldValue from '../../../../components/src/filter-field-value/filt
 import ReportChartSortOrder from './report-chart-sort-order';
 import ReportModel from './report-model';
 import PieChartPresentation from './pie-chart-presentation';
+import BarsChartPresentation from './bars-chart-presentation';
 import './nv-flex-pie-chart';
 
-const nv = window.nv;
-const GRAPH_TRANSITION_DURATION = 350;
 const X_AXIS_HEIGHT = 22;
 
 class ReportChart extends React.Component {
@@ -119,66 +117,6 @@ class ReportChart extends React.Component {
     );
   };
 
-  drawBarChart = () => {
-    const barChartNode = this.chartNode;
-    if (!barChartNode) {
-      return;
-    }
-
-    const {reportData} = this.state;
-    const chartModel = ReportChart.getBarsChartModel(reportData);
-    const valueToPresentationMap = chartModel.reduce((resultMap, columnX) => {
-      columnX.values.reduce((result, columnY) => {
-        result[columnY.size] = columnY.presentation;
-        return result;
-      }, resultMap);
-      return resultMap;
-    }, {});
-
-    nv.addGraph(() => {
-      const isStacked = ReportChart.isStackedChart(reportData);
-      const multiBarHorizontalChart = nv.models.multiBarHorizontalChart();
-      const chart = multiBarHorizontalChart.
-        margin({
-          left: 5,
-          top: 0,
-          right: X_AXIS_HEIGHT,
-          bottom: X_AXIS_HEIGHT
-        }).
-        stacked(true).
-        state({
-          stacked: true
-        }). // workaround
-        x(column => column.name).
-        y(column => column.size).
-        tooltips(isStacked).
-        showControls(false).
-        showLegend(false).
-        transitionDuration(GRAPH_TRANSITION_DURATION).
-        showXAxis(false);
-
-      chart.multibar.getUrl(column =>
-        ReportChart.getSearchUrl(column.issuesQuery, this.props.homeUrl)
-      );
-
-      chart.xAxis.tickFormat(d => d);
-      chart.yAxis.tickFormat(d => valueToPresentationMap[d] || '');
-
-      d3.select(barChartNode).
-        datum(chartModel).
-        call(chart);
-
-      nv.utils.windowResize(chart.update);
-    });
-  };
-
-  onGetSvgNode = barChartNode => {
-    if (barChartNode) {
-      this.chartNode = barChartNode;
-      this.drawBarChart();
-    }
-  };
-
   onChangeSecondarySortOrder = newSecondarySortOrder => {
     this.setState({
       reportSecondarySortOrder: newSecondarySortOrder
@@ -255,12 +193,11 @@ class ReportChart extends React.Component {
 
   renderBarsChart(height) {
     return (
-      <div
-        className="report-chart__body"
-        style={{height}}
-      >
-        <svg ref={this.onGetSvgNode}/>
-      </div>
+      <BarsChartPresentation
+        reportData={this.props.reportData}
+        height={height}
+        homeUrl={this.props.homeUrl}
+      />
     );
   }
 
