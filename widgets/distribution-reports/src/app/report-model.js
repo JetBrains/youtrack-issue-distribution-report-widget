@@ -36,7 +36,10 @@ const ReportModel = {
   getSizePresentation: size =>
     ((typeof size === 'number')
       ? size
-      : ((size || {}).presentation || 0))
+      : ((size || {}).presentation || 0)),
+
+  getSearchUrl: (queryUrl, homeUrl) =>
+    `${homeUrl}/issues?q=${encodeURIComponent(queryUrl)}`
 
 };
 

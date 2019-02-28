@@ -130,6 +130,9 @@ const ReportModel = {
       ? size
       : ((size || {}).presentation || 0)),
 
+  getSearchUrl: (queryUrl, homeUrl) =>
+    `${homeUrl}/issues?q=${encodeURIComponent(queryUrl)}`,
+
   ReportTypes,
 
   ReportDataValidity,

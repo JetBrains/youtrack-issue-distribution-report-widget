@@ -12,6 +12,7 @@ import FilterFieldValue from '../../../../components/src/filter-field-value/filt
 
 import ReportChartSortOrder from './report-chart-sort-order';
 import ReportModel from './report-model';
+import PieChartPresentation from './pie-chart-presentation';
 import './nv-flex-pie-chart';
 
 const nv = window.nv;
@@ -86,16 +87,6 @@ class ReportChart extends React.Component {
       colorIndex: 1
     })));
   };
-
-  static getPieChartModel = reportData =>
-    ((reportData.columns || []).
-      map(xCol => ({
-        name: xCol.name,
-        issuesQuery: xCol.issuesQuery,
-        size: ReportModel.getSizeValue(xCol.size),
-        colorIndex: xCol.colorIndex
-      }))
-    );
 
   constructor(props) {
     super(props);
@@ -181,56 +172,10 @@ class ReportChart extends React.Component {
     });
   };
 
-  drawPieChart = () => {
-    const pieChartNode = this.chartNode;
-    if (!pieChartNode) {
-      return;
-    }
-
-    const {reportData} = this.state;
-    const chartModel = ReportChart.getPieChartModel(reportData);
-
-    const totalSize = ReportModel.getSizeValue(reportData.total);
-    const toPercents = 100;
-    const duration = 350;
-
-    nv.addGraph(() => {
-      const chart = nv.models.flexPieChart().
-        x(d => d.name).
-        y(d => d.size).
-        valueFormat(value =>
-          `${value} (${Math.round((value * toPercents) / totalSize)}%)`
-        ).
-        showLegend(false).
-        showLabels(false);
-
-      chart.getUrl(column =>
-        ReportChart.getSearchUrl(column.issuesQuery, this.props.homeUrl)
-      );
-
-      d3.select(pieChartNode).
-        datum(chartModel).
-        transition().
-        duration(duration).
-        call(chart);
-
-      nv.utils.windowResize(chart.update);
-
-      return chart;
-    });
-  };
-
   onGetSvgNode = barChartNode => {
     if (barChartNode) {
       this.chartNode = barChartNode;
       this.drawBarChart();
-    }
-  };
-
-  onGetSvgNodeForPie = pieChartNode => {
-    if (pieChartNode) {
-      this.chartNode = pieChartNode;
-      this.drawPieChart();
     }
   };
 
@@ -300,16 +245,11 @@ class ReportChart extends React.Component {
   }
 
   renderPieChart() {
-    const verticalPadding = 65;
-    const height = `${window.innerHeight - verticalPadding}px`;
-
     return (
-      <div
-        className="report-chart__body report-chart__body_fixed"
-        style={{height}}
-      >
-        <svg ref={this.onGetSvgNodeForPie}/>
-      </div>
+      <PieChartPresentation
+        reportData={this.props.reportData}
+        homeUrl={this.props.homeUrl}
+      />
     );
   }
 

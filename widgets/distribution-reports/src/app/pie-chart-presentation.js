@@ -1,0 +1,107 @@
+import './style/report-chart.scss';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import d3 from 'd3/d3';
+
+import ReportModel from './../../../../components/src/report-model/report-model';
+
+import './nv-flex-pie-chart';
+
+const nv = window.nv;
+
+class PieChartPresentation extends React.Component {
+  static propTypes = {
+    reportData: PropTypes.object,
+    homeUrl: PropTypes.string
+  };
+
+  static getPieChartModel = reportData =>
+    ((reportData.columns || []).
+      map(xCol => ({
+        name: xCol.name,
+        issuesQuery: xCol.issuesQuery,
+        size: ReportModel.getSizeValue(xCol.size),
+        colorIndex: xCol.colorIndex
+      }))
+    );
+
+  constructor(props) {
+    super(props);
+    const {reportData} = props;
+
+    this.state = {
+      chartModel: PieChartPresentation.getPieChartModel(reportData),
+      totalSize: ReportModel.getSizeValue(reportData.total)
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    const {reportData} = props;
+    if (reportData) {
+      this.setState({
+        chartModel: PieChartPresentation.getPieChartModel(reportData),
+        totalSize: ReportModel.getSizeValue(reportData.total)
+      }, () => this.drawPieChart());
+    }
+  }
+
+  drawPieChart = () => {
+    const pieChartNode = this.chartNode;
+    if (!pieChartNode) {
+      return;
+    }
+
+    const {chartModel, totalSize} = this.state;
+    const toPercents = 100;
+    const duration = 350;
+
+    nv.addGraph(() => {
+      const chart = nv.models.flexPieChart().
+        x(d => d.name).
+        y(d => d.size).
+        valueFormat(value =>
+          `${value} (${Math.round((value * toPercents) / totalSize)}%)`
+        ).
+        showLegend(false).
+        showLabels(false);
+
+      chart.getUrl(column =>
+        ReportModel.getSearchUrl(column.issuesQuery, this.props.homeUrl)
+      );
+
+      d3.select(pieChartNode).
+        datum(chartModel).
+        transition().
+        duration(duration).
+        call(chart);
+
+      nv.utils.windowResize(chart.update);
+
+      return chart;
+    });
+  };
+
+  onGetSvgNodeForPie = pieChartNode => {
+    if (pieChartNode) {
+      this.chartNode = pieChartNode;
+      this.drawPieChart();
+    }
+  };
+
+  render() {
+    const verticalPadding = 65;
+    const height = `${window.innerHeight - verticalPadding}px`;
+
+    return (
+      <div
+        className="report-chart__body report-chart__body_fixed"
+        style={{height}}
+      >
+        <svg ref={this.onGetSvgNodeForPie}/>
+      </div>
+    );
+  }
+}
+
+export default PieChartPresentation;
