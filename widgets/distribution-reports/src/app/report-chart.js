@@ -7,9 +7,9 @@ import Button from '@jetbrains/ring-ui/components/button/button';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import FilterFieldValue from '../../../../components/src/filter-field-value/filter-field-value';
+import ReportModel from '../../../../components/src/report-model/report-model';
 
 import ReportChartSortOrder from './report-chart-sort-order';
-import ReportModel from './report-model';
 import PieChartPresentation from './pie-chart-presentation';
 import BarsChartPresentation from './bars-chart-presentation';
 import MatrixPresentation from './matrix-presentation';

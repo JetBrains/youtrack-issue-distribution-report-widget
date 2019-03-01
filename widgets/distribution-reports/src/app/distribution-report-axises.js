@@ -1,8 +1,9 @@
+import ReportModel from '../../../../components/src/report-model/report-model';
+
 import {
   getReportTypePresentation,
   isTypeWithEditableXAxis
 } from './distribution-report-types';
-import ReportModel from './report-model';
 
 const SortOrderComparators = {
   getAscComparatorForProperty: propertyName =>

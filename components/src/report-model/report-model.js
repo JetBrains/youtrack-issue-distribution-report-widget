@@ -5,12 +5,21 @@ const BackendTypes = {
   IndependentBurnDownReport: 'jetbrains.youtrack.reports.impl.agile.burndown.gap.IndependentBurndownReport',
   SprintBasedCumulativeFlowReport: 'jetbrains.youtrack.reports.impl.agile.cumulative.gap.SprintBasedCumulativeFlowReport',
   IndependentCumulativeFlowReport: 'jetbrains.youtrack.reports.impl.agile.cumulative.gap.IndependentCumulativeFlowReport',
+  IssuePerProjectReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerProjectReport',
+  IssuePerAssigneeReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerAssigneeReport',
+  FlatDistributionReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.FlatDistributionReport',
+  MatrixReport: 'jetbrains.youtrack.reports.impl.distribution.matrix.gap.MatrixReport',
 
-  ReportNamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange'
+  ReportNamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
+
+  toShortType: longType =>
+    longType.split('.').pop()
 };
 
 function oneOfType(report, types) {
-  return types.some(type => report.$type === type);
+  return report.$type && types.some(
+    type => type === report.$type || type === BackendTypes[report.$type]
+  );
 }
 
 const ReportTypes = {
@@ -33,7 +42,15 @@ const ReportTypes = {
     ]),
 
   isIndependent: report =>
-    !ReportTypes.isSprintBased(report)
+    !ReportTypes.isSprintBased(report),
+
+  isIssueDistributionReport: report =>
+    oneOfType(report, [
+      BackendTypes.IssuePerProjectReport,
+      BackendTypes.IssuePerAssigneeReport,
+      BackendTypes.FlatDistributionReport,
+      BackendTypes.MatrixReport
+    ])
 };
 
 const NewReport = {
@@ -80,7 +97,10 @@ const ReportDataValidity = {
     !reportData.colors || !reportData.names,
 
   burnDown: reportData =>
-    !(reportData.remainingEstimation || []).length
+    !(reportData.remainingEstimation || []).length,
+
+  issuesDistribution: reportData =>
+    !(reportData.columns || reportData.ycolumns || []).length
 };
 
 const ReportModel = {
@@ -114,6 +134,9 @@ const ReportModel = {
 
   isValidReportData: report => {
     const reportData = report.data || {};
+    if (ReportTypes.isIssueDistributionReport(report)) {
+      return ReportDataValidity.issuesDistribution(reportData);
+    }
     if (ReportTypes.isCumulativeFlow(report)) {
       return ReportDataValidity.cumulativeFlow(reportData);
     }

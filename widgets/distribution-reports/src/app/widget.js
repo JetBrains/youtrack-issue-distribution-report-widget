@@ -7,6 +7,8 @@ import 'd3/d3';
 import 'nvd3/nv.d3';
 import 'nvd3/nv.d3.css';
 
+import ReportModel from '../../../../components/src/report-model/report-model';
+
 import {
   loadReportWithData,
   recalculateReport,
@@ -17,7 +19,6 @@ import {
 import Configuration
   from './configuration';
 import {REPORT_TYPES} from './distribution-report-types';
-import ReportModel from './report-model';
 import DistributionReportAxises from './distribution-report-axises';
 import Content from './content';
 import './style/distribution-reports-widget.scss';
