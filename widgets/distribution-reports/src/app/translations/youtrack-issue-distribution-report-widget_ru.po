@@ -11,13 +11,13 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-03-01 12:33\n"
+"PO-Revision-Date: 2019-03-01 17:00\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
 msgstr "Добавить проект"
 
-#: src/app/report-chart.js:379
+#: src/app/report-chart.js:277
 msgid "Bars"
 msgstr "Столбики"
 
@@ -106,7 +106,7 @@ msgstr "К сожалению, возникла какая-то проблема
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Изменять параметры отчета могут только владельцы. Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
 
-#: src/app/report-chart.js:402
+#: src/app/report-chart.js:300
 msgid "Pie chart"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr "воскресенье|понедельник|вторник|среда|
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
-#: src/app/report-chart.js:390
+#: src/app/report-chart.js:288
 msgid "Table"
 msgstr "Таблица"
 
@@ -182,7 +182,7 @@ msgstr "Нет задач, соответствующих фильтрам в н
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
 
-#: src/app/report-chart.js:351
+#: src/app/report-chart.js:249
 msgid "Total"
 msgstr "Всего"
 
