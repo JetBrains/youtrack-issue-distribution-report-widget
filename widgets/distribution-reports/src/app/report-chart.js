@@ -2,7 +2,6 @@ import './style/report-chart.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from '@jetbrains/ring-ui/components/link/link';
 import ButtonGroup from '@jetbrains/ring-ui/components/button-group/button-group';
 import Button from '@jetbrains/ring-ui/components/button/button';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
@@ -13,6 +12,7 @@ import ReportChartSortOrder from './report-chart-sort-order';
 import ReportModel from './report-model';
 import PieChartPresentation from './pie-chart-presentation';
 import BarsChartPresentation from './bars-chart-presentation';
+import MatrixPresentation from './matrix-presentation';
 import DistributionReportModel from './distribution-report-model';
 import './nv-flex-pie-chart';
 
@@ -42,44 +42,6 @@ class ReportChart extends React.Component {
 
   static getBarsChartHeight = columns =>
     ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
-
-  static getBarsChartModel = reportData => {
-    if (DistributionReportModel.isStackedChart(reportData)) {
-      return reportData.xcolumns.map(xCol => ({
-        key: xCol.name,
-        name: xCol.name,
-        user: xCol.user,
-        values: reportData.ycolumns.map(yCol => ({
-          key: yCol.name,
-          name: yCol.name,
-          user: yCol.user,
-          issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
-          size: ReportModel.getSizeValue(
-            reportData.counts[xCol.index][yCol.index]
-          ),
-          presentation: ReportModel.getSizePresentation(
-            reportData.counts[xCol.index][yCol.index]
-          )
-        })),
-        colorIndex: xCol.colorIndex
-      }));
-    }
-    return ((reportData.columns || []).map(xCol => ({
-      user: xCol.user,
-      values: (reportData.columns || []).map(yCol => ({
-        name: yCol.name,
-        user: yCol.user,
-        issuesQuery: yCol.issuesQuery,
-        size: yCol.name === xCol.name
-          ? ReportModel.getSizeValue(yCol.size)
-          : 0,
-        presentation: yCol.name === xCol.name
-          ? ReportModel.getSizePresentation(yCol.size)
-          : 0
-      })),
-      colorIndex: 1
-    })));
-  };
 
   constructor(props) {
     super(props);
@@ -122,16 +84,27 @@ class ReportChart extends React.Component {
     );
   };
 
+  isActiveLineIndex = idx =>
+    (this.state.activeLineIdx === idx &&
+    this.props.presentationMode === ReportChart.PresentationModes.Table);
+
+  setActiveLineIndex = activeLineIdx =>
+    this.setState({activeLineIdx});
+
   clearActiveLineIndex = () =>
     this.setState({activeLineIdx: null});
 
+  getOnLineMouseOverCallback = lineIdx =>
+    () => this.setActiveLineIndex(lineIdx);
+
   renderLineLabel(column, idx) {
-    const isActiveIdx = this.state.activeLineIdx === idx;
+    const isActiveIdx = this.isActiveLineIndex(idx);
 
     return (
       <div
         key={`report-label-${column.name}`}
         className={`report-chart__line-label${isActiveIdx ? ' report-chart__line-label_active' : ''}`}
+        onMouseOver={this.getOnLineMouseOverCallback(idx)}
       >
         <FilterFieldValue
           value={column}
@@ -147,11 +120,12 @@ class ReportChart extends React.Component {
       return '';
     }
 
-    const isActiveIdx = this.state.activeLineIdx === idx;
+    const isActiveIdx = this.isActiveLineIndex(idx);
 
     return (
       <div
         className={`report-chart__size${isActiveIdx ? ' report-chart__size_active' : ''}`}
+        onMouseOver={this.getOnLineMouseOverCallback(idx)}
         key={`report-label-size-${idx}`}
       >
         { sizePresentation }
@@ -165,11 +139,12 @@ class ReportChart extends React.Component {
       ? `${Math.round(ReportModel.getSizeValue(size) / totalCount * toPercentsMultiplier)}%`
       : '');
 
-    const isActiveIdx = this.state.activeLineIdx === idx;
+    const isActiveIdx = this.isActiveLineIndex(idx);
 
     return (
       <div
         className={`report-chart__size-in-percents${isActiveIdx ? ' report-chart__size-in-percents_active' : ''}`}
+        onMouseOver={this.getOnLineMouseOverCallback(idx)}
         key={`report-label-percents-${idx}`}
       >
         { getSizeInPercents(column.size) }
@@ -196,93 +171,15 @@ class ReportChart extends React.Component {
     );
   }
 
-  renderTableCell(row, rowIdx) {
-    const sizeValue = ReportModel.getSizeValue(
-      row.size
-    );
-    const sizePresentation = sizeValue
-      ? ReportModel.getSizePresentation(row.size)
-      : '-';
-
-    const onClick = () => {
-      if (sizeValue) {
-        const url = ReportModel.getSearchUrl(
-          row.issuesQuery, this.props.homeUrl
-        );
-        window.open(url, '_blank');
-      }
-    };
-
-    const onMouseOver = () =>
-      this.setState({activeLineIdx: rowIdx});
-
-    const isActiveIdx = this.state.activeLineIdx === rowIdx;
-
-    return (
-      <div
-        key={`column-row-key-${rowIdx}`}
-        className={`report-chart__table-cell${isActiveIdx ? ' report-chart__table-cell_active' : ''}`}
-        onMouseOver={onMouseOver}
-        onClick={onClick}
-      >
-        {
-          (sizeValue > 0) &&
-          <Link pseudo={true}>
-            {sizePresentation}
-          </Link>
-        }
-        {
-          (sizeValue === 0) &&
-          <span>{sizePresentation}</span>
-        }
-      </div>
-    );
-  }
-
-  renderColumn(column) {
-    return (
-      <div className="report-chart__table-column">
-        {
-          column.values.map((row, idx) =>
-            this.renderTableCell(row, idx)
-          )
-        }
-      </div>
-    );
-  }
-
   renderTable() {
-    const {reportData} = this.state;
-    const model = ReportChart.getBarsChartModel(reportData);
-
     return (
-      <div
-        className="report-chart__body"
-      >
-        <div className="report-chart__table-header">
-          {
-            model.map(column => (
-              <div
-                key={`column-key-${column.name}`}
-                className="report-chart__table-header-cell"
-              >
-                <FilterFieldValue
-                  value={column}
-                  homeUrl={this.props.homeUrl}
-                />
-              </div>
-            ))
-          }
-        </div>
-        <div
-          className="report-chart__table"
-          onMouseLeave={this.clearActiveLineIndex}
-        >
-          {
-            model.map(column => this.renderColumn(column))
-          }
-        </div>
-      </div>
+      <MatrixPresentation
+        reportData={this.props.reportData}
+        homeUrl={this.props.homeUrl}
+        activeLineIdx={this.state.activeLineIdx}
+        onActivateLine={this.setActiveLineIndex}
+        onResetActiveLine={this.clearActiveLineIndex}
+      />
     );
   }
 
@@ -309,6 +206,7 @@ class ReportChart extends React.Component {
           <div
             className="report-chart__labels"
             style={{height: chartHeight}}
+            onMouseLeave={this.clearActiveLineIndex}
           >
             <div className="report-chart__labels-column">
               {
