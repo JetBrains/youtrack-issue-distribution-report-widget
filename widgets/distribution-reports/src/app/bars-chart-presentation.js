@@ -6,6 +6,8 @@ import d3 from 'd3/d3';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 
+import DistributionReportModel from './distribution-report-model';
+
 const nv = window.nv;
 const GRAPH_TRANSITION_DURATION = 350;
 
@@ -16,54 +18,13 @@ class BarsChartPresentation extends React.Component {
     homeUrl: PropTypes.string
   };
 
-  static isStackedChart = reportData =>
-    !!(reportData.xcolumns && reportData.ycolumns);
-
-  static getBarsChartModel = reportData => {
-    if (BarsChartPresentation.isStackedChart(reportData)) {
-      return reportData.xcolumns.map(xCol => ({
-        key: xCol.name,
-        name: xCol.name,
-        user: xCol.user,
-        values: reportData.ycolumns.map(yCol => ({
-          key: yCol.name,
-          name: yCol.name,
-          user: yCol.user,
-          issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
-          size: ReportModel.getSizeValue(
-            reportData.counts[xCol.index][yCol.index]
-          ),
-          presentation: ReportModel.getSizePresentation(
-            reportData.counts[xCol.index][yCol.index]
-          )
-        })),
-        colorIndex: xCol.colorIndex
-      }));
-    }
-    return ((reportData.columns || []).map(xCol => ({
-      user: xCol.user,
-      values: (reportData.columns || []).map(yCol => ({
-        name: yCol.name,
-        user: yCol.user,
-        issuesQuery: yCol.issuesQuery,
-        size: yCol.name === xCol.name
-          ? ReportModel.getSizeValue(yCol.size)
-          : 0,
-        presentation: yCol.name === xCol.name
-          ? ReportModel.getSizePresentation(yCol.size)
-          : 0
-      })),
-      colorIndex: 1
-    })));
-  };
-
   constructor(props) {
     super(props);
     const {reportData} = props;
 
     this.state = {
-      chartModel: BarsChartPresentation.getBarsChartModel(reportData),
-      isStacked: BarsChartPresentation.isStackedChart(reportData)
+      chartModel: DistributionReportModel.getBarsChartModel(reportData),
+      isStacked: DistributionReportModel.isStackedChart(reportData)
     };
   }
 
@@ -72,8 +33,8 @@ class BarsChartPresentation extends React.Component {
 
     if (reportData) {
       this.setState({
-        chartModel: BarsChartPresentation.getBarsChartModel(reportData),
-        isStacked: BarsChartPresentation.isStackedChart(reportData)
+        chartModel: DistributionReportModel.getBarsChartModel(reportData),
+        isStacked: DistributionReportModel.isStackedChart(reportData)
       }, () => this.drawChart());
     }
   }

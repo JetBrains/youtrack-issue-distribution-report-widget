@@ -13,6 +13,7 @@ import ReportChartSortOrder from './report-chart-sort-order';
 import ReportModel from './report-model';
 import PieChartPresentation from './pie-chart-presentation';
 import BarsChartPresentation from './bars-chart-presentation';
+import DistributionReportModel from './distribution-report-model';
 import './nv-flex-pie-chart';
 
 const X_AXIS_HEIGHT = 22;
@@ -42,14 +43,8 @@ class ReportChart extends React.Component {
   static getBarsChartHeight = columns =>
     ReportChart.LineHeight * columns.length + X_AXIS_HEIGHT;
 
-  static getSearchUrl = (columnUrl, homeUrl) =>
-    `${homeUrl}/issues?q=${encodeURIComponent(columnUrl)}`;
-
-  static isStackedChart = reportData =>
-    !!(reportData.xcolumns && reportData.ycolumns);
-
   static getBarsChartModel = reportData => {
-    if (ReportChart.isStackedChart(reportData)) {
+    if (DistributionReportModel.isStackedChart(reportData)) {
       return reportData.xcolumns.map(xCol => ({
         key: xCol.name,
         name: xCol.name,
@@ -211,7 +206,7 @@ class ReportChart extends React.Component {
 
     const onClick = () => {
       if (sizeValue) {
-        const url = ReportChart.getSearchUrl(
+        const url = ReportModel.getSearchUrl(
           row.issuesQuery, this.props.homeUrl
         );
         window.open(url, '_blank');
@@ -355,7 +350,8 @@ class ReportChart extends React.Component {
     const reportData = this.state.reportData || {};
     const title = `${this.props.aggregationTitle || i18n('Total')}: ${ReportModel.getSizePresentation(reportData.total)}`;
 
-    const isTwoDimensionalChart = ReportChart.isStackedChart(reportData);
+    const isTwoDimensionalChart =
+      DistributionReportModel.isStackedChart(reportData);
 
     const getOnChangeReportPresentationCallback = presentationMode =>
       () => this.props.onChangePresentationMode(

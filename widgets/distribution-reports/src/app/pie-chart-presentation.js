@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import d3 from 'd3/d3';
 
 import ReportModel from './../../../../components/src/report-model/report-model';
-
 import './nv-flex-pie-chart';
+import DistributionReportModel from './distribution-report-model';
 
 const nv = window.nv;
 
@@ -16,22 +16,12 @@ class PieChartPresentation extends React.Component {
     homeUrl: PropTypes.string
   };
 
-  static getPieChartModel = reportData =>
-    ((reportData.columns || []).
-      map(xCol => ({
-        name: xCol.name,
-        issuesQuery: xCol.issuesQuery,
-        size: ReportModel.getSizeValue(xCol.size),
-        colorIndex: xCol.colorIndex
-      }))
-    );
-
   constructor(props) {
     super(props);
     const {reportData} = props;
 
     this.state = {
-      chartModel: PieChartPresentation.getPieChartModel(reportData),
+      chartModel: DistributionReportModel.getPieChartModel(reportData),
       totalSize: ReportModel.getSizeValue(reportData.total)
     };
   }
@@ -40,7 +30,7 @@ class PieChartPresentation extends React.Component {
     const {reportData} = props;
     if (reportData) {
       this.setState({
-        chartModel: PieChartPresentation.getPieChartModel(reportData),
+        chartModel: DistributionReportModel.getPieChartModel(reportData),
         totalSize: ReportModel.getSizeValue(reportData.total)
       }, () => this.drawPieChart());
     }
