@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2019-03-01 17:00\n"
+"PO-Revision-Date: 2019-03-01 18:18\n"
 
 #: src/app/distribution-report-form.js:435
 msgid "Add project"
@@ -25,7 +25,7 @@ msgstr "バー"
 msgid "Calculate for all projects"
 msgstr "すべてのプロジェクトについて計算する"
 
-#: src/app/content.js:93
+#: src/app/content.js:94
 msgid "Calculating..."
 msgstr "計算中…"
 
@@ -33,15 +33,15 @@ msgstr "計算中…"
 msgid "Cancel"
 msgstr "取り消す"
 
-#: src/app/content.js:69
+#: src/app/content.js:70
 msgid "Cannot find YouTrack installation"
 msgstr "YouTrackのインストールが見つかりません"
 
-#: src/app/content.js:74
+#: src/app/content.js:75
 msgid "Cannot find any issue distribution report"
 msgstr "課題配布レポートが見つかりません"
 
-#: src/app/content.js:78
+#: src/app/content.js:79
 msgid "Cannot load selected report"
 msgstr "選択したレポートを読み込めません"
 
@@ -57,7 +57,7 @@ msgstr "ウィジェットを更新できません"
 msgid "Edit report"
 msgstr "レポートの編集"
 
-#: src/app/content.js:60
+#: src/app/content.js:61
 msgid "Edit settings"
 msgstr "設定の編集"
 
@@ -65,7 +65,7 @@ msgstr "設定の編集"
 msgid "Filter issues"
 msgstr "課題をフィルタリング"
 
-#: src/app/widget.js:54
+#: src/app/widget.js:55
 msgid "Issue Distribution Report"
 msgstr "課題配布レポート"
 
@@ -98,7 +98,7 @@ msgstr "新しいレポート"
 msgid "Oops! Something went wrong..."
 msgstr "エラー！不明なエラーが発生しました…"
 
-#: src/app/content.js:81
+#: src/app/content.js:82
 msgid "Oops... Something went wrong =("
 msgstr "不明なエラーが発生しました =("
 
@@ -110,7 +110,7 @@ msgstr "オーナーのみが、レポート設定を編集できます。この
 msgid "Pie chart"
 msgstr ""
 
-#: src/app/content.js:44
+#: src/app/content.js:45
 msgid "Remove widget"
 msgstr "ウィジェットを削除"
 
@@ -170,11 +170,11 @@ msgstr "日|月|火|水|木|金|土"
 msgid "Table"
 msgstr "テーブル"
 
-#: src/app/content.js:108
+#: src/app/content.js:109
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "レポートを計算できません：レポート設定のフィルタが返す課題が多すぎます"
 
-#: src/app/content.js:113
+#: src/app/content.js:114
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "レポート設定のフィルタと一致する課題はありません"
 
@@ -186,15 +186,15 @@ msgstr "このレポートは{{ownerNamePlaceholder}}さんが所有していま
 msgid "Total"
 msgstr "合計"
 
-#: src/app/content.js:120
+#: src/app/content.js:121
 msgid "Total issues count"
 msgstr "総課題数"
 
-#: src/app/content.js:123
+#: src/app/content.js:124
 msgid "Total votes count"
 msgstr "総投票数"
 
-#: src/app/content.js:126
+#: src/app/content.js:127
 msgid "Total {{fieldName}}"
 msgstr "{{fieldName}}の合計"
 
