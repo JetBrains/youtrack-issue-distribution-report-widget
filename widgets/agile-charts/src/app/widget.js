@@ -16,6 +16,7 @@ import {
 } from '../../../../components/src/resources/resources';
 import ReportModel
   from '../../../../components/src/report-model/report-model';
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
 
 import Configuration
   from './configuration';
@@ -168,6 +169,7 @@ class AgileProgressDiagramWidget extends React.Component {
   };
 
   setYouTrack(youTrackService) {
+    BackendTypes.setYtVersion(youTrackService.version);
     this.setState({
       youTrack: {
         id: youTrackService.id,

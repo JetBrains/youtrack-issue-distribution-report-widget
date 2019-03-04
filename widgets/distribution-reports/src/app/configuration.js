@@ -14,6 +14,8 @@ import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
 import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form';
 import '@jetbrains/ring-ui/components/form/form.scss';
 
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
+
 import {makeYouTrackFetcher} from './components/service-resource';
 import {
   getYouTrackServices,
@@ -23,9 +25,6 @@ import {
   loadCurrentUser
 } from './resources';
 import DistributionReportForm from './distribution-report-form';
-import {
-  ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE
-} from './distribution-report-types';
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -42,14 +41,14 @@ class Configuration extends React.Component {
 
   static createNewReport = () => ({
     id: Configuration.NEW_REPORT_ID,
-    $type: ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
+    $type: BackendTypes.get().FlatDistributionReport,
     name: '',
     projects: [],
     xsortOrder: Configuration.
       NEW_REPORT_DEFAULT_AXIS_SORT_ORDER,
     xaxis: {
       field: {
-        $type: 'jetbrains.charisma.keyword.PredefinedFilterField',
+        $type: BackendTypes.get().PredefinedFilterField,
         id: 'project',
         presentation: i18n('project')
       }

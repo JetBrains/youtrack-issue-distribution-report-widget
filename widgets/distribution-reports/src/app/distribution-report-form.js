@@ -15,6 +15,7 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import FilterFieldsSelector
   from '../../../../components/src/filter-fields-selector/filter-fields-selector';
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
 
 import {
   loadProjects,
@@ -25,9 +26,7 @@ import {
 } from './resources';
 import {
   getReportTypeExampleLink,
-  isTypeWithEditableXAxis,
-  ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
-  ISSUES_PER_TWO_FIELDS_REPORT_TYPE
+  isTypeWithEditableXAxis
 } from './distribution-report-types';
 import DistributionReportAxises from './distribution-report-axises';
 
@@ -45,13 +44,13 @@ class DistributionReportForm extends React.Component {
 
   static canShowSecondaryAxisOption = report =>
     DistributionReportForm.isNewReport(report) ||
-    report.$type === ISSUES_PER_TWO_FIELDS_REPORT_TYPE;
+    report.$type === BackendTypes.get().MatrixReport;
 
   static convertOneFieldReportToTwoFieldsReportIfNeeded = report => {
-    if (report.$type === ISSUES_PER_TWO_FIELDS_REPORT_TYPE) {
+    if (report.$type === BackendTypes.get().MatrixReport) {
       return report;
     }
-    report.$type = ISSUES_PER_TWO_FIELDS_REPORT_TYPE;
+    report.$type = BackendTypes.get().MatrixReport;
     report.yaxis = {field: report.xaxis.field};
     report.xaxis.$type = undefined;
     report.ysortOrder = report.xsortOrder;
@@ -59,10 +58,10 @@ class DistributionReportForm extends React.Component {
   };
 
   static convertTwoFieldsReportToOneFieldReportIfNeeded = report => {
-    if (report.$type !== ISSUES_PER_TWO_FIELDS_REPORT_TYPE) {
+    if (report.$type === BackendTypes.get().MatrixReport) {
       return report;
     }
-    report.$type = ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE;
+    report.$type = BackendTypes.get().FlatDistributionReport;
     report.xaxis = {field: (report.yaxis || {}).field};
     report.yaxis = undefined;
     report.ysortOrder = undefined;

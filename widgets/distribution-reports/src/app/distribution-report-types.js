@@ -1,39 +1,36 @@
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
-const ISSUES_PER_PROJECT_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerProjectReport';
-const ISSUES_PER_ASSIGNEE_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerAssigneeReport';
-const ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.distribution.flat.gap.FlatDistributionReport';
-const ISSUES_PER_TWO_FIELDS_REPORT_TYPE = 'jetbrains.youtrack.reports.impl.distribution.matrix.gap.MatrixReport';
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
 
-const REPORT_TYPES = {
-  [ISSUES_PER_PROJECT_REPORT_TYPE]: {
-    id: ISSUES_PER_PROJECT_REPORT_TYPE,
+const getReportTypesMap = () => ({
+  [BackendTypes.get().IssuePerProjectReport]: {
+    id: BackendTypes.get().IssuePerProjectReport,
     pathPrefix: 'issuesPerProject',
     docs: 'https://www.jetbrains.com/help/youtrack/standalone/Issues-per-Project.html'
   },
-  [ISSUES_PER_ASSIGNEE_REPORT_TYPE]: {
-    id: ISSUES_PER_ASSIGNEE_REPORT_TYPE,
+  [BackendTypes.get().IssuePerAssigneeReport]: {
+    id: BackendTypes.get().IssuePerAssigneeReport,
     pathPrefix: 'issuesPerAssignee',
     docs: 'https://www.jetbrains.com/help/youtrack/standalone/Issues-per-Assignee.html'
   },
-  [ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE]: {
-    id: ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
+  [BackendTypes.get().FlatDistributionReport]: {
+    id: BackendTypes.get().FlatDistributionReport,
     pathPrefix: 'flatDistribution',
     docs: 'https://www.jetbrains.com/help/youtrack/standalone/Issues-per-Arbitrary-Field.html'
   },
-  [ISSUES_PER_TWO_FIELDS_REPORT_TYPE]: {
-    id: ISSUES_PER_TWO_FIELDS_REPORT_TYPE,
+  [BackendTypes.get().MatrixReport]: {
+    id: BackendTypes.get().MatrixReport,
     pathPrefix: 'issueDistribution',
     docs: 'https://www.jetbrains.com/help/youtrack/standalone/Issues-per-Arbitrary-Field.html'
   }
-};
+});
 
 
 function getReportTypePresentation(report) {
-  if (report.$type === ISSUES_PER_PROJECT_REPORT_TYPE) {
+  if (report.$type === BackendTypes.get().IssuePerProjectReport) {
     return i18n('project');
   }
-  if (report.$type === ISSUES_PER_ASSIGNEE_REPORT_TYPE) {
+  if (report.$type === BackendTypes.get().IssuePerAssigneeReport) {
     return i18n('assignee');
   }
   const ordinateForPresentation = report.yaxis || report.xaxis;
@@ -44,22 +41,25 @@ function getReportTypePresentation(report) {
 }
 
 function getReportTypeExampleLink(report) {
-  return REPORT_TYPES[report.$type] && REPORT_TYPES[report.$type].docs;
+  const reportTypeData = getReportTypesMap()[report && report.$type];
+  return reportTypeData && reportTypeData.docs;
 }
 
 function isTypeWithEditableXAxis(report) {
-  return report.$type === ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE ||
-    report.$type === ISSUES_PER_TWO_FIELDS_REPORT_TYPE;
+  return BackendTypes.entityOfType(report, [
+    BackendTypes.get().FlatDistributionReport,
+    BackendTypes.get().MatrixReport
+  ]);
+}
+
+function getReportTypePathPrefix(report) {
+  const reportTypeData = getReportTypesMap()[report && report.$type];
+  return reportTypeData && reportTypeData.pathPrefix;
 }
 
 
 export {
-  REPORT_TYPES,
-  ISSUES_PER_PROJECT_REPORT_TYPE,
-  ISSUES_PER_ASSIGNEE_REPORT_TYPE,
-  ISSUES_PER_ARBITRARY_FIELD_REPORT_TYPE,
-  ISSUES_PER_TWO_FIELDS_REPORT_TYPE,
-
+  getReportTypePathPrefix,
   getReportTypePresentation,
   getReportTypeExampleLink,
   isTypeWithEditableXAxis

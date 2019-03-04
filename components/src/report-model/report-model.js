@@ -1,55 +1,35 @@
+import BackendTypes from '../backend-types/backend-types';
+
 import ReportNamedTimeRanges from './report-named-time-ranges';
-
-const BackendTypes = {
-  SprintBasedBurnDownReport: 'jetbrains.youtrack.reports.impl.agile.burndown.gap.SprintBasedBurndownReport',
-  IndependentBurnDownReport: 'jetbrains.youtrack.reports.impl.agile.burndown.gap.IndependentBurndownReport',
-  SprintBasedCumulativeFlowReport: 'jetbrains.youtrack.reports.impl.agile.cumulative.gap.SprintBasedCumulativeFlowReport',
-  IndependentCumulativeFlowReport: 'jetbrains.youtrack.reports.impl.agile.cumulative.gap.IndependentCumulativeFlowReport',
-  IssuePerProjectReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerProjectReport',
-  IssuePerAssigneeReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerAssigneeReport',
-  FlatDistributionReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.FlatDistributionReport',
-  MatrixReport: 'jetbrains.youtrack.reports.impl.distribution.matrix.gap.MatrixReport',
-
-  ReportNamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
-
-  toShortType: longType =>
-    longType.split('.').pop()
-};
-
-function oneOfType(report, types) {
-  return report.$type && types.some(
-    type => type === report.$type || type === BackendTypes[report.$type]
-  );
-}
 
 const ReportTypes = {
   isCumulativeFlow: report =>
-    oneOfType(report, [
-      BackendTypes.SprintBasedCumulativeFlowReport,
-      BackendTypes.IndependentCumulativeFlowReport
+    BackendTypes.entityOfType(report, [
+      BackendTypes.get().SprintBasedCumulativeFlowReport,
+      BackendTypes.get().IndependentCumulativeFlowReport
     ]),
 
   isBurnDown: report =>
-    oneOfType(report, [
-      BackendTypes.SprintBasedBurnDownReport,
-      BackendTypes.IndependentBurnDownReport
+    BackendTypes.entityOfType(report, [
+      BackendTypes.get().SprintBasedBurndownReport,
+      BackendTypes.get().IndependentBurndownReport
     ]),
 
   isSprintBased: report =>
-    oneOfType(report, [
-      BackendTypes.SprintBasedCumulativeFlowReport,
-      BackendTypes.SprintBasedBurnDownReport
+    BackendTypes.entityOfType(report, [
+      BackendTypes.get().SprintBasedCumulativeFlowReport,
+      BackendTypes.get().SprintBasedBurndownReport
     ]),
 
   isIndependent: report =>
     !ReportTypes.isSprintBased(report),
 
   isIssueDistributionReport: report =>
-    oneOfType(report, [
-      BackendTypes.IssuePerProjectReport,
-      BackendTypes.IssuePerAssigneeReport,
-      BackendTypes.FlatDistributionReport,
-      BackendTypes.MatrixReport
+    BackendTypes.entityOfType(report, [
+      BackendTypes.get().IssuePerProjectReport,
+      BackendTypes.get().IssuePerAssigneeReport,
+      BackendTypes.get().FlatDistributionReport,
+      BackendTypes.get().MatrixReport
     ])
 };
 
@@ -59,8 +39,8 @@ const NewReport = {
   cumulativeFlow: sprint => ({
     id: NewReport.NEW_REPORT_ID,
     $type: sprint
-      ? BackendTypes.SprintBasedCumulativeFlowReport
-      : BackendTypes.IndependentCumulativeFlowReport,
+      ? BackendTypes.get().SprintBasedCumulativeFlowReport
+      : BackendTypes.get().IndependentCumulativeFlowReport,
     name: '',
     projects: [],
     query: '',
@@ -73,13 +53,13 @@ const NewReport = {
   burnDown: sprint => ({
     id: NewReport.NEW_REPORT_ID,
     $type: sprint
-      ? BackendTypes.SprintBasedBurnDownReport
-      : BackendTypes.IndependentBurnDownReport,
+      ? BackendTypes.get().SprintBasedBurndownReport
+      : BackendTypes.get().IndependentBurndownReport,
     name: '',
     projects: [],
     query: '',
     range: {
-      $type: BackendTypes.ReportNamedTimeRange,
+      $type: BackendTypes.get().ReportNamedTimeRange,
       range: {
         id: (ReportNamedTimeRanges.severalDaysRanges()[0]).id
       }

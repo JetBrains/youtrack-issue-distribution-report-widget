@@ -8,6 +8,7 @@ import 'nvd3/nv.d3';
 import 'nvd3/nv.d3.css';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
 
 import {
   loadReportWithData,
@@ -18,7 +19,7 @@ import {
 } from './resources';
 import Configuration
   from './configuration';
-import {REPORT_TYPES} from './distribution-report-types';
+import {getReportTypePathPrefix} from './distribution-report-types';
 import DistributionReportAxises from './distribution-report-axises';
 import Content from './content';
 import './style/distribution-reports-widget.scss';
@@ -57,7 +58,7 @@ class DistributionReportsWidget extends React.Component {
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {
       const homeUrl = (youTrack || {}).homeUrl;
-      const pathReportType = (REPORT_TYPES[report.$type] || {}).pathPrefix;
+      const pathReportType = getReportTypePathPrefix(report);
       return {
         text: report.name,
         href: homeUrl && `${homeUrl}/reports/${pathReportType}/${report.id}`
@@ -154,6 +155,7 @@ class DistributionReportsWidget extends React.Component {
   };
 
   setYouTrack(youTrackService) {
+    BackendTypes.setYtVersion(youTrackService.version);
     this.setState({
       youTrack: {
         id: youTrackService.id,

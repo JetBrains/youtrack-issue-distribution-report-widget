@@ -1,4 +1,4 @@
-import {REPORT_TYPES} from './distribution-report-types';
+import BackendTypes from '../../../../components/src/backend-types/backend-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
 
@@ -42,8 +42,12 @@ async function loadReportWithSettings(fetchYouTrack, reportId) {
 }
 
 async function loadIssuesDistributionReports(fetchYouTrack) {
-  const distributionReportTypes = Object.keys(REPORT_TYPES).
-    map(fullReportTypeName => fullReportTypeName.split('.').pop()).
+  const distributionReportTypes = [
+    BackendTypes.get().IssuePerProjectReport,
+    BackendTypes.get().IssuePerAssigneeReport,
+    BackendTypes.get().FlatDistributionReport,
+    BackendTypes.get().MatrixReport
+  ].map(BackendTypes.toShortType).
     join(',');
 
   return (
@@ -93,7 +97,7 @@ async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
     return [{
       presentation: votersPresentation,
       id: votersPresentation,
-      $type: 'jetbrains.charisma.keyword.PredefinedFilterField'
+      $type: BackendTypes.get().PredefinedFilterField
     }].concat(aggregationFilterFields);
   }
   return aggregationFilterFields;

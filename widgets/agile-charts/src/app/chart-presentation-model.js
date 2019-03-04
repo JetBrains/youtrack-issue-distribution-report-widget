@@ -60,10 +60,10 @@ const ChartPresentationModel = {
     let hasPredefinedColor = false;
     const format = d3.time.format('%Y-%m-%d');
 
-    return reportData.names.map((name, i) => {
+    return (reportData.names || []).map((name, i) => {
       const colorIndex = reportData.colors[i];
       hasPredefinedColor = hasPredefinedColor || colorIndex > 0;
-      const values = reportData.sample.map(dayData => ({
+      const values = (reportData.sample || []).map(dayData => ({
         date: format.parse(dayData.date),
         value: dayData.values[i].value,
         presentation: dayData.values[i].presentation

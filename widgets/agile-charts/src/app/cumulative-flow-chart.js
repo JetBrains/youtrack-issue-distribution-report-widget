@@ -33,14 +33,14 @@ class CumulativeFlowChart extends React.Component {
     if (props.reportData) {
       this.setState(
         {reportData: props.reportData},
-        () => this.drawBarChart()
+        () => this.drawChart()
       );
     }
   }
 
-  drawBarChart = () => {
-    const barChartNode = this.barChartNode;
-    if (!barChartNode) {
+  drawChart = () => {
+    const chartNode = this.chartNode;
+    if (!chartNode) {
       return;
     }
 
@@ -82,7 +82,7 @@ class CumulativeFlowChart extends React.Component {
         ChartPresentationModel.getYAxisTickFormat(reportData.yaxisType)
       );
 
-      d3.select(barChartNode).
+      d3.select(chartNode).
         datum(chartModelData).
         call(chart);
 
@@ -90,9 +90,9 @@ class CumulativeFlowChart extends React.Component {
     });
   };
 
-  onGetSvgNode = barChartNode => {
-    this.barChartNode = barChartNode;
-    this.drawBarChart();
+  onGetSvgNode = chartNode => {
+    this.chartNode = chartNode;
+    this.drawChart();
   };
 
   renderChartBody() {
