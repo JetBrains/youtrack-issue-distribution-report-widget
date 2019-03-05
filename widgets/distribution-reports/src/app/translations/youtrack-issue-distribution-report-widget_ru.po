@@ -11,9 +11,9 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-03-01 18:18\n"
+"PO-Revision-Date: 2019-03-05 11:31\n"
 
-#: src/app/distribution-report-form.js:435
+#: src/app/distribution-report-form.js:434
 msgid "Add project"
 msgstr "Добавить проект"
 
@@ -21,7 +21,7 @@ msgstr "Добавить проект"
 msgid "Bars"
 msgstr "Столбики"
 
-#: src/app/distribution-report-form.js:436
+#: src/app/distribution-report-form.js:435
 msgid "Calculate for all projects"
 msgstr "Рассчитать для всех проектов"
 
@@ -45,15 +45,15 @@ msgstr "Отчетов о распределении задач не найде�
 msgid "Cannot load selected report"
 msgstr "Не удалось загрузить выбранный отчет"
 
-#: src/app/configuration.js:266
+#: src/app/configuration.js:265
 msgid "Cannot save report"
 msgstr "Невозможно сохранить отчет"
 
-#: src/app/configuration.js:275
+#: src/app/configuration.js:274
 msgid "Cannot update widget"
 msgstr "Невозможно обновить виджет"
 
-#: src/app/distribution-report-form.js:482
+#: src/app/distribution-report-form.js:481
 msgid "Edit report"
 msgstr "Редактировать отчет"
 
@@ -61,15 +61,15 @@ msgstr "Редактировать отчет"
 msgid "Edit settings"
 msgstr "Изменить параметры"
 
-#: src/app/distribution-report-form.js:463
+#: src/app/distribution-report-form.js:462
 msgid "Filter issues"
 msgstr "Фильтровать задачи"
 
-#: src/app/widget.js:55
+#: src/app/widget.js:56
 msgid "Issue Distribution Report"
 msgstr "Отчет о распределении задач"
 
-#: src/app/distribution-report-form.js:362
+#: src/app/distribution-report-form.js:361
 msgid "Issues"
 msgstr "Задачи"
 
@@ -81,16 +81,16 @@ msgstr "январь|февраль|март|апрель|май|июнь|июл
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|ноя|дек"
 
-#: src/app/distribution-report-form.js:490
+#: src/app/distribution-report-form.js:489
 msgid "Learn more about this report"
 msgstr "Сведения об этом отчете"
 
-#: src/app/distribution-report-form.js:91
+#: src/app/distribution-report-form.js:90
 msgid "Me only"
 msgstr "Только я"
 
-#: src/app/configuration.js:94
-#: src/app/distribution-report-form.js:481
+#: src/app/configuration.js:93
+#: src/app/distribution-report-form.js:480
 msgid "New report"
 msgstr "Новый отчет"
 
@@ -102,7 +102,7 @@ msgstr "К сожалению, возникла какая-то проблема
 msgid "Oops... Something went wrong =("
 msgstr "К сожалению, возникла какая-то проблема =("
 
-#: src/app/configuration.js:341
+#: src/app/configuration.js:340
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
 msgstr "Изменять параметры отчета могут только владельцы. Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
 
@@ -114,19 +114,19 @@ msgstr ""
 msgid "Remove widget"
 msgstr "Удалить виджет"
 
-#: src/app/distribution-report-form.js:478
+#: src/app/distribution-report-form.js:477
 msgid "Report"
 msgstr "Отчет"
 
-#: src/app/distribution-report-form.js:386
+#: src/app/distribution-report-form.js:385
 msgid "Report is private"
 msgstr "Отчет является закрытым"
 
-#: src/app/distribution-report-form.js:385
+#: src/app/distribution-report-form.js:384
 msgid "Report is visible to members of {{visibilityPresentation}}"
 msgstr "Отчет отображается для членов {{visibilityPresentation}}"
 
-#: src/app/distribution-report-form.js:510
+#: src/app/distribution-report-form.js:509
 msgid "Report name"
 msgstr "Имя отчета"
 
@@ -134,27 +134,27 @@ msgstr "Имя отчета"
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/app/configuration.js:468
+#: src/app/configuration.js:467
 msgid "Select YouTrack"
 msgstr "Выберите YouTrack"
 
-#: src/app/configuration.js:379
+#: src/app/configuration.js:378
 msgid "Select report"
 msgstr "Выберите отчет"
 
-#: src/app/distribution-report-form.js:259
+#: src/app/distribution-report-form.js:258
 msgid "Show distribution by {{field}}"
 msgstr "Показать распределение по полю {{field}}"
 
-#: src/app/distribution-report-form.js:327
+#: src/app/distribution-report-form.js:326
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Показать распределение по полю {{mainFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:326
+#: src/app/distribution-report-form.js:325
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Показать распределение по полям {{mainFieldPresentation}} и {{secondaryFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:354
+#: src/app/distribution-report-form.js:353
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Показать суммарные значения для: {{aggregationPolicy}}"
 
@@ -178,7 +178,7 @@ msgstr "Невозможно рассчитать отчет: фильтры в 
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Нет задач, соответствующих фильтрам в настройках отчета"
 
-#: src/app/configuration.js:322
+#: src/app/configuration.js:321
 msgid "This report is owned by {{ownerNamePlaceholder}}"
 msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
 
@@ -198,7 +198,7 @@ msgstr "Всего голосов"
 msgid "Total {{fieldName}}"
 msgstr "Всего: {{fieldName}}"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 msgid "Unnamed"
 msgstr "Без имени"
 
@@ -218,7 +218,7 @@ msgstr "ДП|ПП"
 msgid "asc"
 msgstr "по возр."
 
-#: src/app/distribution-report-types.js:37
+#: src/app/distribution-report-types.js:34
 msgid "assignee"
 msgstr "исполнитель"
 
@@ -226,7 +226,7 @@ msgstr "исполнитель"
 msgid "by count"
 msgstr "по кол-ву"
 
-#: src/app/configuration.js:305
+#: src/app/configuration.js:304
 msgid "clone"
 msgstr "клон"
 
@@ -234,11 +234,11 @@ msgstr "клон"
 msgid "desc"
 msgstr "по убыв."
 
-#: src/app/configuration.js:71
+#: src/app/configuration.js:70
 msgid "existing reports"
 msgstr "имеющиеся отчеты"
 
-#: src/app/configuration.js:87
+#: src/app/configuration.js:86
 msgid "me"
 msgstr "я"
 
@@ -246,12 +246,12 @@ msgstr "я"
 msgid "natural"
 msgstr "естеств."
 
-#: src/app/configuration.js:54
-#: src/app/distribution-report-types.js:34
+#: src/app/configuration.js:53
+#: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "проект"
 
-#: src/app/configuration.js:348
+#: src/app/configuration.js:347
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} клонировать его"
 
