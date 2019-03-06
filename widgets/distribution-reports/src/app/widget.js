@@ -69,7 +69,8 @@ class DistributionReportsWidget extends React.Component {
 
   static propTypes = {
     dashboardApi: PropTypes.object,
-    registerWidgetApi: PropTypes.func
+    registerWidgetApi: PropTypes.func,
+    editable: PropTypes.bool
   };
 
   constructor(props) {
@@ -279,13 +280,15 @@ class DistributionReportsWidget extends React.Component {
 
       this.setState({report, config});
 
-      if (SortOrder.isEditable(report)) {
-        return await saveReportSettings(this.fetchYouTrack, report, true);
+      if (this.props.editable) {
+        return SortOrder.isEditable(report)
+          ? await saveReportSettings(this.fetchYouTrack, report, true)
+          : await this.props.dashboardApi.storeConfig({
+            reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
+          });
       }
 
-      return await this.props.dashboardApi.storeConfig({
-        reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
-      });
+      return null;
     };
 
   onChangeReportPresentation = async presentation => {
@@ -293,12 +296,15 @@ class DistributionReportsWidget extends React.Component {
     config.presentation = report.presentation = presentation;
     this.setState({report, config});
 
-    if (report.own) {
-      return await saveReportSettings(this.fetchYouTrack, report, true);
+    if (this.props.editable) {
+      return report.own
+        ? await saveReportSettings(this.fetchYouTrack, report, true)
+        : await this.props.dashboardApi.storeConfig({
+          reportId: report.id, presentation
+        });
     }
-    return await this.props.dashboardApi.storeConfig({
-      reportId: report.id, presentation
-    });
+
+    return null;
   };
 
   renderConfigurationForm() {
@@ -371,6 +377,7 @@ class DistributionReportsWidget extends React.Component {
         dashboardApi={this.props.dashboardApi}
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
+        editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
         onChangeReportSortOrders={this.onChangeReportSortOrders}

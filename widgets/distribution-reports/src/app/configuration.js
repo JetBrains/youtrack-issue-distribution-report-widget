@@ -450,7 +450,7 @@ class Configuration extends React.Component {
     return (
       <ConfigurationForm
         warning={errorMessage}
-        isInvalid={errorMessage || !selectedReport || !selectedReportIsValid}
+        isInvalid={!!errorMessage || !selectedReport || !selectedReportIsValid}
         isLoading={this.state.isLoading}
         panelControls={this.renderRefreshPeriod()}
         onSave={this.submitForm}
