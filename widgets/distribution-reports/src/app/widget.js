@@ -258,7 +258,7 @@ class DistributionReportsWidget extends React.Component {
 
   saveConfig = async () => {
     const {report, refreshPeriod, youTrack} = this.state;
-    await this.props.dashboardApi.storeConfig({
+    await this.props.configWrapper.replace({
       reportId: report.id, youTrack, refreshPeriod
     });
     this.setState({isConfiguring: false});
