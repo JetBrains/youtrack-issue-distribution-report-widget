@@ -81,8 +81,9 @@ class AgileProgressDiagramWidget extends React.Component {
   };
 
   static propTypes = {
-    dashboardApi: PropTypes.object,
-    registerWidgetApi: PropTypes.func
+    dashboardApi: PropTypes.object.isRequired,
+    registerWidgetApi: PropTypes.func.isRequired,
+    editable: PropTypes.bool
   };
 
   constructor(props) {
@@ -360,6 +361,7 @@ class AgileProgressDiagramWidget extends React.Component {
         dashboardApi={this.props.dashboardApi}
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
+        editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
       />

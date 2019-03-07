@@ -20,6 +20,7 @@ class Content extends React.Component {
     error: PropTypes.number,
     youTrack: PropTypes.object,
     dashboardApi: PropTypes.object,
+    editable: PropTypes.bool,
 
     onOpenSettings: PropTypes.func
   };
@@ -37,12 +38,15 @@ class Content extends React.Component {
         face={EmptyWidgetFaces.ERROR}
         message={message}
       >
-        <Link
-          pseudo={true}
-          onClick={removeWidget}
-        >
-          {i18n('Remove widget')}
-        </Link>
+        {
+          this.props.editable &&
+          <Link
+            pseudo={true}
+            onClick={removeWidget}
+          >
+            {i18n('Remove widget')}
+          </Link>
+        }
       </EmptyWidget>
     );
   }
@@ -53,12 +57,15 @@ class Content extends React.Component {
         face={EmptyWidgetFaces.OK}
         message={message}
       >
-        <Link
-          pseudo={true}
-          onClick={this.props.onOpenSettings}
-        >
-          {i18n('Edit settings')}
-        </Link>
+        {
+          this.props.editable &&
+          <Link
+            pseudo={true}
+            onClick={this.props.onOpenSettings}
+          >
+            {i18n('Edit settings')}
+          </Link>
+        }
       </EmptyWidget>
     );
   }

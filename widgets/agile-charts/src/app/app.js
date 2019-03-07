@@ -19,6 +19,7 @@ DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
     <Widget
       dashboardApi={dashboardApi}
       registerWidgetApi={registerWidgetApi}
+      editable={DashboardAddons.editable}
     />,
     document.getElementById('app')
   );
