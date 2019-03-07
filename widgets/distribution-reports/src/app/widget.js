@@ -67,10 +67,27 @@ class DistributionReportsWidget extends React.Component {
     return DistributionReportsWidget.getDefaultWidgetTitle();
   };
 
+  static getConfigAsObject = (configWrapper, fieldsToOverwrite) => {
+    return {
+      reportId: getFieldValue('reportId'),
+      mainAxisSortOrder: getFieldValue('mainAxisSortOrder'),
+      secondaryAxisSortOrder: getFieldValue('secondaryAxisSortOrder'),
+      presentation: getFieldValue('presentation'),
+      youTrack: getFieldValue('youTrack'),
+      refreshPeriod: getFieldValue('refreshPeriod')
+    };
+
+    function getFieldValue(name) {
+      return (fieldsToOverwrite && fieldsToOverwrite[name]) ||
+        configWrapper.getFieldValue(name);
+    }
+  };
+
   static propTypes = {
-    dashboardApi: PropTypes.object,
-    registerWidgetApi: PropTypes.func,
-    editable: PropTypes.bool
+    dashboardApi: PropTypes.object.isRequired,
+    registerWidgetApi: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
+    configWrapper: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -105,40 +122,39 @@ class DistributionReportsWidget extends React.Component {
   // eslint-disable-next-line complexity
   initialize = async dashboardApi => {
     this.setLoadingEnabled(true);
+    await this.props.configWrapper.init();
+
     const fetchHub = dashboardApi.fetchHub.bind(dashboardApi);
-    const config = await dashboardApi.readConfig();
+    const youTrack = this.props.configWrapper.getFieldValue('youTrack');
     const ytTrackService = await getYouTrackService(
-      fetchHub, config && config.youTrack && config.youTrack.id
+      fetchHub, youTrack && youTrack.id
     );
     if (ytTrackService && ytTrackService.id) {
       this.setYouTrack(ytTrackService);
     } else {
       this.setError(ReportModel.ErrorTypes.NO_YOUTRACK);
-      this.setState({config: config || {}});
       return;
     }
-    const isNewWidget = !config;
-    if (isNewWidget) {
+    if (this.props.configWrapper.isNewConfig()) {
       this.openWidgetsSettings();
       this.setState({
-        isNewWidget,
-        config: {},
+        isNewWidget: true,
         refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
       });
       return;
     }
 
-    this.setState({config});
-
-    const configReportId = config.reportId;
+    const configReportId = this.props.configWrapper.getFieldValue('reportId');
     const report = (configReportId && {id: configReportId}) ||
       (await loadIssuesDistributionReports(this.fetchYouTrack))[0];
 
     if (report) {
       const reportWithData = await this.loadReportWithAppliedConfigSettings(
-        report.id, ytTrackService, config
+        report.id,
+        ytTrackService
       );
-      const refreshPeriod = config.refreshPeriod ||
+      const refreshPeriod =
+        this.props.configWrapper.getFieldValue('refreshPeriod') ||
         DistributionReportsWidget.DEFAULT_REFRESH_PERIOD;
       this.setState({report: reportWithData, refreshPeriod});
     } else {
@@ -231,12 +247,12 @@ class DistributionReportsWidget extends React.Component {
   }
 
   async loadReportWithAppliedConfigSettings(
-    reportId, optionalYouTrack, optionalConfig
+    reportId, optionalYouTrack
   ) {
     return DistributionReportsWidget.
       applyReportSettingsFromWidgetConfig(
         await this.loadReport(reportId, optionalYouTrack),
-        optionalConfig || this.state.config
+        DistributionReportsWidget.getConfigAsObject(this.props.configWrapper)
       );
   }
 
@@ -270,20 +286,17 @@ class DistributionReportsWidget extends React.Component {
   onChangeReportSortOrders =
     async (mainAxisSortOrder, secondaryAxisSortOrder) => {
       const {SortOrder} = DistributionReportAxises;
-      const {report, config} = this.state;
+      const {report} = this.state;
 
       SortOrder.setMainAxisSortOrder(report, mainAxisSortOrder);
       SortOrder.setSecondaryAxisSortOrder(report, secondaryAxisSortOrder);
 
-      config.mainAxisSortOrder = mainAxisSortOrder;
-      config.secondaryAxisSortOrder = secondaryAxisSortOrder;
-
-      this.setState({report, config});
+      this.setState({report});
 
       if (this.props.editable) {
         return SortOrder.isEditable(report)
           ? await saveReportSettings(this.fetchYouTrack, report, true)
-          : await this.props.dashboardApi.storeConfig({
+          : await this.props.configWrapper.update({
             reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
           });
       }
@@ -292,14 +305,14 @@ class DistributionReportsWidget extends React.Component {
     };
 
   onChangeReportPresentation = async presentation => {
-    const {report, config} = this.state;
-    config.presentation = report.presentation = presentation;
-    this.setState({report, config});
+    const {report} = this.state;
+    report.presentation = presentation;
+    this.setState({report});
 
     if (this.props.editable) {
       return report.own
         ? await saveReportSettings(this.fetchYouTrack, report, true)
-        : await this.props.dashboardApi.storeConfig({
+        : await this.props.configWrapper.update({
           reportId: report.id, presentation
         });
     }

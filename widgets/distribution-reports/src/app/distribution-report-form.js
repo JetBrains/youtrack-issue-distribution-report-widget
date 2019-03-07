@@ -54,6 +54,7 @@ class DistributionReportForm extends React.Component {
     report.yaxis = {field: report.xaxis.field};
     report.xaxis.$type = undefined;
     report.ysortOrder = report.xsortOrder;
+    report.presentation = 'DEFAULT';
     return report;
   };
 
@@ -65,6 +66,7 @@ class DistributionReportForm extends React.Component {
     report.xaxis = {field: (report.yaxis || {}).field};
     report.yaxis = undefined;
     report.ysortOrder = undefined;
+    report.presentation = 'DEFAULT';
     return report;
   };
 
