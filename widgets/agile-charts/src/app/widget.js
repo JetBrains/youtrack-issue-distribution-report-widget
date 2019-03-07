@@ -83,6 +83,7 @@ class AgileProgressDiagramWidget extends React.Component {
   static propTypes = {
     dashboardApi: PropTypes.object.isRequired,
     registerWidgetApi: PropTypes.func.isRequired,
+    configWrapper: PropTypes.object.isRequired,
     editable: PropTypes.bool
   };
 
@@ -118,41 +119,39 @@ class AgileProgressDiagramWidget extends React.Component {
   // eslint-disable-next-line complexity
   initialize = async dashboardApi => {
     this.setLoadingEnabled(true);
+    await this.props.configWrapper.init();
+
     const fetchHub = dashboardApi.fetchHub.bind(dashboardApi);
-    const config = await dashboardApi.readConfig();
-    const ytTrackService = await getYouTrackService(
-      fetchHub, config && config.youTrack && config.youTrack.id
+    const youTrack = this.props.configWrapper.getFieldValue('youTrack');
+    const youTrackService = await getYouTrackService(
+      fetchHub, youTrack && youTrack.id
     );
-    if (ytTrackService && ytTrackService.id) {
-      this.setYouTrack(ytTrackService);
+    if (youTrackService && youTrackService.id) {
+      this.setYouTrack(youTrackService);
     } else {
       this.setError(ReportModel.ErrorTypes.NO_YOUTRACK);
       return;
     }
-    const isNewWidget = !config;
-    if (isNewWidget) {
+
+    if (this.props.configWrapper.isNewConfig()) {
       this.openWidgetsSettings();
       this.setState({
-        isNewWidget,
         refreshPeriod: AgileProgressDiagramWidget.DEFAULT_REFRESH_PERIOD
       });
       return;
     }
 
-    this.setState({config});
-
     const configReportId =
       await AgileProgressDiagramWidget.getSelectedReportId(
-        this.fetchYouTrack, config.settings
+        this.fetchYouTrack, this.props.configWrapper.getFieldValue('settings')
       );
     const report = (configReportId && {id: configReportId}) ||
       (await loadIndependentBurnDownReports(this.fetchYouTrack))[0];
 
     if (report) {
-      const reportWithData = await this.loadReport(
-        report.id, ytTrackService, config
-      );
-      const refreshPeriod = config.refreshPeriod ||
+      const reportWithData = await this.loadReport(report.id, youTrackService);
+      const refreshPeriod =
+        this.props.configWrapper.getFieldValue('refreshPeriod') ||
         AgileProgressDiagramWidget.DEFAULT_REFRESH_PERIOD;
       this.setState({report: reportWithData, refreshPeriod});
     } else {
@@ -192,7 +191,6 @@ class AgileProgressDiagramWidget extends React.Component {
   async recalculateReport() {
     const {
       report,
-      config,
       isLoading,
       refreshPeriod,
       isConfiguring
@@ -200,7 +198,7 @@ class AgileProgressDiagramWidget extends React.Component {
 
     const updatedReportEntityId =
       await AgileProgressDiagramWidget.getSelectedReportId(
-        this.fetchYouTrack, config.settings
+        this.fetchYouTrack, this.props.configWrapper.getFieldValue('settings')
       );
 
     if (!report || report.id !== updatedReportEntityId) {
@@ -229,7 +227,6 @@ class AgileProgressDiagramWidget extends React.Component {
           report: reportWithData,
           error: ReportModel.ErrorTypes.OK,
           isLoading: false,
-          isNewWidget: false,
           isCalculationCompleted: isCalculationCompleted
             ? false
             : ReportModel.isReportCalculationCompleted(reportWithData, report)
@@ -253,18 +250,16 @@ class AgileProgressDiagramWidget extends React.Component {
 
   saveConfig = async settings => {
     const {refreshPeriod, youTrack} = this.state;
-    const newConfig = {
+    await this.props.configWrapper.replace({
       settings, youTrack, refreshPeriod
-    };
-    await this.props.dashboardApi.storeConfig(newConfig);
+    });
     this.setState({
-      isConfiguring: false, config: newConfig
+      isConfiguring: false
     });
   };
 
   cancelConfig = async () => {
-    const {isNewWidget} = this.state;
-    if (isNewWidget) {
+    if (this.props.configWrapper.isNewConfig()) {
       await this.props.dashboardApi.removeWidget();
     } else {
       this.setState({isConfiguring: false});
@@ -303,7 +298,6 @@ class AgileProgressDiagramWidget extends React.Component {
           this.setState({
             report: reportWithData,
             isLoading: false,
-            isNewWidget: false,
             isCalculationCompleted: false,
             refreshPeriod
           }, async () => await this.saveConfig(settings));
@@ -312,9 +306,9 @@ class AgileProgressDiagramWidget extends React.Component {
     };
 
     const {
-      config, refreshPeriod, youTrack
+      refreshPeriod, youTrack
     } = this.state;
-    const settings = config && config.settings || {};
+    const settings = this.props.configWrapper.getFieldValue('settings') || {};
 
     return (
       <Configuration
