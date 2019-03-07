@@ -11,9 +11,9 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2019-03-05 11:31\n"
+"PO-Revision-Date: 2019-03-07 10:17\n"
 
-#: src/app/distribution-report-form.js:434
+#: src/app/distribution-report-form.js:436
 msgid "Add project"
 msgstr "Añadir proyecto"
 
@@ -21,11 +21,11 @@ msgstr "Añadir proyecto"
 msgid "Bars"
 msgstr "Barras"
 
-#: src/app/distribution-report-form.js:435
+#: src/app/distribution-report-form.js:437
 msgid "Calculate for all projects"
 msgstr "Calcular para todos los proyectos"
 
-#: src/app/content.js:94
+#: src/app/content.js:101
 msgid "Calculating..."
 msgstr "Calculando..."
 
@@ -33,15 +33,15 @@ msgstr "Calculando..."
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/app/content.js:70
+#: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
 msgstr "No es posible encontrar la instalación de YouTrack"
 
-#: src/app/content.js:75
+#: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
 msgstr "No es posible encontrar ningún informe de distribución de incidencias"
 
-#: src/app/content.js:79
+#: src/app/content.js:86
 msgid "Cannot load selected report"
 msgstr "No se puede cargar el informe seleccionado"
 
@@ -53,15 +53,15 @@ msgstr "No es posible guardar el informe"
 msgid "Cannot update widget"
 msgstr "No es posible actualizar el widget"
 
-#: src/app/distribution-report-form.js:481
+#: src/app/distribution-report-form.js:483
 msgid "Edit report"
 msgstr "Editar notificación"
 
-#: src/app/content.js:61
+#: src/app/content.js:67
 msgid "Edit settings"
 msgstr "Editar configuración"
 
-#: src/app/distribution-report-form.js:462
+#: src/app/distribution-report-form.js:464
 msgid "Filter issues"
 msgstr "Filtrar incidencias"
 
@@ -69,7 +69,7 @@ msgstr "Filtrar incidencias"
 msgid "Issue Distribution Report"
 msgstr "Informe de distribución de incidencias"
 
-#: src/app/distribution-report-form.js:361
+#: src/app/distribution-report-form.js:363
 msgid "Issues"
 msgstr "Incidencias"
 
@@ -81,16 +81,16 @@ msgstr "Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Nov
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic"
 
-#: src/app/distribution-report-form.js:489
+#: src/app/distribution-report-form.js:491
 msgid "Learn more about this report"
 msgstr "Más información acerca de este informe"
 
-#: src/app/distribution-report-form.js:90
+#: src/app/distribution-report-form.js:92
 msgid "Me only"
 msgstr "Solo yo"
 
 #: src/app/configuration.js:93
-#: src/app/distribution-report-form.js:480
+#: src/app/distribution-report-form.js:482
 msgid "New report"
 msgstr "Nuevo informe"
 
@@ -98,7 +98,7 @@ msgstr "Nuevo informe"
 msgid "Oops! Something went wrong..."
 msgstr "¡Uy! Algo ha salido mal..."
 
-#: src/app/content.js:82
+#: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "¡Uy!... Algo ha salido mal =("
 
@@ -110,23 +110,23 @@ msgstr "Los propietarios tienen acceso exclusivo para editar la configuración d
 msgid "Pie chart"
 msgstr ""
 
-#: src/app/content.js:45
+#: src/app/content.js:48
 msgid "Remove widget"
 msgstr "Eliminar widget"
 
-#: src/app/distribution-report-form.js:477
+#: src/app/distribution-report-form.js:479
 msgid "Report"
 msgstr "Informe"
 
-#: src/app/distribution-report-form.js:385
+#: src/app/distribution-report-form.js:387
 msgid "Report is private"
 msgstr "El informe es privado"
 
-#: src/app/distribution-report-form.js:384
+#: src/app/distribution-report-form.js:386
 msgid "Report is visible to members of {{visibilityPresentation}}"
 msgstr "El informe es visible para los miembros de {{visibilityPresentation}}"
 
-#: src/app/distribution-report-form.js:509
+#: src/app/distribution-report-form.js:511
 msgid "Report name"
 msgstr "Nombre del informe"
 
@@ -142,19 +142,19 @@ msgstr "Seleccionar YouTrack"
 msgid "Select report"
 msgstr "Seleccionar informe"
 
-#: src/app/distribution-report-form.js:258
+#: src/app/distribution-report-form.js:260
 msgid "Show distribution by {{field}}"
 msgstr "Mostrar distribución por {{field}}"
 
-#: src/app/distribution-report-form.js:326
+#: src/app/distribution-report-form.js:328
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Mostrar distribución por {{mainFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:325
+#: src/app/distribution-report-form.js:327
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Mostrar distribución por {{mainFieldPresentation}} y {{secondaryFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:353
+#: src/app/distribution-report-form.js:355
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Mostrar totales para {{aggregationPolicy}}"
 
@@ -170,11 +170,11 @@ msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 msgid "Table"
 msgstr "Tabla"
 
-#: src/app/content.js:109
+#: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "El informe no puede calcularse: los filtros de la configuración del informe devuelven demasiadas incidencias"
 
-#: src/app/content.js:114
+#: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "No hay ninguna incidencia que coincida con los filtros de la configuración de informe"
 
@@ -186,15 +186,15 @@ msgstr "El propietario de este informe es {{ownerNamePlaceholder}}"
 msgid "Total"
 msgstr "Total"
 
-#: src/app/content.js:121
+#: src/app/content.js:128
 msgid "Total issues count"
 msgstr "Cantidad total de incidencias"
 
-#: src/app/content.js:124
+#: src/app/content.js:131
 msgid "Total votes count"
 msgstr "Cantidad total de votos"
 
-#: src/app/content.js:127
+#: src/app/content.js:134
 msgid "Total {{fieldName}}"
 msgstr "Total de {{fieldName}}"
 
