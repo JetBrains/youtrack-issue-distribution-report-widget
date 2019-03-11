@@ -59,7 +59,7 @@ class DistributionReportForm extends React.Component {
   };
 
   static convertTwoFieldsReportToOneFieldReportIfNeeded = report => {
-    if (report.$type === BackendTypes.get().MatrixReport) {
+    if (report.$type !== BackendTypes.get().MatrixReport) {
       return report;
     }
     report.$type = BackendTypes.get().FlatDistributionReport;

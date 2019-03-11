@@ -56,14 +56,11 @@ async function loadIssuesDistributionReports(fetchYouTrack) {
 }
 
 async function loadReportsFilterFields(fetchYouTrack, projects) {
-  const fieldTypes = serializeArrayParameter('fieldTypes', [
-    'version[1]', 'ownedField[1]', 'state[1]', 'user[1]', 'enum[1]', 'date', 'integer', 'float', 'period', 'project'
-  ]);
   const fld = serializeArrayParameter('fld',
     (projects || []).map(project => project.id)
   );
   const params = [
-    fieldTypes, fld, 'includeNonFilterFields=true', '$top=300', `fields=${REPORT_FILTER_FIELDS_FIELDS}`
+    fld, '$top=300', `fields=${REPORT_FILTER_FIELDS_FIELDS}`
   ].filter(param => param.length > 0).join('&');
 
   return await fetchYouTrack(`api/filterFields?${params}`);
@@ -81,7 +78,6 @@ async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
     fld,
     'includeNonFilterFields=true',
     '$top=300',
-    'usage=true',
     `fields=${REPORT_FILTER_FIELDS_FIELDS}`
   ].filter(param => param.length > 0).join('&');
 
