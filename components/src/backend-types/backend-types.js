@@ -1,6 +1,6 @@
 import semver from 'semver';
 
-const YT_VERSIONS_WITH_SHORT_$TYPE = '>=2019.1.50340';
+const YT_VERSIONS_WITH_SHORT_$TYPE = '>=2019.1.50417';
 
 const BackendTypesEnum = {
   SprintBasedBurndownReport: 'jetbrains.youtrack.reports.impl.agile.burndown.gap.SprintBasedBurndownReport',
