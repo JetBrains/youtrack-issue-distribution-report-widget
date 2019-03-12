@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-03-11 11:59\n"
+"PO-Revision-Date: 2019-03-12 19:38\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
@@ -232,7 +232,7 @@ msgstr "по кол-ву"
 
 #: src/app/configuration.js:305
 msgid "clone"
-msgstr ""
+msgstr "клон"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
@@ -240,7 +240,7 @@ msgstr "по убыв."
 
 #: src/app/configuration.js:71
 msgid "existing reports"
-msgstr ""
+msgstr "имеющиеся отчеты"
 
 #: src/app/configuration.js:87
 msgid "me"
@@ -253,7 +253,7 @@ msgstr "естеств."
 #: src/app/configuration.js:54
 #: src/app/distribution-report-types.js:34
 msgid "project"
-msgstr ""
+msgstr "проект"
 
 #: src/app/configuration.js:348
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
