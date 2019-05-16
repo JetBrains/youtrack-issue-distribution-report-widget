@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-03-12 19:38\n"
+"PO-Revision-Date: 2019-04-14 21:04\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
@@ -71,7 +71,7 @@ msgstr "Отчет о распределении задач"
 
 #: src/app/distribution-report-form.js:360
 msgid "Issues"
-msgstr ""
+msgstr "Задачи"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -116,7 +116,7 @@ msgstr "Удалить виджет"
 
 #: src/app/distribution-report-form.js:476
 msgid "Report"
-msgstr ""
+msgstr "Отчет"
 
 #: src/app/distribution-report-form.js:384
 msgid "Report is private"
@@ -144,19 +144,19 @@ msgstr "Выберите отчет"
 
 #: src/app/distribution-report-form.js:257
 msgid "Show distribution by {{field}}"
-msgstr "Показать распределение по полю {{field}}"
+msgstr "Показать распределение по полям {{field}}"
 
 #: src/app/distribution-report-form.js:325
 msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr "Показать распределение по полю {{mainFieldPresentation}}"
+msgstr "Показать распределение по полю «{{mainFieldPresentation}}»"
 
 #: src/app/distribution-report-form.js:324
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr "Показать распределение по полям {{mainFieldPresentation}} и {{secondaryFieldPresentation}}"
+msgstr "Показать распределение по полям «{{mainFieldPresentation}}» и «{{secondaryFieldPresentation}}»"
 
 #: src/app/distribution-report-form.js:352
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "Показать суммарные значения для: {{aggregationPolicy}}"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -184,7 +184,7 @@ msgstr "Это поле не существует в некоторых из в�
 
 #: src/app/configuration.js:322
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
 
 #: src/app/report-chart.js:290
 msgid "Total"
@@ -204,7 +204,7 @@ msgstr "Всего: {{fieldName}}"
 
 #: src/app/configuration.js:93
 msgid "Unnamed"
-msgstr ""
+msgstr "Без имени"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -224,7 +224,7 @@ msgstr "по возр."
 
 #: src/app/distribution-report-types.js:37
 msgid "assignee"
-msgstr ""
+msgstr "исполнитель"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"

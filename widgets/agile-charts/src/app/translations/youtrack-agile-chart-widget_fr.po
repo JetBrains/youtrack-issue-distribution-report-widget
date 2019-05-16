@@ -11,259 +11,259 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2019-03-12 19:38\n"
+"PO-Revision-Date: 2019-03-14 20:25\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
-msgstr ""
+msgstr "Ajouter un projet"
 
 #: src/app/report-chart.js:312
 msgid "Bars"
-msgstr ""
+msgstr "Barres"
 
 #: src/app/distribution-report-form.js:434
 msgid "Calculate for all projects"
-msgstr ""
+msgstr "Calculer pour tous les projets"
 
 #: src/app/content.js:92
 msgid "Calculating..."
-msgstr ""
+msgstr "Calcul..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:52
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/app/content.js:68
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Impossible de trouver une installation de YouTrack"
 
 #: src/app/content.js:73
 msgid "Cannot find any issue distribution report"
-msgstr ""
+msgstr "Impossible de trouver un rapport de distribution des tickets"
 
 #: src/app/content.js:77
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Impossible de charger le rapport sélectionné"
 
 #: src/app/configuration.js:266
 msgid "Cannot save report"
-msgstr ""
+msgstr "Impossible d'enregistrer le rapport"
 
 #: src/app/configuration.js:275
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Impossible de mettre à jour le widget"
 
 #: src/app/distribution-report-form.js:480
 msgid "Edit report"
-msgstr ""
+msgstr "Éditer le rapport"
 
 #: src/app/content.js:59
 msgid "Edit settings"
-msgstr ""
+msgstr "Éditer les paramètres"
 
 #: src/app/distribution-report-form.js:461
 msgid "Filter issues"
-msgstr ""
+msgstr "Filtrer les tickets"
 
 #: src/app/widget.js:48
 msgid "Issue Distribution Report"
-msgstr ""
+msgstr "Rapport de distribution des tickets"
 
 #: src/app/distribution-report-form.js:360
 msgid "Issues"
-msgstr ""
+msgstr "Tickets"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "Janvier|Février|Mars|Avril|Mai|Juin|Juillet|Août|Septembre|Octobre|Novembre|Décembre"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "Jan|Fév|Mar|Avr|Mai|Jun|Jul|Aoû|Sep|Oct|Nov|Déc"
 
 #: src/app/distribution-report-form.js:488
 msgid "Learn more about this report"
-msgstr ""
+msgstr "Plus d'informations sur ce rapport"
 
 #: src/app/distribution-report-form.js:89
 msgid "Me only"
-msgstr ""
+msgstr "Moi seulement"
 
 #: src/app/configuration.js:94
 #: src/app/distribution-report-form.js:479
 msgid "New report"
-msgstr ""
+msgstr "Nouveau rapport"
 
 #: src/app/report-filter-fields-selector.js:23
 msgid "No value"
-msgstr ""
+msgstr "Aucune valeur"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Oups ! Un problème est survenu..."
 
 #: src/app/content.js:80
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "Oups... Un problème est survenu =("
 
 #: src/app/configuration.js:341
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Les propriétaires disposent d'un accès exclusif leur permettant de modifier les paramètres du rapport. Si vous souhaitez personnaliser votre propre copie de ce rapport, {{cloneItPlaceholder}}"
 
 #: src/app/content.js:43
 msgid "Remove widget"
-msgstr ""
+msgstr "Supprimer le widget"
 
 #: src/app/distribution-report-form.js:476
 msgid "Report"
-msgstr ""
+msgstr "Rapport"
 
 #: src/app/distribution-report-form.js:384
 msgid "Report is private"
-msgstr ""
+msgstr "Ce rapport est privé."
 
 #: src/app/distribution-report-form.js:383
 msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr ""
+msgstr "Ce rapport est visible par les membres de {{visibilityPresentation}}."
 
 #: src/app/distribution-report-form.js:508
 msgid "Report name"
-msgstr ""
+msgstr "Nom du rapport"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:45
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: src/app/configuration.js:468
 msgid "Select YouTrack"
-msgstr ""
+msgstr "Sélectionner YouTrack"
 
 #: src/app/configuration.js:379
 msgid "Select report"
-msgstr ""
+msgstr "Sélectionner le rapport"
 
 #: src/app/distribution-report-form.js:257
 msgid "Show distribution by {{field}}"
-msgstr ""
+msgstr "Afficher la distribution par {{field}}"
 
 #: src/app/distribution-report-form.js:325
 msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr ""
+msgstr "Afficher la distribution par {{mainFieldPresentation}}"
 
 #: src/app/distribution-report-form.js:324
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr ""
+msgstr "Afficher la distribution par {{mainFieldPresentation}} et {{secondaryFieldPresentation}}"
 
 #: src/app/distribution-report-form.js:352
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "Afficher les totaux pour {{aggregationPolicy}}"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "Dim|Lun|Mar|Mer|Jeu|Ven|Sam"
 
 #: src/app/report-chart.js:321
 msgid "Table"
-msgstr ""
+msgstr "Table"
 
 #: src/app/content.js:107
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "Impossible de calculer le rapport : les filtres des paramètres du rapport renvoient trop de tickets"
 
 #: src/app/content.js:112
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "Les filtres définis pour le rapport ne renvoient aucun ticket."
 
 #: src/app/report-filter-fields-selector.js:151
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Ce champ n'existe pas dans une partie des projets sélectionnés."
 
 #: src/app/configuration.js:322
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "Ce rapport appartient à {{ownerNamePlaceholder}}"
 
 #: src/app/report-chart.js:290
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: src/app/content.js:119
 msgid "Total issues count"
-msgstr ""
+msgstr "Total des tickets"
 
 #: src/app/content.js:122
 msgid "Total votes count"
-msgstr ""
+msgstr "Total des votes"
 
 #: src/app/content.js:125
 msgid "Total {{fieldName}}"
-msgstr ""
+msgstr "Total {{fieldName}}"
 
 #: src/app/configuration.js:93
 msgid "Unnamed"
-msgstr ""
+msgstr "Sans nom"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "Le widget s'actualise chaque minute."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "am|pm"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "asc"
 
 #: src/app/distribution-report-types.js:37
 msgid "assignee"
-msgstr ""
+msgstr "responsable"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
-msgstr ""
+msgstr "selon le nombre"
 
 #: src/app/configuration.js:305
 msgid "clone"
-msgstr ""
+msgstr "cloner"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr ""
+msgstr "desc"
 
 #: src/app/configuration.js:71
 msgid "existing reports"
-msgstr ""
+msgstr "rapports existants"
 
 #: src/app/configuration.js:87
 msgid "me"
-msgstr ""
+msgstr "moi"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
-msgstr ""
+msgstr "naturel"
 
 #: src/app/configuration.js:54
 #: src/app/distribution-report-types.js:34
 msgid "project"
-msgstr ""
+msgstr "projet"
 
 #: src/app/configuration.js:348
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}, clonez-le"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} mn"
 
 #: src/app/report-filter-fields-selector.js:139
 msgid "＋Add field"
-msgstr ""
+msgstr "+ Ajouter le champ"
 
