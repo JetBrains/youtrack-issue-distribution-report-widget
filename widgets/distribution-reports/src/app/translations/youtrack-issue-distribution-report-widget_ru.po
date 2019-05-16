@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-03-12 19:38\n"
+"PO-Revision-Date: 2019-04-14 21:04\n"
 
 #: src/app/distribution-report-form.js:436
 msgid "Add project"
@@ -108,7 +108,7 @@ msgstr "Изменять параметры отчета могут только
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
-msgstr ""
+msgstr "Круговая диаграмма"
 
 #: src/app/content.js:48
 msgid "Remove widget"
@@ -144,15 +144,15 @@ msgstr "Выберите отчет"
 
 #: src/app/distribution-report-form.js:260
 msgid "Show distribution by {{field}}"
-msgstr "Показать распределение по полю {{field}}"
+msgstr "Показать распределение по полям {{field}}"
 
 #: src/app/distribution-report-form.js:328
 msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr "Показать распределение по полю {{mainFieldPresentation}}"
+msgstr "Показать распределение по полю «{{mainFieldPresentation}}»"
 
 #: src/app/distribution-report-form.js:327
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr "Показать распределение по полям {{mainFieldPresentation}} и {{secondaryFieldPresentation}}"
+msgstr "Показать распределение по полям «{{mainFieldPresentation}}» и «{{secondaryFieldPresentation}}»"
 
 #: src/app/distribution-report-form.js:355
 msgid "Show totals for {{aggregationPolicy}}"

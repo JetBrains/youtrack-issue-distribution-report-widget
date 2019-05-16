@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2019-03-12 19:38\n"
+"PO-Revision-Date: 2019-03-22 21:02\n"
 
 #: src/app/distribution-report-form.js:436
 msgid "Add project"
@@ -108,7 +108,7 @@ msgstr "Nur Besitzer können können die Berichtseinstellungen bearbeiten. Wenn 
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
-msgstr ""
+msgstr "Kreisdiagramm"
 
 #: src/app/content.js:48
 msgid "Remove widget"

@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: jetbrains <mikhail.vink@jetbrains.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2019-03-12 19:38\n"
+"PO-Revision-Date: 2019-03-14 17:18\n"
 
 #: src/app/distribution-report-form.js:436
 msgid "Add project"
@@ -108,7 +108,7 @@ msgstr "オーナーのみが、レポート設定を編集できます。この
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
-msgstr ""
+msgstr "円グラフ"
 
 #: src/app/content.js:48
 msgid "Remove widget"
