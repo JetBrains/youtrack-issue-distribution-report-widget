@@ -204,7 +204,10 @@
       border-bottom: 1px solid var(--ring-borders-color);
     }
 
+    /* stylelint-disable */
     &:hover button {
+      /* stylelint-enable */
+
       color: var(--ring-link-hover-color);
     }
   }
@@ -275,7 +278,10 @@
     }
   }
 
+  /* stylelint-disable */
   .nvtooltip.xy-tooltip {
+    /* stylelint-enable */
+
     color: var(--ring-text-color);
     border-color: var(--ring-borders-color);
     border-radius: var(--ring-border-radius);

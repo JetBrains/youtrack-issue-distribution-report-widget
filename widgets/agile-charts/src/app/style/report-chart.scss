@@ -22,7 +22,10 @@
     fill: var(--ring-text-color);
   }
 
+  /* stylelint-disable */
   .nvtooltip.xy-tooltip {
+    /* stylelint-enable */
+
     color: var(--ring-text-color);
     border-color: var(--ring-borders-color);
     border-radius: var(--ring-border-radius);
