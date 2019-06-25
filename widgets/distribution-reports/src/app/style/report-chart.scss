@@ -287,7 +287,10 @@
     border-radius: var(--ring-border-radius);
     background-color: var(--ring-popup-background-color);
 
+    /* stylelint-disable */
     h3 {
+      /* stylelint-enable */
+
       background-color: transparent;
     }
   }
