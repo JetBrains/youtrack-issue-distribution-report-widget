@@ -11,9 +11,9 @@ msgstr ""
 "Last-Translator: JetBrains (jetbrains)\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2019-06-22 21:05\n"
+"PO-Revision-Date: 2019-07-09 17:13\n"
 
-#: src/app/distribution-report-form.js:436
+#: src/app/distribution-report-form.js:441
 msgid "Add project"
 msgstr "Добавить проект"
 
@@ -21,7 +21,7 @@ msgstr "Добавить проект"
 msgid "Bars"
 msgstr "Столбики"
 
-#: src/app/distribution-report-form.js:437
+#: src/app/distribution-report-form.js:442
 msgid "Calculate for all projects"
 msgstr "Рассчитать для всех проектов"
 
@@ -53,7 +53,7 @@ msgstr "Невозможно сохранить отчет"
 msgid "Cannot update widget"
 msgstr "Невозможно обновить виджет"
 
-#: src/app/distribution-report-form.js:483
+#: src/app/distribution-report-form.js:488
 msgid "Edit report"
 msgstr "Редактировать отчет"
 
@@ -61,7 +61,7 @@ msgstr "Редактировать отчет"
 msgid "Edit settings"
 msgstr "Изменить параметры"
 
-#: src/app/distribution-report-form.js:464
+#: src/app/distribution-report-form.js:469
 msgid "Filter issues"
 msgstr "Фильтровать задачи"
 
@@ -69,7 +69,7 @@ msgstr "Фильтровать задачи"
 msgid "Issue Distribution Report"
 msgstr "Отчет о распределении задач"
 
-#: src/app/distribution-report-form.js:363
+#: src/app/distribution-report-form.js:368
 msgid "Issues"
 msgstr "Задачи"
 
@@ -81,16 +81,16 @@ msgstr "январь|февраль|март|апрель|май|июнь|июл
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|ноя|дек"
 
-#: src/app/distribution-report-form.js:491
+#: src/app/distribution-report-form.js:496
 msgid "Learn more about this report"
 msgstr "Сведения об этом отчете"
 
-#: src/app/distribution-report-form.js:92
+#: src/app/distribution-report-form.js:93
 msgid "Me only"
 msgstr "Только я"
 
 #: src/app/configuration.js:93
-#: src/app/distribution-report-form.js:482
+#: src/app/distribution-report-form.js:487
 msgid "New report"
 msgstr "Новый отчет"
 
@@ -114,19 +114,19 @@ msgstr "Круговая диаграмма"
 msgid "Remove widget"
 msgstr "Удалить виджет"
 
-#: src/app/distribution-report-form.js:479
+#: src/app/distribution-report-form.js:484
 msgid "Report"
 msgstr "Отчет"
 
-#: src/app/distribution-report-form.js:387
+#: src/app/distribution-report-form.js:392
 msgid "Report is private"
 msgstr "Отчет является закрытым"
 
-#: src/app/distribution-report-form.js:386
+#: src/app/distribution-report-form.js:391
 msgid "Report is visible to members of {{visibilityPresentation}}"
 msgstr "Отчет отображается для членов {{visibilityPresentation}}"
 
-#: src/app/distribution-report-form.js:511
+#: src/app/distribution-report-form.js:516
 msgid "Report name"
 msgstr "Имя отчета"
 
@@ -134,7 +134,7 @@ msgstr "Имя отчета"
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/app/configuration.js:467
+#: src/app/configuration.js:470
 msgid "Select YouTrack"
 msgstr "Выберите YouTrack"
 
@@ -142,19 +142,19 @@ msgstr "Выберите YouTrack"
 msgid "Select report"
 msgstr "Выберите отчет"
 
-#: src/app/distribution-report-form.js:260
+#: src/app/distribution-report-form.js:265
 msgid "Show distribution by {{field}}"
 msgstr "Показать распределение по полям {{field}}"
 
-#: src/app/distribution-report-form.js:328
+#: src/app/distribution-report-form.js:333
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Показать распределение по полю «{{mainFieldPresentation}}»"
 
-#: src/app/distribution-report-form.js:327
+#: src/app/distribution-report-form.js:332
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Показать распределение по полям «{{mainFieldPresentation}}» и «{{secondaryFieldPresentation}}»"
 
-#: src/app/distribution-report-form.js:355
+#: src/app/distribution-report-form.js:360
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Показать суммарные значения для: {{aggregationPolicy}}"
 
