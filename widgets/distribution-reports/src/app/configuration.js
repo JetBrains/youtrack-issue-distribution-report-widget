@@ -392,6 +392,9 @@ class Configuration extends React.Component {
               fetchYouTrack={
                 makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
               }
+              fetchHub={
+                this.props.dashboardApi.fetchHub
+              }
             />
           </div>
         }

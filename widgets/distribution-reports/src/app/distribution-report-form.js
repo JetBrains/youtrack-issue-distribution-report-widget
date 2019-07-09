@@ -37,7 +37,8 @@ class DistributionReportForm extends React.Component {
     onReportSettingsChange: PropTypes.func,
     disabled: PropTypes.bool,
     currentUser: PropTypes.object,
-    fetchYouTrack: PropTypes.func
+    fetchYouTrack: PropTypes.func,
+    fetchHub: PropTypes.func
   };
 
   static isNewReport = report => !report.id;
@@ -110,6 +111,7 @@ class DistributionReportForm extends React.Component {
       report: props.report,
       disabled: props.disabled,
       fetchYouTrack: props.fetchYouTrack,
+      fetchHub: props.fetchHub,
       currentUser: props.currentUser,
       userGroups: []
     };
@@ -122,7 +124,8 @@ class DistributionReportForm extends React.Component {
     this.setState({
       disabled: props.disabled,
       currentUser: props.currentUser,
-      fetchYouTrack: props.fetchYouTrack
+      fetchYouTrack: props.fetchYouTrack,
+      fetchHub: props.fetchHub
     });
     if ((props.report || {}).id !== (this.state.report || {}).id) {
       this.updateReport(props.report);
@@ -216,7 +219,9 @@ class DistributionReportForm extends React.Component {
   projectsInputDataSource = async tagsInputModel => {
     let {projects} = this.state;
     if (!projects) {
-      projects = await loadProjects(this.state.fetchYouTrack);
+      projects = await loadProjects(this.state.fetchYouTrack,
+        this.state.fetchHub,
+        this.state.report);
       if (projects) {
         this.setState({projects});
       }

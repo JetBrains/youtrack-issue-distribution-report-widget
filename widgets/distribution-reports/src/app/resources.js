@@ -1,12 +1,14 @@
-import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import BackendTypes
+  from '../../../../components/src/backend-types/backend-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
+const PERMISSION_FIELDS = 'permission%2Fkey,global,projects(id)';
 const USER_GROUP_FIELDS = 'id,name,icon';
-const PROJECTS_FIELDS = 'id,name,shortName';
+const PROJECTS_FIELDS = 'id,ringId,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
@@ -25,8 +27,21 @@ async function underlineAndSuggest(fetchYouTrack, query, caret) {
   });
 }
 
-async function loadProjects(fetchYouTrack) {
-  return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+async function loadProjects(fetchYouTrack, fetchHub, report) {
+  if (report.id) {
+    return await fetchYouTrack(`api/reports/${report.id}/accessibleProjects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  }
+  const projects = await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  const permissionCache = await fetchHub(
+    `api/rest/permissions/cache?fields=${PERMISSION_FIELDS}`
+  );
+  const createReportPermission = permissionCache.find(it =>
+    it.permission.key === 'JetBrains.YouTrack.CREATE_REPORT');
+  if (!createReportPermission || createReportPermission.global) {
+    return projects;
+  }
+  const projectIds = createReportPermission.projects.map(it => it.id);
+  return projects.filter(it => projectIds.indexOf(it.ringId) >= 0);
 }
 
 async function loadReportWithData(fetchYouTrack, reportId) {
