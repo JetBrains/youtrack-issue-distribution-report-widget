@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@jetbrains/ring-ui/components/link/link';
-import {CaretDownIcon} from '@jetbrains/ring-ui/components/icon';
+import {ChevronDownIcon} from '@jetbrains/ring-ui/components/icon';
 import {RerenderableSelect} from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
@@ -136,8 +136,8 @@ class ReportChartSortOrder extends React.Component {
             { ReportChartSortOrder.getArrow(sortOrder, orientation) }
           </span>&nbsp;
           { ReportChartSortOrder.getSortOrderTypePresentation(sortOrder) }
-          <CaretDownIcon
-            size={CaretDownIcon.Size.Size14}
+          <ChevronDownIcon
+            size={ChevronDownIcon.Size.Size12}
           />
         </Link>
         <RerenderableSelect

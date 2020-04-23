@@ -151,6 +151,21 @@ async function loadCurrentUser(fetchHub) {
   );
 }
 
+async function loadUsers(
+  fetchYouTrack,
+  {permission, projectId, query, $skip = 0}
+) {
+  const queryParams = {$skip, $top: 20, permission, query};
+  if (projectId && projectId.length) {
+    queryParams.projectId = projectId;
+  }
+  return await fetchYouTrack(
+    `api/admin/users?fields=${USER_FIELDS}`, {
+      query: queryParams
+    }
+  );
+}
+
 async function getYouTrackServices(fetchHub) {
   const data = await fetchHub(`api/rest/services?fields=${SERVICE_FIELDS}&query=applicationName:YouTrack`);
   return (data && data.services || []).filter(
@@ -207,6 +222,7 @@ export {
   loadSprint,
   loadUserGroups,
   loadCurrentUser,
+  loadUsers,
 
   makeYouTrackFetcher
 };

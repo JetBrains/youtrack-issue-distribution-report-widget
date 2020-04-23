@@ -5,17 +5,20 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
-import {RerenderableSelect} from '@jetbrains/ring-ui/components/select/select';
 import {
-  PermissionIcon,
   InfoIcon,
-  CompareIcon
+  CompareIcon,
+  EyeIcon,
+  PencilIcon
 } from '@jetbrains/ring-ui/components/icon';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import FilterFieldsSelector
   from '../../../../components/src/filter-fields-selector/filter-fields-selector';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import SharingSetting from
+  '../../../../components/src/sharing-setting/sharing-setting';
+import {loadUsers} from '../../../../components/src/resources/resources';
 
 import {
   loadProjects,
@@ -81,29 +84,6 @@ class DistributionReportForm extends React.Component {
     model: project
   });
 
-  static toVisibilityOption = userGroup => ({
-    key: userGroup.id,
-    label: userGroup.name,
-    icon: userGroup.icon,
-    model: userGroup
-  });
-
-  static ME_ONLY_VISIBILITY_OPTION = {
-    key: '-1',
-    label: i18n('Me only'),
-    model: null
-  };
-
-  static getVisibilityOptions = (userGroups, currentUser) => {
-    const visibilityOptions = userGroups.map(
-      DistributionReportForm.toVisibilityOption
-    );
-    visibilityOptions.unshift(Object.assign({
-      icon: currentUser && currentUser.avatar && currentUser.avatar.url
-    }, DistributionReportForm.ME_ONLY_VISIBILITY_OPTION));
-    return visibilityOptions;
-  };
-
   constructor(props) {
     super(props);
 
@@ -113,7 +93,8 @@ class DistributionReportForm extends React.Component {
       fetchYouTrack: props.fetchYouTrack,
       fetchHub: props.fetchHub,
       currentUser: props.currentUser,
-      userGroups: []
+      userGroups: [],
+      users: []
     };
     this.props.onValidStateChange(
       DistributionReportForm.checkReportValidity(props.report)
@@ -166,12 +147,43 @@ class DistributionReportForm extends React.Component {
       const userGroups = await loadUserGroups(this.state.fetchYouTrack);
       this.setState({userGroups});
     }
+    if (!this.state.users.length) {
+      const users = await loadUsers(this.state.fetchYouTrack, {});
+      this.setState({users});
+    }
   };
 
-  changeVisibility = selected => {
+  getSharingSettingsOptions = async (query = '') => {
+    const {report, currentUser, fetchYouTrack} = this.state;
+
+    const groups = await loadUserGroups(fetchYouTrack, {query});
+
+    const projectId = ((report || {}).projects || []).
+      map(project => project.id);
+    const users = await loadUsers(fetchYouTrack, {
+      query, permissionId: 'JetBrains.YouTrack.READ_REPORT', projectId
+    });
+
+    return {groups, users, currentUser};
+  };
+
+  changeSharingSettings = (settingName, options) => {
     const {report} = this.state;
-    report.visibleTo = selected.model;
+    report[settingName] = {
+      permittedUsers: (options || []).
+        filter(option => option.$type === 'User'),
+      permittedGroups: (options || []).
+        filter(option => option.$type === 'UserGroup')
+    };
     this.onReportEditOperation(report);
+  };
+
+  changeReadSharingSettings = options => {
+    this.changeSharingSettings('readSharingSettings', options);
+  };
+
+  changeUpdateSharingSettings = options => {
+    this.changeSharingSettings('updateSharingSettings', options);
   };
 
   changeMainFilterField = selected => {
@@ -372,58 +384,55 @@ class DistributionReportForm extends React.Component {
     );
   }
 
-  renderVisibilityBlock() {
+  renderSharingSettingBlock(settingName, label, IconElement, onChange) {
     const {
-      report,
       disabled,
-      userGroups,
-      currentUser
+      report
     } = this.state;
 
-    const visibilityPresentation = report.visibleTo
-      ? report.visibleTo.name
-      : DistributionReportForm.ME_ONLY_VISIBILITY_OPTION.label;
-
-    const renderVisibilityIcon = () => (
-      <Tooltip
-        title={
-          report.visibleTo
-            ? i18n('Report is visible to members of {{visibilityPresentation}}', {visibilityPresentation})
-            : i18n('Report is private')
-        }
-      >
-        <PermissionIcon
-          className="distribution-reports-widget__icon"
-          color={PermissionIcon.Color.GRAY}
-          size={PermissionIcon.Size.Size14}
-        />&nbsp;
-      </Tooltip>
-    );
-
-    if (disabled) {
-      return (
-        <div className="ring-form__group">
-          { renderVisibilityIcon() }
-          <span>{ visibilityPresentation }</span>
-        </div>
-      );
-    }
+    const sharingSetting = report && report[settingName] || {};
+    const selectedOptions = [
+      ...(sharingSetting.permittedUsers || []),
+      ...(sharingSetting.permittedGroups || [])
+    ];
+    const implicitSelected = (report && report.owner) ? [report.owner] : [];
 
     return (
       <div className="ring-form__group">
-        { renderVisibilityIcon() }
-        <RerenderableSelect
-          data={DistributionReportForm.getVisibilityOptions(
-            userGroups, currentUser
-          )}
-          label={visibilityPresentation}
-          loading={!userGroups.length}
-          onSelect={this.changeVisibility}
-          onOpen={this.openVisibilitySelector}
-          filter={true}
-          type={RerenderableSelect.Type.INLINE}
+        <IconElement
+          className="distribution-reports-widget__icon distribution-reports-widget__label"
+          color={InfoIcon.Color.GRAY}
+          size={InfoIcon.Size.Size14}
+        />
+        <span className="distribution-reports-widget__label">
+          {label}
+        </span>
+        <SharingSetting
+          getOptions={this.getSharingSettingsOptions}
+          selected={selectedOptions}
+          onChange={onChange}
+          disabled={disabled}
+          implicitSelected={implicitSelected}
         />
       </div>
+    );
+  }
+
+  renderVisibleToBlock() {
+    return this.renderSharingSettingBlock(
+      'readSharingSettings',
+      i18n('Can view and use'),
+      EyeIcon,
+      this.changeReadSharingSettings
+    );
+  }
+
+  renderUpdateableByBlock() {
+    return this.renderSharingSettingBlock(
+      'updateSharingSettings',
+      i18n('Can edit'),
+      PencilIcon,
+      this.changeUpdateSharingSettings
     );
   }
 
@@ -520,12 +529,9 @@ class DistributionReportForm extends React.Component {
         {this.renderProjectsSelectorBlock()}
         {this.renderIssueDistributionFieldsBlock()}
         {this.renderAggregationPolicyBlock()}
-        {
-          this.renderFilterIssuesBlock()
-        }
-        {
-          this.renderVisibilityBlock()
-        }
+        {this.renderFilterIssuesBlock()}
+        {this.renderVisibleToBlock()}
+        {this.renderUpdateableByBlock()}
       </div>
     );
   }

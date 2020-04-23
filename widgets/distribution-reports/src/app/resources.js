@@ -7,8 +7,10 @@ const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
 const PERMISSION_FIELDS = 'permission%2Fkey,global,projects(id)';
-const USER_GROUP_FIELDS = 'id,name,icon';
+const USER_GROUP_FIELDS = 'id,name,icon,avatarUrl,allUsersGroup';
 const PROJECTS_FIELDS = 'id,ringId,name,shortName';
+
+const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
@@ -16,7 +18,7 @@ const REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortI
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,presentation`;
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
 const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(tooBig,total(value,presentation),columns(${REPORT_DATA_COLUMN_FIELDS}),xcolumns(${REPORT_DATA_COLUMN_FIELDS}),ycolumns(${REPORT_DATA_COLUMN_FIELDS}),counts(value,presentation),issuesQueries),status(${REPORT_STATUS_FIELDS})`;
-const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name)`;
+const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS})`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 
@@ -142,9 +144,11 @@ async function recalculateReport(fetchYouTrack, report) {
   });
 }
 
-async function loadUserGroups(fetchYouTrack) {
+async function loadUserGroups(fetchYouTrack, queryParams) {
   return await fetchYouTrack(
-    `api/admin/groups?fields=${USER_GROUP_FIELDS}`
+    `api/admin/groups?fields=${USER_GROUP_FIELDS}`, {
+      query: queryParams
+    }
   );
 }
 
