@@ -1,7 +1,7 @@
 import {getCurrentSprint} from '../agile-board-model/agile-board-model';
 import BackendTypes from '../backend-types/backend-types';
 
-const REQUESTED_YOUTRACK_VERSION = '2018.1.41206';
+const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
