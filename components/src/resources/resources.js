@@ -153,11 +153,13 @@ async function loadCurrentUser(fetchHub) {
 
 async function loadUsers(
   fetchYouTrack,
-  {permission, projectId, query, $skip = 0}
+  {permission, projectIds, query, $skip = 0}
 ) {
   const queryParams = {$skip, $top: 20, permission, query};
-  if (projectId && projectId.length) {
-    queryParams.projectId = projectId;
+  if (projectIds && projectIds.length) {
+    queryParams.projectId = projectIds.map(
+      projectId => `projectId=${projectId}`
+    ).join('&');
   }
   return await fetchYouTrack(
     `api/admin/users?fields=${USER_FIELDS}`, {

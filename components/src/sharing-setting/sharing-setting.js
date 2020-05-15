@@ -74,7 +74,7 @@ const SharingSetting = (
   }, [getAllOptions, onChange]);
 
   const dropdownOptions = useMemo(() => (
-    options ? makeDropdownOptions(options, implicitSelected) : []
+    options ? makeDropdownOptions(options) : []
   ), [options]);
 
   const hoverTitle = [...selected, ...(implicitSelected || [])].
@@ -103,15 +103,7 @@ const SharingSetting = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const passthruFilter = s => s;
 
-  const implicitSelectedOptions = implicitSelected.
-    map(it => ({...userGroupToSelectOption(it), ...{disabled: true}}));
-  const selectedWithoutImplicit = hideUsersFromList(selected, implicitSelected);
-  const selectedTagsOptions = selectedWithoutImplicit.length
-    ? [
-      ...implicitSelectedOptions,
-      ...(selectedWithoutImplicit.map(userGroupToSelectOption))
-    ]
-    : [];
+  const selectedTagsOptions = (selected || []).map(userGroupToSelectOption);
 
   return (
     <Select

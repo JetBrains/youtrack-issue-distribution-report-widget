@@ -395,7 +395,7 @@ class DistributionReportForm extends React.Component {
       ...(sharingSetting.permittedUsers || []),
       ...(sharingSetting.permittedGroups || [])
     ];
-    const implicitSelected = (report && report.owner) ? [report.owner] : [];
+    const reportOwner = report && report.owner || this.props.currentUser;
 
     return (
       <div className="ring-form__group">
@@ -412,7 +412,7 @@ class DistributionReportForm extends React.Component {
           selected={selectedOptions}
           onChange={onChange}
           disabled={disabled}
-          implicitSelected={implicitSelected}
+          implicitSelected={[reportOwner]}
         />
       </div>
     );

@@ -24,7 +24,7 @@
     "@jetbrains/hub-widget-ui": "1.0.35",
     "@jetbrains/icons": "3.6.0",
     "@jetbrains/logos": "^1.1.6",
-    "@jetbrains/ring-ui": "3.0.7",
+    "@jetbrains/ring-ui": "3.0.19",
     "angular-gettext-cli": "1.2.0",
     "angular-gettext-loader": "1.0.1",
     "babel-core": "6.26.0",
