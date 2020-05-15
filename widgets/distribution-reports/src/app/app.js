@@ -7,6 +7,8 @@ import DashboardAddons from 'hub-dashboard-addons';
 import {setLocale} from 'hub-dashboard-addons/dist/localization';
 import ConfigWrapper from '@jetbrains/hub-widget-ui/dist/config-wrapper';
 
+import '../../../../components/src/report-widget/report-widget.scss';
+
 import Widget from './widget';
 import TRANSLATIONS from './translations';
 

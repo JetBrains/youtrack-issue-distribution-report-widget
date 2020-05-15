@@ -27,5 +27,7 @@
 
   &__progress-bar {
     margin: $ring-unit auto;
+
+    max-width: 80%;
   }
 }

@@ -97,10 +97,10 @@ class Content extends React.Component {
       const fromPercentsCoefficient = 0.01;
       const progressValue = report.status.progress * fromPercentsCoefficient;
       return (
-        <div className="distribution-reports-widget__progress">
+        <div className="report-widget__progress">
           <div>{i18n('Calculating...')}</div>
           <ProgressBar
-            className="distribution-reports-widget__progress-bar"
+            className="report-widget__progress-bar"
             value={progressValue}
           />
         </div>
