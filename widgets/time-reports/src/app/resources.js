@@ -1,39 +1,26 @@
-import {getCurrentSprint} from '../agile-board-model/agile-board-model';
-import BackendTypes from '../backend-types/backend-types';
+import BackendTypes
+  from '../../../../components/src/backend-types/backend-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
-const USER_GROUP_FIELDS = 'id,name,icon';
-const PROJECTS_FIELDS = 'id,name,shortName';
-
-const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
-
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS})`;
+const PERMISSION_FIELDS = 'permission%2Fkey,global,projects(id)';
+const USER_GROUP_FIELDS = 'id,name,icon,avatarUrl,allUsersGroup';
+const PROJECTS_FIELDS = 'id,ringId,name,shortName';
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
 
-const Y_AXIS_TYPE_FIELDS = 'yaxisType(id,name)';
-const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';
-const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT_FIELDS}),remainingEstimation(${BURN_DOWN_REPORT_POINT_FIELDS}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT_FIELDS}),${Y_AXIS_TYPE_FIELDS}`;
-const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
-const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
-const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
-const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const WORK_ITEM_TYPE_FIELDS = 'id,name';
-const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;
-const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name),readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS}),${TIME_REPORT_SETTINGS_FIELDS}`;
+const REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
+const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,presentation`;
+const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(tooBig,total(value,presentation),columns(${REPORT_DATA_COLUMN_FIELDS}),xcolumns(${REPORT_DATA_COLUMN_FIELDS}),ycolumns(${REPORT_DATA_COLUMN_FIELDS}),counts(value,presentation),issuesQueries),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS})`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
-
-const SPRINT_FIELDS = 'id,name,start,finish,report(id)';
-const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName)`;
-const AGILE_REPORT_SETTINGS_FIELDS = 'extensions(reportSettings(doNotUseBurndown))';
-
 
 async function underlineAndSuggest(fetchYouTrack, query, caret) {
   return await fetchYouTrack(`api/search/assist?fields=${QUERY_ASSIST_FIELDS}`, {
@@ -42,26 +29,21 @@ async function underlineAndSuggest(fetchYouTrack, query, caret) {
   });
 }
 
-async function loadProjects(fetchYouTrack) {
-  return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
-}
-
-async function loadAgiles(fetchYouTrack) {
-  return await fetchYouTrack(`api/agiles?fields=${AGILE_FIELDS}&$top=-1`);
-}
-
-async function loadAgileReportSettings(fetchYouTrack, agileId) {
-  const agileSettings = await fetchYouTrack(`api/agiles/${agileId}?fields=${AGILE_REPORT_SETTINGS_FIELDS}&$top=-1`);
-  return agileSettings && agileSettings.extensions &&
-    agileSettings.extensions.reportSettings;
-}
-
-async function loadSprint(fetchYouTrack, agileId, sprintId) {
-  if (sprintId) {
-    return await fetchYouTrack(`api/agiles/${agileId}/sprints/${sprintId}?fields=${SPRINT_FIELDS}`);
+async function loadProjects(fetchYouTrack, fetchHub, report) {
+  if (report.id) {
+    return await fetchYouTrack(`api/reports/${report.id}/accessibleProjects?fields=${PROJECTS_FIELDS}&$top=-1`);
   }
-  const agile = await fetchYouTrack(`api/agiles/${agileId}?fields=${AGILE_FIELDS}`);
-  return getCurrentSprint(agile);
+  const projects = await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  const permissionCache = await fetchHub(
+    `api/rest/permissions/cache?fields=${PERMISSION_FIELDS}`
+  );
+  const createReportPermission = permissionCache.find(it =>
+    it.permission.key === 'JetBrains.YouTrack.CREATE_REPORT');
+  if (!createReportPermission || createReportPermission.global) {
+    return projects;
+  }
+  const projectIds = createReportPermission.projects.map(it => it.id);
+  return projects.filter(it => projectIds.indexOf(it.ringId) >= 0);
 }
 
 async function loadReportWithData(fetchYouTrack, reportId) {
@@ -76,39 +58,30 @@ async function loadReportWithSettings(fetchYouTrack, reportId) {
   );
 }
 
-async function loadReportsList(fetchYouTrack, reportTypes = []) {
-  const typesParameter = reportTypes.map(BackendTypes.toShortType).join(',');
-
-  return (
-    await fetchYouTrack(`api/reports?fields=${REPORT_FIELDS}&$top=300&types=${typesParameter}`)
-  ) || [];
-}
-
-async function loadIndependentBurnDownReports(fetchYouTrack) {
-  return await loadReportsList(
-    fetchYouTrack, [BackendTypes.get().IndependentBurndownReport]
-  );
-}
-
 async function loadIssuesDistributionReports(fetchYouTrack) {
   const distributionReportTypes = [
     BackendTypes.get().IssuePerProjectReport,
     BackendTypes.get().IssuePerAssigneeReport,
     BackendTypes.get().FlatDistributionReport,
     BackendTypes.get().MatrixReport
-  ];
+  ].map(BackendTypes.toShortType).
+    join(',');
 
-  return await loadReportsList(fetchYouTrack, distributionReportTypes);
+  return (
+    await fetchYouTrack(`api/reports?fields=${REPORT_FIELDS}&$top=300&types=${distributionReportTypes}`)
+  ) || [];
 }
 
-async function loadTimeReports(fetchYouTrack) {
-  const timeReportTypes = [
-    BackendTypes.get().TimeReport,
-    BackendTypes.get().TimeSheetReport
-  ];
-  return await loadReportsList(fetchYouTrack, timeReportTypes);
-}
+async function loadReportsFilterFields(fetchYouTrack, projects) {
+  const fld = serializeArrayParameter('fld',
+    (projects || []).map(project => project.id)
+  );
+  const params = [
+    fld, '$top=300', `fields=${REPORT_FILTER_FIELDS_FIELDS}`
+  ].filter(param => param.length > 0).join('&');
 
+  return await fetchYouTrack(`api/filterFields?${params}`);
+}
 
 async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
   const fieldTypes = serializeArrayParameter(
@@ -122,7 +95,6 @@ async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
     fld,
     'includeNonFilterFields=true',
     '$top=300',
-    'usage=true',
     `fields=${REPORT_FILTER_FIELDS_FIELDS}`
   ].filter(param => param.length > 0).join('&');
 
@@ -172,38 +144,17 @@ async function recalculateReport(fetchYouTrack, report) {
   });
 }
 
-async function loadUserGroups(fetchYouTrack) {
+async function loadUserGroups(fetchYouTrack, queryParams) {
   return await fetchYouTrack(
-    `api/admin/groups?fields=${USER_GROUP_FIELDS}`
+    `api/admin/groups?fields=${USER_GROUP_FIELDS}`, {
+      query: queryParams
+    }
   );
 }
 
 async function loadCurrentUser(fetchHub) {
   return await fetchHub(
     `api/rest/users/me?fields=${USER_FIELDS}`
-  );
-}
-
-async function loadUsers(
-  fetchYouTrack,
-  {permission, projectIds, query, $skip = 0}
-) {
-  const queryParams = {$skip, $top: 20, permission, query};
-  if (projectIds && projectIds.length) {
-    queryParams.projectId = projectIds.map(
-      projectId => `projectId=${projectId}`
-    ).join('&');
-  }
-  return await fetchYouTrack(
-    `api/admin/users?fields=${USER_FIELDS}`, {
-      query: queryParams
-    }
-  );
-}
-
-async function loadWorkItemTypes(fetchYouTrack) {
-  return await fetchYouTrack(
-    `api/admin/timeTrackingSettings/workItemTypes?fields=${WORK_ITEM_TYPE_FIELDS}`, {}
   );
 }
 
@@ -242,18 +193,11 @@ async function getYouTrackService(fetchHub, optionalYtId) {
   return services[0];
 }
 
-function makeYouTrackFetcher(dashboardApi, youTrack) {
-  return async (url, params) =>
-    await dashboardApi.fetch(youTrack.id, url, params);
-}
-
 export {
   loadReportWithData,
-  loadReportsList,
-  loadIndependentBurnDownReports,
   loadIssuesDistributionReports,
-  loadTimeReports,
   loadReportWithSettings,
+  loadReportsFilterFields,
   loadReportsAggregationFilterFields,
   saveReportSettings,
   recalculateReport,
@@ -261,14 +205,6 @@ export {
   getYouTrackService,
   underlineAndSuggest,
   loadProjects,
-  loadAgiles,
-  loadAgileReportSettings,
-  loadSprint,
   loadUserGroups,
-  loadCurrentUser,
-  loadUsers,
-
-  loadWorkItemTypes,
-
-  makeYouTrackFetcher
+  loadCurrentUser
 };

@@ -59,7 +59,7 @@ const NewReport = {
     projects: [],
     query: '',
     range: {
-      $type: BackendTypes.get().ReportNamedTimeRange,
+      $type: BackendTypes.get().NamedTimeRange,
       range: {
         id: (ReportNamedTimeRanges.severalDaysRanges()[0]).id
       }

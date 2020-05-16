@@ -11,8 +11,12 @@ const BackendTypesEnum = {
   IssuePerAssigneeReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.IssuePerAssigneeReport',
   FlatDistributionReport: 'jetbrains.youtrack.reports.impl.distribution.flat.gap.FlatDistributionReport',
   MatrixReport: 'jetbrains.youtrack.reports.impl.distribution.matrix.gap.MatrixReport',
+  TimeReport: 'jetbrains.youtrack.reports.impl.time.gap.simple.TimeReport',
+  TimeSheetReport: 'jetbrains.youtrack.reports.impl.time.gap.sheet.TimeSheetReport',
 
-  ReportNamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
+  NamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
+  FixedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.FixedTimeRange',
+  TimeSheetReportScale: 'jetbrains.youtrack.reports.impl.time.gap.sheet.TimeSheetReportScale',
   PredefinedFilterField: 'jetbrains.charisma.keyword.PredefinedFilterField'
 };
 

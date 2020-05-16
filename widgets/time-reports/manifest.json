@@ -1,0 +1,24 @@
+{
+  "key": "time-reports",
+  "version": "0.0.1",
+  "name": "Time Report",
+  "description": "Displays a time report for YouTrack issues. The widget settings let you build the report directly on a dashboard or project overview page.",
+  "applicationName": "YouTrack",
+  "author": "YouTrack Team",
+  "dependencies": {
+    "YouTrack": ">=2020.1.3111",
+    "Hub": ">=2018.1"
+  },
+  "products": {
+    "YouTrack": ">=2020.1.3111",
+    "Hub": ">=2018.1"
+  },
+  "capabilities": {
+    "topNavigation": true,
+    "popups": true
+  },
+  "view": {
+    "defaultWidth": 4,
+    "defaultHeight": 3
+  }
+}
