@@ -30,6 +30,11 @@ const ReportTypes = {
       BackendTypes.get().IssuePerAssigneeReport,
       BackendTypes.get().FlatDistributionReport,
       BackendTypes.get().MatrixReport
+    ]),
+
+  isSpendTimeReport: report =>
+    BackendTypes.entityOfType(report, [
+      BackendTypes.get().TimeSheetReport
     ])
 };
 
@@ -80,7 +85,12 @@ const ReportDataValidity = {
     !(reportData.remainingEstimation || []).length,
 
   issuesDistribution: reportData =>
-    !(reportData.columns || reportData.ycolumns || []).length
+    !(reportData.columns || reportData.ycolumns || []).length,
+
+  spendTime: reportData =>
+    (reportData.hasIssueView &&
+      (reportData.headers || []).length &&
+      (reportData.groups || []).length)
 };
 
 const ReportModel = {
@@ -119,6 +129,9 @@ const ReportModel = {
     }
     if (ReportTypes.isCumulativeFlow(report)) {
       return ReportDataValidity.cumulativeFlow(reportData);
+    }
+    if (ReportTypes.isSpendTimeReport(report)) {
+      return ReportDataValidity.spendTime(reportData);
     }
     return ReportDataValidity.burnDown(reportData);
   },

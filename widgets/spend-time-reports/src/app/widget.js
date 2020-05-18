@@ -9,10 +9,10 @@ import 'nvd3/nv.d3.css';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import {loadReportWithData} from '../../../../components/src/resources/resources';
 import '../../../../components/src/report-widget/report-widget.scss';
 
 import {
-  loadReportWithData,
   recalculateReport,
   getYouTrackService,
   loadIssuesDistributionReports,

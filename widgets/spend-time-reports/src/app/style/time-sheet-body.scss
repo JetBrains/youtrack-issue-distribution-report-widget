@@ -1,0 +1,261 @@
+@import '~@jetbrains/ring-ui/components/global/global';
+
+.time-sheet-body {
+
+  &__wrapper {
+    border-spacing: 0;
+    display: flex;
+  }
+
+  &__data {
+    overflow: auto;
+  }
+
+  .header-legend {
+    display: inline-block;
+    position: absolute;
+    margin-top: -$ring-unit;
+    overflow: hidden;
+    width: 80px;
+  }
+
+  .yt-table__cell_header {
+    &_legend {
+      text-align: left;
+      vertical-align: middle;
+      position: relative
+    }
+    &_workday {
+      min-width: 34px;
+      text-align: left;
+    }
+    &_holiday {
+      min-width: 34px;
+      text-align: left;
+      background-color: var(--ring-sidebar-background-color);
+    }
+  }
+
+}
+
+.yt-table__row-data {
+
+  th:first-child {
+    padding-left: $ring-unit !important;
+  }
+  td:first-child {
+    padding-left: $ring-unit !important;
+  }
+}
+
+.no-issue-view-text {
+  margin-left: -4px;
+}
+
+
+.time-report-body-wrapper {
+  overflow-x: auto
+}
+
+.yt-table_time-report {
+  .field-values-expand {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+  }
+
+
+  .yt-table__cell_header-title {
+    white-space: nowrap;
+  }
+
+  .yt-table__header {
+
+    & .yt-table__cell_header:first-child {
+      text-align: left;
+    }
+  }
+
+  .yt-table__cell {
+    &_comment {
+      max-width: 150px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    &_large_comment {
+      max-width: 250px;
+      text-align: left;
+    }
+  }
+
+  .min-width {
+    width: 1px;
+  }
+
+  .yt-table__cell_issue-summary {
+    padding-left: 0 !important;
+  }
+
+  .yt-table__cell_user-avatar {
+    padding-right: 8px;
+  }
+}
+
+.yt-time-report__total {
+  font-size: 22px;
+}
+
+.yt-time-report__total_estimation {
+  color: var(--ring-secondary-color);
+}
+
+
+.yt-table {
+  border-spacing: 0;
+  display: inline-block;
+
+  &__row {
+    height: $ring-unit*4;
+
+    th:first-child {
+      padding-left: 0;
+    }
+
+    td:first-child {
+      padding-left: 0;
+    }
+
+    &_hovered:hover {
+      background-color: var(--ring-hover-background-color);
+
+      td {
+        background-color: var(--ring-hover-background-color) !important;
+      }
+    }
+
+    &_hover {
+      background-color: var(--ring-hover-background-color);
+
+      td {
+        background-color: var(--ring-hover-background-color) !important;
+      }
+    }
+
+    &_select {
+      background-color: var(--ring-selected-background-color);
+
+      td {
+        background-color: var(--ring-selected-background-color) !important;
+      }
+    }
+  }
+
+  &__cell {
+    padding: 0 $ring-unit;
+    vertical-align: middle;
+    text-align: right;
+
+    &_text {
+      text-align: left;
+    }
+
+    &_header {
+      text-align: left;
+      font-weight: normal;
+      white-space: nowrap;
+      color: var(--ring-secondary-color);
+    }
+
+    &_user-avatar {
+      padding-top: 4px;
+      padding-right: 0;
+    }
+
+    &_user-name {
+      min-width: 200px;
+      max-width: 332px;
+      text-align: left;
+    }
+
+    &_issue-id {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    &_issue-summary {
+      min-width: 200px;
+      max-width: 332px;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__total.yt-table__row,
+  &__total .yt-table__row {
+    height: $ring-unit*6;
+
+    .yt-table__cell {
+      white-space: nowrap;
+      border-top: 1px solid var(--ring-line-color);
+      border-bottom: 1px solid var(--ring-line-color);
+      padding-top: $ring-unit;
+      padding-bottom: $ring-unit;
+    }
+  }
+
+  &__group {
+    .yt-table__row:first-child {
+      .yt-table__cell {
+        border-top: 1px solid var(--ring-line-color);
+      }
+    }
+
+    .yt-table__row:last-child {
+      height: $ring-unit*5;
+      .yt-table__cell {
+        padding-bottom: $ring-unit;
+      }
+    }
+  }
+
+  &__group_not-bordered {
+    .yt-table__row:first-child {
+      .yt-table__cell {
+        border-top: 0 !important;
+      }
+    }
+  }
+
+  .avatar {
+    border-radius: var(--ring-border-radius);
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.yt-table__cell_right-border {
+  border-right: 1px solid var(--ring-line-color);
+}
+
+.yt-table__cell_left-border {
+  border-left: 1px solid var(--ring-line-color);
+}
+
+.yt-table__cell_sticky_legend {
+  position: sticky;
+  top: 0;
+  background: var(--ring-content-background-color);
+}
+
+.yt-table__cell_sticky_total {
+  position: sticky;
+  top: 4*$ring-unit;
+  background: var(--ring-content-background-color);
+}
+
+.yt-table__cell_progress-bar {
+  width: 48px;
+}

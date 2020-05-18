@@ -10,6 +10,8 @@ import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 
+import TimeTable from './time-table';
+
 class Content extends React.Component {
   static propTypes = {
     report: PropTypes.object,
@@ -119,7 +121,7 @@ class Content extends React.Component {
     }
 
     return (
-      <div>{'Table will be here'}</div>
+      <TimeTable reportData={report.data}/>
     );
   }
 

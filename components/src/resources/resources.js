@@ -18,11 +18,17 @@ const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permitted
 const Y_AXIS_TYPE_FIELDS = 'yaxisType(id,name)';
 const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';
 const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT_FIELDS}),remainingEstimation(${BURN_DOWN_REPORT_POINT_FIELDS}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT_FIELDS}),${Y_AXIS_TYPE_FIELDS}`;
+
+const PERIOD_FIELD_VALUE_FIELDS = 'value,presentation';
+
+const TIME_SHEET_REPORT_LINE_DATA = `entityId,presentation,avatarUrl,spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),totalSpentTime(${PERIOD_FIELD_VALUE_FIELDS})`;
+const TIME_SHEET_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linkedUser(ringId,visibleName)),entityId,lineSpentTime(${PERIOD_FIELD_VALUE_FIELDS}),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),issueLines(${TIME_SHEET_REPORT_LINE_DATA}),userLines(${TIME_SHEET_REPORT_LINE_DATA})`;
+const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,header(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${TIME_SHEET_GROUP_DATA_FIELDS})`;
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;

@@ -1,6 +1,6 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
-.report-chart {
+.report-time-sheet {
   &__title {
     margin-right: $ring-unit;
     margin-bottom: 2 * $ring-unit;
@@ -297,13 +297,13 @@
 }
 
 @media only screen and (min-width: 451px) {
-  .report-chart__labels-column:nth-child(2) {
+  .report-time-sheet__labels-column:nth-child(2) {
     display: block !important;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .report-chart__labels-column:nth-child(2) {
+  .report-time-sheet__labels-column:nth-child(2) {
     display: none !important;
   }
 }
