@@ -2,13 +2,13 @@ import 'babel-polyfill';
 import {mount} from 'enzyme';
 import React from 'react';
 
-import DistributionReportWidget from '../app/widget';
+import TimeReportsWidget from '../app/widget';
 
 import {
   getDashboardApiMock, getRegisterWidgetApiMock
 } from './mocks';
 
-describe('DistributionReportWidget', () => {
+describe('TimeReportsWidget', () => {
 
   let dashboardApiMock;
   let registerWidgetApiMock;
@@ -19,12 +19,12 @@ describe('DistributionReportWidget', () => {
   });
 
   it('should export IssuesListWidget', () => {
-    (DistributionReportWidget).should.be.a('function');
+    (TimeReportsWidget).should.be.a('function');
   });
 
   const mountIssueListWidget = () =>
     mount(
-      <DistributionReportWidget
+      <TimeReportsWidget
         dashboardApi={dashboardApiMock}
         registerWidgetApi={registerWidgetApiMock}
       />

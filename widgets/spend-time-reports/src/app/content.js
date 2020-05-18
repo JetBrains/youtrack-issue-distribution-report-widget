@@ -10,9 +10,6 @@ import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 
-import DistributionReportAxises from './distribution-report-axises';
-import ReportChart from './report-chart';
-
 class Content extends React.Component {
   static propTypes = {
     report: PropTypes.object,
@@ -91,7 +88,7 @@ class Content extends React.Component {
   }
 
   renderReportBody() {
-    const {report, youTrack} = this.props;
+    const {report} = this.props;
 
     if (ReportModel.isReportCalculation(report)) {
       const fromPercentsCoefficient = 0.01;
@@ -121,36 +118,8 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
-    const {SortOrder} = DistributionReportAxises;
-
-    const getAggregationTitle = () => {
-      if (!report.aggregationPolicy) {
-        return i18n('Total issues count');
-      }
-      if (!report.aggregationPolicy.field) {
-        return i18n('Total votes count', {total: ''});
-      }
-      const fieldName = report.aggregationPolicy.field.presentation;
-      return i18n('Total {{fieldName}}', {fieldName});
-    };
-
     return (
-      <ReportChart
-        reportData={report.data}
-        presentationMode={report.presentation}
-        reportMainSortOrder={SortOrder.getMainAxisSortOrder(report)}
-        reportSecondarySortOrder={SortOrder.getSecondaryAxisSortOrder(report)}
-        reportMainAxisLabel={
-          DistributionReportAxises.getMainAxisPresentation(report)
-        }
-        reportSecondaryAxisLabel={
-          DistributionReportAxises.getSecondaryAxisPresentation(report)
-        }
-        aggregationTitle={getAggregationTitle()}
-        onChangeSortOrders={this.props.onChangeReportSortOrders}
-        onChangePresentationMode={this.props.onChangePresentationMode}
-        homeUrl={youTrack.homeUrl}
-      />
+      <div>{'Table will be here'}</div>
     );
   }
 

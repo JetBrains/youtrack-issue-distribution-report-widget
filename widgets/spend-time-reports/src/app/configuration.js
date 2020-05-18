@@ -26,7 +26,7 @@ import ReportNamedTimeRanges from '../../../../components/src/report-model/repor
 import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
 
 import {makeYouTrackFetcher} from './components/service-resource';
-import TimeReportForm from './time-report-form';
+import SpendTimeReportForm from './spend-time-report-form';
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -388,7 +388,7 @@ class Configuration extends React.Component {
           reportWithSettings &&
           <div>
             { this.renderCloneNonOwnReportWarning(reportWithSettings) }
-            <TimeReportForm
+            <SpendTimeReportForm
               report={reportWithSettings}
               onReportSettingsChange={this.onReportSettingsChange}
               onValidStateChange={this.onReportValidStatusChange}

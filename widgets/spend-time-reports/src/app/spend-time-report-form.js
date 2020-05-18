@@ -32,9 +32,9 @@ import {
 } from './resources';
 import {
   getReportTypeExampleLink
-} from './distribution-report-types';
+} from './spend-time-report-types';
 
-class TimeReportForm extends React.Component {
+class SpendTimeReportForm extends React.Component {
   static propTypes = {
     report: PropTypes.object,
     onValidStateChange: PropTypes.func,
@@ -48,7 +48,7 @@ class TimeReportForm extends React.Component {
   static isNewReport = report => !report.id;
 
   static canShowSecondaryAxisOption = report =>
-    TimeReportForm.isNewReport(report) ||
+    SpendTimeReportForm.isNewReport(report) ||
     report.$type === BackendTypes.get().MatrixReport;
 
   static convertOneFieldReportToTwoFieldsReportIfNeeded = report => {
@@ -90,14 +90,14 @@ class TimeReportForm extends React.Component {
   });
 
   static toProjectTag = project =>
-    TimeReportForm.toTag(
+    SpendTimeReportForm.toTag(
       project,
       it => it.name,
       it => it.shortName
     );
 
   static toUserTag = user => ({
-    ...TimeReportForm.toTag(
+    ...SpendTimeReportForm.toTag(
       user,
       it => it.name,
       it => it.login
@@ -105,7 +105,7 @@ class TimeReportForm extends React.Component {
     ...{avatar: user.avatarUrl}
   });
 
-  static toWorkTypeTag = item => TimeReportForm.toTag(item);
+  static toWorkTypeTag = item => SpendTimeReportForm.toTag(item);
 
   constructor(props) {
     super(props);
@@ -120,7 +120,7 @@ class TimeReportForm extends React.Component {
       users: []
     };
     this.props.onValidStateChange(
-      TimeReportForm.checkReportValidity(props.report)
+      SpendTimeReportForm.checkReportValidity(props.report)
     );
   }
 
@@ -269,7 +269,7 @@ class TimeReportForm extends React.Component {
         (project.name.toLowerCase().indexOf(query) > -1) ||
         (project.shortName.toLowerCase().indexOf(query) === 0)
       ).
-      map(TimeReportForm.toProjectTag);
+      map(SpendTimeReportForm.toProjectTag);
   };
 
   authorsInputDataSource = async ({query}) => {
@@ -279,7 +279,7 @@ class TimeReportForm extends React.Component {
       map(project => project.id);
     const users = await loadUsers(fetchYouTrack, {query, projectId});
 
-    return (users || []).map(TimeReportForm.toUserTag);
+    return (users || []).map(SpendTimeReportForm.toUserTag);
   };
 
   workTypesInputDataSource = async ({query}) => {
@@ -290,13 +290,13 @@ class TimeReportForm extends React.Component {
     const workTypes = await loadWorkItemTypes(
       fetchYouTrack, {query, projectId}
     );
-    return (workTypes || []).map(TimeReportForm.toWorkTypeTag);
+    return (workTypes || []).map(SpendTimeReportForm.toWorkTypeTag);
   };
 
   updateReport(report) {
     this.setState({report});
     const reportIsValid =
-      TimeReportForm.checkReportValidity(report);
+      SpendTimeReportForm.checkReportValidity(report);
     this.props.onValidStateChange(reportIsValid);
     return reportIsValid;
   }
@@ -443,7 +443,7 @@ class TimeReportForm extends React.Component {
       <RerenderableTagsInput
         className="ring-form__group"
         disabled={disabled}
-        tags={report.projects.map(TimeReportForm.toProjectTag)}
+        tags={report.projects.map(SpendTimeReportForm.toProjectTag)}
         placeholder={
           report.projects.length
             ? (!disabled && i18n('Add project') || '')
@@ -466,7 +466,7 @@ class TimeReportForm extends React.Component {
       <RerenderableTagsInput
         className="ring-form__group"
         disabled={disabled}
-        tags={report.authors.map(TimeReportForm.toUserTag)}
+        tags={report.authors.map(SpendTimeReportForm.toUserTag)}
         placeholder={
           report.authors.length
             ? (!disabled && i18n('Add user') || '')
@@ -489,7 +489,7 @@ class TimeReportForm extends React.Component {
       <RerenderableTagsInput
         className="ring-form__group"
         disabled={disabled}
-        tags={report.workTypes.map(TimeReportForm.toWorkTypeTag)}
+        tags={report.workTypes.map(SpendTimeReportForm.toWorkTypeTag)}
         placeholder={
           report.workTypes.length
             ? (!disabled && i18n('Add work type') || '')
@@ -537,7 +537,7 @@ class TimeReportForm extends React.Component {
       if (disabled) {
         return `${i18n('Report')} ${report.name}`;
       }
-      return TimeReportForm.isNewReport(report)
+      return SpendTimeReportForm.isNewReport(report)
         ? i18n('New report')
         : i18n('Edit report');
     };
@@ -583,4 +583,4 @@ class TimeReportForm extends React.Component {
   }
 }
 
-export default TimeReportForm;
+export default SpendTimeReportForm;

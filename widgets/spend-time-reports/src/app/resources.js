@@ -10,15 +10,12 @@ const PERMISSION_FIELDS = 'permission%2Fkey,global,projects(id)';
 const USER_GROUP_FIELDS = 'id,name,icon,avatarUrl,allUsersGroup';
 const PROJECTS_FIELDS = 'id,ringId,name,shortName';
 
-const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
-
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
 const REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,presentation`;
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
 const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(tooBig,total(value,presentation),columns(${REPORT_DATA_COLUMN_FIELDS}),xcolumns(${REPORT_DATA_COLUMN_FIELDS}),ycolumns(${REPORT_DATA_COLUMN_FIELDS}),counts(value,presentation),issuesQueries),status(${REPORT_STATUS_FIELDS})`;
-const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS})`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 
@@ -52,11 +49,6 @@ async function loadReportWithData(fetchYouTrack, reportId) {
   );
 }
 
-async function loadReportWithSettings(fetchYouTrack, reportId) {
-  return await fetchYouTrack(
-    `api/reports/${reportId}?fields=${REPORT_WITH_SETTINGS_FIELDS}`
-  );
-}
 
 async function loadIssuesDistributionReports(fetchYouTrack) {
   const distributionReportTypes = [
@@ -152,12 +144,6 @@ async function loadUserGroups(fetchYouTrack, queryParams) {
   );
 }
 
-async function loadCurrentUser(fetchHub) {
-  return await fetchHub(
-    `api/rest/users/me?fields=${USER_FIELDS}`
-  );
-}
-
 async function getYouTrackServices(fetchHub) {
   const data = await fetchHub(`api/rest/services?fields=${SERVICE_FIELDS}&query=applicationName:YouTrack`);
   return (data && data.services || []).filter(
@@ -196,7 +182,6 @@ async function getYouTrackService(fetchHub, optionalYtId) {
 export {
   loadReportWithData,
   loadIssuesDistributionReports,
-  loadReportWithSettings,
   loadReportsFilterFields,
   loadReportsAggregationFilterFields,
   saveReportSettings,
@@ -205,6 +190,5 @@ export {
   getYouTrackService,
   underlineAndSuggest,
   loadProjects,
-  loadUserGroups,
-  loadCurrentUser
+  loadUserGroups
 };

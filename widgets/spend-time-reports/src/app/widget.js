@@ -20,12 +20,11 @@ import {
 } from './resources';
 import Configuration
   from './configuration';
-import {getReportTypePathPrefix} from './distribution-report-types';
-import DistributionReportAxises from './distribution-report-axises';
+import {getReportTypePathPrefix} from './spend-time-report-types';
 import Content from './content';
-import './style/time-report-widget.scss';
+import './style/spend-time-report-widget.scss';
 
-class DistributionReportsWidget extends React.Component {
+class SpendTimeReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static DEFAULT_REFRESH_PERIOD = 900;
   // eslint-disable-next-line no-magic-numbers
@@ -35,20 +34,8 @@ class DistributionReportsWidget extends React.Component {
     if (!config || config.reportId !== report.id) {
       return report;
     }
-    if (!DistributionReportAxises.SortOrder.isEditable(report)) {
-      if (config.mainAxisSortOrder) {
-        DistributionReportAxises.SortOrder.setMainAxisSortOrder(
-          report, config.mainAxisSortOrder
-        );
-      }
-      if (config.secondaryAxisSortOrder) {
-        DistributionReportAxises.SortOrder.setSecondaryAxisSortOrder(
-          report, config.secondaryAxisSortOrder
-        );
-      }
-      if (config.presentation) {
-        report.presentation = config.presentation;
-      }
+    if (config.presentation) {
+      report.presentation = config.presentation;
     }
     return report;
   };
@@ -65,7 +52,7 @@ class DistributionReportsWidget extends React.Component {
         href: homeUrl && `${homeUrl}/reports/${pathReportType}/${report.id}`
       };
     }
-    return DistributionReportsWidget.getDefaultWidgetTitle();
+    return SpendTimeReportsWidget.getDefaultWidgetTitle();
   };
 
   static getConfigAsObject = (configWrapper, fieldsToOverwrite) => {
@@ -99,7 +86,7 @@ class DistributionReportsWidget extends React.Component {
       isConfiguring: false,
       isLoading: true,
       error: ReportModel.ErrorTypes.OK,
-      refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
+      refreshPeriod: SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD
     };
 
     registerWidgetApi({
@@ -140,7 +127,7 @@ class DistributionReportsWidget extends React.Component {
       this.openWidgetsSettings();
       this.setState({
         isNewWidget: true,
-        refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
+        refreshPeriod: SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD
       });
       return;
     }
@@ -156,7 +143,7 @@ class DistributionReportsWidget extends React.Component {
       );
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
-        DistributionReportsWidget.DEFAULT_REFRESH_PERIOD;
+        SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD;
       this.setState({report: reportWithData, refreshPeriod});
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
@@ -232,7 +219,7 @@ class DistributionReportsWidget extends React.Component {
         });
       }
     }
-  }
+  };
 
   async loadReport(reportId, optionalYouTrack) {
     const fetchYouTrack = !optionalYouTrack
@@ -250,10 +237,10 @@ class DistributionReportsWidget extends React.Component {
   async loadReportWithAppliedConfigSettings(
     reportId, optionalYouTrack
   ) {
-    return DistributionReportsWidget.
+    return SpendTimeReportsWidget.
       applyReportSettingsFromWidgetConfig(
         await this.loadReport(reportId, optionalYouTrack),
-        DistributionReportsWidget.getConfigAsObject(this.props.configWrapper)
+        SpendTimeReportsWidget.getConfigAsObject(this.props.configWrapper)
       );
   }
 
@@ -286,16 +273,12 @@ class DistributionReportsWidget extends React.Component {
 
   onChangeReportSortOrders =
     async (mainAxisSortOrder, secondaryAxisSortOrder) => {
-      const {SortOrder} = DistributionReportAxises;
       const {report} = this.state;
-
-      SortOrder.setMainAxisSortOrder(report, mainAxisSortOrder);
-      SortOrder.setSecondaryAxisSortOrder(report, secondaryAxisSortOrder);
 
       this.setState({report});
 
       if (this.props.editable) {
-        return SortOrder.isEditable(report)
+        return report.own
           ? await saveReportSettings(this.fetchYouTrack, report, true)
           : await this.props.configWrapper.update({
             reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
@@ -367,7 +350,7 @@ class DistributionReportsWidget extends React.Component {
 
     const isCalculation = ReportModel.isReportCalculation(report);
     const tickPeriodSec = (isCalculation || isCalculationCompleted)
-      ? DistributionReportsWidget.PROGRESS_BAR_REFRESH_PERIOD
+      ? SpendTimeReportsWidget.PROGRESS_BAR_REFRESH_PERIOD
       : refreshPeriod;
     const millisInSec = 1000;
 
@@ -402,8 +385,8 @@ class DistributionReportsWidget extends React.Component {
 
   render() {
     const widgetTitle = this.state.isConfiguring
-      ? DistributionReportsWidget.getDefaultWidgetTitle()
-      : DistributionReportsWidget.getPresentationModeWidgetTitle(
+      ? SpendTimeReportsWidget.getDefaultWidgetTitle()
+      : SpendTimeReportsWidget.getPresentationModeWidgetTitle(
         this.state.report, this.state.youTrack
       );
     const configuration = () => this.renderConfigurationForm();
@@ -423,4 +406,4 @@ class DistributionReportsWidget extends React.Component {
   }
 }
 
-export default DistributionReportsWidget;
+export default SpendTimeReportsWidget;
