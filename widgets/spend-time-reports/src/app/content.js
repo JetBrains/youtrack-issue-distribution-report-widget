@@ -121,7 +121,10 @@ class Content extends React.Component {
     }
 
     return (
-      <TimeTable reportData={report.data}/>
+      <TimeTable
+        reportData={report.data}
+        grouping={report.grouping}
+      />
     );
   }
 

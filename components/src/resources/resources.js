@@ -11,7 +11,8 @@ const PROJECTS_FIELDS = 'id,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS})`;
+const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS}))`;
+const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
 
@@ -23,7 +24,7 @@ const PERIOD_FIELD_VALUE_FIELDS = 'value,presentation';
 
 const TIME_SHEET_REPORT_LINE_DATA = `entityId,presentation,avatarUrl,spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),totalSpentTime(${PERIOD_FIELD_VALUE_FIELDS})`;
 const TIME_SHEET_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linkedUser(ringId,visibleName)),entityId,lineSpentTime(${PERIOD_FIELD_VALUE_FIELDS}),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),issueLines(${TIME_SHEET_REPORT_LINE_DATA}),userLines(${TIME_SHEET_REPORT_LINE_DATA})`;
-const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,header(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${TIME_SHEET_GROUP_DATA_FIELDS})`;
+const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,headers(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${TIME_SHEET_GROUP_DATA_FIELDS})`;
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';

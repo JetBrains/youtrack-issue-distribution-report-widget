@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SpentTimeValue = ({value}) => (
-  <span>{value.presentation}</span>
+  value ? <span>{value.presentation}</span> : ''
 );
 
 SpentTimeValue.propTypes = {

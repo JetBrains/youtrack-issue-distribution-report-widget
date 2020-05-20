@@ -88,9 +88,8 @@ const ReportDataValidity = {
     !(reportData.columns || reportData.ycolumns || []).length,
 
   spendTime: reportData =>
-    (reportData.hasIssueView &&
-      (reportData.headers || []).length &&
-      (reportData.groups || []).length)
+    !(reportData.headers || []).length ||
+      !(reportData.groups || []).length
 };
 
 const ReportModel = {
