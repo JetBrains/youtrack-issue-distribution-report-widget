@@ -5,13 +5,13 @@ const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
-const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
+const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,online';
 const USER_GROUP_FIELDS = 'id,name,icon';
 const PROJECTS_FIELDS = 'id,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS}))`;
+const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id)`;
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
@@ -186,8 +186,12 @@ async function loadUserGroups(fetchYouTrack) {
 }
 
 async function loadCurrentUser(fetchHub) {
+  return await loadUser(fetchHub);
+}
+
+async function loadUser(fetchHub, ringId = 'me') {
   return await fetchHub(
-    `api/rest/users/me?fields=${USER_FIELDS}`
+    `api/rest/users/${ringId}?fields=${USER_FIELDS}`
   );
 }
 
@@ -273,6 +277,7 @@ export {
   loadSprint,
   loadUserGroups,
   loadCurrentUser,
+  loadUser,
   loadUsers,
 
   loadWorkItemTypes,

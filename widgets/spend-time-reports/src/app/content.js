@@ -90,7 +90,7 @@ class Content extends React.Component {
   }
 
   renderReportBody() {
-    const {report} = this.props;
+    const {report, dashboardApi} = this.props;
 
     if (ReportModel.isReportCalculation(report)) {
       const fromPercentsCoefficient = 0.01;
@@ -124,6 +124,8 @@ class Content extends React.Component {
       <TimeTable
         reportData={report.data}
         grouping={report.grouping}
+        scaleId={report.scale.id}
+        fetchHub={dashboardApi.fetchHub}
       />
     );
   }
