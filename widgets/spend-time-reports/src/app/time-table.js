@@ -6,6 +6,7 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 
 import UserLink from '../../../../components/src/user-link/user-link';
 import SpentTimeValue from '../../../../components/src/spent-time-value/spent-time-value';
+import SpentTimeProgress from '../../../../components/src/spent-time-progress/spent-time-progress';
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
@@ -54,8 +55,11 @@ class TimeTable extends React.Component {
     //TODO: implement yt-sync-hover, yt-sync-select
 
     return (
-      <tr className="yt-table__row yt-table__row_hovered">
-        <td className="yt-table__cell yt-table__cell_issue-id">
+      <tr
+        className="yt-table__row yt-table__row_hovered"
+        key={`issue-line-${line.id}-${line.entityId}`}
+      >
+        <td className="yt-table__cell yt-table__cell_link-identifier">
           <Link href={`issue/${line.entityId}`}>
             {line.entityId}
           </Link>
@@ -71,9 +75,9 @@ class TimeTable extends React.Component {
         <td className="yt-table__cell yt-table__cell_progress-bar">
           {
             line.estimation && line.estimation.value &&
-            <yt-report-time-progress
-              progress="line.totalSpentTime"
-              estimation="line.estimation"
+            <SpentTimeProgress
+              spent={line.totalSpentTime}
+              estimated={line.estimation}
             />
           }
         </td>
@@ -88,7 +92,10 @@ class TimeTable extends React.Component {
     //TODO: implement yt-sync-hover, yt-sync-select
 
     return (
-      <tr className="yt-table__row yt-table__row_hovered">
+      <tr
+        className="yt-table__row yt-table__row_hovered"
+        key={`user-line-${line.id}-${line.entityId}`}
+      >
         <td className="yt-table__cell yt-table__cell_user-avatar">
           {
             line.avatarUrl &&
@@ -124,7 +131,11 @@ class TimeTable extends React.Component {
 
       return (
         <span>
-          <UserLink user={user} fetchHub={this.props.fetchHub}/>
+          <UserLink
+            className="yt-table__cell_link-identifier"
+            user={user}
+            fetchHub={this.props.fetchHub}
+          />
           <span>{linkedUser.postfix}</span>
         </span>
       );
@@ -133,7 +144,10 @@ class TimeTable extends React.Component {
     if (linkedIssue) {
       return (
         <span>
-          <Link href={`issue/${linkedIssue.idReadable}`}>
+          <Link
+            className="yt-table__cell_link-identifier"
+            href={`issue/${linkedIssue.idReadable}`}
+          >
             {linkedIssue.idReadable}
           </Link>
           <span>{linkedIssue.summary}</span>
@@ -141,7 +155,11 @@ class TimeTable extends React.Component {
       );
     }
 
-    return (<span>{group.name}</span>);
+    return (
+      <span className="yt-table__cell_link-identifier">
+        {group.name}
+      </span>
+    );
   }
 
   renderGroup(group, idx, grouping, isIssueView) {
@@ -149,6 +167,7 @@ class TimeTable extends React.Component {
 
     return (
       <tbody
+        key={`data-group-${group.id}-${idx}`}
         className={classNames(
           'yt-table__group',
           {'yt-table__group_not-bordered': (idx === 0)}
@@ -161,9 +180,7 @@ class TimeTable extends React.Component {
               className="yt-table__cell yt-table__cell_text yt-bold"
               colSpan={3}
             >
-              <span className="yt-report-group_wrapper">
-                {this.renderGroupTitle(group)}
-              </span>
+              {this.renderGroupTitle(group)}
             </td>
             {
               isIssueView &&
@@ -177,8 +194,10 @@ class TimeTable extends React.Component {
                 }
               </td>
             }
-            <td className="yt-table__cell yt-table__cell_text yt-table__cell_right-border yt-bold">
-              <SpentTimeValue value={group.spentTime}/>
+            <td className="yt-table__cell yt-table__cell_right-border">
+              <strong>
+                <SpentTimeValue value={group.spentTime}/>
+              </strong>
             </td>
           </tr>
         }
@@ -188,7 +207,7 @@ class TimeTable extends React.Component {
         }
         {
           !isIssueView &&
-          group.issueLines.map(line => this.renderUserLine(line))
+          group.userLines.map(line => this.renderUserLine(line))
         }
       </tbody>
     );
@@ -273,18 +292,35 @@ class TimeTable extends React.Component {
       }
     );
 
+    const idxLegendPairs = headers.map((header, legendIdx) => ({
+      legendIdx,
+      legend: ReportTimeScalesFormatters.getLegend(scaleId, headers, legendIdx)
+    })).filter(idLegendPair => !!idLegendPair.legend);
+
+    const legendColSpans = idxLegendPairs.map(({legendIdx}, idx) => {
+      const isLastLegend = (idx + 1) === idxLegendPairs.length;
+      if (isLastLegend) {
+        let lastLegendCalSpan = 1;
+        const isLastColumn = (legendIdx + 1) === headers.length;
+        if (!isLastColumn) {
+          ++lastLegendCalSpan;
+        }
+        return lastLegendCalSpan;
+      }
+      return idxLegendPairs[idx + 1].legendIdx - legendIdx;
+    });
+
     return (
       <thead>
         <tr className="yt-table__row yt-table__row-data">
           {
-            headers.map((header, idx) => (
+            idxLegendPairs.map(({legend, legendIdx}, idx) => (
               <th
                 className="yt-table__cell yt-table__cell_header yt-table__cell_header_legend"
-                key={`header-legend-${header.start}`}
+                colSpan={legendColSpans[idx]}
+                key={`header-legend-${headers[legendIdx].start}`}
               >
-                <div className="header-legend">
-                  {ReportTimeScalesFormatters.getLegend(scaleId, headers, idx)}
-                </div>
+                <div className="header-legend">{legend}</div>
               </th>
             ))
           }

@@ -159,6 +159,10 @@
 
     &_text {
       text-align: left;
+      white-space: nowrap;
+      max-width: 30px;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     &_header {
@@ -168,25 +172,16 @@
       color: var(--ring-secondary-color);
     }
 
-    &_user-avatar {
-      padding-top: 4px;
-      padding-right: 0;
-    }
-
-    &_user-name {
-      min-width: 200px;
-      max-width: 332px;
-      text-align: left;
-    }
-
-    &_issue-id {
+    &_link-identifier {
+      max-width: 60px;
       text-align: left;
       white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     &_issue-summary {
-      min-width: 200px;
-      max-width: 332px;
+      max-width: $ring-unit*9;
       text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;

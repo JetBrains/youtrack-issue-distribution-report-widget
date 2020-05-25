@@ -1,0 +1,47 @@
+@import "~@jetbrains/ring-ui/components/global/global";
+
+.spent-time-progress {
+
+  &__placeholder {
+    height: 3px;
+    background-color: var(--ring-border-disabled-color);
+
+    &_overdue {
+      background-color: var(--ring-icon-warning-color);
+    }
+  }
+
+  &__wrapper {
+    padding-top: $ring-unit;
+    padding-bottom: $ring-unit;
+  }
+
+  &__bar {
+    height: 3px;
+    background-color: #59a869;
+  }
+
+  &-tooltip {
+    &__mark {
+      height: $ring-unit;
+      width: $ring-unit;
+
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-right: 3px;
+      margin-bottom: -2px;
+
+      &_overdue {
+        background-color: var(--ring-icon-warning-color);
+      }
+
+      &_estimated {
+        background-color: var(--ring-border-disabled-color);
+      }
+
+      &_spent {
+        background-color: var(--ring-icon-success-color);
+      }
+    }
+  }
+}

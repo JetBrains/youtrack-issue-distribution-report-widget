@@ -36,7 +36,7 @@ const SpentTimeValue = ({value, showZero}) => {
 };
 
 SpentTimeValue.propTypes = {
-  value: PropTypes.object.isRequired,
+  value: PropTypes.object,
   showZero: PropTypes.bool
 };
 
