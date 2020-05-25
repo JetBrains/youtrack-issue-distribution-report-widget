@@ -5,10 +5,10 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import UserLink from '../../../../components/src/user-link/user-link';
+import SpentTimeValue from '../../../../components/src/spent-time-value/spent-time-value';
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
-import SpentTimeValue from './spent-time-value';
 import ReportTimeScalesFormatters from './report-time-scales-header-formatters';
 
 class TimeTable extends React.Component {
