@@ -9,9 +9,9 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-02-05 21:05\n"
+"PO-Revision-Date: 2020-05-26 19:14\n"
 
-#: src/app/distribution-report-form.js:441
+#: src/app/distribution-report-form.js:450
 msgid "Add project"
 msgstr "Projekt hinzufügen"
 
@@ -19,7 +19,7 @@ msgstr "Projekt hinzufügen"
 msgid "Bars"
 msgstr "Balken"
 
-#: src/app/distribution-report-form.js:442
+#: src/app/distribution-report-form.js:451
 msgid "Calculate for all projects"
 msgstr "Für alle Projekte berechnen"
 
@@ -27,7 +27,15 @@ msgstr "Für alle Projekte berechnen"
 msgid "Calculating..."
 msgstr "Berechnung läuft..."
 
-#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:52
+#: src/app/distribution-report-form.js:433
+msgid "Can edit"
+msgstr ""
+
+#: src/app/distribution-report-form.js:424
+msgid "Can view and use"
+msgstr ""
+
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -51,7 +59,7 @@ msgstr "Bericht kann nicht gespeichert werden"
 msgid "Cannot update widget"
 msgstr "Widget kann nicht aktualisiert werden"
 
-#: src/app/distribution-report-form.js:488
+#: src/app/distribution-report-form.js:497
 msgid "Edit report"
 msgstr "Bericht bearbeiten"
 
@@ -59,7 +67,7 @@ msgstr "Bericht bearbeiten"
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
-#: src/app/distribution-report-form.js:469
+#: src/app/distribution-report-form.js:478
 msgid "Filter issues"
 msgstr "Tickets filtern"
 
@@ -67,7 +75,7 @@ msgstr "Tickets filtern"
 msgid "Issue Distribution Report"
 msgstr "Ticketverteilungsbericht"
 
-#: src/app/distribution-report-form.js:368
+#: src/app/distribution-report-form.js:380
 msgid "Issues"
 msgstr "Tickets"
 
@@ -79,16 +87,12 @@ msgstr "Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|Novemb
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "Jan|Feb|Mär|Apr|Mai|Jun|Jul|Aug|Sep|Okt|Nov|Dez"
 
-#: src/app/distribution-report-form.js:496
+#: src/app/distribution-report-form.js:505
 msgid "Learn more about this report"
 msgstr "Weitere Informationen über diesen Bericht"
 
-#: src/app/distribution-report-form.js:93
-msgid "Me only"
-msgstr "Nur für mich"
-
 #: src/app/configuration.js:93
-#: src/app/distribution-report-form.js:487
+#: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "Neuer Bericht"
 
@@ -112,23 +116,15 @@ msgstr "Kreisdiagramm"
 msgid "Remove widget"
 msgstr "Widget entfernen"
 
-#: src/app/distribution-report-form.js:484
+#: src/app/distribution-report-form.js:493
 msgid "Report"
 msgstr "Melden"
 
-#: src/app/distribution-report-form.js:392
-msgid "Report is private"
-msgstr "Bericht ist privat"
-
-#: src/app/distribution-report-form.js:391
-msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr "Bericht ist sichtbar für Mitglieder von {{visibilityPresentation}}"
-
-#: src/app/distribution-report-form.js:516
+#: src/app/distribution-report-form.js:525
 msgid "Report name"
 msgstr "Berichtsname"
 
-#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:45
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
 msgstr "Speichern"
 
@@ -140,19 +136,19 @@ msgstr "YouTrack auswählen"
 msgid "Select report"
 msgstr "Bericht auswählen"
 
-#: src/app/distribution-report-form.js:265
+#: src/app/distribution-report-form.js:277
 msgid "Show distribution by {{field}}"
 msgstr "Verteilung nach {{field}} anzeigen"
 
-#: src/app/distribution-report-form.js:333
+#: src/app/distribution-report-form.js:345
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Verteilung nach {{mainFieldPresentation}} anzeigen"
 
-#: src/app/distribution-report-form.js:332
+#: src/app/distribution-report-form.js:344
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Verteilung nach {{mainFieldPresentation}} und {{secondaryFieldPresentation}} anzeigen"
 
-#: src/app/distribution-report-form.js:360
+#: src/app/distribution-report-form.js:372
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Gesamtwerte für {{aggregationPolicy}} anzeigen"
 
