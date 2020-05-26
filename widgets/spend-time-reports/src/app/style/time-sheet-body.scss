@@ -1,204 +1,160 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
-.time-sheet-body {
+.yt-table {
+  display: inline-block;
 
-  &__wrapper {
-    border-spacing: 0;
-    display: flex;
-  }
+  border-spacing: 0;
 
-  &__data {
-    overflow: auto;
-  }
-
-  .header-legend {
-    display: inline-block;
-    position: absolute;
-    margin-top: -$ring-unit;
-    overflow: hidden;
-    width: 80px;
-  }
-
-  .yt-table__cell_header {
-    text-align: left;
-
-    &_legend {
-      vertical-align: middle;
-      position: relative
-    }
-
-    &_workday {
-      min-width: 34px;
-    }
-
-    &_holiday {
-      min-width: 34px;
-      background-color: var(--ring-sidebar-background-color);
-    }
-  }
-
-}
-
-.yt-table__row-data {
-
-  th:first-child {
+  &__row-data th:first-child {
     padding-left: $ring-unit !important;
   }
-  td:first-child {
+
+  &__row-data td:first-child {
     padding-left: $ring-unit !important;
   }
-}
 
-.no-issue-view-text {
-  margin-left: -4px;
-}
+  &__row {
+    height: $ring-unit*4;
 
+    &_hovered:hover {
+      background-color: var(--ring-hover-background-color);
+    }
 
-.time-report-body-wrapper {
-  overflow-x: auto
-}
+    &_hover {
+      background-color: var(--ring-hover-background-color);
+    }
 
-.yt-table_time-report {
-  .field-values-expand {
-    position: absolute;
-    right: -20px;
-    top: 10px;
+    &_select {
+      background-color: var(--ring-selected-background-color);
+    }
   }
 
+  &__cell {
+    padding: 0 $ring-unit;
 
-  .yt-table__cell_header-title {
-    white-space: nowrap;
-  }
+    text-align: right;
+    vertical-align: middle;
 
-  .yt-table__header {
+    &_issue-summary {
+      overflow: hidden;
 
-    & .yt-table__cell_header:first-child {
+      max-width: $ring-unit*9;
+
+      padding-left: 0 !important;
+
       text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
-  }
 
-  .yt-table__cell {
+    &_user-avatar {
+      padding-right: 8px;
+    }
+
+    &_header-title {
+      white-space: nowrap;
+    }
+
+    &_text {
+      overflow: hidden;
+
+      max-width: 30px;
+
+      text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &_header {
+      text-align: left;
+      white-space: nowrap;
+
+      color: var(--ring-secondary-color);
+
+      font-weight: normal;
+
+      &_legend {
+        position: relative;
+
+        vertical-align: middle;
+      }
+
+      &_workday {
+        min-width: 34px;
+      }
+
+      &_holiday {
+        min-width: 34px;
+
+        background-color: var(--ring-sidebar-background-color);
+      }
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    &_link-identifier {
+      overflow: hidden;
+
+      max-width: 60px;
+
+      text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
     &_comment {
       max-width: 150px;
+
       text-align: left;
       white-space: nowrap;
     }
 
     &_large_comment {
       max-width: 250px;
+
       text-align: left;
     }
-  }
 
-  .min-width {
-    width: 1px;
-  }
-
-  .yt-table__cell_issue-summary {
-    padding-left: 0 !important;
-  }
-
-  .yt-table__cell_user-avatar {
-    padding-right: 8px;
-  }
-}
-
-.yt-time-report__total {
-  font-size: 22px;
-}
-
-.yt-time-report__total_estimation {
-  color: var(--ring-secondary-color);
-}
-
-
-.yt-table {
-  border-spacing: 0;
-  display: inline-block;
-
-  &__row {
-    height: $ring-unit*4;
-
-    th:first-child {
-      padding-left: 0;
+    &_right-border {
+      border-right: 1px solid var(--ring-line-color);
     }
 
-    td:first-child {
-      padding-left: 0;
+    &_left-border {
+      border-left: 1px solid var(--ring-line-color);
     }
 
-    &_hovered:hover {
-      background-color: var(--ring-hover-background-color);
+    &_sticky_legend {
+      position: sticky;
+      top: 0;
 
-      td {
-        background-color: var(--ring-hover-background-color) !important;
-      }
+      background: var(--ring-content-background-color);
     }
 
-    &_hover {
-      background-color: var(--ring-hover-background-color);
+    &_sticky_total {
+      position: sticky;
+      top: 4*$ring-unit;
 
-      td {
-        background-color: var(--ring-hover-background-color) !important;
-      }
+      background: var(--ring-content-background-color);
     }
 
-    &_select {
-      background-color: var(--ring-selected-background-color);
-
-      td {
-        background-color: var(--ring-selected-background-color) !important;
-      }
+    &_progress-bar {
+      width: 48px;
     }
   }
 
-  &__cell {
-    padding: 0 $ring-unit;
-    vertical-align: middle;
-    text-align: right;
-
-    &_text {
-      text-align: left;
-      white-space: nowrap;
-      max-width: 30px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    &_header {
-      text-align: left;
-      font-weight: normal;
-      white-space: nowrap;
-      color: var(--ring-secondary-color);
-    }
-
-    &_link-identifier {
-      max-width: 60px;
-      text-align: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    &_issue-summary {
-      max-width: $ring-unit*9;
-      text-align: left;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-
-  &__total.yt-table__row,
-  &__total .yt-table__row {
+  &__total {
     height: $ring-unit*6;
 
     .yt-table__cell {
-      white-space: nowrap;
-      border-top: 1px solid var(--ring-line-color);
-      border-bottom: 1px solid var(--ring-line-color);
       padding-top: $ring-unit;
       padding-bottom: $ring-unit;
+
+      white-space: nowrap;
+
+      border-top: 1px solid var(--ring-line-color);
+      border-bottom: 1px solid var(--ring-line-color);
     }
   }
 
@@ -211,6 +167,7 @@
 
     .yt-table__row:last-child {
       height: $ring-unit*5;
+
       .yt-table__cell {
         padding-bottom: $ring-unit;
       }
@@ -224,34 +181,43 @@
       }
     }
   }
+}
 
-  .avatar {
-    border-radius: var(--ring-border-radius);
-    width: 20px;
-    height: 20px;
+.time-sheet-body {
+  &__wrapper {
+    display: flex;
+
+    border-spacing: 0;
+  }
+
+  &__data {
+    overflow: auto;
+  }
+
+  .header-legend {
+    position: absolute;
+
+    display: inline-block;
+    overflow: hidden;
+
+    width: 80px;
+
+    margin-top: -$ring-unit;
   }
 }
 
-.yt-table__cell_right-border {
-  border-right: 1px solid var(--ring-line-color);
+.no-issue-view-text {
+  margin-left: -4px;
 }
 
-.yt-table__cell_left-border {
-  border-left: 1px solid var(--ring-line-color);
+.time-report-body-wrapper {
+  overflow-x: auto;
 }
 
-.yt-table__cell_sticky_legend {
-  position: sticky;
-  top: 0;
-  background: var(--ring-content-background-color);
+.yt-time-report__total {
+  font-size: 22px;
 }
 
-.yt-table__cell_sticky_total {
-  position: sticky;
-  top: 4*$ring-unit;
-  background: var(--ring-content-background-color);
-}
-
-.yt-table__cell_progress-bar {
-  width: 48px;
+.yt-time-report__total_estimation {
+  color: var(--ring-secondary-color);
 }

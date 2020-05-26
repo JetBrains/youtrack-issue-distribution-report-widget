@@ -1,9 +1,9 @@
 @import "~@jetbrains/ring-ui/components/global/global";
 
 .spent-time-progress {
-
   &__placeholder {
     height: 3px;
+
     background-color: var(--ring-border-disabled-color);
 
     &_overdue {
@@ -18,18 +18,19 @@
 
   &__bar {
     height: 3px;
+
     background-color: #59a869;
   }
 
   &-tooltip {
     &__mark {
-      height: $ring-unit;
       width: $ring-unit;
+      height: $ring-unit;
 
-      padding-top: 0;
-      padding-bottom: 0;
       margin-right: 3px;
       margin-bottom: -2px;
+      padding-top: 0;
+      padding-bottom: 0;
 
       &_overdue {
         background-color: var(--ring-icon-warning-color);

@@ -89,7 +89,7 @@ const ReportDataValidity = {
     !(reportData.columns || reportData.ycolumns || []).length,
 
   spendTime: reportData =>
-      !(reportData.groups || []).length
+    !(reportData.groups || []).length
 };
 
 const ReportModel = {

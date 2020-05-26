@@ -110,7 +110,7 @@ class MatrixPresentation extends React.Component {
 
     return (
       <div
-        className="report-chart__body"
+        className="report-chart__body report-chart__body_matrix"
       >
         <div className="report-chart__table-header">
           {

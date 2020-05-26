@@ -10,7 +10,6 @@ import SpentTimeProgress from '../../../../components/src/spent-time-progress/sp
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
-import ReportTimeScalesFormatters from './report-time-scales-header-formatters';
 
 class TimeTable extends React.Component {
   static propTypes = {
@@ -20,7 +19,10 @@ class TimeTable extends React.Component {
     fetchHub: PropTypes.func,
     onActivateLine: PropTypes.func,
     onResetActiveLine: PropTypes.func,
-    activeLineIdx: PropTypes.number
+    activeLineIdx: PropTypes.number,
+
+    columnsLegend: PropTypes.array,
+    columnsHeader: PropTypes.array
   };
 
   constructor(props) {
@@ -221,7 +223,7 @@ class TimeTable extends React.Component {
     const title = [
       isIssueView ? i18n('Issues') : i18n('Users'),
       grouping && grouping.field ? getGroupingPresentation(grouping.field) : ''
-    ].join(', ');
+    ].filter(it => !!it).join(', ');
 
     // eslint-disable-next-line no-magic-numbers
     const colSpan = isIssueView ? 5 : 4;
@@ -266,74 +268,40 @@ class TimeTable extends React.Component {
     );
   }
 
-  renderDetailedTableHeaders(headers, scaleId, lastDayOfWeek) {
+  renderDetailedTableHeaders(columnsHeaders, columnsLegend = []) {
 
-    const getTitleClasses = (header, idx) => classNames(
+    const getTitleClasses = columnHeader => classNames(
       'yt-table__cell yt-table__cell_header yt-table__cell_header_workday',
       {
-        'yt-table__cell_header_holiday':
-          ReportTimeScalesFormatters.isHoliday(scaleId, header),
-        'yt-table__cell_right-border':
-          ReportTimeScalesFormatters.hasTitleSeparator(
-            scaleId, headers, idx, lastDayOfWeek
-          )
+        'yt-table__cell_header_holiday': !columnHeader.showZero,
+        'yt-table__cell_right-border': columnHeader.hasRightSeparator
       }
     );
-
-    const getSpentTimeClasses = (header, idx) => classNames(
-      'yt-table__cell yt-bold',
-      {
-        'yt-table__cell_header_holiday':
-          ReportTimeScalesFormatters.isHoliday(scaleId, header),
-        'yt-table__cell_right-border':
-          ReportTimeScalesFormatters.hasTitleSeparator(
-            scaleId, headers, idx, lastDayOfWeek
-          )
-      }
-    );
-
-    const idxLegendPairs = headers.map((header, legendIdx) => ({
-      legendIdx,
-      legend: ReportTimeScalesFormatters.getLegend(scaleId, headers, legendIdx)
-    })).filter(idLegendPair => !!idLegendPair.legend);
-
-    const legendColSpans = idxLegendPairs.map(({legendIdx}, idx) => {
-      const isLastLegend = (idx + 1) === idxLegendPairs.length;
-      if (isLastLegend) {
-        let lastLegendCalSpan = 1;
-        const isLastColumn = (legendIdx + 1) === headers.length;
-        if (!isLastColumn) {
-          ++lastLegendCalSpan;
-        }
-        return lastLegendCalSpan;
-      }
-      return idxLegendPairs[idx + 1].legendIdx - legendIdx;
-    });
 
     return (
       <thead>
         <tr className="yt-table__row yt-table__row-data">
           {
-            idxLegendPairs.map(({legend, legendIdx}, idx) => (
+            columnsLegend.map(({legendText, startColumnIdx, colSpan}) => (
               <th
                 className="yt-table__cell yt-table__cell_header yt-table__cell_header_legend"
-                colSpan={legendColSpans[idx]}
-                key={`header-legend-${headers[legendIdx].start}`}
+                colSpan={colSpan}
+                key={`header-legend-${startColumnIdx}`}
               >
-                <div className="header-legend">{legend}</div>
+                <div className="header-legend">{legendText}</div>
               </th>
             ))
           }
         </tr>
         <tr className="yt-table__row yt-table__row-data">
           {
-            headers.map((header, idx) => (
+            columnsHeaders.map((columnHeader, idx) => (
               <th
-                key={`header-title-${header.start}`}
-                className={getTitleClasses(header, idx)}
+                key={`header-title-${columnHeader.id}`}
+                className={getTitleClasses(columnHeader, idx)}
               >
                 <span className="header-date-title">
-                  {ReportTimeScalesFormatters.getTitle(scaleId, header)}
+                  {columnHeader.text}
                 </span>
               </th>
             ))
@@ -341,17 +309,17 @@ class TimeTable extends React.Component {
         </tr>
         <tr className="yt-table__row yt-table__total yt-table__row-data">
           {
-            headers.map((header, idx) => (
+            columnsHeaders.map((columnHeader, idx) => (
               <td
-                className={getSpentTimeClasses(header, idx)}
-                key={`header-spent-time-${header.start}`}
+                className={getTitleClasses(columnHeader, idx)}
+                key={`header-spent-time-${columnHeader.id}`}
               >
-                <SpentTimeValue
-                  value={header.spentTime}
-                  showZero={
-                    !ReportTimeScalesFormatters.isHoliday(scaleId, header)
-                  }
-                />
+                <strong>
+                  <SpentTimeValue
+                    value={columnHeader.spentTime}
+                    showZero={columnHeader.showZero}
+                  />
+                </strong>
               </td>
             ))
           }
@@ -361,47 +329,35 @@ class TimeTable extends React.Component {
   }
 
   renderGroupingSpentTimesLine(
-    groupingSpentTimes, headers, scaleId, lastDayOfWeek
+    groupingSpentTimes, columnsHeader
   ) {
     const getSpentTimeClasses = idx =>
       classNames('yt-table__cell', {
-        'yt-table__cell_header_holiday':
-          ReportTimeScalesFormatters.isHoliday(
-            scaleId, headers[idx]
-          ),
-        'yt-table__cell_right-border':
-          ReportTimeScalesFormatters.hasTitleSeparator(
-            scaleId, headers, idx, lastDayOfWeek
-          )
+        'yt-table__cell_header_holiday': !columnsHeader[idx].showZero,
+        'yt-table__cell_right-border': columnsHeader[idx].hasRightSeparator
       });
 
     return (
       groupingSpentTimes.map((spentTime, idx) => (
         <td
-          key={`grouping-spent-time-${headers[idx].start}`}
+          key={`grouping-spent-time-${columnsHeader[idx].id}`}
           className={getSpentTimeClasses(idx)}
         >
           <SpentTimeValue
             value={spentTime}
-            show-zero={
-              !ReportTimeScalesFormatters.isHoliday(scaleId, headers[idx])
-            }
+            show-zero={columnsHeader[idx].showZero}
           />
         </td>
       ))
     );
   }
 
-  renderSpentTimesLineCells(dataLines, headers, scaleId, lastDayOfWeek) {
+  renderSpentTimesLineCells(dataLines, columnsHeaders) {
     const getCellClasses = idx => classNames(
       'yt-table__cell yt-table__cell_time-sheet-value',
       {
-        'yt-table__cell_header_holiday':
-            ReportTimeScalesFormatters.isHoliday(scaleId, headers[idx]),
-        'yt-table__cell_right-border':
-            ReportTimeScalesFormatters.hasTitleSeparator(
-              scaleId, headers, idx, lastDayOfWeek
-            )
+        'yt-table__cell_header_holiday': !columnsHeaders[idx].showZero,
+        'yt-table__cell_right-border': columnsHeaders[idx].hasRightSeparator
       }
     );
 
@@ -414,7 +370,7 @@ class TimeTable extends React.Component {
           {
             (line.cells || []).map((cell, idx) => (
               <td
-                key={`data-line-cell-${headers[idx].start}`}
+                key={`data-line-cell-${columnsHeaders[idx].id}`}
                 className={getCellClasses(idx)}
               >
                 <SpentTimeValue value={cell}/>
@@ -427,7 +383,7 @@ class TimeTable extends React.Component {
   }
 
 
-  renderDetailedTableBody(groups, hasGroupping, isIssueView, headers, scaleId) {
+  renderDetailedTableBody(groups, hasGroupping, isIssueView, columnsHeader) {
     const getGroupClassNames = idx =>
       classNames(
         'yt-table__group',
@@ -444,15 +400,14 @@ class TimeTable extends React.Component {
             hasGroupping &&
             <tr className="yt-table__row yt-table__row_hovered">
               {this.renderGroupingSpentTimesLine(
-                group.lineSpentTime || [], headers, scaleId
+                group.lineSpentTime || [], columnsHeader
               )}
             </tr>
           }
           {
             this.renderSpentTimesLineCells(
               (isIssueView ? group.issueLines : group.userLines) || [],
-              headers,
-              scaleId
+              columnsHeader
             )
           }
         </tbody>
@@ -460,7 +415,9 @@ class TimeTable extends React.Component {
     );
   }
 
-  renderDetailedTablePart(data, grouping, isIssueView, scaleId) {
+  renderDetailedTablePart(
+    data, grouping, isIssueView, columnsLegend, columnsHeader
+  ) {
 
     //todo: yt-sticky-wide-table="" (+check why does it broken in youtrack-frontend)
 
@@ -468,14 +425,13 @@ class TimeTable extends React.Component {
       <div className="time-sheet-body__data">
         <table className="report yt-table">
           { this.renderDetailedTableHeaders(
-            data.headers || [], scaleId
+            columnsHeader, columnsLegend
           ) }
           { this.renderDetailedTableBody(
             data.groups || [],
             !!grouping,
             isIssueView,
-            data.headers || [],
-            scaleId
+            columnsHeader
           ) }
         </table>
       </div>
@@ -484,13 +440,15 @@ class TimeTable extends React.Component {
 
   render() {
     const {data} = this.state;
-    const {grouping, scaleId} = this.props;
+    const {grouping, columnsLegend, columnsHeader} = this.props;
     const isIssueView = true;
 
     return (
       <div className="time-sheet-body__wrapper">
         {this.renderGeneralTablePart(data, grouping, isIssueView)}
-        {this.renderDetailedTablePart(data, grouping, isIssueView, scaleId)}
+        {this.renderDetailedTablePart(
+          data, grouping, isIssueView, columnsLegend, columnsHeader
+        )}
       </div>
     );
   }

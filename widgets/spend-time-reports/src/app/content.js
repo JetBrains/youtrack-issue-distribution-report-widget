@@ -11,6 +11,7 @@ import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 import ReportModel from '../../../../components/src/report-model/report-model';
 
 import TimeTable from './time-table';
+import SpendTimeReportModel from './spend-time-report-model';
 
 class Content extends React.Component {
   static propTypes = {
@@ -120,12 +121,20 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
+    const data = SpendTimeReportModel.getTableData(report);
+
+    const columnsLegend = SpendTimeReportModel.getColumnsLegend(report);
+    const columnsHeader = SpendTimeReportModel.getColumnsHeader(report);
+
     return (
       <TimeTable
-        reportData={report.data}
+        reportData={data}
         grouping={report.grouping}
         scaleId={report.scale.id}
         fetchHub={dashboardApi.fetchHub}
+
+        columnsLegend={columnsLegend}
+        columnsHeader={columnsHeader}
       />
     );
   }

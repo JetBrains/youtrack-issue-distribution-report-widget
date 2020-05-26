@@ -45,6 +45,8 @@
       min-width: 35%;
       max-width: 80%;
 
+      margin-right: 4px;
+
       text-overflow: ellipsis;
     }
 
@@ -129,23 +131,27 @@
   &__body {
     position: relative;
 
-    overflow: auto;
+    overflow: hidden;
 
     width: 70%;
 
     padding-top: 3 * $ring-unit;
-  }
 
-  &__body_fixed {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    &_matrix {
+      overflow: auto;
+    }
 
-    overflow: hidden;
+    &_fixed {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-    width: 100%;
-    padding: 0;
+      overflow: hidden;
+
+      width: 100%;
+      padding: 0;
+    }
   }
 
   &__sort-order-bar {
