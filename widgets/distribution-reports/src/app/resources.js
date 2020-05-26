@@ -1,7 +1,7 @@
 import BackendTypes
   from '../../../../components/src/backend-types/backend-types';
 
-const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
+const REQUESTED_YOUTRACK_VERSION = '2020.2.6860';
 
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
