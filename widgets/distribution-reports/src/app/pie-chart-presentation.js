@@ -88,7 +88,7 @@ class PieChartPresentation extends React.Component {
         className="report-chart__body report-chart__body_fixed"
         style={{height}}
       >
-        <svg ref={this.onGetSvgNodeForPie}/>
+        <svg width="100%" height="100%" ref={this.onGetSvgNodeForPie}/>
       </div>
     );
   }
