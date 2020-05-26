@@ -34,7 +34,8 @@ const ReportTypes = {
 
   isSpendTimeReport: report =>
     BackendTypes.entityOfType(report, [
-      BackendTypes.get().TimeSheetReport
+      BackendTypes.get().TimeSheetReport,
+      BackendTypes.get().TimeReport
     ])
 };
 
@@ -88,7 +89,6 @@ const ReportDataValidity = {
     !(reportData.columns || reportData.ycolumns || []).length,
 
   spendTime: reportData =>
-    !(reportData.headers || []).length ||
       !(reportData.groups || []).length
 };
 
