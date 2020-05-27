@@ -26,7 +26,7 @@ const webpackConfig = () => ({
   },
   output: {
     path: resolve(__dirname, pkgConfig.dist),
-    filename: '[name].js',
+    filename: '[name].[hash].js',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
   module: {
