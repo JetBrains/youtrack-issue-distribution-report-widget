@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-05-26 19:14\n"
+"PO-Revision-Date: 2020-05-26 21:03\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
