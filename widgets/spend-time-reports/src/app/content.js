@@ -121,20 +121,27 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
-    const data = SpendTimeReportModel.getTableData(report);
-
+    const isIssueView = true;
     const columnsLegend = SpendTimeReportModel.getColumnsLegend(report);
     const columnsHeader = SpendTimeReportModel.getColumnsHeader(report);
 
+    const generalGroups =
+      SpendTimeReportModel.getGeneralGroupedLines(report, isIssueView);
+    const detailedGroups =
+      SpendTimeReportModel.getDetailedGroupedLines(report, isIssueView);
+    const totalSpentTime = SpendTimeReportModel.getTotalSpentTime(report);
+
     return (
       <TimeTable
-        reportData={data}
         grouping={report.grouping}
-        scaleId={report.scale.id}
         fetchHub={dashboardApi.fetchHub}
 
         columnsLegend={columnsLegend}
         columnsHeader={columnsHeader}
+        generalGroups={generalGroups}
+        detailedGroups={detailedGroups}
+        totalSpentTime={totalSpentTime}
+        isIssueView={isIssueView}
       />
     );
   }

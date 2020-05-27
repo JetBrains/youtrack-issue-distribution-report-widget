@@ -184,10 +184,55 @@
 }
 
 .time-sheet-body {
+  &__sideber-togger-icon {
+    transition: transform 0.3s linear;
+
+    transform: rotate(0);
+
+    color: var(--ring-icon-color);
+
+    &_expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sidebar-toggler {
+    padding: 2px;
+
+    cursor: pointer;
+
+    transition: flex 3s ease;
+
+    border-right: 1px solid transparent;
+
+    background: var(--ring-sidebar-background-color);
+
+    &:hover {
+      background: var(--ring-hover-background-color);
+
+      & .time-sheet-body__sideber-togger-icon {
+        color: var(--ring-dark-border-hover-color);
+      }
+    }
+  }
+
   &__wrapper {
     display: flex;
 
     border-spacing: 0;
+  }
+
+  &__general-table {
+    flex-basis: 38%;
+
+    max-width: 38%;
+
+    &_expanded {
+      flex-basis: 100%;
+
+      min-width: 80%;
+      max-width: 100%;
+    }
   }
 
   &__data {
@@ -220,4 +265,74 @@
 
 .yt-time-report__total_estimation {
   color: var(--ring-secondary-color);
+}
+
+.time-sheet-body-general {
+  $row-height: $ring-unit*4;
+
+  flex-basis: 30%;
+
+  &__axys-title {
+    padding: 40px 4px 8px 4px;
+
+    white-space: nowrap;
+
+    color: var(--ring-secondary-color);
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    border: 1px solid transparent;
+
+    &-left {
+      overflow: hidden;
+
+      flex-basis: 50%;
+
+      max-width: 90%;
+      padding: 8px 2px 8px 4px;
+
+      text-align: left;
+
+      white-space: nowrap;
+
+      text-overflow: ellipsis;
+    }
+
+    &-right {
+      position: relative;
+
+      overflow: hidden;
+
+      flex-basis: 50%;
+
+      min-width: 7*$ring-unit;
+
+      padding: 8px 4px 8px 2px;
+
+      text-align: right;
+
+      white-space: nowrap;
+
+      text-overflow: ellipsis;
+    }
+
+    &_total {
+      border-top: 1px solid var(--ring-border-disabled-color);
+      border-bottom: 1px solid var(--ring-border-disabled-color);
+
+      font-weight: bold;
+
+      & .time-sheet-body-general__row-left {
+        padding: 15px 2px 15px 3px;
+      }
+
+      & .time-sheet-body-general__row-right {
+        padding: 15px 5px 15px 2px;
+      }
+    }
+  }
 }

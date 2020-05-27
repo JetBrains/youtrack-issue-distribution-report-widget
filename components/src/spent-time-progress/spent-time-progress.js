@@ -8,16 +8,16 @@ import SpentTimeValue from '../spent-time-value/spent-time-value';
 
 import './spent-time-progress.scss';
 
-const DEFAULT_PROGRESS_BAR_WIDTH = 36;
+const DEFAULT_PROGRESS_BAR_WIDTH = 100;
 
 
 const SpentTimeProgressTooltipContent = ({spent, estimated, overdue}) => (
-  <table className="spent-time-progress-tooltip">
+  <table>
     <tbody>
       <tr>
         <td>
           <div
-            className="spent-time-progress-tooltip__mark spent-time-progress-tooltip__mark_estimated"
+            className="spent-time-progress__mark spent-time-progress__mark_estimated"
           />
         </td>
         <td>{i18n('estimation')}</td>
@@ -28,7 +28,7 @@ const SpentTimeProgressTooltipContent = ({spent, estimated, overdue}) => (
       <tr>
         <td>
           <div
-            className="spent-time-progress-tooltip__mark spent-time-progress-tooltip__mark_spent"
+            className="spent-time-progress__mark spent-time-progress__mark_spent"
           />
         </td>
         <td>{i18n('total spent time')}</td>
@@ -41,7 +41,7 @@ const SpentTimeProgressTooltipContent = ({spent, estimated, overdue}) => (
         <tr>
           <td>
             <div
-              className="spent-time-progress-tooltip__mark spent-time-progress-tooltip__mark_overdue"
+              className="spent-time-progress__mark spent-time-progress__mark_overdue"
             />
           </td>
           <td>{i18n('overdue')}</td>
@@ -60,8 +60,40 @@ SpentTimeProgressTooltipContent.propTypes = {
   overdue: PropTypes.object
 };
 
+const SpentTimeProgressInPlaceDetails = (
+  {spent, estimated, hasOverdue, overdue}
+) => (
+  <div className="spent-time-progress__label-details">
+    <span className="spent-time-progress__label-detail">
+      <span
+        className="spent-time-progress__mark spent-time-progress__mark_spent"
+      /><SpentTimeValue value={spent}/>
+    </span>
+    <span className="spent-time-progress__label-detail">
+      <span
+        className="spent-time-progress__mark spent-time-progress__mark_estimated"
+      /><SpentTimeValue value={estimated}/>
+    </span>
+    {
+      hasOverdue &&
+      <span className="spent-time-progress__label-detail">
+        <span
+          className="spent-time-progress__mark spent-time-progress__mark_overdue"
+        /><SpentTimeValue value={overdue}/>
+      </span>
+    }
+  </div>
+);
 
-const SpentTimeProgress = ({spent, estimated}) => {
+SpentTimeProgressInPlaceDetails.propTypes = {
+  spent: PropTypes.object.isRequired,
+  estimated: PropTypes.object,
+  overdue: PropTypes.object,
+  hasOverdue: PropTypes.bool
+};
+
+
+const SpentTimeProgress = ({spent, estimated, children}) => {
 
   const progressValue = spent && spent.value || 0;
   const estimationValue = estimated && estimated.value || 0;
@@ -89,16 +121,27 @@ const SpentTimeProgress = ({spent, estimated}) => {
           />
         }
       >
+        <div className="spent-time-progress__labels">
+          <SpentTimeProgressInPlaceDetails
+            spent={spent}
+            estimated={estimated}
+            overdue={overdue}
+            hasOverdue={hasOverdue}
+          />
+          <div className="spent-time-progress__label-sum">
+            {children}
+          </div>
+        </div>
         <div className="spent-time-progress__wrapper">
           <div
             className={
               classNames('spent-time-progress__placeholder', {'spent-time-progress__placeholder_overdue': hasOverdue})
             }
-            style={{width: `${totalWidth}px`}}
+            style={{width: `${totalWidth}%`}}
           >
             <div
               className="spent-time-progress__bar"
-              style={{width: `${filledWidth}px`}}
+              style={{width: `${filledWidth}%`}}
             />
           </div>
         </div>
@@ -109,7 +152,8 @@ const SpentTimeProgress = ({spent, estimated}) => {
 
 SpentTimeProgress.propTypes = {
   spent: PropTypes.object.isRequired,
-  estimated: PropTypes.object
+  estimated: PropTypes.object,
+  children: PropTypes.node
 };
 
 export default SpentTimeProgress;

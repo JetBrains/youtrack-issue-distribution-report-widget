@@ -1,8 +1,46 @@
 @import "~@jetbrains/ring-ui/components/global/global";
 
 .spent-time-progress {
+  &__labels {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  &__label-sum {
+    overflow: hidden;
+
+    min-width: 8*$ring-unit;
+    max-width: 100%;
+
+    text-align: right;
+
+    text-overflow: ellipsis;
+  }
+
+  &__label-details {
+    overflow: hidden;
+    flex-grow: 2;
+
+    min-width: 0;
+
+    text-align: left;
+
+    text-overflow: ellipsis;
+  }
+
+  &__label-detail {
+    margin-right: 4px;
+  }
+
   &__placeholder {
-    height: 3px;
+    position: absolute;
+    right: 2px;
+    bottom: -2px;
+    left: 2px;
+
+    height: 2px;
 
     background-color: var(--ring-border-disabled-color);
 
@@ -12,37 +50,37 @@
   }
 
   &__wrapper {
-    padding-top: $ring-unit;
-    padding-bottom: $ring-unit;
+    position: relative;
+
+    cursor: default;
   }
 
   &__bar {
-    height: 3px;
+    height: 2px;
 
     background-color: #59a869;
   }
 
-  &-tooltip {
-    &__mark {
-      width: $ring-unit;
-      height: $ring-unit;
+  &__mark {
+    display: inline-block;
 
-      margin-right: 3px;
-      margin-bottom: -2px;
-      padding-top: 0;
-      padding-bottom: 0;
+    width: $ring-unit;
+    height: $ring-unit;
 
-      &_overdue {
-        background-color: var(--ring-icon-warning-color);
-      }
+    margin-right: 3px;
+    padding-top: 0;
+    padding-bottom: 0;
 
-      &_estimated {
-        background-color: var(--ring-border-disabled-color);
-      }
+    &_overdue {
+      background-color: var(--ring-icon-warning-color);
+    }
 
-      &_spent {
-        background-color: var(--ring-icon-success-color);
-      }
+    &_estimated {
+      background-color: var(--ring-border-disabled-color);
+    }
+
+    &_spent {
+      background-color: var(--ring-icon-success-color);
     }
   }
 }

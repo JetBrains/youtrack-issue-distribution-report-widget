@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import {DoubleChevronRightIcon} from '@jetbrains/ring-ui/components/icon';
 
 import UserLink from '../../../../components/src/user-link/user-link';
 import SpentTimeValue from '../../../../components/src/spent-time-value/spent-time-value';
@@ -13,32 +14,26 @@ import './style/time-sheet-body.scss';
 
 class TimeTable extends React.Component {
   static propTypes = {
-    reportData: PropTypes.object,
     grouping: PropTypes.object,
-    scaleId: PropTypes.string,
     fetchHub: PropTypes.func,
     onActivateLine: PropTypes.func,
     onResetActiveLine: PropTypes.func,
     activeLineIdx: PropTypes.number,
 
+    generalGroups: PropTypes.array,
+    detailedGroups: PropTypes.array,
     columnsLegend: PropTypes.array,
-    columnsHeader: PropTypes.array
+    columnsHeader: PropTypes.array,
+    isIssueView: PropTypes.object,
+    totalSpentTime: PropTypes.object
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      data: props.reportData
+      visibleSidebar: true
     };
-  }
-
-  componentWillReceiveProps(props) {
-    if (props.reportData) {
-      this.setState({
-        data: props.reportData
-      });
-    }
   }
 
   clearActiveLineIndex = () => {
@@ -52,6 +47,50 @@ class TimeTable extends React.Component {
       this.props.onActivateLine(lineIdx);
     }
   };
+
+  toggleSidebar = () => {
+    const {visibleSidebar} = this.state;
+    this.setState({visibleSidebar: !visibleSidebar});
+  };
+
+  renderGeneralLine = line => {
+    const {meta} = line;
+    //TODO: implement yt-sync-hover, yt-sync-select
+
+    return (
+      <div
+        className="time-sheet-body-general__row"
+        key={`issue-line-${line.id}-${line.entityId}`}
+      >
+        <div className="time-sheet-body-general__row-left">
+          {
+            meta &&
+            <Link href={meta.url}>
+              {meta.id}
+            </Link>
+          }
+          <span rg-tooltip="line.presentation">
+            {line.text}
+          </span>
+        </div>
+        <div className="time-sheet-body-general__row-right">
+          {
+            !!line.estimation && !!line.estimation.value &&
+            <SpentTimeProgress
+              spent={line.totalSpentTime}
+              estimated={line.estimation}
+            >
+              <SpentTimeValue value={line.spentTime}/>
+            </SpentTimeProgress>
+          }
+          {
+            !line.estimation || !line.estimation.value &&
+            <SpentTimeValue value={line.spentTime}/>
+          }
+        </div>
+      </div>
+    );
+  }
 
   renderIssueLine(line) {
     //TODO: implement yt-sync-hover, yt-sync-select
@@ -122,44 +161,41 @@ class TimeTable extends React.Component {
     );
   }
 
-  renderGroupTitle(group) {
-    const {linkedUser, linkedIssue} = group.meta || {};
+  renderGroupTitle(group, isIssueView) {
+    const {meta} = group;
 
-    if (linkedUser) {
-      const user = {
-        ringId: linkedUser.ringId,
-        login: linkedUser.visibleName
-      };
-
+    if (!meta) {
       return (
-        <span>
-          <UserLink
-            className="yt-table__cell_link-identifier"
-            user={user}
-            fetchHub={this.props.fetchHub}
-          />
-          <span>{linkedUser.postfix}</span>
+        <span className="yt-table__cell_link-identifier">
+          {group.text}
         </span>
       );
     }
 
-    if (linkedIssue) {
+    if (isIssueView) {
       return (
         <span>
           <Link
             className="yt-table__cell_link-identifier"
-            href={`issue/${linkedIssue.idReadable}`}
+            href={`issue/${meta.idReadable}`}
           >
-            {linkedIssue.idReadable}
+            {meta.idReadable}
           </Link>
-          <span>{linkedIssue.summary}</span>
+          <span>{meta.summary}</span>
         </span>
       );
     }
 
     return (
-      <span className="yt-table__cell_link-identifier">
-        {group.name}
+      <span>
+        <UserLink
+          className="yt-table__cell_link-identifier"
+          user={
+            {ringId: meta.ringId, login: meta.visibleName}
+          }
+          fetchHub={this.props.fetchHub}
+        />
+        <span>{meta.postfix}</span>
       </span>
     );
   }
@@ -168,7 +204,7 @@ class TimeTable extends React.Component {
     //TODO: implement yt-sync-hover, yt-sync-select
 
     return (
-      <tbody
+      <div
         key={`data-group-${group.id}-${idx}`}
         className={classNames(
           'yt-table__group',
@@ -177,45 +213,28 @@ class TimeTable extends React.Component {
       >
         {
           !!grouping &&
-          <tr className="yt-table__row yt-table__row_hovered">
-            <td
-              className="yt-table__cell yt-table__cell_text yt-bold"
-              colSpan={3}
-            >
-              {this.renderGroupTitle(group)}
-            </td>
-            {
-              isIssueView &&
-              <td className="yt-table__cell yt-table__cell_text">
-                {
-                  !!group.estimation && (
-                    group.estimation.minutes
-                      ? ''
-                      : group.estimation.presentation
-                  )
-                }
-              </td>
-            }
-            <td className="yt-table__cell yt-table__cell_right-border">
+          <div className="time-sheet-body-general__row">
+            <div className="time-sheet-body-general__row-left">
+              {this.renderGroupTitle(group, isIssueView)}
+            </div>
+            <div className="time-sheet-body-general__row-right">
+              <strong>
+                {!!group.estimation && group.estimation.presentation || ''}
+              </strong>
               <strong>
                 <SpentTimeValue value={group.spentTime}/>
               </strong>
-            </td>
-          </tr>
+            </div>
+          </div>
         }
         {
-          isIssueView &&
-          group.issueLines.map(line => this.renderIssueLine(line))
+          group.childrenLines.map(line => this.renderGeneralLine(line))
         }
-        {
-          !isIssueView &&
-          group.userLines.map(line => this.renderUserLine(line))
-        }
-      </tbody>
+      </div>
     );
   }
 
-  renderGeneralTablePart(data, grouping, isIssueView) {
+  renderGeneralTablePart(grouping, isIssueView, generalGroups, totalSpentTime) {
 
     const getGroupingPresentation = field =>
       i18n('groupped by {{value}}', {value: field.presentation});
@@ -225,45 +244,24 @@ class TimeTable extends React.Component {
       grouping && grouping.field ? getGroupingPresentation(grouping.field) : ''
     ].filter(it => !!it).join(', ');
 
-    // eslint-disable-next-line no-magic-numbers
-    const colSpan = isIssueView ? 5 : 4;
-
     return (
-      <div className="time-sheet-body__meta_wrapper">
-        <table className="report yt-table">
-          <thead>
-            <tr className="yt-table__row">
-              <th
-                className="yt-table__cell yt-table__cell_header"
-                colSpan={colSpan}
-              />
-            </tr>
-            <tr className="yt-table__row">
-              <th
-                className="yt-table__cell yt-table__cell_header yt-table__cell_right-border yt-table__cell_header_legend"
-                colSpan={colSpan}
-              >
-                { title }
-              </th>
-            </tr>
-            <tr className="yt-table__row yt-table__total">
-              <th
-                className="yt-table__cell yt-table__cell_text"
-                colSpan={colSpan - 1}
-              >
-                { i18n('Total time') }
-              </th>
-              <th className="yt-table__cell yt-table__cell_right-border yt-bold">
-                <SpentTimeValue value={data.spentTime}/>
-              </th>
-            </tr>
-          </thead>
-          {
-            data.groups.map((group, idx) =>
-              this.renderGroup(group, idx, grouping, isIssueView)
-            )
-          }
-        </table>
+      <div className="time-sheet-body-general">
+        <div className="time-sheet-body-general__axys-title">
+          { title }
+        </div>
+        <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
+          <div className="time-sheet-body-general__row-left">
+            { i18n('Total time') }
+          </div>
+          <div className="time-sheet-body-general__row-right">
+            <SpentTimeValue value={totalSpentTime}/>
+          </div>
+        </div>
+        {
+          generalGroups.map((group, idx) =>
+            this.renderGroup(group, idx, grouping, isIssueView)
+          )
+        }
       </div>
     );
   }
@@ -273,7 +271,7 @@ class TimeTable extends React.Component {
     const getTitleClasses = columnHeader => classNames(
       'yt-table__cell yt-table__cell_header yt-table__cell_header_workday',
       {
-        'yt-table__cell_header_holiday': !columnHeader.showZero,
+        'yt-table__cell_header_holiday': columnHeader.hasHighlight,
         'yt-table__cell_right-border': columnHeader.hasRightSeparator
       }
     );
@@ -333,7 +331,7 @@ class TimeTable extends React.Component {
   ) {
     const getSpentTimeClasses = idx =>
       classNames('yt-table__cell', {
-        'yt-table__cell_header_holiday': !columnsHeader[idx].showZero,
+        'yt-table__cell_header_holiday': columnsHeader[idx].hasHighlight,
         'yt-table__cell_right-border': columnsHeader[idx].hasRightSeparator
       });
 
@@ -356,7 +354,7 @@ class TimeTable extends React.Component {
     const getCellClasses = idx => classNames(
       'yt-table__cell yt-table__cell_time-sheet-value',
       {
-        'yt-table__cell_header_holiday': !columnsHeaders[idx].showZero,
+        'yt-table__cell_header_holiday': columnsHeaders[idx].hasHighlight,
         'yt-table__cell_right-border': columnsHeaders[idx].hasRightSeparator
       }
     );
@@ -383,7 +381,9 @@ class TimeTable extends React.Component {
   }
 
 
-  renderDetailedTableBody(groups, hasGroupping, isIssueView, columnsHeader) {
+  renderDetailedTableBody(
+    hasGroupping, isIssueView, columnsHeader, detailedGroups
+  ) {
     const getGroupClassNames = idx =>
       classNames(
         'yt-table__group',
@@ -391,7 +391,7 @@ class TimeTable extends React.Component {
       );
 
     return (
-      groups.map((group, idx) => (
+      detailedGroups.map((group, idx) => (
         <tbody
           className={getGroupClassNames(idx)}
           key={`detailed-table-group-${group.id}`}
@@ -400,13 +400,13 @@ class TimeTable extends React.Component {
             hasGroupping &&
             <tr className="yt-table__row yt-table__row_hovered">
               {this.renderGroupingSpentTimesLine(
-                group.lineSpentTime || [], columnsHeader
+                group.line || [], columnsHeader
               )}
             </tr>
           }
           {
             this.renderSpentTimesLineCells(
-              (isIssueView ? group.issueLines : group.userLines) || [],
+              group.childrenLines,
               columnsHeader
             )
           }
@@ -416,7 +416,7 @@ class TimeTable extends React.Component {
   }
 
   renderDetailedTablePart(
-    data, grouping, isIssueView, columnsLegend, columnsHeader
+    grouping, isIssueView, columnsLegend, columnsHeader, detailedGroups
   ) {
 
     //todo: yt-sticky-wide-table="" (+check why does it broken in youtrack-frontend)
@@ -428,27 +428,67 @@ class TimeTable extends React.Component {
             columnsHeader, columnsLegend
           ) }
           { this.renderDetailedTableBody(
-            data.groups || [],
             !!grouping,
             isIssueView,
-            columnsHeader
+            columnsHeader,
+            detailedGroups || []
           ) }
         </table>
       </div>
     );
   }
 
+  renderSidebarToggler(visibleSidebar) {
+    const iconClasses = classNames('time-sheet-body__sideber-togger-icon', {
+      'time-sheet-body__sideber-togger-icon_expanded': !visibleSidebar
+    });
+
+    return (
+      <div
+        onClick={this.toggleSidebar}
+        className="time-sheet-body__sidebar-toggler"
+        title={visibleSidebar ? i18n('Hide details') : i18n('Show details')}
+      >
+        <DoubleChevronRightIcon
+          size={DoubleChevronRightIcon.Size.Size14}
+          className={iconClasses}
+        />
+      </div>
+    );
+  }
+
   render() {
-    const {data} = this.state;
-    const {grouping, columnsLegend, columnsHeader} = this.props;
-    const isIssueView = true;
+    const {
+      grouping,
+      columnsLegend,
+      columnsHeader,
+      generalGroups,
+      totalSpentTime,
+      detailedGroups,
+      isIssueView
+    } = this.props;
+    const {visibleSidebar} = this.state;
+
+    const generalTableClasses = classNames('time-sheet-body__general-table', {
+      'time-sheet-body__general-table_expanded': !visibleSidebar
+    });
 
     return (
       <div className="time-sheet-body__wrapper">
-        {this.renderGeneralTablePart(data, grouping, isIssueView)}
-        {this.renderDetailedTablePart(
-          data, grouping, isIssueView, columnsLegend, columnsHeader
-        )}
+        {
+          <div className={generalTableClasses}>
+            {this.renderGeneralTablePart(
+              grouping, isIssueView, generalGroups, totalSpentTime
+            )}
+          </div>
+        }
+        {this.renderSidebarToggler(visibleSidebar)}
+        {
+          visibleSidebar &&
+          this.renderDetailedTablePart(
+            grouping, isIssueView, columnsLegend, columnsHeader, detailedGroups
+          )
+        }
       </div>
     );
   }

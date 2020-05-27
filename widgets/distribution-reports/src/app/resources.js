@@ -6,7 +6,7 @@ const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
-const PERMISSION_FIELDS = 'permission%2Fkey,global,projects(id)';
+const PERMISSION_FIELDS = 'permission,key,global,projects(id)';
 const USER_GROUP_FIELDS = 'id,name,icon,avatarUrl,allUsersGroup';
 const PROJECTS_FIELDS = 'id,ringId,name,shortName';
 

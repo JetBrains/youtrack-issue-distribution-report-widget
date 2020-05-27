@@ -23,13 +23,17 @@ const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortP
 const PERIOD_FIELD_VALUE_FIELDS = 'value,presentation';
 
 const TIME_SHEET_REPORT_LINE_DATA = `id,entityId,presentation,avatarUrl,spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),totalSpentTime(${PERIOD_FIELD_VALUE_FIELDS})`;
-const TIME_SHEET_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linkedUser(ringId,visibleName)),entityId,lineSpentTime(${PERIOD_FIELD_VALUE_FIELDS}),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),issueLines(${TIME_SHEET_REPORT_LINE_DATA}),userLines(${TIME_SHEET_REPORT_LINE_DATA})`;
-const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,headers(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${TIME_SHEET_GROUP_DATA_FIELDS})`;
+const TIME_REPORT_LINE_DATA = `id,entityId,name,description,avatarUrl,duration(${PERIOD_FIELD_VALUE_FIELDS}),totalDuration(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),typeDurations(duration(${PERIOD_FIELD_VALUE_FIELDS}),workType)`;
+const TIME_SHEET_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linkedUser(ringId,visibleName)),entityId,lineSpentTime(${PERIOD_FIELD_VALUE_FIELDS}),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),issueLines(${TIME_SHEET_REPORT_LINE_DATA}),userLines(${TIME_SHEET_REPORT_LINE_DATA})`;
+const TIME_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linkedUser(ringId,visibleName)),entityId,typeDurations(duration(${PERIOD_FIELD_VALUE_FIELDS}),workType),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),duration(${PERIOD_FIELD_VALUE_FIELDS}),totalDuration(${PERIOD_FIELD_VALUE_FIELDS}),lines(${TIME_REPORT_LINE_DATA})`;
+const GROUP_DATA_FIELDS = `${TIME_SHEET_GROUP_DATA_FIELDS},${TIME_GROUP_DATA_FIELDS}`;
+const TIME_REPORT_DATA_FIELDS = `duration(${PERIOD_FIELD_VALUE_FIELDS}),typeDurations(workType,duration(${PERIOD_FIELD_VALUE_FIELDS})),groups(${GROUP_DATA_FIELDS})`;
+const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,headers(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${GROUP_DATA_FIELDS})`;
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;

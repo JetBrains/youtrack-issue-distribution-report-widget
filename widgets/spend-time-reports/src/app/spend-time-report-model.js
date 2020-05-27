@@ -10,6 +10,12 @@ function isTimeReport(report) {
   );
 }
 
+function makeLine(
+  text, meta, spentTime, childrenLines, estimation, totalSpentTime
+) {
+  return {meta, text, spentTime, childrenLines, estimation, totalSpentTime};
+}
+
 const SpendTimeReportModel = {
 
   getColumnsLegend: report => {
@@ -43,11 +49,19 @@ const SpendTimeReportModel = {
   },
 
   getColumnsHeader: report => {
+    const {data, scale} = report;
+
     if (isTimeReport(report)) {
-      return [];
+      return (data.typeDurations || []).map((line, idx) => ({
+        id: idx,
+        text: line.workType,
+        spentTime: line.duration,
+        hasRightSeparator: false,
+        showZero: false,
+        hasHighlight: false
+      }));
     }
 
-    const {data, scale} = report;
     const scaleId = (scale || {}).id;
     const headers = (data || {}).headers || [];
     const lastDayOfWeek = 6;//todo
@@ -59,34 +73,88 @@ const SpendTimeReportModel = {
       hasRightSeparator: ReportTimeScalesFormatters.hasTitleSeparator(
         scaleId, headers, idx, lastDayOfWeek
       ),
-      showZero: !ReportTimeScalesFormatters.isHoliday(scaleId, header)
+      showZero: !ReportTimeScalesFormatters.isHoliday(scaleId, header),
+      hasHighlight: ReportTimeScalesFormatters.isHoliday(scaleId, header)
     }));
   },
 
-  getDetailedGroupedLines: () => {
-
-  },
-
-  getGeneralGroupedLines: () => {
-
-  },
-
-  getTableData: report => {
+  getDetailedGroupedLines: (report, isIssueView) => {
     const {data} = report;
 
-    const requireTransformation =
-      BackendTypes.entityOfType(report, [BackendTypes.get().TimeReport]);
-
-    if (requireTransformation) {
-      const headers = [];
-
-      return {
-        groups: data.groups,
-        headers
-      };
+    if (isTimeReport(report)) {
+      return (data.groups || []).map((group, idx) => ({
+        id: idx,
+        line: (group.typeDurations || []).map(it => it.duration),
+        childrenLines: (group.lines || []).map((line, lineIdx) => ({
+          id: lineIdx,
+          cells: (line.typeDurations || []).map(it => it.duration)
+        }))
+      }));
     }
 
-    return data;
+    return (data.groups || []).map((group, idx) => {
+      const lines = (isIssueView ? group.issueLines : group.userLines) || [];
+      return {
+        id: idx,
+        line: group.lineSpentTime,
+        childrenLines: lines
+      };
+    });
+  },
+
+  getGeneralGroupedLines: (report, isIssueView) => {
+    const {data} = report;
+
+    if (isTimeReport(report)) {
+      return ((data || {}).groups || []).map(group => {
+        const childLines = group.lines;
+        const mappedChildLines = (childLines || []).map(
+          line => {
+            const meta = line.entityId ? {
+              id: line.entityId,
+              name: line.presentation
+            } : null;
+            return makeLine(
+              line.name,
+              meta,
+              line.duration,
+              [],
+              line.estimation,
+              line.totalDuration
+            );
+          }
+        );
+        const meta = group.meta[isIssueView ? 'linkedIssue' : 'linkedUser'];
+        return makeLine(group.name, meta, group.duration, mappedChildLines);
+      });
+    }
+
+    return ((data || {}).groups || []).map(group => {
+      const childLines = group[isIssueView ? 'issueLines' : 'userLines'];
+      const mappedChildLines = (childLines || []).map(
+        line => {
+          const meta = line.entityId ? {
+            id: line.entityId,
+            name: line.presentation
+          } : null;
+          return makeLine(
+            line.presentation,
+            meta,
+            line.spentTime,
+            [],
+            line.estimation,
+            line.totalSpentTime
+          );
+        }
+      );
+      const meta = group.meta[isIssueView ? 'linkedIssue' : 'linkedUser'];
+      return makeLine(group.name, meta, group.spentTime, mappedChildLines);
+    });
+  },
+
+  getTotalSpentTime: report => {
+    const {data} = report;
+    return isTimeReport(report) ? data.duration : data.spentTime;
   }
 };
 
