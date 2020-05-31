@@ -11,9 +11,50 @@ function isTimeReport(report) {
 }
 
 function makeLine(
-  text, meta, spentTime, childrenLines, estimation, totalSpentTime
+  id, text, meta, spentTime, childrenLines, estimation, totalSpentTime
 ) {
-  return {meta, text, spentTime, childrenLines, estimation, totalSpentTime};
+  return {id, meta, text, spentTime, childrenLines, estimation, totalSpentTime};
+}
+
+function makeMetaFromGroup(group, isIssueView) {
+  const metaObj = getMetaObj();
+  const isIssue = metaObj === group.meta.linkedIssue;
+  if (!metaObj) {
+    return null;
+  }
+
+  return {
+    isUser: !isIssue,
+    isIssue,
+    id: isIssue ? metaObj.idReadable : metaObj.ringId,
+    title: isIssue ? metaObj.idReadable : metaObj.visibleName,
+    description: metaObj.isUser ? metaObj.postfix : metaObj.summary
+  };
+
+  function getMetaObj() {
+    return group.meta[isIssueView ? 'linkedIssue' : 'linkedUser'] ||
+      (group.meta.linkedIssue || group.meta.linkedUser);
+  }
+}
+
+function makeMetaFromLine(line, isIssueView) {
+  const id = getMetaId();
+  if (!id) {
+    return null;
+  }
+
+  const description = line.description || line.presentation;
+  const title = (isIssueView ? id : line.userVisibleName) || description;
+  return {
+    id, title,
+    description: description !== title ? description : undefined,
+    isIssue: isIssueView,
+    isUser: !isIssueView
+  };
+
+  function getMetaId() {
+    return (isIssueView ? line.issueId : line.userId) || line.entityId;
+  }
 }
 
 const SpendTimeReportModel = {
@@ -106,38 +147,35 @@ const SpendTimeReportModel = {
     const {data} = report;
 
     if (isTimeReport(report)) {
-      return ((data || {}).groups || []).map(group => {
+      return ((data || {}).groups || []).map((group, groupIdx) => {
         const childLines = group.lines;
         const mappedChildLines = (childLines || []).map(
-          line => {
-            const meta = line.entityId ? {
-              id: line.entityId,
-              name: line.presentation
-            } : null;
-            return makeLine(
-              line.name,
-              meta,
-              line.duration,
-              [],
-              line.estimation,
-              line.totalDuration
-            );
-          }
+          (line, lineIdx) => makeLine(
+            lineIdx,
+            line.name,
+            makeMetaFromLine(line, isIssueView),
+            line.duration,
+            [],
+            line.estimation,
+            line.totalDuration
+          )
         );
-        const meta = group.meta[isIssueView ? 'linkedIssue' : 'linkedUser'];
-        return makeLine(group.name, meta, group.duration, mappedChildLines);
+        const meta = makeMetaFromGroup(group, isIssueView);
+        return makeLine(
+          groupIdx, group.name, meta, group.duration, mappedChildLines
+        );
       });
     }
 
-    return ((data || {}).groups || []).map(group => {
+    return ((data || {}).groups || []).map((group, groupIdx) => {
       const childLines = group[isIssueView ? 'issueLines' : 'userLines'];
+      childLines.isIssue = isIssueView;
+      childLines.isUser = !isIssueView;
       const mappedChildLines = (childLines || []).map(
-        line => {
-          const meta = line.entityId ? {
-            id: line.entityId,
-            name: line.presentation
-          } : null;
+        (line, lineIdx) => {
+          const meta = makeMetaFromLine(line, isIssueView);
           return makeLine(
+            lineIdx,
             line.presentation,
             meta,
             line.spentTime,
@@ -147,8 +185,13 @@ const SpendTimeReportModel = {
           );
         }
       );
-      const meta = group.meta[isIssueView ? 'linkedIssue' : 'linkedUser'];
-      return makeLine(group.name, meta, group.spentTime, mappedChildLines);
+      return makeLine(
+        groupIdx,
+        group.name,
+        makeMetaFromGroup(group, isIssueView),
+        group.spentTime,
+        mappedChildLines
+      );
     });
   },
 

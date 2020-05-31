@@ -5,6 +5,8 @@
 
   border-spacing: 0;
 
+  font-size: var(--ring-font-size-smaller);
+
   &__row-data th:first-child {
     padding-left: $ring-unit !important;
   }
@@ -98,6 +100,8 @@
       overflow: hidden;
 
       max-width: 60px;
+
+      margin-right: 4px;
 
       text-align: left;
       white-space: nowrap;
@@ -287,6 +291,10 @@
 
     border: 1px solid transparent;
 
+    &_subtitle {
+      font-weight: bold;
+    }
+
     &-left {
       overflow: hidden;
 
@@ -318,6 +326,8 @@
       white-space: nowrap;
 
       text-overflow: ellipsis;
+
+      font-size: var(--ring-font-size-smaller);
     }
 
     &_total {

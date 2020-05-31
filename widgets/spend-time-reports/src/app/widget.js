@@ -24,6 +24,8 @@ import {getReportTypePathPrefix} from './spend-time-report-types';
 import Content from './content';
 import './style/spend-time-report-widget.scss';
 
+const IsIssueView = true;
+
 class SpendTimeReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static DEFAULT_REFRESH_PERIOD = 900;
@@ -226,8 +228,9 @@ class SpendTimeReportsWidget extends React.Component {
       ? this.fetchYouTrack
       : async (url, params) =>
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
+    const line = IsIssueView ? 'issue' : 'user';
     try {
-      return await loadReportWithData(fetchYouTrack, reportId);
+      return await loadReportWithData(fetchYouTrack, reportId, {line});
     } catch (err) {
       this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
       return undefined;
@@ -374,6 +377,7 @@ class SpendTimeReportsWidget extends React.Component {
         dashboardApi={this.props.dashboardApi}
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
+        isIssueView={IsIssueView}
         editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}

@@ -12,6 +12,183 @@ import SpentTimeProgress from '../../../../components/src/spent-time-progress/sp
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
 
+const TimeTableGeneralGroupLine = ({
+  line, fetchHub
+}) =>
+//TODO: implement yt-sync-hover, yt-sync-select
+  (
+    <div className="time-sheet-body-general__row">
+      <div className="time-sheet-body-general__row-left">
+        <TimeTableGeneralGroupTitle
+          defaultText={line.text}
+          meta={line.meta}
+          fetchHub={fetchHub}
+        />
+      </div>
+      <div className="time-sheet-body-general__row-right">
+        {
+          !!line.estimation && !!line.estimation.value &&
+          <SpentTimeProgress
+            spent={line.totalSpentTime}
+            estimated={line.estimation}
+          >
+            <SpentTimeValue value={line.spentTime}/>
+          </SpentTimeProgress>
+        }
+        {
+          !line.estimation || !line.estimation.value &&
+          <SpentTimeValue value={line.spentTime}/>
+        }
+      </div>
+    </div>
+  );
+
+TimeTableGeneralGroupLine.propTypes = {
+  line: PropTypes.object.isRequired,
+  fetchHub: PropTypes.func.isRequired
+};
+
+
+const TimeTableGeneralGroupTitle = ({
+  meta, fetchHub, defaultText
+}) => {
+
+  if (!meta) {
+    return (
+      <span className="yt-table__cell_link-identifier">
+        {defaultText}
+      </span>
+    );
+  }
+
+  if (meta.isIssue) {
+    return (
+      <span>
+        <Link
+          className="yt-table__cell_link-identifier"
+          href={`issue/${meta.id}`}
+        >
+          {meta.title}
+        </Link>
+        <span>{meta.description}</span>
+      </span>
+    );
+  }
+
+  return (
+    <span>
+      <UserLink
+        className="yt-table__cell_link-identifier"
+        user={
+          {ringId: meta.id, login: meta.title}
+        }
+        fetchHub={fetchHub}
+      />
+      <span>{meta.description}</span>
+    </span>
+  );
+};
+
+TimeTableGeneralGroupTitle.propTypes = {
+  fetchHub: PropTypes.func.isRequired,
+  meta: PropTypes.object,
+  defaultText: PropTypes.string
+};
+
+
+const TimeTableGeneralGroup = ({
+  group, idx, grouping, fetchHub
+}) => (
+  <div
+    className={classNames(
+      'yt-table__group',
+      {'yt-table__group_not-bordered': (idx === 0)}
+    )}
+  >
+    {
+      !!grouping &&
+      <div className="time-sheet-body-general__row time-sheet-body-general__row_subtitle">
+        <div className="time-sheet-body-general__row-left">
+          <TimeTableGeneralGroupTitle
+            defaultText={group.text}
+            meta={group.meta}
+            fetchHub={fetchHub}
+          />
+        </div>
+        <div className="time-sheet-body-general__row-right">
+          {!!group.estimation && group.estimation.presentation || ''}
+          <SpentTimeValue value={group.spentTime}/>
+        </div>
+      </div>
+    }
+    {
+      group.childrenLines.map(line => (
+        <TimeTableGeneralGroupLine
+          key={`general-group-line-${line.id}`}
+          line={line}
+          fetchHub={fetchHub}
+        />
+      ))
+    }
+  </div>
+);
+
+TimeTableGeneralGroup.propTypes = {
+  group: PropTypes.object.isRequired,
+  grouping: PropTypes.object,
+  idx: PropTypes.number,
+  fetchHub: PropTypes.func.isRequired
+};
+
+
+const TimeTableGeneral = ({
+  grouping, isIssueView, generalGroups, totalSpentTime, fetchHub
+}) => {
+  const getGroupingPresentation = field =>
+    i18n('groupped by {{value}}', {value: field.presentation});
+
+  const title = [
+    isIssueView ? i18n('Issues') : i18n('Users'),
+    grouping && grouping.field ? getGroupingPresentation(grouping.field) : ''
+  ].filter(it => !!it).join(', ');
+
+  return (
+    <div className="time-sheet-body-general">
+      <div className="time-sheet-body-general__axys-title">
+        { title }
+      </div>
+      <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
+        <div className="time-sheet-body-general__row-left">
+          { i18n('Total time') }
+        </div>
+        <div className="time-sheet-body-general__row-right">
+          <SpentTimeValue value={totalSpentTime}/>
+        </div>
+      </div>
+      {
+        generalGroups.map((group, idx) => (
+          <TimeTableGeneralGroup
+            key={`data-group-${group.id}`}
+            group={group}
+            idx={idx}
+            grouping={grouping}
+            fetchHub={fetchHub}
+          />
+        ))
+      }
+    </div>
+  );
+};
+
+TimeTableGeneral.propTypes = {
+  generalGroups: PropTypes.array.isRequired,
+  totalSpentTime: PropTypes.object,
+  grouping: PropTypes.object,
+  isIssueView: PropTypes.bool,
+  fetchHub: PropTypes.func.isRequired
+};
+
+
 class TimeTable extends React.Component {
   static propTypes = {
     grouping: PropTypes.object,
@@ -24,7 +201,7 @@ class TimeTable extends React.Component {
     detailedGroups: PropTypes.array,
     columnsLegend: PropTypes.array,
     columnsHeader: PropTypes.array,
-    isIssueView: PropTypes.object,
+    isIssueView: PropTypes.bool,
     totalSpentTime: PropTypes.object
   };
 
@@ -52,219 +229,6 @@ class TimeTable extends React.Component {
     const {visibleSidebar} = this.state;
     this.setState({visibleSidebar: !visibleSidebar});
   };
-
-  renderGeneralLine = line => {
-    const {meta} = line;
-    //TODO: implement yt-sync-hover, yt-sync-select
-
-    return (
-      <div
-        className="time-sheet-body-general__row"
-        key={`issue-line-${line.id}-${line.entityId}`}
-      >
-        <div className="time-sheet-body-general__row-left">
-          {
-            meta &&
-            <Link href={meta.url}>
-              {meta.id}
-            </Link>
-          }
-          <span rg-tooltip="line.presentation">
-            {line.text}
-          </span>
-        </div>
-        <div className="time-sheet-body-general__row-right">
-          {
-            !!line.estimation && !!line.estimation.value &&
-            <SpentTimeProgress
-              spent={line.totalSpentTime}
-              estimated={line.estimation}
-            >
-              <SpentTimeValue value={line.spentTime}/>
-            </SpentTimeProgress>
-          }
-          {
-            !line.estimation || !line.estimation.value &&
-            <SpentTimeValue value={line.spentTime}/>
-          }
-        </div>
-      </div>
-    );
-  }
-
-  renderIssueLine(line) {
-    //TODO: implement yt-sync-hover, yt-sync-select
-
-    return (
-      <tr
-        className="yt-table__row yt-table__row_hovered"
-        key={`issue-line-${line.id}-${line.entityId}`}
-      >
-        <td className="yt-table__cell yt-table__cell_link-identifier">
-          <Link href={`issue/${line.entityId}`}>
-            {line.entityId}
-          </Link>
-        </td>
-        <td
-          className="yt-table__cell yt-table__cell_issue-summary"
-          colSpan="2"
-        >
-          <span rg-tooltip="line.presentation">
-            {line.presentation}
-          </span>
-        </td>
-        <td className="yt-table__cell yt-table__cell_progress-bar">
-          {
-            line.estimation && line.estimation.value &&
-            <SpentTimeProgress
-              spent={line.totalSpentTime}
-              estimated={line.estimation}
-            />
-          }
-        </td>
-        <td className="yt-table__cell yt-table__cell_right-border">
-          <SpentTimeValue value={line.spentTime}/>
-        </td>
-      </tr>
-    );
-  }
-
-  renderUserLine(line) {
-    //TODO: implement yt-sync-hover, yt-sync-select
-
-    return (
-      <tr
-        className="yt-table__row yt-table__row_hovered"
-        key={`user-line-${line.id}-${line.entityId}`}
-      >
-        <td className="yt-table__cell yt-table__cell_user-avatar">
-          {
-            line.avatarUrl &&
-            <img
-              className="avatar"
-              src={line.avatarUrl}
-            />
-          }
-        </td>
-        <td
-          className="yt-table__cell yt-table__cell_user-name"
-          colSpan="2"
-        >
-          <Link href={`issues/${line.name}`}>
-            {line.presentation}
-          </Link>
-        </td>
-        <td className="yt-table__cell yt-table__cell_right-border">
-          <SpentTimeValue value={line.spentTime}/>
-        </td>
-      </tr>
-    );
-  }
-
-  renderGroupTitle(group, isIssueView) {
-    const {meta} = group;
-
-    if (!meta) {
-      return (
-        <span className="yt-table__cell_link-identifier">
-          {group.text}
-        </span>
-      );
-    }
-
-    if (isIssueView) {
-      return (
-        <span>
-          <Link
-            className="yt-table__cell_link-identifier"
-            href={`issue/${meta.idReadable}`}
-          >
-            {meta.idReadable}
-          </Link>
-          <span>{meta.summary}</span>
-        </span>
-      );
-    }
-
-    return (
-      <span>
-        <UserLink
-          className="yt-table__cell_link-identifier"
-          user={
-            {ringId: meta.ringId, login: meta.visibleName}
-          }
-          fetchHub={this.props.fetchHub}
-        />
-        <span>{meta.postfix}</span>
-      </span>
-    );
-  }
-
-  renderGroup(group, idx, grouping, isIssueView) {
-    //TODO: implement yt-sync-hover, yt-sync-select
-
-    return (
-      <div
-        key={`data-group-${group.id}-${idx}`}
-        className={classNames(
-          'yt-table__group',
-          {'yt-table__group_not-bordered': (idx === 0)}
-        )}
-      >
-        {
-          !!grouping &&
-          <div className="time-sheet-body-general__row">
-            <div className="time-sheet-body-general__row-left">
-              {this.renderGroupTitle(group, isIssueView)}
-            </div>
-            <div className="time-sheet-body-general__row-right">
-              <strong>
-                {!!group.estimation && group.estimation.presentation || ''}
-              </strong>
-              <strong>
-                <SpentTimeValue value={group.spentTime}/>
-              </strong>
-            </div>
-          </div>
-        }
-        {
-          group.childrenLines.map(line => this.renderGeneralLine(line))
-        }
-      </div>
-    );
-  }
-
-  renderGeneralTablePart(grouping, isIssueView, generalGroups, totalSpentTime) {
-
-    const getGroupingPresentation = field =>
-      i18n('groupped by {{value}}', {value: field.presentation});
-
-    const title = [
-      isIssueView ? i18n('Issues') : i18n('Users'),
-      grouping && grouping.field ? getGroupingPresentation(grouping.field) : ''
-    ].filter(it => !!it).join(', ');
-
-    return (
-      <div className="time-sheet-body-general">
-        <div className="time-sheet-body-general__axys-title">
-          { title }
-        </div>
-        <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
-          <div className="time-sheet-body-general__row-left">
-            { i18n('Total time') }
-          </div>
-          <div className="time-sheet-body-general__row-right">
-            <SpentTimeValue value={totalSpentTime}/>
-          </div>
-        </div>
-        {
-          generalGroups.map((group, idx) =>
-            this.renderGroup(group, idx, grouping, isIssueView)
-          )
-        }
-      </div>
-    );
-  }
 
   renderDetailedTableHeaders(columnsHeaders, columnsLegend = []) {
 
@@ -465,6 +429,7 @@ class TimeTable extends React.Component {
       generalGroups,
       totalSpentTime,
       detailedGroups,
+      fetchHub,
       isIssueView
     } = this.props;
     const {visibleSidebar} = this.state;
@@ -477,9 +442,13 @@ class TimeTable extends React.Component {
       <div className="time-sheet-body__wrapper">
         {
           <div className={generalTableClasses}>
-            {this.renderGeneralTablePart(
-              grouping, isIssueView, generalGroups, totalSpentTime
-            )}
+            <TimeTableGeneral
+              grouping={grouping}
+              isIssueView={isIssueView}
+              generalGroups={generalGroups}
+              totalSpentTime={totalSpentTime}
+              fetchHub={fetchHub}
+            />
           </div>
         }
         {this.renderSidebarToggler(visibleSidebar)}

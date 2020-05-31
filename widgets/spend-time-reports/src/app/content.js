@@ -20,6 +20,7 @@ class Content extends React.Component {
     youTrack: PropTypes.object,
     dashboardApi: PropTypes.object,
     editable: PropTypes.bool,
+    isIssueView: PropTypes.bool,
 
     onOpenSettings: PropTypes.func,
     onChangeReportSortOrders: PropTypes.func,
@@ -91,7 +92,7 @@ class Content extends React.Component {
   }
 
   renderReportBody() {
-    const {report, dashboardApi} = this.props;
+    const {report, dashboardApi, isIssueView} = this.props;
 
     if (ReportModel.isReportCalculation(report)) {
       const fromPercentsCoefficient = 0.01;
@@ -121,7 +122,6 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
-    const isIssueView = true;
     const columnsLegend = SpendTimeReportModel.getColumnsLegend(report);
     const columnsHeader = SpendTimeReportModel.getColumnsHeader(report);
 
