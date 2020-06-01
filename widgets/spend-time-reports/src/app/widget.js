@@ -291,12 +291,10 @@ class SpendTimeReportsWidget extends React.Component {
     };
 
   onChangeYAxis = async yAxis => {
-    debugger;
     this.setState({yAxis});
 
     if (this.props.editable) {
-      return await this.props.configWrapper.
-        update({reportId: report.id, yAxis});
+      return await this.props.configWrapper.update({yAxis});
     }
 
     return null;
@@ -378,7 +376,7 @@ class SpendTimeReportsWidget extends React.Component {
         dashboardApi={this.props.dashboardApi}
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
-        isIssueView={ yAxis === 'issue' }
+        isIssueView={yAxis === 'issue'}
         editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}

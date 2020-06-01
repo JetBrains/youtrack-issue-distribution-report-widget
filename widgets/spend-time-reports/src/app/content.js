@@ -14,7 +14,7 @@ import ReportModel from '../../../../components/src/report-model/report-model';
 import TimeTable from './time-table';
 import SpendTimeReportModel from './spend-time-report-model';
 
-const YAxisEntitiesSelector = (
+const YAxisSelector = (
   {changeXAxis, isIssueView}
 ) => {
   const userOption = {
@@ -37,6 +37,11 @@ const YAxisEntitiesSelector = (
   );
 };
 
+YAxisSelector.propTypes = {
+  changeXAxis: PropTypes.func.isRequired,
+  isIssueView: PropTypes.bool
+};
+
 class Content extends React.Component {
   static propTypes = {
     report: PropTypes.object,
@@ -55,14 +60,14 @@ class Content extends React.Component {
     const getGroupingPresentation = field =>
       i18n('groupped by {{value}}', {value: field.presentation});
 
-    const onChange = (res) => {
+    const onChange = res => {
       this.props.onChangeYAxis(res.key);
-    }
+    };
 
     return (
       <div>
         <div>
-          <YAxisEntitiesSelector
+          <YAxisSelector
             isIssueView={isIssueView}
             changeXAxis={onChange}
           />

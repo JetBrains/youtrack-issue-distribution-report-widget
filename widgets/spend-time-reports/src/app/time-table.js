@@ -175,7 +175,8 @@ TimeTableGeneral.propTypes = {
   totalSpentTime: PropTypes.object,
   grouping: PropTypes.object,
   isIssueView: PropTypes.bool,
-  fetchHub: PropTypes.func.isRequired
+  fetchHub: PropTypes.func.isRequired,
+  presentationControlsPanel: PropTypes.node
 };
 
 
@@ -192,7 +193,8 @@ class TimeTable extends React.Component {
     columnsLegend: PropTypes.array,
     columnsHeader: PropTypes.array,
     isIssueView: PropTypes.bool,
-    totalSpentTime: PropTypes.object
+    totalSpentTime: PropTypes.object,
+    presentationControlsPanel: PropTypes.node
   };
 
   constructor(props) {
