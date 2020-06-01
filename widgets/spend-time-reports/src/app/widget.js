@@ -59,7 +59,7 @@ class SpendTimeReportsWidget extends React.Component {
     return {
       reportId: getFieldValue('reportId'),
       mainAxisSortOrder: getFieldValue('mainAxisSortOrder'),
-      secondaryAxisSortOrder: getFieldValue('secondaryAxisSortOrder'),
+      yAxis: getFieldValue('yAxis'),
       presentation: getFieldValue('presentation'),
       youTrack: getFieldValue('youTrack'),
       refreshPeriod: getFieldValue('refreshPeriod')
@@ -133,18 +133,19 @@ class SpendTimeReportsWidget extends React.Component {
     }
 
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
+    const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
     const report = (configReportId && {id: configReportId}) ||
       (await loadIssuesDistributionReports(this.fetchYouTrack))[0];
 
     if (report) {
       const reportWithData = await this.loadReportWithAppliedConfigSettings(
         report.id,
+        yAxis,
         ytTrackService
       );
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD;
-      const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
       this.setState({report: reportWithData, refreshPeriod, yAxis});
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
@@ -201,12 +202,13 @@ class SpendTimeReportsWidget extends React.Component {
     const {
       isConfiguring,
       isCalculationCompleted,
-      report
+      report,
+      yAxis
     } = this.state;
 
     if (!isConfiguring && report) {
       const reportWithData =
-        await this.loadReportWithAppliedConfigSettings(report.id);
+        await this.loadReportWithAppliedConfigSettings(report.id, yAxis);
 
       if (reportWithData) {
         this.setState({
@@ -222,12 +224,12 @@ class SpendTimeReportsWidget extends React.Component {
     }
   };
 
-  async loadReport(reportId, optionalYouTrack) {
+  async loadReport(reportId, yAxis, optionalYouTrack) {
     const fetchYouTrack = !optionalYouTrack
       ? this.fetchYouTrack
       : async (url, params) =>
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
-    const line = this.state.yAxis;
+    const line = yAxis;
     try {
       return await loadReportWithData(fetchYouTrack, reportId, {line});
     } catch (err) {
@@ -237,11 +239,11 @@ class SpendTimeReportsWidget extends React.Component {
   }
 
   async loadReportWithAppliedConfigSettings(
-    reportId, optionalYouTrack
+    reportId, yAxis, optionalYouTrack
   ) {
     return SpendTimeReportsWidget.
       applyReportSettingsFromWidgetConfig(
-        await this.loadReport(reportId, optionalYouTrack),
+        await this.loadReport(reportId, yAxis, optionalYouTrack),
         SpendTimeReportsWidget.getConfigAsObject(this.props.configWrapper)
       );
   }
@@ -291,7 +293,7 @@ class SpendTimeReportsWidget extends React.Component {
     };
 
   onChangeYAxis = async yAxis => {
-    this.setState({yAxis});
+    this.setState({yAxis}, () => this.onWidgetRefresh());
 
     if (this.props.editable) {
       return await this.props.configWrapper.update({yAxis});
@@ -302,6 +304,7 @@ class SpendTimeReportsWidget extends React.Component {
 
   renderConfigurationForm() {
     const submitForm = async (selectedReportId, refreshPeriod, youTrack) => {
+      const {yAxis} = this.state;
       const reportIsChanged = selectedReportId !== (this.state.report || {}).id;
       this.setState({
         youTrack,
@@ -310,7 +313,7 @@ class SpendTimeReportsWidget extends React.Component {
         error: ReportModel.ErrorTypes.OK
       }, async () => {
         const reportWithData = await this.loadReportWithAppliedConfigSettings(
-          selectedReportId, youTrack
+          selectedReportId, yAxis, youTrack
         );
         if (reportWithData) {
           this.setState({

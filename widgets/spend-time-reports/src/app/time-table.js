@@ -36,7 +36,7 @@ const TimeTableGeneralGroupLine = ({
           </SpentTimeProgress>
         }
         {
-          !line.estimation || !line.estimation.value &&
+          (!line.estimation || !line.estimation.value) &&
           <SpentTimeValue value={line.spentTime}/>
         }
       </div>
