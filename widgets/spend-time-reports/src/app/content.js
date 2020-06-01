@@ -57,8 +57,11 @@ class Content extends React.Component {
   };
 
   renderTimeTablePresentationControls(grouping, isIssueView) {
-    const getGroupingPresentation = field =>
-      i18n('groupped by {{value}}', {value: field.presentation});
+    const getGroupingPresentation = field => (
+      field && field.presentation
+        ? i18n('groupped by {{value}}', {value: field.presentation})
+        : ''
+    );
 
     const onChange = res => {
       this.props.onChangeYAxis(res.key);
@@ -72,10 +75,9 @@ class Content extends React.Component {
             changeXAxis={onChange}
           />
         </div>
-        {
-          grouping && grouping.field &&
-          <div>{getGroupingPresentation(grouping.field)}</div>
-        }
+        <div>
+          {getGroupingPresentation((grouping || {}).field)}
+        </div>
       </div>
     );
   }
