@@ -64,22 +64,16 @@ const SpentTimeProgressInPlaceDetails = (
   {spent, estimated, hasOverdue, overdue}
 ) => (
   <div className="spent-time-progress__label-details">
-    <span className="spent-time-progress__label-detail">
-      <span
-        className="spent-time-progress__mark spent-time-progress__mark_spent"
-      /><SpentTimeValue value={spent}/>
+    <span className="spent-time-progress__label-detail spent-time-progress__label-detail_spent">
+      <SpentTimeValue value={spent}/>
     </span>
-    <span className="spent-time-progress__label-detail">
-      <span
-        className="spent-time-progress__mark spent-time-progress__mark_estimated"
-      /><SpentTimeValue value={estimated}/>
+    <span className="spent-time-progress__label-detail spent-time-progress__label-detail_estimated">
+      <SpentTimeValue value={estimated}/>
     </span>
     {
       hasOverdue &&
-      <span className="spent-time-progress__label-detail">
-        <span
-          className="spent-time-progress__mark spent-time-progress__mark_overdue"
-        /><SpentTimeValue value={overdue}/>
+      <span className="spent-time-progress__label-detail spent-time-progress__label-detail_overdue">
+        <SpentTimeValue value={overdue}/>
       </span>
     }
   </div>

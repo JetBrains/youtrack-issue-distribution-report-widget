@@ -20,7 +20,7 @@
   }
 
   &__label-details {
-    margin-left: 4px;
+    margin-left: 2px;
 
     overflow: hidden;
     flex-grow: 2;
@@ -30,10 +30,26 @@
     text-align: left;
 
     text-overflow: ellipsis;
+
+    font-size: 11px;
   }
 
   &__label-detail {
-    margin-right: 4px;
+    margin-right: 6px;
+    padding-left: 2px;
+    padding-bottom: 1px;
+
+    &_spent {
+      border-left: 2px solid var(--ring-icon-success-color);
+    }
+
+    &_estimated {
+      border-left: 2px solid var(--ring-icon-disabled-color);
+    }
+
+    &_overdue {
+      border-left: 2px solid var(--ring-icon-warning-color);
+    }
   }
 
   &__placeholder {
