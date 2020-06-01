@@ -278,12 +278,13 @@
 
   &__axys-title {
     padding: 14px 4px $ring-unit 4px;
-    font-size: var(--ring-font-size-smaller);
-    line-height: var(--ring-line-height-taller);
 
     white-space: nowrap;
 
     color: var(--ring-secondary-color);
+
+    font-size: var(--ring-font-size-smaller);
+    line-height: var(--ring-line-height-taller);
   }
 
   &__row {
