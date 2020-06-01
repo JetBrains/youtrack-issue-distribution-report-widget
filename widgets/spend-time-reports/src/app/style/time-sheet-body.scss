@@ -277,7 +277,10 @@
   flex-basis: 30%;
 
   &__axys-title {
-    padding: 14px 4px $ring-unit 4px;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 56px;
+    padding: 4px;
 
     white-space: nowrap;
 
