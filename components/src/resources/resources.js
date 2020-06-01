@@ -11,7 +11,7 @@ const PROJECTS_FIELDS = 'id,name,shortName';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id)`;
+const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS})`;
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
@@ -121,6 +121,35 @@ async function loadTimeReports(fetchYouTrack) {
   return await loadReportsList(fetchYouTrack, timeReportTypes);
 }
 
+async function loadReportsGroupingFilterFields(fetchYouTrack, projects) {
+  const fld = serializeArrayParameter('fld',
+    (projects || []).map(project => project.id)
+  );
+  const groupingFieldsTypes = [
+    'version[1]',
+    'ownedField[1]',
+    'state[1]',
+    'user[1]',
+    'enum[1]',
+    'build[1]',
+    'date',
+    'integer',
+    'float',
+    'period',
+    'project',
+    'string'
+  ];
+  const fieldTypes = serializeArrayParameter('fieldTypes', groupingFieldsTypes);
+  const params = [
+    fld,
+    '$top=300',
+    `fields=${REPORT_FILTER_FIELDS_FIELDS}`,
+    fieldTypes,
+    'getUnusedVisibleFields=true'
+  ].filter(param => param.length > 0).join('&');
+
+  return await fetchYouTrack(`api/filterFields?${params}`);
+}
 
 async function loadReportsAggregationFilterFields(fetchYouTrack, projects) {
   const fieldTypes = serializeArrayParameter(
@@ -271,6 +300,7 @@ export {
   loadTimeReports,
   loadReportWithSettings,
   loadReportsAggregationFilterFields,
+  loadReportsGroupingFilterFields,
   saveReportSettings,
   recalculateReport,
   getYouTrackServices,

@@ -275,21 +275,27 @@ class SpendTimeReportsWidget extends React.Component {
     });
   };
 
-  onChangeReportSortOrders =
-    async (mainAxisSortOrder, secondaryAxisSortOrder) => {
+  onChangeReportGrouping =
+    async groupingField => {
       const {report} = this.state;
-
-      this.setState({report});
+      report.grouping = groupingField
+        ? {
+          field: groupingField,
+          id: groupingField.id,
+          $type: 'FieldBasedGrouping'
+        } : null;
 
       if (this.props.editable) {
-        return report.own
-          ? await saveReportSettings(this.fetchYouTrack, report, true)
-          : await this.props.configWrapper.update({
-            reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
+        if (report.own) {
+          await saveReportSettings(this.fetchYouTrack, report, true);
+        } else {
+          await this.props.configWrapper.update({
+            reportId: report.id, groupingField
           });
+        }
       }
 
-      return null;
+      this.setState({report}, () => this.onWidgetRefresh());
     };
 
   onChangeYAxis = async yAxis => {
@@ -383,7 +389,7 @@ class SpendTimeReportsWidget extends React.Component {
         editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
-        onChangeReportSortOrders={this.onChangeReportSortOrders}
+        onChangeReportGrouping={this.onChangeReportGrouping}
         onChangeYAxis={this.onChangeYAxis}
       />
     );

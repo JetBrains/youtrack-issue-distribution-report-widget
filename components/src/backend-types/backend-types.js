@@ -14,6 +14,8 @@ const BackendTypesEnum = {
   TimeReport: 'jetbrains.youtrack.reports.impl.time.gap.simple.TimeReport',
   TimeSheetReport: 'jetbrains.youtrack.reports.impl.time.gap.sheet.TimeSheetReport',
 
+  FieldBasedGrouping: 'jetbrains.youtrack.reports.impl.time.gap.FieldBasedGrouping',
+
   NamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
   FixedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.FixedTimeRange',
   TimeSheetReportScale: 'jetbrains.youtrack.reports.impl.time.gap.sheet.TimeSheetReportScale',

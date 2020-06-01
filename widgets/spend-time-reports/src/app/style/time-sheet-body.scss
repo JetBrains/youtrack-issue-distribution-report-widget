@@ -283,12 +283,18 @@
     height: 56px;
     padding: 4px;
 
-    white-space: nowrap;
-
     color: var(--ring-secondary-color);
 
     font-size: var(--ring-font-size-smaller);
     line-height: var(--ring-line-height-taller);
+
+    & span {
+      margin-right: 4px;
+
+      white-space: nowrap;
+
+      line-height: var(--ring-font-size-smaller);
+    }
   }
 
   &__row {

@@ -10,9 +10,13 @@ import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-title';
 import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
+import FilterFieldsSelector from '../../../../components/src/filter-fields-selector/filter-fields-selector';
+import {
+  loadReportsGroupingFilterFields
+} from '../../../../components/src/resources/resources';
 
-import TimeTable from './time-table';
 import SpendTimeReportModel from './spend-time-report-model';
+import TimeTable from './time-table';
 
 const YAxisSelector = (
   {changeXAxis, isIssueView}
@@ -42,6 +46,56 @@ YAxisSelector.propTypes = {
   isIssueView: PropTypes.bool
 };
 
+const TimeTableSettingsToolbar = (
+  {
+    grouping, projects, isIssueView, youTrack, dashboardApi,
+    onChangeYAxis, onChangeReportGrouping
+  }
+) => {
+  const fetchYouTrack = (url, args) =>
+    dashboardApi.fetch(youTrack.id, url, args);
+
+  const onChange = res => onChangeYAxis(res.key);
+  const onChangeGrouping = res => onChangeReportGrouping(res);
+
+  const filterFieldsSource = async () =>
+    await loadReportsGroupingFilterFields(
+      fetchYouTrack,
+      projects || []
+    );
+
+  return (
+    <div>
+      <YAxisSelector
+        isIssueView={isIssueView}
+        changeXAxis={onChange}
+      />
+      <span>
+        <span>{i18n('group by {{field}}', {field: ''})}</span>
+        <FilterFieldsSelector
+          projects={[]}
+          onChange={onChangeGrouping}
+          filterFieldsSource={filterFieldsSource}
+          selectedField={(grouping || {}).field}
+          canBeEmpty={true}
+          disabled={false}
+          placeholder={'no grouping'}
+        />
+      </span>
+    </div>
+  );
+};
+
+TimeTableSettingsToolbar.propTypes = {
+  grouping: PropTypes.array,
+  projects: PropTypes.array,
+  youTrack: PropTypes.object,
+  dashboardApi: PropTypes.object,
+  onChangeYAxis: PropTypes.func.isRequired,
+  onChangeReportGrouping: PropTypes.func.isRequired,
+  isIssueView: PropTypes.bool
+};
+
 class Content extends React.Component {
   static propTypes = {
     report: PropTypes.object,
@@ -52,35 +106,9 @@ class Content extends React.Component {
     isIssueView: PropTypes.bool,
 
     onOpenSettings: PropTypes.func,
-    onChangeReportSortOrders: PropTypes.func,
+    onChangeReportGrouping: PropTypes.func,
     onChangeYAxis: PropTypes.func
   };
-
-  renderTimeTablePresentationControls(grouping, isIssueView) {
-    const getGroupingPresentation = field => (
-      field && field.presentation
-        ? i18n('groupped by {{value}}', {value: field.presentation})
-        : ''
-    );
-
-    const onChange = res => {
-      this.props.onChangeYAxis(res.key);
-    };
-
-    return (
-      <div>
-        <div>
-          <YAxisSelector
-            isIssueView={isIssueView}
-            changeXAxis={onChange}
-          />
-        </div>
-        <div>
-          {getGroupingPresentation((grouping || {}).field)}
-        </div>
-      </div>
-    );
-  }
 
   renderLoader() {
     return <LoaderInline/>;
@@ -191,7 +219,15 @@ class Content extends React.Component {
         grouping={report.grouping}
         fetchHub={dashboardApi.fetchHub}
         presentationControlsPanel={
-          this.renderTimeTablePresentationControls(report.grouping, isIssueView)
+          <TimeTableSettingsToolbar
+            youTrack={this.props.youTrack}
+            dashboardApi={this.props.dashboardApi}
+            onChangeYAxis={this.props.onChangeYAxis}
+            onChangeReportGrouping={this.props.onChangeReportGrouping}
+            grouping={report.grouping}
+            projects={report.projects}
+            isIssueView={isIssueView}
+          />
         }
 
         columnsLegend={columnsLegend}
