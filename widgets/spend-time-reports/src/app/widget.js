@@ -24,8 +24,6 @@ import {getReportTypePathPrefix} from './spend-time-report-types';
 import Content from './content';
 import './style/spend-time-report-widget.scss';
 
-const IsIssueView = true;
-
 class SpendTimeReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static DEFAULT_REFRESH_PERIOD = 900;
@@ -146,7 +144,8 @@ class SpendTimeReportsWidget extends React.Component {
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD;
-      this.setState({report: reportWithData, refreshPeriod});
+      const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
+      this.setState({report: reportWithData, refreshPeriod, yAxis});
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
@@ -228,7 +227,7 @@ class SpendTimeReportsWidget extends React.Component {
       ? this.fetchYouTrack
       : async (url, params) =>
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
-    const line = IsIssueView ? 'issue' : 'user';
+    const line = this.state.yAxis;
     try {
       return await loadReportWithData(fetchYouTrack, reportId, {line});
     } catch (err) {
@@ -291,17 +290,13 @@ class SpendTimeReportsWidget extends React.Component {
       return null;
     };
 
-  onChangeReportPresentation = async presentation => {
-    const {report} = this.state;
-    report.presentation = presentation;
-    this.setState({report});
+  onChangeYAxis = async yAxis => {
+    debugger;
+    this.setState({yAxis});
 
     if (this.props.editable) {
-      return report.own
-        ? await saveReportSettings(this.fetchYouTrack, report, true)
-        : await this.props.configWrapper.update({
-          reportId: report.id, presentation
-        });
+      return await this.props.configWrapper.
+        update({reportId: report.id, yAxis});
     }
 
     return null;
@@ -348,7 +343,13 @@ class SpendTimeReportsWidget extends React.Component {
 
   renderContent() {
     const {
-      report, error, isLoading, refreshPeriod, youTrack, isCalculationCompleted
+      report,
+      error,
+      isLoading,
+      refreshPeriod,
+      youTrack,
+      isCalculationCompleted,
+      yAxis
     } = this.state;
 
     const isCalculation = ReportModel.isReportCalculation(report);
@@ -377,12 +378,12 @@ class SpendTimeReportsWidget extends React.Component {
         dashboardApi={this.props.dashboardApi}
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
-        isIssueView={IsIssueView}
+        isIssueView={ yAxis === 'issue' }
         editable={this.props.editable}
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
         onChangeReportSortOrders={this.onChangeReportSortOrders}
-        onChangePresentationMode={this.onChangeReportPresentation}
+        onChangeYAxis={this.onChangeYAxis}
       />
     );
   }

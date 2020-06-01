@@ -4,6 +4,7 @@ import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inl
 import Link from '@jetbrains/ring-ui/components/link/link';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import ProgressBar from '@jetbrains/ring-ui/components/progress-bar/progress-bar';
+import Select from '@jetbrains/ring-ui/components/select/select';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-title';
 import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
@@ -12,6 +13,29 @@ import ReportModel from '../../../../components/src/report-model/report-model';
 
 import TimeTable from './time-table';
 import SpendTimeReportModel from './spend-time-report-model';
+
+const YAxisEntitiesSelector = (
+  {changeXAxis, isIssueView}
+) => {
+  const userOption = {
+    key: 'user',
+    label: i18n('Users')
+  };
+
+  const issueOption = {
+    key: 'issue',
+    label: i18n('Issues')
+  };
+
+  return (
+    <Select
+      data={[userOption, issueOption]}
+      selected={isIssueView ? issueOption : userOption}
+      onSelect={changeXAxis}
+      type={Select.Type.INLINE}
+    />
+  );
+};
 
 class Content extends React.Component {
   static propTypes = {
@@ -24,8 +48,32 @@ class Content extends React.Component {
 
     onOpenSettings: PropTypes.func,
     onChangeReportSortOrders: PropTypes.func,
-    onChangePresentationMode: PropTypes.func
+    onChangeYAxis: PropTypes.func
   };
+
+  renderTimeTablePresentationControls(grouping, isIssueView) {
+    const getGroupingPresentation = field =>
+      i18n('groupped by {{value}}', {value: field.presentation});
+
+    const onChange = (res) => {
+      this.props.onChangeYAxis(res.key);
+    }
+
+    return (
+      <div>
+        <div>
+          <YAxisEntitiesSelector
+            isIssueView={isIssueView}
+            changeXAxis={onChange}
+          />
+        </div>
+        {
+          grouping && grouping.field &&
+          <div>{getGroupingPresentation(grouping.field)}</div>
+        }
+      </div>
+    );
+  }
 
   renderLoader() {
     return <LoaderInline/>;
@@ -135,6 +183,9 @@ class Content extends React.Component {
       <TimeTable
         grouping={report.grouping}
         fetchHub={dashboardApi.fetchHub}
+        presentationControlsPanel={
+          this.renderTimeTablePresentationControls(report.grouping, isIssueView)
+        }
 
         columnsLegend={columnsLegend}
         columnsHeader={columnsHeader}

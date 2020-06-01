@@ -277,7 +277,9 @@
   flex-basis: 30%;
 
   &__axys-title {
-    padding: 40px 4px 8px 4px;
+    padding: 14px 4px $ring-unit 4px;
+    font-size: var(--ring-font-size-smaller);
+    line-height: var(--ring-line-height-taller);
 
     white-space: nowrap;
 

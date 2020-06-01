@@ -142,43 +142,33 @@ TimeTableGeneralGroup.propTypes = {
 
 
 const TimeTableGeneral = ({
-  grouping, isIssueView, generalGroups, totalSpentTime, fetchHub
-}) => {
-  const getGroupingPresentation = field =>
-    i18n('groupped by {{value}}', {value: field.presentation});
-
-  const title = [
-    isIssueView ? i18n('Issues') : i18n('Users'),
-    grouping && grouping.field ? getGroupingPresentation(grouping.field) : ''
-  ].filter(it => !!it).join(', ');
-
-  return (
-    <div className="time-sheet-body-general">
-      <div className="time-sheet-body-general__axys-title">
-        { title }
-      </div>
-      <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
-        <div className="time-sheet-body-general__row-left">
-          { i18n('Total time') }
-        </div>
-        <div className="time-sheet-body-general__row-right">
-          <SpentTimeValue value={totalSpentTime}/>
-        </div>
-      </div>
-      {
-        generalGroups.map((group, idx) => (
-          <TimeTableGeneralGroup
-            key={`data-group-${group.id}`}
-            group={group}
-            idx={idx}
-            grouping={grouping}
-            fetchHub={fetchHub}
-          />
-        ))
-      }
+  grouping, generalGroups, totalSpentTime, fetchHub, presentationControlsPanel
+}) => (
+  <div className="time-sheet-body-general">
+    <div className="time-sheet-body-general__axys-title">
+      { presentationControlsPanel }
     </div>
-  );
-};
+    <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
+      <div className="time-sheet-body-general__row-left">
+        { i18n('Total time') }
+      </div>
+      <div className="time-sheet-body-general__row-right">
+        <SpentTimeValue value={totalSpentTime}/>
+      </div>
+    </div>
+    {
+      generalGroups.map((group, idx) => (
+        <TimeTableGeneralGroup
+          key={`data-group-${group.id}`}
+          group={group}
+          idx={idx}
+          grouping={grouping}
+          fetchHub={fetchHub}
+        />
+      ))
+    }
+  </div>
+);
 
 TimeTableGeneral.propTypes = {
   generalGroups: PropTypes.array.isRequired,
@@ -430,6 +420,7 @@ class TimeTable extends React.Component {
       totalSpentTime,
       detailedGroups,
       fetchHub,
+      presentationControlsPanel,
       isIssueView
     } = this.props;
     const {visibleSidebar} = this.state;
@@ -444,9 +435,9 @@ class TimeTable extends React.Component {
           <div className={generalTableClasses}>
             <TimeTableGeneral
               grouping={grouping}
-              isIssueView={isIssueView}
               generalGroups={generalGroups}
               totalSpentTime={totalSpentTime}
+              presentationControlsPanel={presentationControlsPanel}
               fetchHub={fetchHub}
             />
           </div>
