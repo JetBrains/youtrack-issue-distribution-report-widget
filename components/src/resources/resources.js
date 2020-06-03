@@ -9,9 +9,10 @@ const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,onl
 const USER_GROUP_FIELDS = 'id,name,icon';
 const PROJECTS_FIELDS = 'id,name,shortName';
 
+const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
-const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS})`;
+const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;
 const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
@@ -35,7 +36,6 @@ const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disabl
 const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
 const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
-const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;
 const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name),readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS}),${TIME_REPORT_SETTINGS_FIELDS}`;
 

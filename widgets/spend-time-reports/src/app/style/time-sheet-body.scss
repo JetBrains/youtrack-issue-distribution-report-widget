@@ -7,28 +7,26 @@
 
   font-size: var(--ring-font-size-smaller);
 
+  &__row {
+    height: 32px;
+
+    border: 1px solid transparent;
+
+    &_hovered {
+      background-color: var(--ring-hover-background-color);
+
+      td {
+        background-color: var(--ring-hover-background-color);
+      }
+    }
+  }
+
   &__row-data th:first-child {
     padding-left: $ring-unit !important;
   }
 
   &__row-data td:first-child {
     padding-left: $ring-unit !important;
-  }
-
-  &__row {
-    height: $ring-unit*4;
-
-    &_hovered:hover {
-      background-color: var(--ring-hover-background-color);
-    }
-
-    &_hover {
-      background-color: var(--ring-hover-background-color);
-    }
-
-    &_select {
-      background-color: var(--ring-selected-background-color);
-    }
   }
 
   &__cell {
@@ -168,14 +166,6 @@
         border-top: 1px solid var(--ring-line-color);
       }
     }
-
-    .yt-table__row:last-child {
-      height: $ring-unit*5;
-
-      .yt-table__cell {
-        padding-bottom: $ring-unit;
-      }
-    }
   }
 
   &__group_not-bordered {
@@ -272,8 +262,6 @@
 }
 
 .time-sheet-body-general {
-  $row-height: $ring-unit*4;
-
   flex-basis: 30%;
 
   &__axys-title {
@@ -302,10 +290,16 @@
     flex-direction: row;
     flex-wrap: nowrap;
 
+    height: 30px;
+
     border: 1px solid transparent;
 
     &_subtitle {
       font-weight: bold;
+    }
+
+    &_hovered {
+      background-color: var(--ring-hover-background-color);
     }
 
     &-left {
@@ -344,6 +338,8 @@
     }
 
     &_total {
+      height: auto;
+
       border-top: 1px solid var(--ring-border-disabled-color);
       border-bottom: 1px solid var(--ring-border-disabled-color);
 

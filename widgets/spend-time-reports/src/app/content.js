@@ -87,7 +87,7 @@ const TimeTableSettingsToolbar = (
 };
 
 TimeTableSettingsToolbar.propTypes = {
-  grouping: PropTypes.array,
+  grouping: PropTypes.object,
   projects: PropTypes.array,
   youTrack: PropTypes.object,
   dashboardApi: PropTypes.object,
