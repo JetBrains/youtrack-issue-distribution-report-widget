@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-02 21:03\n"
+"PO-Revision-Date: 2020-06-03 21:03\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -29,11 +29,11 @@ msgstr "計算中…"
 
 #: src/app/distribution-report-form.js:433
 msgid "Can edit"
-msgstr ""
+msgstr "編集できます"
 
 #: src/app/distribution-report-form.js:424
 msgid "Can view and use"
-msgstr ""
+msgstr "表示と使用を許可"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
