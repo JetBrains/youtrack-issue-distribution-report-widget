@@ -85,7 +85,7 @@ const ReportTimeScalesFormatters = {
 
   getTitle: (scaleId, header) =>
     titleFormatters[scaleId](
-      toLocalDayStart(header.start), toLocalDayStart(header.end)
+      scaleId, toLocalDayStart(header.start), toLocalDayStart(header.end)
     ),
 
   isHoliday: (scaleId, header) =>

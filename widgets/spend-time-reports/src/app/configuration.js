@@ -6,12 +6,11 @@ import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inl
 import Link from '@jetbrains/ring-ui/components/link/link';
 import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
 import {UserCardTooltip} from '@jetbrains/ring-ui/components/user-card/user-card';
-import List from '@jetbrains/ring-ui/components/list/list';
-import guid from 'mout/random/guid';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import WidgetRefreshPeriod from '@jetbrains/hub-widget-ui/dist/refresh-period';
 import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
 import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form';
+
 import '@jetbrains/ring-ui/components/form/form.scss';
 
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
@@ -27,6 +26,7 @@ import ReportTimeScales from '../../../../components/src/report-model/report-tim
 
 import {makeYouTrackFetcher} from './components/service-resource';
 import SpendTimeReportForm from './spend-time-report-form';
+import ReportConfigurationTabs from './report-configuration-tabs';
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -62,22 +62,9 @@ class Configuration extends React.Component {
     own: true
   });
 
-  static makeReportsOptionsList = reports => {
-    const reportsOptions = reports.map(
-      Configuration.reportToSelectItem
-    );
-    const newReportOption = Configuration.
-      reportToSelectItem(
-        Configuration.createNewReport()
-      );
-    reportsOptions.unshift({
-      rgItemType: List.ListProps.Type.TITLE,
-      label: i18n('existing reports'),
-      key: guid()
-    });
-    reportsOptions.unshift(newReportOption);
-    return reportsOptions;
-  };
+  static makeReportsOptionsList = reports => reports.map(
+    Configuration.reportToSelectItem
+  );
 
   static reportToSelectItem = report => {
     if (!report) {
@@ -108,6 +95,16 @@ class Configuration extends React.Component {
 
   static areReportSettingsLoaded = report =>
     report && report.projects;
+
+  static getSelectedReportOption = (selectedReport, reports) => {
+    if (selectedReport && selectedReport.id) {
+      return Configuration.reportToSelectItem(selectedReport);
+    }
+    if (reports[0]) {
+      return Configuration.reportToSelectItem(reports[0]);
+    }
+    return undefined;
+  };
 
   constructor(props) {
     super(props);
@@ -151,8 +148,7 @@ class Configuration extends React.Component {
     });
   }
 
-  changeReport = async selected => {
-    const report = (selected || {}).model || selected || {};
+  changeReport = async report => {
     const {selectedReport} = this.state;
     if (selectedReport && report.id === selectedReport.id) {
       return;
@@ -228,6 +224,11 @@ class Configuration extends React.Component {
     }
     return reportWithSettings;
   }
+
+  loadReports = async () =>
+    await loadTimeReports(
+      async (url, params) => this.fetchYouTrack(url, params)
+    )
 
   changeYouTrack = selected => {
     this.setState({
@@ -356,13 +357,36 @@ class Configuration extends React.Component {
     );
   };
 
-  renderReportsSettings() {
+  renderTab(reportWithSettings) {
     const {
-      reports,
-      selectedReport,
-      reportSettingsLoadingError,
       selectedYouTrack,
       currentUser
+    } = this.state;
+
+    return (
+      <div>
+        { this.renderCloneNonOwnReportWarning(reportWithSettings) }
+        <SpendTimeReportForm
+          report={reportWithSettings}
+          onReportSettingsChange={this.onReportSettingsChange}
+          onValidStateChange={this.onReportValidStatusChange}
+          disabled={!reportWithSettings.own}
+          currentUser={currentUser}
+          fetchYouTrack={
+            makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
+          }
+          fetchHub={
+            this.props.dashboardApi.fetchHub
+          }
+        />
+      </div>
+    );
+  }
+
+  renderReportsSettings() {
+    const {
+      selectedReport,
+      reportSettingsLoadingError
     } = this.state;
 
     const reportWithSettings = Configuration.
@@ -370,38 +394,16 @@ class Configuration extends React.Component {
 
     return (
       <div>
-        <div className="ring-form__group">
-          <Select
-            data={Configuration.makeReportsOptionsList(
-              reports
-            )}
-            selected={Configuration.reportToSelectItem(
-              selectedReport
-            )}
-            onSelect={this.changeReport}
-            filter={true}
-            label={i18n('Select report')}
-            size={InputSize.FULL}
-          />
-        </div>
         {
-          reportWithSettings &&
-          <div>
-            { this.renderCloneNonOwnReportWarning(reportWithSettings) }
-            <SpendTimeReportForm
-              report={reportWithSettings}
-              onReportSettingsChange={this.onReportSettingsChange}
-              onValidStateChange={this.onReportValidStatusChange}
-              disabled={!reportWithSettings.own}
-              currentUser={currentUser}
-              fetchYouTrack={
-                makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
-              }
-              fetchHub={
-                this.props.dashboardApi.fetchHub
-              }
-            />
-          </div>
+          (!!reportWithSettings) &&
+          <ReportConfigurationTabs
+            report={reportWithSettings}
+            onChange={this.changeReport}
+            onCreateReport={Configuration.createNewReport}
+            reportsSource={this.loadReports}
+          >
+            {this.renderTab(reportWithSettings)}
+          </ReportConfigurationTabs>
         }
         {
           !reportWithSettings && !reportSettingsLoadingError && <LoaderInline/>

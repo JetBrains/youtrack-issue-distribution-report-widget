@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import Link from '@jetbrains/ring-ui/components/link/link';
-import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
   InfoIcon,
   EyeIcon,
-  FieldsIcon,
   PencilIcon
 } from '@jetbrains/ring-ui/components/icon';
+import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import FilterFieldsSelector
@@ -22,6 +20,11 @@ import {
   loadUsers,
   loadWorkItemTypes
 } from '../../../../components/src/resources/resources';
+import ReportTimeScales
+  from '../../../../components/src/report-model/report-time-scales';
+import ReportNamedTimeRanges
+  from '../../../../components/src/report-model/report-named-time-ranges';
+import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-button-group';
 
 import {
   loadProjects,
@@ -30,9 +33,6 @@ import {
   loadReportsFilterFields,
   loadReportsAggregationFilterFields
 } from './resources';
-import {
-  getReportTypeExampleLink
-} from './spend-time-report-types';
 
 class SpendTimeReportForm extends React.Component {
   static propTypes = {
@@ -46,6 +46,9 @@ class SpendTimeReportForm extends React.Component {
   };
 
   static isNewReport = report => !report.id;
+
+  static getReportOwner = (report, currentUser) =>
+    report && report.owner || currentUser;
 
   static canShowSecondaryAxisOption = report =>
     SpendTimeReportForm.isNewReport(report) ||
@@ -234,8 +237,21 @@ class SpendTimeReportForm extends React.Component {
 
   changeGroupBySetting = selected => {
     const {report} = this.state;
-    report.groupping = report.groupping || {};
-    report.groupping.field = selected;
+    report.grouping = report.grouping || {};
+    report.grouping.field = selected;
+    this.onReportEditOperation(report);
+  };
+
+  changeScaleSetting = selected => {
+    const {report} = this.state;
+    report.scale = {id: selected.id};
+    this.onReportEditOperation(report);
+  };
+
+  changeRangeSetting = selected => {
+    const {report} = this.state;
+    report.range = report.range || {};
+    report.range.range = {id: selected.id};
     this.onReportEditOperation(report);
   };
 
@@ -314,23 +330,20 @@ class SpendTimeReportForm extends React.Component {
       await loadReportsFilterFields(fetchYouTrack, projects);
 
     return (
-      <div className="ring-form__group filter-fields-selector-wrapper">
-        <FieldsIcon
-          className="time-report-widget__icon time-report-widget__label"
-          color={FieldsIcon.Color.GRAY}
-          size={FieldsIcon.Size.Size14}
-        />
-        <span className="time-report-widget__label">
+      <div className="ring-form__group">
+        <span className="ring-form__label">
           { i18n('Group by {{field}}', {field: ''}) }
-        </span><wbr/>
-        <FilterFieldsSelector
-          selectedField={report.groupping}
-          projects={report.projects}
-          onChange={this.changeGroupBySetting}
-          filterFieldsSource={filterFieldsSource}
-          canBeEmpty={false}
-          placeholder={'No groupping'}
-        />
+        </span>
+        <div className="ring-form__control">
+          <FilterFieldsSelector
+            selectedField={(report.grouping || {}).field}
+            projects={report.projects}
+            onChange={this.changeGroupBySetting}
+            filterFieldsSource={filterFieldsSource}
+            canBeEmpty={false}
+            placeholder={'No grouping'}
+          />
+        </div>
       </div>
     );
   }
@@ -344,6 +357,60 @@ class SpendTimeReportForm extends React.Component {
     return (
       <div className="time-report-widget__filter-fields">
         { i18n('Group by {{mainFieldPresentation}}', {grouppingPresentation}) }
+      </div>
+    );
+  }
+
+  renderScaleBlock(reportScale, disabled) {
+    const scales = Object.keys(ReportTimeScales).
+      map(key => ({
+        id: ReportTimeScales[key].id,
+        label: ReportTimeScales[key].text()
+      }));
+
+    return (
+      <div className="ring-form__group">
+        <div className="ring-form__label">
+          {i18n('Scale')}
+        </div>
+        <div className="ring-form__control">
+          <EnumButtonGroup
+            values={scales}
+            selected={reportScale}
+            onChange={this.changeScaleSetting}
+            disabled={disabled}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  renderPeriodBlock(reportRange, disabled) {
+    const ranges = ReportNamedTimeRanges.allRanges().
+      map(range => ({
+        id: range.id,
+        label: range.text()
+      }));
+
+    const selected = ranges.filter(
+      range => range.id === (reportRange || {}).id
+    )[0];
+
+    return (
+      <div className="ring-form__group">
+        <div className="ring-form__label">
+          {i18n('Period')}
+        </div>
+        <div className="ring-form__control">
+          <Select
+            data={ranges}
+            selected={selected}
+            onSelect={this.changeRangeSetting}
+            disabled={disabled}
+            type={Select.Type.INLINE}
+            filter={true}
+          />
+        </div>
       </div>
     );
   }
@@ -382,7 +449,7 @@ class SpendTimeReportForm extends React.Component {
     );
   }
 
-  renderSharingSettingBlock(settingName, label, IconElement, onChange) {
+  renderSharingSettingBlock(settingName, label, IconElement, onChange, title) {
     const {
       disabled,
       report
@@ -393,25 +460,33 @@ class SpendTimeReportForm extends React.Component {
       ...(sharingSetting.permittedUsers || []),
       ...(sharingSetting.permittedGroups || [])
     ];
-    const reportOwner = report && report.owner || this.props.currentUser;
+    const reportOwner = SpendTimeReportForm.getReportOwner(
+      report, this.props.currentUser
+    );
 
     return (
       <div className="ring-form__group">
-        <IconElement
-          className="time-report-widget__icon time-report-widget__label"
-          color={InfoIcon.Color.GRAY}
-          size={InfoIcon.Size.Size14}
-        />
-        <span className="time-report-widget__label">
-          {label}
-        </span>
-        <SharingSetting
-          getOptions={this.getSharingSettingsOptions}
-          selected={selectedOptions}
-          onChange={onChange}
-          disabled={disabled}
-          implicitSelected={[reportOwner]}
-        />
+        {
+          !!title &&
+          <div className="ring-form__label">{title}</div>
+        }
+        <div className="ring-form__control">
+          <IconElement
+            className="time-report-widget__icon time-report-widget__label"
+            color={InfoIcon.Color.GRAY}
+            size={InfoIcon.Size.Size14}
+          />
+          <span className="time-report-widget__label">
+            {label}
+          </span>
+          <SharingSetting
+            getOptions={this.getSharingSettingsOptions}
+            selected={selectedOptions}
+            onChange={onChange}
+            disabled={disabled}
+            implicitSelected={[reportOwner]}
+          />
+        </div>
       </div>
     );
   }
@@ -421,7 +496,8 @@ class SpendTimeReportForm extends React.Component {
       'readSharingSettings',
       i18n('Can view and use'),
       EyeIcon,
-      this.changeReadSharingSettings
+      this.changeReadSharingSettings,
+      i18n('Sharing settings')
     );
   }
 
@@ -440,20 +516,27 @@ class SpendTimeReportForm extends React.Component {
     } = this.state;
 
     return (
-      <RerenderableTagsInput
-        className="ring-form__group"
-        disabled={disabled}
-        tags={report.projects.map(SpendTimeReportForm.toProjectTag)}
-        placeholder={
-          report.projects.length
-            ? (!disabled && i18n('Add project') || '')
-            : i18n('All projects')
-        }
-        maxPopupHeight={250}
-        dataSource={this.projectsInputDataSource}
-        onAddTag={this.onAddProjectToReport}
-        onRemoveTag={this.onRemoveProjectFromReport}
-      />
+      <div>
+        <div className="ring-form__label">
+          { i18n('Projects') }
+        </div>
+        <div className="ring-form__control">
+          <RerenderableTagsInput
+            className="ring-form__group"
+            disabled={disabled}
+            tags={report.projects.map(SpendTimeReportForm.toProjectTag)}
+            placeholder={
+              report.projects.length
+                ? (!disabled && i18n('Add project') || '')
+                : i18n('All projects')
+            }
+            maxPopupHeight={250}
+            dataSource={this.projectsInputDataSource}
+            onAddTag={this.onAddProjectToReport}
+            onRemoveTag={this.onRemoveProjectFromReport}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -463,20 +546,27 @@ class SpendTimeReportForm extends React.Component {
     } = this.state;
 
     return (
-      <RerenderableTagsInput
-        className="ring-form__group"
-        disabled={disabled}
-        tags={report.authors.map(SpendTimeReportForm.toUserTag)}
-        placeholder={
-          report.authors.length
-            ? (!disabled && i18n('Add user') || '')
-            : i18n('All users')
-        }
-        maxPopupHeight={250}
-        dataSource={this.authorsInputDataSource}
-        onAddTag={this.onAddAuthorToReport}
-        onRemoveTag={this.onRemoveAuthorFromReport}
-      />
+      <div>
+        <div className="ring-form__label">
+          { i18n('Work author') }
+        </div>
+        <div className="ring-form__control">
+          <RerenderableTagsInput
+            className="ring-form__group"
+            disabled={disabled}
+            tags={report.authors.map(SpendTimeReportForm.toUserTag)}
+            placeholder={
+              report.authors.length
+                ? (!disabled && i18n('Add user') || '')
+                : i18n('All users')
+            }
+            maxPopupHeight={250}
+            dataSource={this.authorsInputDataSource}
+            onAddTag={this.onAddAuthorToReport}
+            onRemoveTag={this.onRemoveAuthorFromReport}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -486,20 +576,27 @@ class SpendTimeReportForm extends React.Component {
     } = this.state;
 
     return (
-      <RerenderableTagsInput
-        className="ring-form__group"
-        disabled={disabled}
-        tags={report.workTypes.map(SpendTimeReportForm.toWorkTypeTag)}
-        placeholder={
-          report.workTypes.length
-            ? (!disabled && i18n('Add work type') || '')
-            : i18n('All work types')
-        }
-        maxPopupHeight={250}
-        dataSource={this.workTypesInputDataSource}
-        onAddTag={this.onAddWorkTypeToReport}
-        onRemoveTag={this.onRemoveWorkTypeFromReport}
-      />
+      <div>
+        <div className="ring-form__label">
+          {i18n('Work type')}
+        </div>
+        <div className="ring-form__control">
+          <RerenderableTagsInput
+            className="ring-form__group"
+            disabled={disabled}
+            tags={report.workTypes.map(SpendTimeReportForm.toWorkTypeTag)}
+            placeholder={
+              report.workTypes.length
+                ? (!disabled && i18n('Add work type') || '')
+                : i18n('All work types')
+            }
+            maxPopupHeight={250}
+            dataSource={this.workTypesInputDataSource}
+            onAddTag={this.onAddWorkTypeToReport}
+            onRemoveTag={this.onRemoveWorkTypeFromReport}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -517,13 +614,18 @@ class SpendTimeReportForm extends React.Component {
 
     return (
       <div className="ring-form__group">
-        <QueryAssist
-          disabled={disabled}
-          query={report.query}
-          placeholder={i18n('Filter issues')}
-          onChange={this.onReportQueryChange}
-          dataSource={queryAssistDataSource}
-        />
+        <div className="ring-form__label">
+          {i18n('Issue filter')}
+        </div>
+        <div className="ring-form__control">
+          <QueryAssist
+            disabled={disabled}
+            query={report.query}
+            placeholder={i18n('Query')}
+            onChange={this.onReportQueryChange}
+            dataSource={queryAssistDataSource}
+          />
+        </div>
       </div>
     );
   }
@@ -533,48 +635,31 @@ class SpendTimeReportForm extends React.Component {
       report, disabled
     } = this.state;
 
-    const getReportFormTitle = () => {
-      if (disabled) {
-        return `${i18n('Report')} ${report.name}`;
-      }
-      return SpendTimeReportForm.isNewReport(report)
-        ? i18n('New report')
-        : i18n('Edit report');
-    };
-
     return (
-      <div className="ring-form time-report-widget__distribution-report-form">
-        <span className="ring-form__title">
-          { getReportFormTitle() }
-          <span>
-            <Tooltip title={i18n('Learn more about this report')}>
-              &nbsp;&nbsp;
-              <Link
-                href={getReportTypeExampleLink(report)}
-                target="_blank"
-              >
-                <InfoIcon
-                  className="time-report-widget__icon"
-                  color={InfoIcon.Color.GRAY}
-                  size={InfoIcon.Size.Size14}
-                />
-              </Link>
-            </Tooltip>
-          </span>
-        </span>
+      <div className="ring-form">
         {
           !disabled &&
-          <Input
-            size={InputSize.FULL}
-            value={report.name}
-            placeholder={i18n('Report name')}
-            onChange={this.changeReportName}
-          />
+          <div>
+            <div className="ring-form__label report-widget__input-label-compensation-hack">
+              { i18n('Name') }
+            </div>
+            <div className="ring-form__control">
+              <Input
+                size={InputSize.FULL}
+                value={report.name}
+                placeholder={i18n('Report name')}
+                onChange={this.changeReportName}
+                compact={true}
+              />
+            </div>
+          </div>
         }
+        {this.renderFilterIssuesBlock()}
         {this.renderProjectsSelectorBlock()}
         {this.renderAuthorsSelectorBlock()}
         {this.renderWorkTypesSelectorBlock()}
-        {this.renderFilterIssuesBlock()}
+        {!!report.scale && this.renderScaleBlock(report.scale, disabled)}
+        {this.renderPeriodBlock((report.range || {}).range, disabled)}
         {this.renderGroupByBlock()}
         {this.renderVisibleToBlock()}
         {this.renderUpdateableByBlock()}

@@ -2,8 +2,7 @@ import React, {useCallback, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
-import {ChevronDownIcon} from '@jetbrains/ring-ui/components/icon';
-import RingLink from '@jetbrains/ring-ui/components/link/link';
+import Anchor from '@jetbrains/ring-ui/components/dropdown/anchor';
 
 import {
   makeDropdownOptions, userGroupToSelectOption, hideUsersFromList
@@ -85,17 +84,13 @@ const SharingSetting = (
       {...wrapperProps}
       title={hoverTitle}
     >
-      <RingLink
-        pseudo={true}
-        data-test="sharing-setting"
+      <Anchor
         {...buttonProps}
-        className="sharing-setting__anchor"
+        data-test="ring-select__focus"
+        disabled={disabled}
       >
-        <span className="sharing-setting__text" data-test="current-visibility">
-          { formatSelectedOptionsText(selected, implicitSelected) }
-        </span>
-        <ChevronDownIcon size={ChevronDownIcon.Size12}/>
-      </RingLink>
+        { formatSelectedOptionsText(selected, implicitSelected) }
+      </Anchor>
       {popup}
     </span>
   ), [selected, implicitSelected]);

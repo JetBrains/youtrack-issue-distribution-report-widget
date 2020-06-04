@@ -360,8 +360,10 @@ class Configuration extends React.Component {
       currentUser
     } = this.state;
 
-    const reportWithSettings = Configuration.
-      areReportSettingsLoaded(selectedReport) ? selectedReport : undefined;
+    const reportWithSettings =
+      Configuration.areReportSettingsLoaded(selectedReport)
+        ? selectedReport
+        : undefined;
 
     return (
       <div>

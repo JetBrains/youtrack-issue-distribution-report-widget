@@ -41,7 +41,7 @@ class SpendTimeReportsWidget extends React.Component {
   };
 
   static getDefaultWidgetTitle = () =>
-    i18n('Issue Distribution Report');
+    i18n('Spent Time Report');
 
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {

@@ -29,4 +29,8 @@
     max-width: 80%;
     margin: $ring-unit auto;
   }
+
+  &__input-label-compensation-hack {
+    margin-top: $ring-unit;
+  }
 }
