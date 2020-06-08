@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-03 21:03\n"
+"PO-Revision-Date: 2020-06-08 18:49\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -128,11 +128,11 @@ msgstr "レポート名"
 msgid "Save"
 msgstr "保存"
 
-#: src/app/configuration.js:470
+#: src/app/configuration.js:472
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
-#: src/app/configuration.js:378
+#: src/app/configuration.js:380
 msgid "Select report"
 msgstr "レポートを選択"
 
