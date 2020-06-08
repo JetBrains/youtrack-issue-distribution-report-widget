@@ -324,7 +324,7 @@ class SpendTimeReportForm extends React.Component {
   }
 
   renderIssueDistributionFieldsEditableSelectors() {
-    const {report, fetchYouTrack} = this.state;
+    const {report, fetchYouTrack, disabled} = this.state;
 
     const filterFieldsSource = async projects =>
       await loadReportsFilterFields(fetchYouTrack, projects);
@@ -340,8 +340,9 @@ class SpendTimeReportForm extends React.Component {
             projects={report.projects}
             onChange={this.changeGroupBySetting}
             filterFieldsSource={filterFieldsSource}
-            canBeEmpty={false}
-            placeholder={'No grouping'}
+            canBeEmpty={true}
+            disabled={disabled}
+            placeholder={i18n('No grouping')}
           />
         </div>
       </div>

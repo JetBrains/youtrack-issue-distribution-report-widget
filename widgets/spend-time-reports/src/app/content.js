@@ -49,7 +49,7 @@ YAxisSelector.propTypes = {
 const TimeTableSettingsToolbar = (
   {
     grouping, projects, isIssueView, youTrack, dashboardApi,
-    onChangeYAxis, onChangeReportGrouping
+    onChangeYAxis, onChangeReportGrouping, disabled
   }
 ) => {
   const fetchYouTrack = (url, args) =>
@@ -78,8 +78,8 @@ const TimeTableSettingsToolbar = (
           filterFieldsSource={filterFieldsSource}
           selectedField={(grouping || {}).field}
           canBeEmpty={true}
-          disabled={false}
-          placeholder={'no grouping'}
+          disabled={disabled}
+          placeholder={i18n('No grouping')}
         />
       </span>
     </div>
@@ -93,7 +93,8 @@ TimeTableSettingsToolbar.propTypes = {
   dashboardApi: PropTypes.object,
   onChangeYAxis: PropTypes.func.isRequired,
   onChangeReportGrouping: PropTypes.func.isRequired,
-  isIssueView: PropTypes.bool
+  isIssueView: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 class Content extends React.Component {
@@ -227,6 +228,7 @@ class Content extends React.Component {
             grouping={report.grouping}
             projects={report.projects}
             isIssueView={isIssueView}
+            disabled={!report.own}
           />
         }
 
