@@ -66,7 +66,7 @@ const FilterFieldsSelector = ({
       setFilterFields(newFilterFields);
       setSelectedFieldValidity(newFilterFieldsValidity);
     })();
-  }, [projects, selectedField]);
+  }, [projects, selectedField, setFilterFields, setSelectedFieldValidity]);
 
   const changeFilterField = useCallback(
     selected => onChange((selected || {}).model),

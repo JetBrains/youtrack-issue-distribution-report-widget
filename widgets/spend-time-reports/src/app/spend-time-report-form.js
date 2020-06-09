@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
@@ -11,6 +11,7 @@ import {
 } from '@jetbrains/ring-ui/components/icon';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
+import classNames from 'classnames';
 
 import FilterFieldsSelector
   from '../../../../components/src/filter-fields-selector/filter-fields-selector';
@@ -31,9 +32,376 @@ import {
   loadProjects,
   loadUserGroups,
   underlineAndSuggest,
-  loadReportsFilterFields,
-  loadReportsAggregationFilterFields
+  loadReportsFilterFields
 } from './resources';
+
+const StandardFormGroup = ({
+  label, children, noIndentation
+}) => (
+  <div className={classNames({'ring-form__group': !noIndentation})}>
+    {
+      !!label &&
+      <div className="ring-form__label">
+        {label}
+      </div>
+    }
+    {
+      !!children &&
+      <div className="ring-form__control">
+        {children}
+      </div>
+    }
+  </div>
+);
+
+StandardFormGroup.propTypes = {
+  label: PropTypes.string,
+  children: PropTypes.node,
+  noIndentation: PropTypes.bool
+};
+
+const ReportIssuesFilter = ({
+  query, disabled, fetchYouTrack, onChange
+}) => {
+
+  const queryAssistDataSource = useCallback(async model =>
+    await underlineAndSuggest(
+      fetchYouTrack, model.query, model.caret
+    ),
+  [fetchYouTrack]
+  );
+
+  const onChangeQueryAssistModel = useCallback(
+    model => onChange(model.query || ''),
+    [onChange]
+  );
+
+  return (
+    <QueryAssist
+      disabled={disabled}
+      query={query}
+      placeholder={i18n('Query')}
+      onChange={onChangeQueryAssistModel}
+      dataSource={queryAssistDataSource}
+    />
+  );
+};
+
+ReportIssuesFilter.propTypes = {
+  query: PropTypes.string,
+  disabled: PropTypes.bool,
+  fetchYouTrack: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+
+const ReportGrouping = ({
+  group, projects, disabled, fetchYouTrack, onChange
+}) => {
+  const filterFieldsSource = async () =>
+    await loadReportsFilterFields(fetchYouTrack, projects);
+
+  const changeGroupBySetting = useCallback(selected => {
+    const newGroup = group || {};
+    newGroup.field = selected;
+    onChange(newGroup);
+  }, [group]);
+
+  return (
+    <FilterFieldsSelector
+      selectedField={(group || {}).field}
+      projects={projects}
+      onChange={changeGroupBySetting}
+      filterFieldsSource={filterFieldsSource}
+      canBeEmpty={true}
+      disabled={disabled}
+      placeholder={i18n('No grouping')}
+    />
+  );
+};
+
+ReportGrouping.propTypes = {
+  group: PropTypes.object,
+  projects: PropTypes.array,
+  disabled: PropTypes.bool,
+  fetchYouTrack: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+const ReportTagsInput = ({
+  options, optionToTag, onChange, ...restProps
+}) => {
+
+  const onAddOption = useCallback(({tag}) => {
+    if (tag && tag.model) {
+      onChange((options || []).concat([tag.model]));
+    }
+  }, [options]);
+
+  const onRemoveOption = useCallback(({tag}) => {
+    if (tag && tag.model) {
+      onChange(
+        (options || []).filter(option => option.id !== tag.model.id)
+      );
+    }
+  }, [options]);
+
+  return (
+    <RerenderableTagsInput
+      className="ring-form__group"
+      tags={(options || []).map(optionToTag)}
+      onAddTag={onAddOption}
+      onRemoveTag={onRemoveOption}
+      {...restProps}
+    />
+  );
+};
+
+ReportTagsInput.propTypes = {
+  options: PropTypes.array,
+  onChange: PropTypes.func.isRequired,
+  optionToTag: PropTypes.func.isRequired
+};
+
+
+const ReportProjects = ({
+  projects, reportId, disabled, fetchYouTrack, fetchHub, onChange
+}) => {
+
+  const [loadedProjects, onLoadProjects] = useState([]);
+
+  useEffect(() => {
+    (async function load() {
+      const newProjects = await loadProjects(
+        fetchYouTrack, fetchHub, {id: reportId}
+      );
+      if (newProjects) {
+        onLoadProjects(newProjects);
+      }
+    }());
+  }, [onLoadProjects, fetchHub, fetchYouTrack, reportId]);
+
+
+  const getProjectsOptions = useCallback(({query}) => {
+    const q = (query || '').toLowerCase();
+    return (loadedProjects || []).
+      filter(project =>
+        !q ||
+        (project.name.toLowerCase().indexOf(q) > -1) ||
+        (project.shortName.toLowerCase().indexOf(q) === 0)
+      ).
+      map(toProjectTag);
+  }, [loadedProjects]);
+
+  return (
+    <ReportTagsInput
+      className="ring-form__group"
+      disabled={disabled}
+      options={projects}
+      optionToTag={toProjectTag}
+      onChange={onChange}
+      placeholder={
+        projects.length
+          ? (!disabled && i18n('Add project') || '')
+          : i18n('All projects')
+      }
+      maxPopupHeight={250}
+      dataSource={getProjectsOptions}
+    />
+  );
+
+  function toProjectTag(project) {
+    return ({
+      key: project.id,
+      label: project.name,
+      description: project.shortName,
+      model: project
+    });
+  }
+};
+
+ReportProjects.propTypes = {
+  projects: PropTypes.array,
+  reportId: PropTypes.string,
+  disabled: PropTypes.bool,
+  fetchYouTrack: PropTypes.func.isRequired,
+  fetchHub: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+
+const ReportUsers = ({
+  users, projects, disabled, fetchYouTrack, onChange
+}) => {
+  const getUsersOptions = useCallback(async ({query}) => {
+    const projectId = (projects || []).map(project => project.id);
+    const newUsers = await loadUsers(fetchYouTrack, {query, projectId});
+    return (newUsers || []).map(toUserTag);
+  }, [projects]);
+
+  return (
+    <ReportTagsInput
+      className="ring-form__group"
+      disabled={disabled}
+      options={users}
+      onChange={onChange}
+      optionToTag={toUserTag}
+      placeholder={
+        users.length
+          ? (!disabled && i18n('Add user') || '')
+          : i18n('All users')
+      }
+      maxPopupHeight={250}
+      dataSource={getUsersOptions}
+    />
+  );
+
+  function toUserTag(user) {
+    return ({
+      key: user.id,
+      label: user.name,
+      description: user.login,
+      avatar: user.avatarUrl,
+      model: user
+    });
+  }
+};
+
+ReportUsers.propTypes = {
+  users: PropTypes.array,
+  projects: PropTypes.array,
+  disabled: PropTypes.bool,
+  fetchYouTrack: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+
+const ReportWorkTypes = ({
+  workTypes, projects, disabled, fetchYouTrack, onChange
+}) => {
+  const getWorkTypesOptions = useCallback(async ({query}) => {
+    const projectId = (projects).
+      map(project => project.id);
+    const loadedWorkTypes = await loadWorkItemTypes(
+      fetchYouTrack, {query, projectId}
+    );
+    return (loadedWorkTypes || []).map(toWorkTypeTag);
+  }, [workTypes, projects]);
+
+  return (
+    <ReportTagsInput
+      className="ring-form__group"
+      disabled={disabled}
+      options={workTypes}
+      onChange={onChange}
+      optionToTag={toWorkTypeTag}
+      placeholder={
+        workTypes.length
+          ? (!disabled && i18n('Add work type') || '')
+          : i18n('All work types')
+      }
+      maxPopupHeight={250}
+      dataSource={getWorkTypesOptions}
+    />
+  );
+
+  function toWorkTypeTag(type) {
+    return ({
+      key: type.id,
+      label: type.name,
+      model: type
+    });
+  }
+};
+
+ReportWorkTypes.propTypes = {
+  workTypes: PropTypes.array,
+  projects: PropTypes.array,
+  disabled: PropTypes.bool,
+  fetchYouTrack: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+
+const ReportPeriod = ({
+  period, disabled, onChange
+}) => {
+  const namedRange = (period || {}).range;
+
+  const ranges = useMemo(() => ReportNamedTimeRanges.allRanges().
+    map(range => ({
+      id: range.id,
+      label: range.text(),
+      description:
+        (range.id === ReportNamedTimeRanges.fixedRange().id
+          ? i18n('Custom dates interval') : undefined)
+    })), []);
+
+  const selected = useMemo(() => ranges.filter(range =>
+    range.id === (namedRange || ReportNamedTimeRanges.fixedRange()).id
+  )[0], [period]);
+
+  const changeRangeSetting = useCallback(({id}) => {
+    const newPeriod = getNewPeriod(id, (period || {}).id);
+    onChange(newPeriod);
+
+    function getNewPeriod(selectedId, periodId) {
+      if (selectedId === ReportNamedTimeRanges.fixedRange().id) {
+        return ({
+          id: periodId,
+          $type: BackendTypes.get().FixedTimeRange,
+          ...ReportNamedTimeRanges.fixedRange().getDefaultTimePeriod()
+        });
+      }
+
+      return ({
+        id: periodId,
+        $type: BackendTypes.get().NamedTimeRange,
+        range: {id: selectedId}
+      });
+    }
+  }, [period, onChange]);
+
+  const setRangeForFixedPeriod = useCallback(({from, to}) => {
+    if (period && !period.range) {
+      period.from = from.valueOf();
+      period.to = to.valueOf();
+
+      onChange(period);
+    }
+  }, [period, onChange]);
+
+  return (
+    <span>
+      <Select
+        data={ranges}
+        selected={selected}
+        onSelect={changeRangeSetting}
+        disabled={disabled}
+        type={Select.Type.INLINE}
+        filter={true}
+      />
+      {
+        !namedRange &&
+        <span className="time-report-widget__sub-control">
+          <DatePicker
+            from={period.from}
+            to={period.to}
+            onChange={setRangeForFixedPeriod}
+            range={true}
+          />
+        </span>
+      }
+    </span>
+  );
+};
+
+ReportPeriod.propTypes = {
+  period: PropTypes.object,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func.isRequired
+};
+
 
 class SpendTimeReportForm extends React.Component {
   static propTypes = {
@@ -51,65 +419,8 @@ class SpendTimeReportForm extends React.Component {
   static getReportOwner = (report, currentUser) =>
     report && report.owner || currentUser;
 
-  static canShowSecondaryAxisOption = report =>
-    SpendTimeReportForm.isNewReport(report) ||
-    report.$type === BackendTypes.get().MatrixReport;
-
-  static convertOneFieldReportToTwoFieldsReportIfNeeded = report => {
-    if (report.$type === BackendTypes.get().MatrixReport) {
-      return report;
-    }
-    report.$type = BackendTypes.get().MatrixReport;
-    report.yaxis = {field: report.xaxis.field};
-    report.xaxis.$type = undefined;
-    report.ysortOrder = report.xsortOrder;
-    report.presentation = 'DEFAULT';
-    return report;
-  };
-
-  static convertTwoFieldsReportToOneFieldReportIfNeeded = report => {
-    if (report.$type !== BackendTypes.get().MatrixReport) {
-      return report;
-    }
-    report.$type = BackendTypes.get().FlatDistributionReport;
-    report.xaxis = {field: (report.yaxis || {}).field};
-    report.yaxis = undefined;
-    report.ysortOrder = undefined;
-    report.presentation = 'DEFAULT';
-    return report;
-  };
-
   static checkReportValidity = report =>
     !!report && !!report.name;
-
-  static toTag = (
-    item,
-    getLabel = (it => it.name),
-    getDescription = (() => undefined)
-  ) => ({
-    key: item.id,
-    label: getLabel(item),
-    description: getDescription(item),
-    model: item
-  });
-
-  static toProjectTag = project =>
-    SpendTimeReportForm.toTag(
-      project,
-      it => it.name,
-      it => it.shortName
-    );
-
-  static toUserTag = user => ({
-    ...SpendTimeReportForm.toTag(
-      user,
-      it => it.name,
-      it => it.login
-    ),
-    ...{avatar: user.avatarUrl}
-  });
-
-  static toWorkTypeTag = item => SpendTimeReportForm.toTag(item);
 
   constructor(props) {
     super(props);
@@ -146,62 +457,12 @@ class SpendTimeReportForm extends React.Component {
     this.onReportEditOperation(report);
   };
 
-  onAddProjectToReport = evt => {
-    if (evt.tag && evt.tag.model) {
+  getReportEditOperationHandler = propertyName =>
+    value => {
       const {report} = this.state;
-      report.projects = (report.projects || []).concat([evt.tag.model]);
+      report[propertyName] = value;
       this.onReportEditOperation(report);
-    }
-  };
-
-  onRemoveProjectFromReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.projects = report.projects.
-        filter(project => project.id !== evt.tag.model.id);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onAddAuthorToReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.authors = (report.authors || []).concat([evt.tag.model]);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onRemoveAuthorFromReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.authors = report.authors.
-        filter(user => user.id !== evt.tag.model.id);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onAddWorkTypeToReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.workTypes = (report.workTypes || []).concat([evt.tag.model]);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onRemoveWorkTypeFromReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.workTypes = report.workTypes.
-        filter(user => user.id !== evt.tag.model.id);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onReportQueryChange = evt => {
-    const {report} = this.state;
-    report.query = evt.query;
-    this.onReportEditOperation(report);
-  };
+    };
 
   getSharingSettingsOptions = async (query = '') => {
     const {report, currentUser, fetchYouTrack} = this.state;
@@ -236,101 +497,10 @@ class SpendTimeReportForm extends React.Component {
     this.changeSharingSettings('updateSharingSettings', options);
   };
 
-  changeGroupBySetting = selected => {
-    const {report} = this.state;
-    report.grouping = report.grouping || {};
-    report.grouping.field = selected;
-    this.onReportEditOperation(report);
-  };
-
   changeScaleSetting = selected => {
     const {report} = this.state;
     report.scale = {id: selected.id};
     this.onReportEditOperation(report);
-  };
-
-  changeRangeSetting = selected => {
-    const {report} = this.state;
-    report.range = report.range || {};
-
-
-    if (selected.id === ReportNamedTimeRanges.fixedRange().id) {
-      report.range = {
-        id: (report.range || {}).id,
-        $type: BackendTypes.get().FixedTimeRange,
-        ...ReportNamedTimeRanges.fixedRange().getDefaultTimePeriod()
-      };
-    } else {
-      report.range.$type = BackendTypes.get().NamedTimeRange;
-      report.range.range = {id: selected.id};
-    }
-
-    this.onReportEditOperation(report);
-  };
-
-  setRangeForFixedPeriod = ({from, to}) => {
-    const {report} = this.state;
-
-    if (report.range && !report.range.range) {
-      report.range.from = from.valueOf();
-      report.range.to = to.valueOf();
-
-      this.onReportEditOperation(report);
-    }
-  };
-
-  changeAggregationPolicy = selected => {
-    const {report} = this.state;
-    if (selected) {
-      report.aggregationPolicy = report.aggregationPolicy || {};
-      report.aggregationPolicy.field = selected;
-    } else {
-      report.aggregationPolicy = null;
-    }
-    this.onReportEditOperation(report);
-  };
-
-  projectsInputDataSource = async tagsInputModel => {
-    let {projects} = this.state;
-    if (!projects) {
-      projects = await loadProjects(this.state.fetchYouTrack,
-        this.state.fetchHub,
-        this.state.report);
-      if (projects) {
-        this.setState({projects});
-      }
-    }
-
-    const query = ((tagsInputModel && tagsInputModel.query) || '').
-      toLowerCase();
-    return (projects || []).
-      filter(project =>
-        !query ||
-        (project.name.toLowerCase().indexOf(query) > -1) ||
-        (project.shortName.toLowerCase().indexOf(query) === 0)
-      ).
-      map(SpendTimeReportForm.toProjectTag);
-  };
-
-  authorsInputDataSource = async ({query}) => {
-    const {report, fetchYouTrack} = this.state;
-
-    const projectId = ((report || {}).projects || []).
-      map(project => project.id);
-    const users = await loadUsers(fetchYouTrack, {query, projectId});
-
-    return (users || []).map(SpendTimeReportForm.toUserTag);
-  };
-
-  workTypesInputDataSource = async ({query}) => {
-    const {report, fetchYouTrack} = this.state;
-
-    const projectId = ((report || {}).projects || []).
-      map(project => project.id);
-    const workTypes = await loadWorkItemTypes(
-      fetchYouTrack, {query, projectId}
-    );
-    return (workTypes || []).map(SpendTimeReportForm.toWorkTypeTag);
   };
 
   changeReportType = async ({key}) => {
@@ -373,43 +543,21 @@ class SpendTimeReportForm extends React.Component {
     }
   }
 
-
-  renderIssueDistributionFieldsEditableSelectors() {
+  renderGroupByBlock() {
     const {report, fetchYouTrack, disabled} = this.state;
 
-    const filterFieldsSource = async projects =>
-      await loadReportsFilterFields(fetchYouTrack, projects);
-
     return (
-      <div className="ring-form__group">
-        <span className="ring-form__label">
-          { i18n('Group by {{field}}', {field: ''}) }
-        </span>
-        <div className="ring-form__control">
-          <FilterFieldsSelector
-            selectedField={(report.grouping || {}).field}
-            projects={report.projects}
-            onChange={this.changeGroupBySetting}
-            filterFieldsSource={filterFieldsSource}
-            canBeEmpty={true}
-            disabled={disabled}
-            placeholder={i18n('No grouping')}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  renderIssueDistributionFieldsReadonlyLabels() {
-    const {report} = this.state;
-    const grouppingPresentation = report.groupping
-      ? report.groupping.field.name
-      : i18n('Not set');
-
-    return (
-      <div className="time-report-widget__filter-fields">
-        { i18n('Group by {{mainFieldPresentation}}', {grouppingPresentation}) }
-      </div>
+      <StandardFormGroup
+        label={i18n('Group by {{field}}', {field: ''})}
+      >
+        <ReportGrouping
+          group={report.grouping}
+          projects={report.projects}
+          disabled={disabled}
+          fetchYouTrack={fetchYouTrack}
+          onChange={this.getReportEditOperationHandler('grouping')}
+        />
+      </StandardFormGroup>
     );
   }
 
@@ -433,11 +581,8 @@ class SpendTimeReportForm extends React.Component {
     };
 
     return (
-      <div className="ring-form__group">
-        <div className="ring-form__label">
-          {i18n('X axis')}
-        </div>
-        <div className="ring-form__control">
+      <StandardFormGroup label={i18n('X axis')}>
+        <span>
           {
             SpendTimeReportForm.isNewReport(report) &&
             <Select
@@ -464,90 +609,23 @@ class SpendTimeReportForm extends React.Component {
               />
             </span>
           }
-        </div>
-      </div>
+        </span>
+      </StandardFormGroup>
     );
   }
 
   renderPeriodBlock(reportRange, disabled) {
-    const namedRange = (reportRange || {}).range;
-
-    const ranges = ReportNamedTimeRanges.allRanges().
-      map(range => ({
-        id: range.id,
-        label: range.text(),
-        description:
-          (range.id === ReportNamedTimeRanges.fixedRange().id
-            ? i18n('Custom dates interval') : undefined)
-      }));
-
-    const selected = ranges.filter(range =>
-      range.id === (namedRange || ReportNamedTimeRanges.fixedRange()).id
-    )[0];
-
     return (
-      <div className="ring-form__group">
-        <div className="ring-form__label">
-          {i18n('Period')}
-        </div>
-        <div className="ring-form__control">
-          <Select
-            data={ranges}
-            selected={selected}
-            onSelect={this.changeRangeSetting}
-            disabled={disabled}
-            type={Select.Type.INLINE}
-            filter={true}
-          />
-          {
-            !namedRange &&
-            <span className="time-report-widget__sub-control">
-              <DatePicker
-                from={reportRange.from}
-                to={reportRange.to}
-                onChange={this.setRangeForFixedPeriod}
-                range={true}
-              />
-            </span>
-          }
-        </div>
-      </div>
-    );
-  }
-
-  renderGroupByBlock() {
-    const {
-      disabled
-    } = this.state;
-
-    return disabled
-      ? this.renderIssueDistributionFieldsReadonlyLabels()
-      : this.renderIssueDistributionFieldsEditableSelectors();
-  }
-
-  renderAggregationPolicyBlock() {
-    const {report, disabled, fetchYouTrack} = this.state;
-
-    const aggregationFilterFieldsSource = async projects =>
-      await loadReportsAggregationFilterFields(fetchYouTrack, projects);
-
-    return (
-      <div className="time-report-widget__filter-fields">
-        {
-          i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})
-        }
-        <FilterFieldsSelector
-          selectedField={(report.aggregationPolicy || {}).field}
-          projects={report.projects}
-          onChange={this.changeAggregationPolicy}
-          filterFieldsSource={aggregationFilterFieldsSource}
-          canBeEmpty={true}
-          placeholder={i18n('Issues')}
+      <StandardFormGroup label={i18n('Period')}>
+        <ReportPeriod
+          period={reportRange}
           disabled={disabled}
+          onChange={this.getReportEditOperationHandler('range')}
         />
-      </div>
+      </StandardFormGroup>
     );
   }
+
 
   renderSharingSettingBlock(settingName, label, IconElement, onChange, title) {
     const {
@@ -565,12 +643,8 @@ class SpendTimeReportForm extends React.Component {
     );
 
     return (
-      <div className="ring-form__group">
-        {
-          !!title &&
-          <div className="ring-form__label">{title}</div>
-        }
-        <div className="ring-form__control">
+      <StandardFormGroup label={title}>
+        <span>
           <IconElement
             className="time-report-widget__icon time-report-widget__label"
             color={InfoIcon.Color.GRAY}
@@ -586,8 +660,8 @@ class SpendTimeReportForm extends React.Component {
             disabled={disabled}
             implicitSelected={[reportOwner]}
           />
-        </div>
-      </div>
+        </span>
+      </StandardFormGroup>
     );
   }
 
@@ -612,91 +686,65 @@ class SpendTimeReportForm extends React.Component {
 
   renderProjectsSelectorBlock() {
     const {
-      report, disabled
+      report, disabled, fetchYouTrack, fetchHub
     } = this.state;
 
     return (
-      <div>
-        <div className="ring-form__label">
-          { i18n('Projects') }
-        </div>
-        <div className="ring-form__control">
-          <RerenderableTagsInput
-            className="ring-form__group"
-            disabled={disabled}
-            tags={report.projects.map(SpendTimeReportForm.toProjectTag)}
-            placeholder={
-              report.projects.length
-                ? (!disabled && i18n('Add project') || '')
-                : i18n('All projects')
-            }
-            maxPopupHeight={250}
-            dataSource={this.projectsInputDataSource}
-            onAddTag={this.onAddProjectToReport}
-            onRemoveTag={this.onRemoveProjectFromReport}
-          />
-        </div>
-      </div>
+      <StandardFormGroup
+        label={i18n('Projects')}
+        noIndentation={true}
+      >
+        <ReportProjects
+          projects={report.projects}
+          reportId={(report || {}).id}
+          disabled={disabled}
+          fetchYouTrack={fetchYouTrack}
+          fetchHub={fetchHub}
+          onChange={this.getReportEditOperationHandler('projects')}
+        />
+      </StandardFormGroup>
     );
   }
 
   renderAuthorsSelectorBlock() {
     const {
-      report, disabled
+      report, disabled, fetchYouTrack
     } = this.state;
 
     return (
-      <div>
-        <div className="ring-form__label">
-          { i18n('Work author') }
-        </div>
-        <div className="ring-form__control">
-          <RerenderableTagsInput
-            className="ring-form__group"
-            disabled={disabled}
-            tags={report.authors.map(SpendTimeReportForm.toUserTag)}
-            placeholder={
-              report.authors.length
-                ? (!disabled && i18n('Add user') || '')
-                : i18n('All users')
-            }
-            maxPopupHeight={250}
-            dataSource={this.authorsInputDataSource}
-            onAddTag={this.onAddAuthorToReport}
-            onRemoveTag={this.onRemoveAuthorFromReport}
-          />
-        </div>
-      </div>
+      <StandardFormGroup
+        label={i18n('Work author')}
+        noIndentation={true}
+      >
+        <ReportUsers
+          projects={report.projects}
+          users={report.authors}
+          disabled={disabled}
+          fetchYouTrack={fetchYouTrack}
+          onChange={this.getReportEditOperationHandler('authors')}
+        />
+      </StandardFormGroup>
     );
   }
 
   renderWorkTypesSelectorBlock() {
     const {
-      report, disabled
+      report, disabled, fetchYouTrack
     } = this.state;
 
     return (
-      <div>
-        <div className="ring-form__label">
-          {i18n('Work type')}
-        </div>
-        <div className="ring-form__control">
-          <RerenderableTagsInput
-            className="ring-form__group"
-            disabled={disabled}
-            tags={report.workTypes.map(SpendTimeReportForm.toWorkTypeTag)}
-            placeholder={
-              report.workTypes.length
-                ? (!disabled && i18n('Add work type') || '')
-                : i18n('All work types')
-            }
-            maxPopupHeight={250}
-            dataSource={this.workTypesInputDataSource}
-            onAddTag={this.onAddWorkTypeToReport}
-            onRemoveTag={this.onRemoveWorkTypeFromReport}
-          />
-        </div>
-      </div>
+      <StandardFormGroup
+        label={i18n('Work type')}
+        noIndentation={true}
+      >
+        <ReportWorkTypes
+          workTypes={report.workTypes || []}
+          projects={report.projects || []}
+          disabled={disabled}
+          fetchYouTrack={fetchYouTrack}
+          onChange={this.getReportEditOperationHandler('workTypes')}
+        />
+      </StandardFormGroup>
     );
   }
 
@@ -707,26 +755,15 @@ class SpendTimeReportForm extends React.Component {
       disabled
     } = this.state;
 
-    const queryAssistDataSource = async queryAssistModel =>
-      await underlineAndSuggest(
-        fetchYouTrack, queryAssistModel.query, queryAssistModel.caret
-      );
-
     return (
-      <div className="ring-form__group">
-        <div className="ring-form__label">
-          {i18n('Issue filter')}
-        </div>
-        <div className="ring-form__control">
-          <QueryAssist
-            disabled={disabled}
-            query={report.query}
-            placeholder={i18n('Query')}
-            onChange={this.onReportQueryChange}
-            dataSource={queryAssistDataSource}
-          />
-        </div>
-      </div>
+      <StandardFormGroup label={i18n('Issue filter')}>
+        <ReportIssuesFilter
+          disabled={disabled}
+          query={report.query}
+          fetchYouTrack={fetchYouTrack}
+          onChange={this.getReportEditOperationHandler('query')}
+        />
+      </StandardFormGroup>
     );
   }
 
