@@ -333,6 +333,32 @@ class SpendTimeReportForm extends React.Component {
     return (workTypes || []).map(SpendTimeReportForm.toWorkTypeTag);
   };
 
+  changeReportType = async ({key}) => {
+    const {report} = this.props;
+    const reportSelectedKey = report.scale ? 'time' : 'work-types';
+
+    if (reportSelectedKey !== key) {
+      const keyToSettingsMap = {
+        time: {
+          $type: BackendTypes.get().TimeSheetReport,
+          scale: {
+            id: ReportTimeScales.Day.id,
+            $type: BackendTypes.get().TimeSheetReportScale
+          }
+        },
+        'work-types': {
+          $type: BackendTypes.get().TimeReport,
+          scale: undefined
+        }
+      };
+
+      const {$type, scale} = keyToSettingsMap[key];
+      report.$type = $type;
+      report.scale = scale;
+      this.onReportEditOperation(report);
+    }
+  };
+
   updateReport(report) {
     this.setState({report});
     const reportIsValid =
@@ -346,6 +372,7 @@ class SpendTimeReportForm extends React.Component {
       this.props.onReportSettingsChange(report);
     }
   }
+
 
   renderIssueDistributionFieldsEditableSelectors() {
     const {report, fetchYouTrack, disabled} = this.state;
@@ -386,25 +413,57 @@ class SpendTimeReportForm extends React.Component {
     );
   }
 
-  renderScaleBlock(reportScale, disabled) {
+  renderXAxisBlock(report, disabled) {
+    const reportScale = report.scale;
+
     const scales = Object.keys(ReportTimeScales).
       map(key => ({
         id: ReportTimeScales[key].id,
         label: ReportTimeScales[key].text()
       }));
 
+    const timeOption = {
+      key: 'time',
+      label: i18n('Time')
+    };
+
+    const workTypesOption = {
+      key: 'work-types',
+      label: i18n('Work types')
+    };
+
     return (
       <div className="ring-form__group">
         <div className="ring-form__label">
-          {i18n('Scale')}
+          {i18n('X axis')}
         </div>
         <div className="ring-form__control">
-          <EnumButtonGroup
-            values={scales}
-            selected={reportScale}
-            onChange={this.changeScaleSetting}
-            disabled={disabled}
-          />
+          {
+            SpendTimeReportForm.isNewReport(report) &&
+            <Select
+              data={[timeOption, workTypesOption]}
+              selected={reportScale ? timeOption : workTypesOption}
+              onSelect={this.changeReportType}
+              type={Select.Type.INLINE}
+            />
+          }
+          {
+            !SpendTimeReportForm.isNewReport(report) &&
+            <span>
+              {reportScale ? i18n('Time') : i18n('Work types')}
+            </span>
+          }
+          {
+            reportScale &&
+            <span className="time-report-widget__sub-control">
+              <EnumButtonGroup
+                values={scales}
+                selected={reportScale}
+                onChange={this.changeScaleSetting}
+                disabled={disabled}
+              />
+            </span>
+          }
         </div>
       </div>
     );
@@ -442,7 +501,7 @@ class SpendTimeReportForm extends React.Component {
           />
           {
             !namedRange &&
-            <span className="time-report-widget__period-picker">
+            <span className="time-report-widget__sub-control">
               <DatePicker
                 from={reportRange.from}
                 to={reportRange.to}
@@ -695,11 +754,11 @@ class SpendTimeReportForm extends React.Component {
             </div>
           </div>
         }
+        {this.renderXAxisBlock(report, disabled)}
         {this.renderFilterIssuesBlock()}
         {this.renderProjectsSelectorBlock()}
         {this.renderAuthorsSelectorBlock()}
         {this.renderWorkTypesSelectorBlock()}
-        {!!report.scale && this.renderScaleBlock(report.scale, disabled)}
         {this.renderPeriodBlock(report.range, disabled)}
         {this.renderGroupByBlock()}
         {this.renderVisibleToBlock()}
