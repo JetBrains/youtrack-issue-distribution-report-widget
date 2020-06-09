@@ -1,6 +1,6 @@
 import BackendTypes from '../backend-types/backend-types';
 
-import ReportNamedTimeRanges from './report-named-time-ranges';
+import ReportNamedTimeRanges from './report-time-ranges';
 
 const ReportTypes = {
   isCumulativeFlow: report =>

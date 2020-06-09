@@ -21,7 +21,7 @@ import {
   loadTimeReports,
   loadCurrentUser
 } from '../../../../components/src/resources/resources';
-import ReportNamedTimeRanges from '../../../../components/src/report-model/report-named-time-ranges';
+import ReportNamedTimeRanges from '../../../../components/src/report-model/report-time-ranges';
 import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
 
 import {makeYouTrackFetcher} from './components/service-resource';

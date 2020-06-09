@@ -1,6 +1,23 @@
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
-const ReportNamedTimeRanges = {
+const ReportTimeRanges = {
+  Fixed: {
+    id: 'FIXED',
+    text: () => i18n('Fixed'),
+    getDefaultTimePeriod: () => {
+      const date = new Date();
+
+      const weekLength = 7;
+      const from = Date.UTC(
+        date.getFullYear(), date.getMonth(), date.getDate() - weekLength
+      );
+      const to = Date.UTC(
+        date.getFullYear(), date.getMonth(), date.getDate() + 1
+      ) - 1;
+
+      return {from, to};
+    }
+  },
   Today: {
     id: 'TODAY',
     oneDayPeriod: true,
@@ -39,8 +56,8 @@ const ReportNamedTimeRanges = {
 };
 
 function allRanges() {
-  return Object.keys(ReportNamedTimeRanges).map(
-    key => ReportNamedTimeRanges[key]
+  return Object.keys(ReportTimeRanges).map(
+    key => ReportTimeRanges[key]
   );
 }
 
@@ -56,10 +73,15 @@ function severalDaysRanges() {
   );
 }
 
+function fixedRange() {
+  return ReportTimeRanges.Fixed;
+}
+
 export default {
-  ...ReportNamedTimeRanges,
+  ...ReportTimeRanges,
 
   oneDayRanges,
   severalDaysRanges,
+  fixedRange,
   allRanges
 };

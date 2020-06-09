@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
+import DatePicker from '@jetbrains/ring-ui/components/date-picker/date-picker';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
   InfoIcon,
@@ -23,7 +24,7 @@ import {
 import ReportTimeScales
   from '../../../../components/src/report-model/report-time-scales';
 import ReportNamedTimeRanges
-  from '../../../../components/src/report-model/report-named-time-ranges';
+  from '../../../../components/src/report-model/report-time-ranges';
 import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-button-group';
 
 import {
@@ -251,8 +252,31 @@ class SpendTimeReportForm extends React.Component {
   changeRangeSetting = selected => {
     const {report} = this.state;
     report.range = report.range || {};
-    report.range.range = {id: selected.id};
+
+
+    if (selected.id === ReportNamedTimeRanges.fixedRange().id) {
+      report.range = {
+        id: (report.range || {}).id,
+        $type: BackendTypes.get().FixedTimeRange,
+        ...ReportNamedTimeRanges.fixedRange().getDefaultTimePeriod()
+      };
+    } else {
+      report.range.$type = BackendTypes.get().NamedTimeRange;
+      report.range.range = {id: selected.id};
+    }
+
     this.onReportEditOperation(report);
+  };
+
+  setRangeForFixedPeriod = ({from, to}) => {
+    const {report} = this.state;
+
+    if (report.range && !report.range.range) {
+      report.range.from = from.valueOf();
+      report.range.to = to.valueOf();
+
+      this.onReportEditOperation(report);
+    }
   };
 
   changeAggregationPolicy = selected => {
@@ -387,14 +411,19 @@ class SpendTimeReportForm extends React.Component {
   }
 
   renderPeriodBlock(reportRange, disabled) {
+    const namedRange = (reportRange || {}).range;
+
     const ranges = ReportNamedTimeRanges.allRanges().
       map(range => ({
         id: range.id,
-        label: range.text()
+        label: range.text(),
+        description:
+          (range.id === ReportNamedTimeRanges.fixedRange().id
+            ? i18n('Custom dates interval') : undefined)
       }));
 
-    const selected = ranges.filter(
-      range => range.id === (reportRange || {}).id
+    const selected = ranges.filter(range =>
+      range.id === (namedRange || ReportNamedTimeRanges.fixedRange()).id
     )[0];
 
     return (
@@ -411,6 +440,17 @@ class SpendTimeReportForm extends React.Component {
             type={Select.Type.INLINE}
             filter={true}
           />
+          {
+            !namedRange &&
+            <span className="time-report-widget__period-picker">
+              <DatePicker
+                from={reportRange.from}
+                to={reportRange.to}
+                onChange={this.setRangeForFixedPeriod}
+                range={true}
+              />
+            </span>
+          }
         </div>
       </div>
     );
@@ -660,7 +700,7 @@ class SpendTimeReportForm extends React.Component {
         {this.renderAuthorsSelectorBlock()}
         {this.renderWorkTypesSelectorBlock()}
         {!!report.scale && this.renderScaleBlock(report.scale, disabled)}
-        {this.renderPeriodBlock((report.range || {}).range, disabled)}
+        {this.renderPeriodBlock(report.range, disabled)}
         {this.renderGroupByBlock()}
         {this.renderVisibleToBlock()}
         {this.renderUpdateableByBlock()}
