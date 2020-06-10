@@ -276,21 +276,16 @@ class SpendTimeReportsWidget extends React.Component {
   };
 
   onChangeReportGrouping =
-    async groupingField => {
+    async grouping => {
       const {report} = this.state;
-      report.grouping = groupingField
-        ? {
-          field: groupingField,
-          id: groupingField.id,
-          $type: 'FieldBasedGrouping'
-        } : null;
+      report.grouping = grouping;
 
       if (this.props.editable) {
         if (report.own) {
           await saveReportSettings(this.fetchYouTrack, report, true);
         } else {
           await this.props.configWrapper.update({
-            reportId: report.id, groupingField
+            reportId: report.id, grouping
           });
         }
       }

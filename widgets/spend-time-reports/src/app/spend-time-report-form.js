@@ -13,8 +13,6 @@ import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import classNames from 'classnames';
 
-import FilterFieldsSelector
-  from '../../../../components/src/filter-fields-selector/filter-fields-selector';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
 import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
@@ -31,9 +29,9 @@ import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-b
 import {
   loadProjects,
   loadUserGroups,
-  underlineAndSuggest,
-  loadReportsFilterFields
+  underlineAndSuggest
 } from './resources';
+import ReportGroupingControl from './report-grouping-control';
 
 const StandardFormGroup = ({
   label, children, noIndentation
@@ -89,40 +87,6 @@ const ReportIssuesFilter = ({
 
 ReportIssuesFilter.propTypes = {
   query: PropTypes.string,
-  disabled: PropTypes.bool,
-  fetchYouTrack: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
-};
-
-
-const ReportGrouping = ({
-  group, projects, disabled, fetchYouTrack, onChange
-}) => {
-  const filterFieldsSource = async () =>
-    await loadReportsFilterFields(fetchYouTrack, projects);
-
-  const changeGroupBySetting = useCallback(selected => {
-    const newGroup = group || {};
-    newGroup.field = selected;
-    onChange(newGroup);
-  }, [group]);
-
-  return (
-    <FilterFieldsSelector
-      selectedField={(group || {}).field}
-      projects={projects}
-      onChange={changeGroupBySetting}
-      filterFieldsSource={filterFieldsSource}
-      canBeEmpty={true}
-      disabled={disabled}
-      placeholder={i18n('No grouping')}
-    />
-  );
-};
-
-ReportGrouping.propTypes = {
-  group: PropTypes.object,
-  projects: PropTypes.array,
   disabled: PropTypes.bool,
   fetchYouTrack: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
@@ -550,7 +514,7 @@ class SpendTimeReportForm extends React.Component {
       <StandardFormGroup
         label={i18n('Group by {{field}}', {field: ''})}
       >
-        <ReportGrouping
+        <ReportGroupingControl
           group={report.grouping}
           projects={report.projects}
           disabled={disabled}

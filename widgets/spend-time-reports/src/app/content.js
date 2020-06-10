@@ -10,13 +10,10 @@ import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-title';
 import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
-import FilterFieldsSelector from '../../../../components/src/filter-fields-selector/filter-fields-selector';
-import {
-  loadReportsGroupingFilterFields
-} from '../../../../components/src/resources/resources';
 
 import SpendTimeReportModel from './spend-time-report-model';
 import TimeTable from './time-table';
+import ReportGroupingControl from './report-grouping-control';
 
 const YAxisSelector = (
   {changeXAxis, isIssueView}
@@ -55,14 +52,7 @@ const TimeTableSettingsToolbar = (
   const fetchYouTrack = (url, args) =>
     dashboardApi.fetch(youTrack.id, url, args);
 
-  const onChange = res => onChangeYAxis(res.key);
-  const onChangeGrouping = res => onChangeReportGrouping(res);
-
-  const filterFieldsSource = async () =>
-    await loadReportsGroupingFilterFields(
-      fetchYouTrack,
-      projects || []
-    );
+  const onChange = ({key}) => onChangeYAxis(key);
 
   return (
     <div>
@@ -72,14 +62,12 @@ const TimeTableSettingsToolbar = (
       />
       <span>
         <span>{i18n('group by {{field}}', {field: ''})}</span>
-        <FilterFieldsSelector
-          projects={[]}
-          onChange={onChangeGrouping}
-          filterFieldsSource={filterFieldsSource}
-          selectedField={(grouping || {}).field}
-          canBeEmpty={true}
+        <ReportGroupingControl
+          projects={projects}
+          onChange={onChangeReportGrouping}
+          group={grouping}
           disabled={disabled}
-          placeholder={i18n('No grouping')}
+          fetchYouTrack={fetchYouTrack}
         />
       </span>
     </div>
