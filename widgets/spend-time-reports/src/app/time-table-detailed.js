@@ -156,7 +156,7 @@ const TimeTableDetailedBody = ({
   const getGroupStartIdx = groupIdx => (
     hasGrouping
       ? (sumOfGroupSizesBeforeCurrentGroup[groupIdx] + groupIdx)
-      : sumOfGroupSizesBeforeCurrentGroup
+      : sumOfGroupSizesBeforeCurrentGroup[groupIdx]
   );
 
   return (

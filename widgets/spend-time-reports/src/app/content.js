@@ -216,7 +216,7 @@ class Content extends React.Component {
             grouping={report.grouping}
             projects={report.projects}
             isIssueView={isIssueView}
-            disabled={!report.own}
+            disabled={!report.editable}
           />
         }
 

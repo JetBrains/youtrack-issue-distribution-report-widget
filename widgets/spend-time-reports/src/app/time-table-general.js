@@ -183,7 +183,7 @@ const TimeTableGeneral = ({
             linesStartIdx={
               grouping
                 ? (sumOfGroupSizesBeforeCurrentGroup[idx] + idx)
-                : sumOfGroupSizesBeforeCurrentGroup
+                : sumOfGroupSizesBeforeCurrentGroup[idx]
             }
             grouping={grouping}
             fetchHub={fetchHub}

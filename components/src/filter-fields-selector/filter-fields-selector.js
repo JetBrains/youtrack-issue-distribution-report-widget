@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {RerenderableSelect} from '@jetbrains/ring-ui/components/select/select';
+import Select from '@jetbrains/ring-ui/components/select/select';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import classNames from 'classnames';
 import List from '@jetbrains/ring-ui/components/list/list';
@@ -56,44 +56,67 @@ const FilterFieldsSelector = ({
   const [filterFields, setFilterFields] = useState([]);
 
   useEffect(() => {
-    (async () => {
+    let isSubscribed = true;
+
+    (async function load() {
       const newFilterFields = await filterFieldsSource(projects);
       const newFilterFieldsValidity = selectedField
         ? (newFilterFields || []).some(
           field => field.id === selectedField.id
         ) : true;
 
-      setFilterFields(newFilterFields);
-      setSelectedFieldValidity(newFilterFieldsValidity);
-    })();
-  }, [projects, selectedField, setFilterFields, setSelectedFieldValidity]);
+      if (isSubscribed) {
+        setFilterFields(newFilterFields);
+        setSelectedFieldValidity(newFilterFieldsValidity);
+      }
+    }());
+
+    return () => isSubscribed = false;
+  }, [projects, selectedField]);
 
   const changeFilterField = useCallback(
     selected => onChange((selected || {}).model),
-    [selectedField]
+    [onChange]
   );
 
-  const filterFieldSelect = (
-    <RerenderableSelect
-      className={classNames({
-        'filter-fields-selector': true,
-        'filter-fields-selector_empty': !selectedField,
-        'filter-fields-selector_error': !selectedFieldIsValid
-      })}
-      data={getFilterFieldsOptions(
-        filterFields, canBeEmpty, placeholder
-      )}
-      selected={toSelectOption(selectedField)}
-      loading={!filterFields.length}
-      onSelect={changeFilterField}
-      filter={true}
-      label={placeholder || i18n('＋Add field')}
-      type={RerenderableSelect.Type.INLINE}
-    />
-  );
+  // const filterFieldSelect = (
+  //   <Select
+  //     className={classNames({
+  //       'filter-fields-selector': true,
+  //       'filter-fields-selector_empty': !selectedField,
+  //       'filter-fields-selector_error': !selectedFieldIsValid
+  //     })}
+  //     data={getFilterFieldsOptions(
+  //       filterFields, canBeEmpty, placeholder
+  //     )}
+  //     selected={toSelectOption(selectedField)}
+  //     loading={!filterFields.length}
+  //     onSelect={changeFilterField}
+  //     filter={true}
+  //     label={placeholder || i18n('＋Add field')}
+  //     type={Select.Type.INLINE}
+  //   />
+  // );
 
   if (selectedFieldIsValid) {
-    return filterFieldSelect;
+    return (
+      <Select
+        className={classNames({
+          'filter-fields-selector': true,
+          'filter-fields-selector_empty': !selectedField,
+          'filter-fields-selector_error': !selectedFieldIsValid
+        })}
+        data={getFilterFieldsOptions(
+          filterFields, canBeEmpty, placeholder
+        )}
+        selected={toSelectOption(selectedField)}
+        loading={!filterFields.length}
+        onSelect={changeFilterField}
+        filter={true}
+        label={placeholder || i18n('＋Add field')}
+        type={Select.Type.INLINE}
+      />
+    );
   }
 
   return (
@@ -102,7 +125,22 @@ const FilterFieldsSelector = ({
         i18n('This field does not exist in some of the selected projects')
       }
     >
-      {filterFieldSelect}
+      <Select
+        className={classNames({
+          'filter-fields-selector': true,
+          'filter-fields-selector_empty': !selectedField,
+          'filter-fields-selector_error': !selectedFieldIsValid
+        })}
+        data={getFilterFieldsOptions(
+          filterFields, canBeEmpty, placeholder
+        )}
+        selected={toSelectOption(selectedField)}
+        loading={!filterFields.length}
+        onSelect={changeFilterField}
+        filter={true}
+        label={placeholder || i18n('＋Add field')}
+        type={Select.Type.INLINE}
+      />
     </Tooltip>
   );
 };
