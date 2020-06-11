@@ -56,15 +56,17 @@ class PieChartPresentation extends React.Component {
         showLegend(false).
         showLabels(false);
 
-      chart.getUrl(column =>
-        ReportModel.getSearchUrl(column.issuesQuery, this.props.homeUrl)
-      );
+      chart.getUrl(sector => ReportModel.getSearchUrl(
+        (sector.data || {}).issuesQuery, this.props.homeUrl
+      ));
 
       d3.select(pieChartNode).
         datum(chartModel).
         transition().
         duration(duration).
         call(chart);
+
+      d3.select(pieChartNode).selectAll('a').attr('target', '_blank');
 
       nv.utils.windowResize(chart.update);
 

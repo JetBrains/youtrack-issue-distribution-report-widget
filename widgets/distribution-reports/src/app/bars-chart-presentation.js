@@ -86,6 +86,8 @@ class BarsChartPresentation extends React.Component {
         datum(chartModel).
         call(chart);
 
+      d3.select(barChartNode).selectAll('a').attr('target', '_blank');
+
       nv.utils.windowResize(chart.update);
     });
   };
