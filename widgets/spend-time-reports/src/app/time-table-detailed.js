@@ -179,7 +179,7 @@ const TimeTableDetailedBody = ({
         {
           (group.childrenLines || []).map((line, childIdx) => (
             <TimeTableDetailedRow
-              key={`data-line-${line.id}`}
+              key={`data-line-${getGroupStartIdx(groupIdx) + childIdx}`}
               cells={line.cells}
               headers={headers}
               lineIdx={(
