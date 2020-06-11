@@ -5,7 +5,6 @@ import {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
-import {UserCardTooltip} from '@jetbrains/ring-ui/components/user-card/user-card';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import WidgetRefreshPeriod from '@jetbrains/hub-widget-ui/dist/refresh-period';
 import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
@@ -59,7 +58,8 @@ class Configuration extends React.Component {
     authors: [],
     query: '',
     grouping: null,
-    own: true
+    own: true,
+    editable: true
   });
 
   static makeReportsOptionsList = reports => reports.map(
@@ -302,48 +302,27 @@ class Configuration extends React.Component {
   };
 
   renderCloneNonOwnReportWarning = reportWithSettings => {
-    const {selectedYouTrack} = this.state;
 
-    const cloneReport = () => {
+    const cloneReport = async () => {
       const clonedReport = JSON.parse(JSON.stringify(reportWithSettings));
       clonedReport.id = Configuration.NEW_REPORT_ID;
       clonedReport.name = `${reportWithSettings.name} - ${i18n('clone')}`;
       clonedReport.own = true;
-      this.setState({
-        selectedReport: clonedReport,
-        selectedReportSettingsAreChanged: true
-      });
+      clonedReport.editable = true;
+      await this.changeReport(clonedReport);
     };
 
-    return !reportWithSettings.own && (
+    return !reportWithSettings.editable && (
       <div className="ring-form__group">
         <WarningIcon
-          className="distribution-reports-widget__icon"
-          size={WarningIcon.Size.Size14}
-          color={WarningIcon.Color.ORANGE}
+          className="report-widget__icon"
+          size={WarningIcon.Size.Size12}
+          color={WarningIcon.Color.GRAY}
         />&nbsp;
         <span>
           <span>
-            { i18n('This report is owned by {{ownerNamePlaceholder}}', {ownerNamePlaceholder: ''}) }
-          </span>
-          <UserCardTooltip user={{
-            login: reportWithSettings.owner.login,
-            name: reportWithSettings.owner.name,
-            email: reportWithSettings.owner.email,
-            avatarUrl: reportWithSettings.owner.avatarUrl,
-            href: `${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`
-          }}
-          >
-            <Link
-              pseudo={true}
-              href={`${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`}
-            >
-              { reportWithSettings.owner.name }
-            </Link>
-          </UserCardTooltip>{'. '}
-          <span>
             {
-              i18n('Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})
+              i18n('You do not have access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})
             }
           </span>
           <Link
@@ -370,7 +349,7 @@ class Configuration extends React.Component {
           report={reportWithSettings}
           onReportSettingsChange={this.onReportSettingsChange}
           onValidStateChange={this.onReportValidStatusChange}
-          disabled={!reportWithSettings.own}
+          disabled={!reportWithSettings.editable}
           currentUser={currentUser}
           fetchYouTrack={
             makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)

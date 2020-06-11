@@ -4,6 +4,7 @@ import Select from '@jetbrains/ring-ui/components/select/select';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import classNames from 'classnames';
 import List from '@jetbrains/ring-ui/components/list/list';
+import {ChevronDownIcon} from '@jetbrains/ring-ui/components/icon';
 import guid from 'mout/random/guid';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
@@ -48,7 +49,13 @@ const FilterFieldsSelector = ({
       : (placeholder || '');
 
     return (
-      <span>{presentation}</span>
+      <span className="report-widget__disabled">
+        {presentation}
+        <ChevronDownIcon
+          color={ChevronDownIcon.Color.GRAY}
+          size={ChevronDownIcon.Size.Size12}
+        />
+      </span>
     );
   }
 
@@ -71,7 +78,9 @@ const FilterFieldsSelector = ({
       }
     }());
 
-    return () => isSubscribed = false;
+    return () => {
+      isSubscribed = false;
+    };
   }, [projects, selectedField]);
 
   const changeFilterField = useCallback(
@@ -79,44 +88,28 @@ const FilterFieldsSelector = ({
     [onChange]
   );
 
-  // const filterFieldSelect = (
-  //   <Select
-  //     className={classNames({
-  //       'filter-fields-selector': true,
-  //       'filter-fields-selector_empty': !selectedField,
-  //       'filter-fields-selector_error': !selectedFieldIsValid
-  //     })}
-  //     data={getFilterFieldsOptions(
-  //       filterFields, canBeEmpty, placeholder
-  //     )}
-  //     selected={toSelectOption(selectedField)}
-  //     loading={!filterFields.length}
-  //     onSelect={changeFilterField}
-  //     filter={true}
-  //     label={placeholder || i18n('＋Add field')}
-  //     type={Select.Type.INLINE}
-  //   />
-  // );
+  const filterFieldSelect = (
+    <Select
+      className={classNames({
+        'filter-fields-selector': true,
+        'filter-fields-selector_empty': !selectedField,
+        'filter-fields-selector_error': !selectedFieldIsValid
+      })}
+      data={getFilterFieldsOptions(
+        filterFields, canBeEmpty, placeholder
+      )}
+      disabled={disabled}
+      selected={toSelectOption(selectedField)}
+      loading={!filterFields.length}
+      onSelect={changeFilterField}
+      filter={true}
+      label={placeholder || i18n('＋Add field')}
+      type={Select.Type.INLINE}
+    />
+  );
 
   if (selectedFieldIsValid) {
-    return (
-      <Select
-        className={classNames({
-          'filter-fields-selector': true,
-          'filter-fields-selector_empty': !selectedField,
-          'filter-fields-selector_error': !selectedFieldIsValid
-        })}
-        data={getFilterFieldsOptions(
-          filterFields, canBeEmpty, placeholder
-        )}
-        selected={toSelectOption(selectedField)}
-        loading={!filterFields.length}
-        onSelect={changeFilterField}
-        filter={true}
-        label={placeholder || i18n('＋Add field')}
-        type={Select.Type.INLINE}
-      />
-    );
+    return filterFieldSelect;
   }
 
   return (
@@ -125,22 +118,7 @@ const FilterFieldsSelector = ({
         i18n('This field does not exist in some of the selected projects')
       }
     >
-      <Select
-        className={classNames({
-          'filter-fields-selector': true,
-          'filter-fields-selector_empty': !selectedField,
-          'filter-fields-selector_error': !selectedFieldIsValid
-        })}
-        data={getFilterFieldsOptions(
-          filterFields, canBeEmpty, placeholder
-        )}
-        selected={toSelectOption(selectedField)}
-        loading={!filterFields.length}
-        onSelect={changeFilterField}
-        filter={true}
-        label={placeholder || i18n('＋Add field')}
-        type={Select.Type.INLINE}
-      />
+      {filterFieldSelect}
     </Tooltip>
   );
 };

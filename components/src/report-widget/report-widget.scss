@@ -30,6 +30,10 @@
     margin: $ring-unit auto;
   }
 
+  &__disabled {
+    color: var(--ring-disabled-color);
+  }
+
   &__input-label-compensation-hack {
     margin-top: $ring-unit;
   }

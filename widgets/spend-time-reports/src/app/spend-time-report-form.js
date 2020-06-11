@@ -134,16 +134,20 @@ const ReportProjects = ({
 
   const [loadedProjects, onLoadProjects] = useState([]);
 
+  let subscribed = true;
   useEffect(() => {
     (async function load() {
       const newProjects = await loadProjects(
         fetchYouTrack, fetchHub, {id: reportId}
       );
-      if (newProjects) {
+      if (newProjects && subscribed) {
         onLoadProjects(newProjects);
       }
     }());
-  }, [onLoadProjects, fetchHub, fetchYouTrack, reportId]);
+    return () => {
+      subscribed = false;
+    };
+  }, [fetchHub, fetchYouTrack, reportId]);
 
 
   const getProjectsOptions = useCallback(({query}) => {
@@ -353,6 +357,7 @@ const ReportPeriod = ({
             to={period.to}
             onChange={setRangeForFixedPeriod}
             range={true}
+            disabled={disabled}
           />
         </span>
       }

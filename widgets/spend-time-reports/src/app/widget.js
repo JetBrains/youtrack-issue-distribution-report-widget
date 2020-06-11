@@ -9,13 +9,12 @@ import 'nvd3/nv.d3.css';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
-import {loadReportWithData} from '../../../../components/src/resources/resources';
+import {loadReportWithData, loadTimeReports} from '../../../../components/src/resources/resources';
 import '../../../../components/src/report-widget/report-widget.scss';
 
 import {
   recalculateReport,
   getYouTrackService,
-  loadIssuesDistributionReports,
   saveReportSettings
 } from './resources';
 import Configuration
@@ -135,7 +134,7 @@ class SpendTimeReportsWidget extends React.Component {
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
     const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
     const report = (configReportId && {id: configReportId}) ||
-      (await loadIssuesDistributionReports(this.fetchYouTrack))[0];
+      (await loadTimeReports(this.fetchYouTrack))[0];
 
     if (report) {
       const reportWithData = await this.loadReportWithAppliedConfigSettings(
@@ -231,7 +230,9 @@ class SpendTimeReportsWidget extends React.Component {
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
     const line = yAxis;
     try {
-      return await loadReportWithData(fetchYouTrack, reportId, {line});
+      const reportWithData =
+        await loadReportWithData(fetchYouTrack, reportId, {line});
+      return reportWithData;
     } catch (err) {
       this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
       return undefined;
@@ -280,17 +281,10 @@ class SpendTimeReportsWidget extends React.Component {
       const {report} = this.state;
       report.grouping = grouping;
 
-      if (this.props.editable) {
-        if (report.own) {
-          await saveReportSettings(this.fetchYouTrack, report, true);
-        } else {
-          await this.props.configWrapper.update({
-            reportId: report.id, grouping
-          });
-        }
+      if (this.props.editable && report.editable) {
+        await saveReportSettings(this.fetchYouTrack, report, true);
+        this.setState({report}, () => this.onWidgetRefresh());
       }
-
-      this.setState({report}, () => this.onWidgetRefresh());
     };
 
   onChangeYAxis = async yAxis => {

@@ -44,46 +44,58 @@ const getSelectedReport = (selectedReport, reports) => (
     : reports[0]
 );
 
+const TabId = {
+  New: 'new',
+  Existing: 'existing'
+};
+
 
 const ReportConfigurationTabs = ({
   report, onChange, children, reportsSource, onCreateReport
 }) => {
 
   const [selectedTab, onChangeSelectedTab] =
-    useState((report && report.id) ? 'existing' : 'new');
+    useState(getActiveTab(report));
 
   const [reports, onLoadReports] =
     useState([]);
 
-  const [reportDraft] = useState(onCreateReport());
+  const [reportDraft, onUpdateDraft] = useState(onCreateReport());
   const [selectedExistingReport, onSelectExistingReport] =
     useState(null);
 
   const onSelectTab = useCallback(tab => {
-    if (tab === selectedTab) {
-      return undefined;
+    if (tab !== selectedTab) {
+      onChange(tab === TabId.New ? reportDraft : selectedExistingReport);
+      onChangeSelectedTab(tab);
     }
-    onChangeSelectedTab(tab);
-    return onChange(tab === 'new' ? reportDraft : selectedExistingReport);
-  }, [selectedTab]);
+  }, [selectedTab, onChange, reportDraft, selectedExistingReport]);
 
   const onSelectExistingReportOption = useCallback(selected => {
     const selectedReport = selected.model;
     if (selectedReport) {
-      onChangeSelectedTab('existing');
       onChange(selectedReport);
       onSelectExistingReport(getSelectedReport(selectedReport, reports));
     }
   }, [onChange, reports]);
 
+  let subscribed = true;
   useEffect(() => {
-    (async () => {
-      if (report.id || !selectedExistingReport) {
+    onSelectTab(getActiveTab(report));
+    if (report.id || !selectedExistingReport) {
+      (async () => {
         const loadedReports = await reportsSource();
-        onLoadReports(loadedReports);
-        onSelectExistingReport(getSelectedReport(report, loadedReports));
-      }
-    })();
+        if (subscribed) {
+          onLoadReports(loadedReports);
+          onSelectExistingReport(getSelectedReport(report, loadedReports));
+        }
+      })();
+    } else if (!report.id) {
+      onUpdateDraft(report);
+    }
+    return () => {
+      subscribed = false;
+    };
   }, [report]);
 
   const newReportTabTitle = (
@@ -112,19 +124,23 @@ const ReportConfigurationTabs = ({
       onSelect={onSelectTab}
     >
       <Tab
-        id="new"
+        id={TabId.New}
         title={newReportTabTitle}
       >
         {children}
       </Tab>
       <Tab
-        id="existing"
+        id={TabId.Existing}
         title={existingReportTabTitle}
       >
         {children}
       </Tab>
     </Tabs>
   );
+
+  function getActiveTab() {
+    return (report && report.id) ? TabId.Existing : TabId.New;
+  }
 };
 
 ReportConfigurationTabs.propTypes = {

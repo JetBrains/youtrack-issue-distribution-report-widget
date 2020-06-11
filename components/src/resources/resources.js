@@ -13,7 +13,7 @@ const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
 
 const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS}),range($type,id,range($type,id),from,to)`;
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
+const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,editable,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
 
