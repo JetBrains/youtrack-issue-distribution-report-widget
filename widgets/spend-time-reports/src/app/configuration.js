@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
-import Link from '@jetbrains/ring-ui/components/link/link';
-import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import WidgetRefreshPeriod from '@jetbrains/hub-widget-ui/dist/refresh-period';
 import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
@@ -24,10 +22,10 @@ import {
 } from '../../../../components/src/resources/resources';
 import ReportNamedTimeRanges from '../../../../components/src/report-model/report-time-ranges';
 import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
+import ReportConfigurationTabs from '../../../../components/src/report-form-controls/report-configuration-tabs';
 
 import {makeYouTrackFetcher} from './components/service-resource';
 import SpendTimeReportForm from './spend-time-report-form';
-import ReportConfigurationTabs from './report-configuration-tabs';
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -303,41 +301,6 @@ class Configuration extends React.Component {
     return await dashboardApi.fetch(selectedYouTrack.id, url, params);
   };
 
-  renderCloneNonOwnReportWarning = reportWithSettings => {
-
-    const cloneReport = async () => {
-      const clonedReport = JSON.parse(JSON.stringify(reportWithSettings));
-      clonedReport.id = Configuration.NEW_REPORT_ID;
-      clonedReport.name = `${reportWithSettings.name} - ${i18n('clone')}`;
-      clonedReport.own = true;
-      clonedReport.editable = true;
-      await this.changeReport(clonedReport);
-    };
-
-    return !reportWithSettings.editable && (
-      <div className="ring-form__group">
-        <WarningIcon
-          className="report-widget__icon"
-          size={WarningIcon.Size.Size12}
-          color={WarningIcon.Color.GRAY}
-        />&nbsp;
-        <span>
-          <span>
-            {
-              i18n('You do not have access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})
-            }
-          </span>
-          <Link
-            pseudo={true}
-            onClick={cloneReport}
-          >
-            { i18n('{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it', {ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder: ''}) }
-          </Link>
-        </span>
-      </div>
-    );
-  };
-
   renderTab(reportWithSettings) {
     const {
       selectedYouTrack,
@@ -350,7 +313,6 @@ class Configuration extends React.Component {
           report={reportWithSettings}
           onChangeReport={this.changeReport}
         />
-        { this.renderCloneNonOwnReportWarning(reportWithSettings) }
         <SpendTimeReportForm
           report={reportWithSettings}
           onReportSettingsChange={this.onReportSettingsChange}

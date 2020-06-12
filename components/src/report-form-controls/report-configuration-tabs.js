@@ -82,7 +82,8 @@ const ReportConfigurationTabs = ({
   let subscribed = true;
   useEffect(() => {
     onSelectTab(getActiveTab(report));
-    if (report.id || !selectedExistingReport) {
+    const reportId = (report || {}).id;
+    if (reportId || !selectedExistingReport) {
       (async () => {
         const loadedReports = await reportsSource();
         if (subscribed) {
@@ -90,8 +91,8 @@ const ReportConfigurationTabs = ({
           onSelectExistingReport(getSelectedReport(report, loadedReports));
         }
       })();
-    } else if (!report.id) {
-      onUpdateDraft(report);
+    } else if (!reportId) {
+      onUpdateDraft(report || reportDraft);
     }
     return () => {
       subscribed = false;

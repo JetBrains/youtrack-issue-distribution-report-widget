@@ -219,6 +219,16 @@ async function loadUserGroups(fetchYouTrack) {
   );
 }
 
+async function loadVisibilityUserGroups(fetchYouTrack, {query}) {
+  const result = await fetchYouTrack(
+    `api/visibilityGroups?fields=visibilityGroups(${USER_GROUP_FIELDS})`, {
+      method: 'POST',
+      body: {query}
+    }
+  );
+  return (result || {}).visibilityGroups || [];
+}
+
 async function loadCurrentUser(fetchHub) {
   return await loadUser(fetchHub);
 }
@@ -307,6 +317,7 @@ export {
   getYouTrackService,
   underlineAndSuggest,
   loadProjects,
+  loadVisibilityUserGroups,
   loadAgiles,
   loadAgileReportSettings,
   loadSprint,

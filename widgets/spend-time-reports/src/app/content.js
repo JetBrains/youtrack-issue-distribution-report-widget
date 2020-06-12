@@ -10,10 +10,10 @@ import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-title';
 import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
+import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 
 import SpendTimeReportModel from './spend-time-report-model';
 import TimeTable from './time-table';
-import ReportGroupingControl from './report-grouping-control';
 
 const YAxisSelector = (
   {changeXAxis, isIssueView}

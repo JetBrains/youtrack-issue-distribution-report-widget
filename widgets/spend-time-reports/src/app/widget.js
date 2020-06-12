@@ -239,15 +239,12 @@ class SpendTimeReportsWidget extends React.Component {
     }
   }
 
-  async loadReportWithAppliedConfigSettings(
-    reportId, yAxis, optionalYouTrack
-  ) {
-    return SpendTimeReportsWidget.
-      applyReportSettingsFromWidgetConfig(
+  loadReportWithAppliedConfigSettings =
+    async (reportId, yAxis, optionalYouTrack) =>
+      SpendTimeReportsWidget.applyReportSettingsFromWidgetConfig(
         await this.loadReport(reportId, yAxis, optionalYouTrack),
         SpendTimeReportsWidget.getConfigAsObject(this.props.configWrapper)
       );
-  }
 
   saveConfig = async () => {
     const {report, refreshPeriod, youTrack} = this.state;

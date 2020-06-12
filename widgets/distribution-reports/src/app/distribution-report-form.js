@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import Link from '@jetbrains/ring-ui/components/link/link';
-import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
@@ -18,7 +16,8 @@ import FilterFieldsSelector
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
 import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
-import {loadUsers} from '../../../../components/src/resources/resources';
+import {loadUsers, loadVisibilityUserGroups} from '../../../../components/src/resources/resources';
+import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 
 import {
   loadProjects,
@@ -28,7 +27,6 @@ import {
   loadReportsAggregationFilterFields
 } from './resources';
 import {
-  getReportTypeExampleLink,
   isTypeWithEditableXAxis
 } from './distribution-report-types';
 import DistributionReportAxises from './distribution-report-axises';
@@ -156,7 +154,7 @@ class DistributionReportForm extends React.Component {
   getSharingSettingsOptions = async (query = '') => {
     const {report, currentUser, fetchYouTrack} = this.state;
 
-    const groups = await loadUserGroups(fetchYouTrack, {query});
+    const groups = await loadVisibilityUserGroups(fetchYouTrack, {query});
 
     const projectId = ((report || {}).projects || []).
       map(project => project.id);
@@ -264,20 +262,15 @@ class DistributionReportForm extends React.Component {
     }
   }
 
-  renderIssueDistributionFieldsEditableSelectors() {
+  renderIssueDistributionFieldsEditableSelectors(disabled) {
     const {report, fetchYouTrack} = this.state;
 
     const filterFieldsSource = async projects =>
       await loadReportsFilterFields(fetchYouTrack, projects);
 
     return (
-      <div className="distribution-reports-widget__filter-fields">
-        <span className="distribution-reports-widget__filter-field-title">
-          {
-            i18n('Show distribution by {{field}}', {field: ''})
-          }
-        </span><wbr/>
-        <span className="distribution-reports-widget__filter-field-controls">
+      <StandardFormGroup label={i18n('Show distribution by')}>
+        <div>
           <span className="distribution-reports-widget__filter-field-selector">
             {
               report.yaxis &&
@@ -289,6 +282,7 @@ class DistributionReportForm extends React.Component {
               selectedField={
                 DistributionReportAxises.getMainAxis(report).field
               }
+              disabled={disabled}
               projects={report.projects}
               onChange={this.changeMainFilterField}
               filterFieldsSource={filterFieldsSource}
@@ -296,7 +290,7 @@ class DistributionReportForm extends React.Component {
             />
           </span>
           {
-            report.yaxis &&
+            report.yaxis && !disabled &&
             <CompareIcon
               className="distribution-reports-widget__icon distribution-reports-widget__icon_btn distribution-reports-widget__transpose-icon"
               onClick={this.changeAxisPlaces}
@@ -317,6 +311,7 @@ class DistributionReportForm extends React.Component {
                       getSecondaryAxis(report).field
                     : undefined
                 }
+                disabled={disabled}
                 projects={report.projects}
                 onChange={this.changeSplittingBarsFilterField}
                 filterFieldsSource={filterFieldsSource}
@@ -324,8 +319,8 @@ class DistributionReportForm extends React.Component {
               />
             </span>
           }
-        </span>
-      </div>
+        </div>
+      </StandardFormGroup>
     );
   }
 
@@ -354,10 +349,9 @@ class DistributionReportForm extends React.Component {
       disabled
     } = this.state;
 
-    if (!disabled && isTypeWithEditableXAxis(report)) {
-      return this.renderIssueDistributionFieldsEditableSelectors();
-    }
-    return this.renderIssueDistributionFieldsReadonlyLabels();
+    return this.renderIssueDistributionFieldsEditableSelectors(
+      disabled || !isTypeWithEditableXAxis(report)
+    );
   }
 
   renderAggregationPolicyBlock() {
@@ -367,10 +361,9 @@ class DistributionReportForm extends React.Component {
       await loadReportsAggregationFilterFields(fetchYouTrack, projects);
 
     return (
-      <div className="distribution-reports-widget__filter-fields">
-        {
-          i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})
-        }
+      <StandardFormGroup
+        label={i18n('Show totals for {{aggregationPolicy}}', {aggregationPolicy: ''})}
+      >
         <FilterFieldsSelector
           selectedField={(report.aggregationPolicy || {}).field}
           projects={report.projects}
@@ -380,14 +373,15 @@ class DistributionReportForm extends React.Component {
           placeholder={i18n('Issues')}
           disabled={disabled}
         />
-      </div>
+      </StandardFormGroup>
     );
   }
 
-  renderSharingSettingBlock(settingName, label, IconElement, onChange) {
+  renderSharingSettingBlock(settingName, label, title, IconElement, onChange) {
     const {
       disabled,
-      report
+      report,
+      currentUser
     } = this.state;
 
     const sharingSetting = report && report[settingName] || {};
@@ -395,32 +389,33 @@ class DistributionReportForm extends React.Component {
       ...(sharingSetting.permittedUsers || []),
       ...(sharingSetting.permittedGroups || [])
     ];
-    const reportOwner = report && report.owner || this.props.currentUser;
+    const implicitSelected = [report && report.owner || currentUser].filter(
+      user => !!user
+    );
 
     return (
-      <div className="ring-form__group">
+      <StandardFormGroup label={label}>
         <IconElement
           className="distribution-reports-widget__icon distribution-reports-widget__label"
           color={InfoIcon.Color.GRAY}
           size={InfoIcon.Size.Size14}
         />
-        <span className="distribution-reports-widget__label">
-          {label}
-        </span>
+        {title}&nbsp;
         <SharingSetting
           getOptions={this.getSharingSettingsOptions}
           selected={selectedOptions}
           onChange={onChange}
           disabled={disabled}
-          implicitSelected={[reportOwner]}
+          implicitSelected={implicitSelected}
         />
-      </div>
+      </StandardFormGroup>
     );
   }
 
   renderVisibleToBlock() {
     return this.renderSharingSettingBlock(
       'readSharingSettings',
+      i18n('Sharing settings'),
       i18n('Can view and use'),
       EyeIcon,
       this.changeReadSharingSettings
@@ -430,6 +425,7 @@ class DistributionReportForm extends React.Component {
   renderUpdateableByBlock() {
     return this.renderSharingSettingBlock(
       'updateSharingSettings',
+      '',
       i18n('Can edit'),
       PencilIcon,
       this.changeUpdateSharingSettings
@@ -442,19 +438,23 @@ class DistributionReportForm extends React.Component {
     } = this.state;
 
     return (
-      <RerenderableTagsInput
-        disabled={disabled}
-        tags={report.projects.map(DistributionReportForm.toProjectTag)}
-        placeholder={
-          report.projects.length
-            ? (!disabled && i18n('Add project') || '')
-            : i18n('Calculate for all projects')
-        }
-        maxPopupHeight={250}
-        dataSource={this.projectsInputDataSource}
-        onAddTag={this.onAddProjectToReport}
-        onRemoveTag={this.onRemoveProjectFromReport}
-      />
+      <StandardFormGroup
+        label={i18n('Projects')}
+      >
+        <RerenderableTagsInput
+          disabled={disabled}
+          tags={report.projects.map(DistributionReportForm.toProjectTag)}
+          placeholder={
+            report.projects.length
+              ? (!disabled && i18n('Add project') || '')
+              : i18n('Calculate for all projects')
+          }
+          maxPopupHeight={250}
+          dataSource={this.projectsInputDataSource}
+          onAddTag={this.onAddProjectToReport}
+          onRemoveTag={this.onRemoveProjectFromReport}
+        />
+      </StandardFormGroup>
     );
   }
 
@@ -471,15 +471,15 @@ class DistributionReportForm extends React.Component {
       );
 
     return (
-      <div className="ring-form__group">
+      <StandardFormGroup label={i18n('Filter issues')}>
         <QueryAssist
           disabled={disabled}
           query={report.query}
-          placeholder={i18n('Filter issues')}
+          placeholder={i18n('Query')}
           onChange={this.onReportQueryChange}
           dataSource={queryAssistDataSource}
         />
-      </div>
+      </StandardFormGroup>
     );
   }
 
@@ -488,48 +488,27 @@ class DistributionReportForm extends React.Component {
       report, disabled
     } = this.state;
 
-    const getReportFormTitle = () => {
-      if (disabled) {
-        return `${i18n('Report')} ${report.name}`;
-      }
-      return DistributionReportForm.isNewReport(report)
-        ? i18n('New report')
-        : i18n('Edit report');
-    };
-
     return (
-      <div className="ring-form distribution-reports-widget__distribution-report-form">
-        <span className="ring-form__title">
-          { getReportFormTitle() }
-          <span>
-            <Tooltip title={i18n('Learn more about this report')}>
-              &nbsp;&nbsp;
-              <Link
-                href={getReportTypeExampleLink(report)}
-                target="_blank"
-              >
-                <InfoIcon
-                  className="distribution-reports-widget__icon"
-                  color={InfoIcon.Color.GRAY}
-                  size={InfoIcon.Size.Size14}
-                />
-              </Link>
-            </Tooltip>
-          </span>
-        </span>
+      <div className="ring-form">
         {
           !disabled &&
-          <Input
-            size={InputSize.FULL}
-            value={report.name}
-            placeholder={i18n('Report name')}
-            onChange={this.changeReportName}
-          />
+          <StandardFormGroup
+            label={'Name'}
+            inputCompensationHack={true}
+          >
+            <Input
+              size={InputSize.FULL}
+              value={report.name}
+              placeholder={i18n('Report name')}
+              onChange={this.changeReportName}
+              compact={true}
+            />
+          </StandardFormGroup>
         }
         {this.renderProjectsSelectorBlock()}
+        {this.renderFilterIssuesBlock()}
         {this.renderIssueDistributionFieldsBlock()}
         {this.renderAggregationPolicyBlock()}
-        {this.renderFilterIssuesBlock()}
         {this.renderVisibleToBlock()}
         {this.renderUpdateableByBlock()}
       </div>

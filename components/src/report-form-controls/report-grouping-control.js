@@ -2,9 +2,9 @@ import React, {useCallback} from 'react';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import PropTypes from 'prop-types';
 
-import {loadReportsGroupingFilterFields} from '../../../../components/src/resources/resources';
-import FilterFieldsSelector from '../../../../components/src/filter-fields-selector/filter-fields-selector';
-import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import {loadReportsGroupingFilterFields} from '../resources/resources';
+import FilterFieldsSelector from '../filter-fields-selector/filter-fields-selector';
+import BackendTypes from '../backend-types/backend-types';
 
 const ReportGroupingControl = ({
   group, projects, disabled, fetchYouTrack, onChange

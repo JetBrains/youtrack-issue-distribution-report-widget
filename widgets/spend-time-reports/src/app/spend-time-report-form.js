@@ -11,13 +11,12 @@ import {
 } from '@jetbrains/ring-ui/components/icon';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
-import classNames from 'classnames';
 
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
 import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
 import {
-  loadUsers,
+  loadUsers, loadVisibilityUserGroups,
   loadWorkItemTypes
 } from '../../../../components/src/resources/resources';
 import ReportTimeScales
@@ -25,38 +24,13 @@ import ReportTimeScales
 import ReportNamedTimeRanges
   from '../../../../components/src/report-model/report-time-ranges';
 import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-button-group';
+import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
+import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 
 import {
   loadProjects,
-  loadUserGroups,
   underlineAndSuggest
 } from './resources';
-import ReportGroupingControl from './report-grouping-control';
-
-const StandardFormGroup = ({
-  label, children, noIndentation
-}) => (
-  <div className={classNames({'ring-form__group': !noIndentation})}>
-    {
-      !!label &&
-      <div className="ring-form__label">
-        {label}
-      </div>
-    }
-    {
-      !!children &&
-      <div className="ring-form__control">
-        {children}
-      </div>
-    }
-  </div>
-);
-
-StandardFormGroup.propTypes = {
-  label: PropTypes.string,
-  children: PropTypes.node,
-  noIndentation: PropTypes.bool
-};
 
 const ReportIssuesFilter = ({
   query, disabled, fetchYouTrack, onChange
@@ -436,7 +410,7 @@ class SpendTimeReportForm extends React.Component {
   getSharingSettingsOptions = async (query = '') => {
     const {report, currentUser, fetchYouTrack} = this.state;
 
-    const groups = await loadUserGroups(fetchYouTrack, {query});
+    const groups = await loadVisibilityUserGroups(fetchYouTrack, {query});
 
     const projectId = ((report || {}).projects || []).
       map(project => project.id);
