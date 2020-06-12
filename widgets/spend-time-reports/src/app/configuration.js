@@ -13,6 +13,8 @@ import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form'
 import '@jetbrains/ring-ui/components/form/form.scss';
 
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import NoEditPermissionsWarning
+  from '../../../../components/src/report-form-controls/no-edit-permissions-warning';
 import {
   getYouTrackServices,
   saveReportSettings,
@@ -344,6 +346,10 @@ class Configuration extends React.Component {
 
     return (
       <div>
+        <NoEditPermissionsWarning
+          report={reportWithSettings}
+          onChangeReport={this.changeReport}
+        />
         { this.renderCloneNonOwnReportWarning(reportWithSettings) }
         <SpendTimeReportForm
           report={reportWithSettings}

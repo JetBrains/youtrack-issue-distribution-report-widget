@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
-import Link from '@jetbrains/ring-ui/components/link/link';
-import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
-import {UserCardTooltip} from '@jetbrains/ring-ui/components/user-card/user-card';
 import List from '@jetbrains/ring-ui/components/list/list';
 import guid from 'mout/random/guid';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
@@ -15,6 +12,8 @@ import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form'
 import '@jetbrains/ring-ui/components/form/form.scss';
 
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import NoEditPermissionsWarning
+  from '../../../../components/src/report-form-controls/no-edit-permissions-warning';
 
 import {makeYouTrackFetcher} from './components/service-resource';
 import {
@@ -295,62 +294,6 @@ class Configuration extends React.Component {
     return await dashboardApi.fetch(selectedYouTrack.id, url, params);
   };
 
-  renderCloneNonOwnReportWarning = reportWithSettings => {
-    const {selectedYouTrack} = this.state;
-
-    const cloneReport = () => {
-      const clonedReport = JSON.parse(JSON.stringify(reportWithSettings));
-      clonedReport.id = Configuration.NEW_REPORT_ID;
-      clonedReport.name = `${reportWithSettings.name} - ${i18n('clone')}`;
-      clonedReport.own = true;
-      this.setState({
-        selectedReport: clonedReport,
-        selectedReportSettingsAreChanged: true
-      });
-    };
-
-    return !reportWithSettings.own && (
-      <div className="ring-form__group">
-        <WarningIcon
-          className="distribution-reports-widget__icon"
-          size={WarningIcon.Size.Size14}
-          color={WarningIcon.Color.ORANGE}
-        />&nbsp;
-        <span>
-          <span>
-            { i18n('This report is owned by {{ownerNamePlaceholder}}', {ownerNamePlaceholder: ''}) }
-          </span>
-          <UserCardTooltip user={{
-            login: reportWithSettings.owner.login,
-            name: reportWithSettings.owner.name,
-            email: reportWithSettings.owner.email,
-            avatarUrl: reportWithSettings.owner.avatarUrl,
-            href: `${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`
-          }}
-          >
-            <Link
-              pseudo={true}
-              href={`${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`}
-            >
-              { reportWithSettings.owner.name }
-            </Link>
-          </UserCardTooltip>{'. '}
-          <span>
-            {
-              i18n('Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})
-            }
-          </span>
-          <Link
-            pseudo={true}
-            onClick={cloneReport}
-          >
-            { i18n('{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it', {ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder: ''}) }
-          </Link>
-        </span>
-      </div>
-    );
-  };
-
   renderReportsSettings() {
     const {
       reports,
@@ -384,12 +327,15 @@ class Configuration extends React.Component {
         {
           reportWithSettings &&
           <div>
-            { this.renderCloneNonOwnReportWarning(reportWithSettings) }
+            <NoEditPermissionsWarning
+              report={reportWithSettings}
+              onChangeReport={this.changeReport}
+            />
             <DistributionReportForm
               report={reportWithSettings}
               onReportSettingsChange={this.onReportSettingsChange}
               onValidStateChange={this.onReportValidStatusChange}
-              disabled={!reportWithSettings.own}
+              disabled={!reportWithSettings.editable}
               currentUser={currentUser}
               fetchYouTrack={
                 makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)

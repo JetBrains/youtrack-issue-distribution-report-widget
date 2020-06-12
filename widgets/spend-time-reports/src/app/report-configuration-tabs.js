@@ -132,7 +132,7 @@ const ReportConfigurationTabs = ({
       <Tab
         id={TabId.Existing}
         title={existingReportTabTitle}
-        href='/'
+        href="/"
       >
         {children}
       </Tab>
