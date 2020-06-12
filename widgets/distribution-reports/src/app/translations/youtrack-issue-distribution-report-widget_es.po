@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-06-09 21:05\n"
+"PO-Revision-Date: 2020-06-12 00:49\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -51,11 +51,11 @@ msgstr "No es posible encontrar ningún informe de distribución de incidencias"
 msgid "Cannot load selected report"
 msgstr "No se puede cargar el informe seleccionado"
 
-#: src/app/configuration.js:265
+#: src/app/configuration.js:264
 msgid "Cannot save report"
 msgstr "No es posible guardar el informe"
 
-#: src/app/configuration.js:274
+#: src/app/configuration.js:273
 msgid "Cannot update widget"
 msgstr "No es posible actualizar el widget"
 
@@ -91,7 +91,7 @@ msgstr "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic"
 msgid "Learn more about this report"
 msgstr "Más información acerca de este informe"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 #: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "Nuevo informe"
@@ -103,10 +103,6 @@ msgstr "¡Uy! Algo ha salido mal..."
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "¡Uy!... Algo ha salido mal =("
-
-#: src/app/configuration.js:340
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "Los propietarios tienen acceso exclusivo para editar la configuración de informes. Si desea personalizar su propia copia de este informe, {{cloneItPlaceholder}}"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -128,11 +124,11 @@ msgstr "Nombre del informe"
 msgid "Save"
 msgstr "Guardar"
 
-#: src/app/configuration.js:472
+#: src/app/configuration.js:418
 msgid "Select YouTrack"
 msgstr "Seleccionar YouTrack"
 
-#: src/app/configuration.js:380
+#: src/app/configuration.js:323
 msgid "Select report"
 msgstr "Seleccionar informe"
 
@@ -172,10 +168,6 @@ msgstr "El informe no puede calcularse: los filtros de la configuración del inf
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "No hay ninguna incidencia que coincida con los filtros de la configuración de informe"
 
-#: src/app/configuration.js:321
-msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr "El propietario de este informe es {{ownerNamePlaceholder}}"
-
 #: src/app/report-chart.js:249
 msgid "Total"
 msgstr "Total"
@@ -192,7 +184,7 @@ msgstr "Cantidad total de votos"
 msgid "Total {{fieldName}}"
 msgstr "Total de {{fieldName}}"
 
-#: src/app/configuration.js:92
+#: src/app/configuration.js:91
 msgid "Unnamed"
 msgstr "Sin nombre"
 
@@ -220,19 +212,15 @@ msgstr "usuario asignado"
 msgid "by count"
 msgstr "por recuento"
 
-#: src/app/configuration.js:304
-msgid "clone"
-msgstr "clonar"
-
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
 msgstr "desc."
 
-#: src/app/configuration.js:70
+#: src/app/configuration.js:69
 msgid "existing reports"
 msgstr "informes existentes"
 
-#: src/app/configuration.js:86
+#: src/app/configuration.js:85
 msgid "me"
 msgstr "yo"
 
@@ -240,14 +228,10 @@ msgstr "yo"
 msgid "natural"
 msgstr "natural"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "proyecto"
-
-#: src/app/configuration.js:347
-msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}, clónelo"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

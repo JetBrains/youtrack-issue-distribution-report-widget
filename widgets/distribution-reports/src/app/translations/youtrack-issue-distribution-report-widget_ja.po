@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-09 21:06\n"
+"PO-Revision-Date: 2020-06-12 00:49\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -51,11 +51,11 @@ msgstr "課題配布レポートが見つかりません"
 msgid "Cannot load selected report"
 msgstr "選択したレポートを読み込めません"
 
-#: src/app/configuration.js:265
+#: src/app/configuration.js:264
 msgid "Cannot save report"
 msgstr "レポートを保存できません"
 
-#: src/app/configuration.js:274
+#: src/app/configuration.js:273
 msgid "Cannot update widget"
 msgstr "ウィジェットを更新できません"
 
@@ -91,7 +91,7 @@ msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 msgid "Learn more about this report"
 msgstr "このレポートの詳細"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 #: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "新しいレポート"
@@ -103,10 +103,6 @@ msgstr "エラー！不明なエラーが発生しました…"
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "不明なエラーが発生しました =("
-
-#: src/app/configuration.js:340
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "オーナーのみが、レポート設定を編集できます。このレポートのコピーをカスタマイズしたい場合は、{{cloneItPlaceholder}}"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -128,11 +124,11 @@ msgstr "レポート名"
 msgid "Save"
 msgstr "保存"
 
-#: src/app/configuration.js:472
+#: src/app/configuration.js:418
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
-#: src/app/configuration.js:380
+#: src/app/configuration.js:323
 msgid "Select report"
 msgstr "レポートを選択"
 
@@ -172,10 +168,6 @@ msgstr "レポートを計算できません：レポート設定のフィルタ
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "レポート設定のフィルタと一致する課題はありません"
 
-#: src/app/configuration.js:321
-msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr "このレポートは{{ownerNamePlaceholder}}さんが所有しています"
-
 #: src/app/report-chart.js:249
 msgid "Total"
 msgstr "合計"
@@ -192,7 +184,7 @@ msgstr "総投票数"
 msgid "Total {{fieldName}}"
 msgstr "{{fieldName}}の合計"
 
-#: src/app/configuration.js:92
+#: src/app/configuration.js:91
 msgid "Unnamed"
 msgstr "名称未設定"
 
@@ -220,19 +212,15 @@ msgstr "担当者"
 msgid "by count"
 msgstr "件数順"
 
-#: src/app/configuration.js:304
-msgid "clone"
-msgstr "クローン"
-
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
 msgstr "降順"
 
-#: src/app/configuration.js:70
+#: src/app/configuration.js:69
 msgid "existing reports"
 msgstr "既存のレポート"
 
-#: src/app/configuration.js:86
+#: src/app/configuration.js:85
 msgid "me"
 msgstr "自分"
 
@@ -240,14 +228,10 @@ msgstr "自分"
 msgid "natural"
 msgstr "自然"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "プロジェクト"
-
-#: src/app/configuration.js:347
-msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}、それを複製してください。"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

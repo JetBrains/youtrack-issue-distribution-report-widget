@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-06-09 21:05\n"
+"PO-Revision-Date: 2020-06-12 00:48\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -51,11 +51,11 @@ msgstr "Es kann kein Ticketverteilungsbericht gefunden werden"
 msgid "Cannot load selected report"
 msgstr "Ausgewählter Bericht kann nicht geladen werden"
 
-#: src/app/configuration.js:265
+#: src/app/configuration.js:264
 msgid "Cannot save report"
 msgstr "Bericht kann nicht gespeichert werden"
 
-#: src/app/configuration.js:274
+#: src/app/configuration.js:273
 msgid "Cannot update widget"
 msgstr "Widget kann nicht aktualisiert werden"
 
@@ -91,7 +91,7 @@ msgstr "Jan|Feb|Mär|Apr|Mai|Jun|Jul|Aug|Sep|Okt|Nov|Dez"
 msgid "Learn more about this report"
 msgstr "Weitere Informationen über diesen Bericht"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 #: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "Neuer Bericht"
@@ -103,10 +103,6 @@ msgstr "Entschuldigung! Etwas ist schiefgegangen."
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "Entschuldigung! Etwas ist schiefgegangen =("
-
-#: src/app/configuration.js:340
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "Nur Besitzer können können die Berichtseinstellungen bearbeiten. Wenn Sie Ihre eigene Kopie dieses Berichts an Ihren Bedarf anpassen möchten, {{cloneItPlaceholder}}"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -128,11 +124,11 @@ msgstr "Berichtsname"
 msgid "Save"
 msgstr "Speichern"
 
-#: src/app/configuration.js:472
+#: src/app/configuration.js:418
 msgid "Select YouTrack"
 msgstr "YouTrack auswählen"
 
-#: src/app/configuration.js:380
+#: src/app/configuration.js:323
 msgid "Select report"
 msgstr "Bericht auswählen"
 
@@ -172,10 +168,6 @@ msgstr "Der Bericht kann nicht berechnet werden: Es gibt zu viele Tickets, die d
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstellungen entsprechen."
 
-#: src/app/configuration.js:321
-msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr "Dieser Bericht gehört {{ownerNamePlaceholder}}"
-
 #: src/app/report-chart.js:249
 msgid "Total"
 msgstr "Gesamt"
@@ -192,7 +184,7 @@ msgstr "Gesamtanzahl Stimmen"
 msgid "Total {{fieldName}}"
 msgstr "{{fieldName}} gesamt"
 
-#: src/app/configuration.js:92
+#: src/app/configuration.js:91
 msgid "Unnamed"
 msgstr "Unbenannt"
 
@@ -220,19 +212,15 @@ msgstr "Bearbeiter"
 msgid "by count"
 msgstr "nach Anzahl"
 
-#: src/app/configuration.js:304
-msgid "clone"
-msgstr "klonen"
-
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
 msgstr "absteigend"
 
-#: src/app/configuration.js:70
+#: src/app/configuration.js:69
 msgid "existing reports"
 msgstr "vorhandene Berichte"
 
-#: src/app/configuration.js:86
+#: src/app/configuration.js:85
 msgid "me"
 msgstr "ich"
 
@@ -240,14 +228,10 @@ msgstr "ich"
 msgid "natural"
 msgstr "natürlich"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "Projekt"
-
-#: src/app/configuration.js:347
-msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonen Sie ihn."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

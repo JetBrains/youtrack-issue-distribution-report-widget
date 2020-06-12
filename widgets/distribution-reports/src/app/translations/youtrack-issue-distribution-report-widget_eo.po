@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-09 21:06\n"
+"PO-Revision-Date: 2020-06-12 00:49\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -51,11 +51,11 @@ msgstr "crwdns933086:0crwdne933086:0"
 msgid "Cannot load selected report"
 msgstr "crwdns933088:0crwdne933088:0"
 
-#: src/app/configuration.js:265
+#: src/app/configuration.js:264
 msgid "Cannot save report"
 msgstr "crwdns933090:0crwdne933090:0"
 
-#: src/app/configuration.js:274
+#: src/app/configuration.js:273
 msgid "Cannot update widget"
 msgstr "crwdns933092:0crwdne933092:0"
 
@@ -91,7 +91,7 @@ msgstr "crwdns933104:0crwdne933104:0"
 msgid "Learn more about this report"
 msgstr "crwdns933106:0crwdne933106:0"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 #: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "crwdns933110:0crwdne933110:0"
@@ -103,10 +103,6 @@ msgstr "crwdns933116:0crwdne933116:0"
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "crwdns933118:0crwdne933118:0"
-
-#: src/app/configuration.js:340
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "crwdns933120:0{{cloneItPlaceholder}}crwdne933120:0"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -128,11 +124,11 @@ msgstr "crwdns933130:0crwdne933130:0"
 msgid "Save"
 msgstr "crwdns933132:0crwdne933132:0"
 
-#: src/app/configuration.js:472
+#: src/app/configuration.js:418
 msgid "Select YouTrack"
 msgstr "crwdns933134:0crwdne933134:0"
 
-#: src/app/configuration.js:380
+#: src/app/configuration.js:323
 msgid "Select report"
 msgstr "crwdns933136:0crwdne933136:0"
 
@@ -172,10 +168,6 @@ msgstr "crwdns933150:0crwdne933150:0"
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "crwdns933152:0crwdne933152:0"
 
-#: src/app/configuration.js:321
-msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr "crwdns933156:0{{ownerNamePlaceholder}}crwdne933156:0"
-
 #: src/app/report-chart.js:249
 msgid "Total"
 msgstr "crwdns1253932:0crwdne1253932:0"
@@ -192,7 +184,7 @@ msgstr "crwdns1253936:0crwdne1253936:0"
 msgid "Total {{fieldName}}"
 msgstr "crwdns1253938:0{{fieldName}}crwdne1253938:0"
 
-#: src/app/configuration.js:92
+#: src/app/configuration.js:91
 msgid "Unnamed"
 msgstr "crwdns933158:0crwdne933158:0"
 
@@ -220,19 +212,15 @@ msgstr "crwdns933168:0crwdne933168:0"
 msgid "by count"
 msgstr "crwdns933170:0crwdne933170:0"
 
-#: src/app/configuration.js:304
-msgid "clone"
-msgstr "crwdns933172:0crwdne933172:0"
-
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
 msgstr "crwdns933174:0crwdne933174:0"
 
-#: src/app/configuration.js:70
+#: src/app/configuration.js:69
 msgid "existing reports"
 msgstr "crwdns933176:0crwdne933176:0"
 
-#: src/app/configuration.js:86
+#: src/app/configuration.js:85
 msgid "me"
 msgstr "crwdns933178:0crwdne933178:0"
 
@@ -240,14 +228,10 @@ msgstr "crwdns933178:0crwdne933178:0"
 msgid "natural"
 msgstr "crwdns933180:0crwdne933180:0"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "crwdns933182:0crwdne933182:0"
-
-#: src/app/configuration.js:347
-msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "crwdns933184:0{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}crwdne933184:0"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

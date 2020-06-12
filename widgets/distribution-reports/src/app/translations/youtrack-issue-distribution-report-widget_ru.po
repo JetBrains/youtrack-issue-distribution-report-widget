@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-06-09 21:06\n"
+"PO-Revision-Date: 2020-06-12 00:49\n"
 
 #: src/app/distribution-report-form.js:450
 msgid "Add project"
@@ -51,11 +51,11 @@ msgstr "Отчетов о распределении задач не найде�
 msgid "Cannot load selected report"
 msgstr "Не удалось загрузить выбранный отчет"
 
-#: src/app/configuration.js:265
+#: src/app/configuration.js:264
 msgid "Cannot save report"
 msgstr "Невозможно сохранить отчет"
 
-#: src/app/configuration.js:274
+#: src/app/configuration.js:273
 msgid "Cannot update widget"
 msgstr "Невозможно обновить виджет"
 
@@ -91,7 +91,7 @@ msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|н
 msgid "Learn more about this report"
 msgstr "Сведения об этом отчете"
 
-#: src/app/configuration.js:93
+#: src/app/configuration.js:92
 #: src/app/distribution-report-form.js:496
 msgid "New report"
 msgstr "Новый отчет"
@@ -103,10 +103,6 @@ msgstr "К сожалению, возникла какая-то проблема
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr "К сожалению, возникла какая-то проблема =("
-
-#: src/app/configuration.js:340
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "Изменять параметры отчета могут только владельцы. Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -128,11 +124,11 @@ msgstr "Имя отчета"
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/app/configuration.js:472
+#: src/app/configuration.js:418
 msgid "Select YouTrack"
 msgstr "Выберите YouTrack"
 
-#: src/app/configuration.js:380
+#: src/app/configuration.js:323
 msgid "Select report"
 msgstr "Выберите отчет"
 
@@ -172,10 +168,6 @@ msgstr "Невозможно рассчитать отчет: фильтры в 
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Нет задач, соответствующих фильтрам в настройках отчета"
 
-#: src/app/configuration.js:321
-msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr "Владельцем этого отчета является {{ownerNamePlaceholder}}"
-
 #: src/app/report-chart.js:249
 msgid "Total"
 msgstr "Всего"
@@ -192,7 +184,7 @@ msgstr "Всего голосов"
 msgid "Total {{fieldName}}"
 msgstr "Всего: {{fieldName}}"
 
-#: src/app/configuration.js:92
+#: src/app/configuration.js:91
 msgid "Unnamed"
 msgstr "Без имени"
 
@@ -220,19 +212,15 @@ msgstr "исполнитель"
 msgid "by count"
 msgstr "по кол-ву"
 
-#: src/app/configuration.js:304
-msgid "clone"
-msgstr "клон"
-
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
 msgstr "по убыв."
 
-#: src/app/configuration.js:70
+#: src/app/configuration.js:69
 msgid "existing reports"
 msgstr "имеющиеся отчеты"
 
-#: src/app/configuration.js:86
+#: src/app/configuration.js:85
 msgid "me"
 msgstr "я"
 
@@ -240,14 +228,10 @@ msgstr "я"
 msgid "natural"
 msgstr "естеств."
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "проект"
-
-#: src/app/configuration.js:347
-msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} клонировать его"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
