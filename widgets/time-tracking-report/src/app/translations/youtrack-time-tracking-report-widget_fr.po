@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-15 04:29\n"
+"PO-Revision-Date: 2020-06-15 04:31\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
@@ -180,27 +180,27 @@ msgstr "Les filtres définis pour le rapport ne renvoient aucun ticket."
 
 #: src/app/report-filter-fields-selector.js:151
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Ce champ n'existe pas dans une partie des projets sélectionnés."
 
 #: src/app/configuration.js:322
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "Ce rapport appartient à {{ownerNamePlaceholder}}"
 
 #: src/app/report-chart.js:290
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: src/app/content.js:119
 msgid "Total issues count"
-msgstr ""
+msgstr "Total des tickets"
 
 #: src/app/content.js:122
 msgid "Total votes count"
-msgstr ""
+msgstr "Total des votes"
 
 #: src/app/content.js:125
 msgid "Total {{fieldName}}"
-msgstr ""
+msgstr "Total {{fieldName}}"
 
 #: src/app/configuration.js:93
 msgid "Unnamed"
@@ -208,15 +208,15 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "Le widget s'actualise chaque minute."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "am|pm"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
-msgstr ""
+msgstr "selon le nombre"
 
 #: src/app/configuration.js:305
 msgid "clone"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
-msgstr ""
+msgstr "naturel"
 
 #: src/app/configuration.js:54
 #: src/app/distribution-report-types.js:34
@@ -261,9 +261,9 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} mn"
 
 #: src/app/report-filter-fields-selector.js:139
 msgid "＋Add field"
-msgstr ""
+msgstr "+ Ajouter le champ"
 
