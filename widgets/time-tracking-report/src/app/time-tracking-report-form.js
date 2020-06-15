@@ -581,9 +581,9 @@ class TimeTrackingReportForm extends React.Component {
       ...(sharingSetting.permittedUsers || []),
       ...(sharingSetting.permittedGroups || [])
     ];
-    const reportOwner = TimeTrackingReportForm.getReportOwner(
+    const implicitSelected = [TimeTrackingReportForm.getReportOwner(
       report, this.props.currentUser
-    );
+    )].filter(user => !!user);
 
     return (
       <StandardFormGroup label={title}>
@@ -601,7 +601,7 @@ class TimeTrackingReportForm extends React.Component {
             selected={selectedOptions}
             onChange={onChange}
             disabled={disabled}
-            implicitSelected={[reportOwner]}
+            implicitSelected={implicitSelected}
           />
         </span>
       </StandardFormGroup>
