@@ -12,7 +12,7 @@ import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 import ReportModel from '../../../../components/src/report-model/report-model';
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 
-import SpendTimeReportModel from './spend-time-report-model';
+import TimeTrackingReportModel from './spend-time-report-model';
 import TimeTable from './time-table';
 
 const YAxisSelector = (
@@ -194,14 +194,14 @@ class Content extends React.Component {
       return this.renderReportError(i18n('There aren\'t any issues that match the filters in the report settings'));
     }
 
-    const columnsLegend = SpendTimeReportModel.getColumnsLegend(report);
-    const columnsHeader = SpendTimeReportModel.getColumnsHeader(report);
+    const columnsLegend = TimeTrackingReportModel.getColumnsLegend(report);
+    const columnsHeader = TimeTrackingReportModel.getColumnsHeader(report);
 
     const generalGroups =
-      SpendTimeReportModel.getGeneralGroupedLines(report, isIssueView);
+      TimeTrackingReportModel.getGeneralGroupedLines(report, isIssueView);
     const detailedGroups =
-      SpendTimeReportModel.getDetailedGroupedLines(report, isIssueView);
-    const totalSpentTime = SpendTimeReportModel.getTotalSpentTime(report);
+      TimeTrackingReportModel.getDetailedGroupedLines(report, isIssueView);
+    const totalSpentTime = TimeTrackingReportModel.getTotalSpentTime(report);
 
     return (
       <TimeTable

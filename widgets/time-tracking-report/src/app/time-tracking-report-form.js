@@ -346,7 +346,7 @@ ReportPeriod.propTypes = {
 };
 
 
-class SpendTimeReportForm extends React.Component {
+class TimeTrackingReportForm extends React.Component {
   static propTypes = {
     report: PropTypes.object,
     onValidStateChange: PropTypes.func,
@@ -378,7 +378,7 @@ class SpendTimeReportForm extends React.Component {
       users: []
     };
     this.props.onValidStateChange(
-      SpendTimeReportForm.checkReportValidity(props.report)
+      TimeTrackingReportForm.checkReportValidity(props.report)
     );
   }
 
@@ -475,7 +475,7 @@ class SpendTimeReportForm extends React.Component {
   updateReport(report) {
     this.setState({report});
     const reportIsValid =
-      SpendTimeReportForm.checkReportValidity(report);
+      TimeTrackingReportForm.checkReportValidity(report);
     this.props.onValidStateChange(reportIsValid);
     return reportIsValid;
   }
@@ -527,7 +527,7 @@ class SpendTimeReportForm extends React.Component {
       <StandardFormGroup label={i18n('X axis')}>
         <span>
           {
-            SpendTimeReportForm.isNewReport(report) &&
+            TimeTrackingReportForm.isNewReport(report) &&
             <Select
               data={[timeOption, workTypesOption]}
               selected={reportScale ? timeOption : workTypesOption}
@@ -536,7 +536,7 @@ class SpendTimeReportForm extends React.Component {
             />
           }
           {
-            !SpendTimeReportForm.isNewReport(report) &&
+            !TimeTrackingReportForm.isNewReport(report) &&
             <span>
               {reportScale ? i18n('Time') : i18n('Work types')}
             </span>
@@ -581,7 +581,7 @@ class SpendTimeReportForm extends React.Component {
       ...(sharingSetting.permittedUsers || []),
       ...(sharingSetting.permittedGroups || [])
     ];
-    const reportOwner = SpendTimeReportForm.getReportOwner(
+    const reportOwner = TimeTrackingReportForm.getReportOwner(
       report, this.props.currentUser
     );
 
@@ -748,4 +748,4 @@ class SpendTimeReportForm extends React.Component {
   }
 }
 
-export default SpendTimeReportForm;
+export default TimeTrackingReportForm;

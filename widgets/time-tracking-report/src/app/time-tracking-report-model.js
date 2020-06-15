@@ -57,7 +57,7 @@ function makeMetaFromLine(line, isIssueView) {
   }
 }
 
-const SpendTimeReportModel = {
+const TimeTrackingReportModel = {
 
   getColumnsLegend: report => {
     if (isTimeReport(report)) {
@@ -201,4 +201,4 @@ const SpendTimeReportModel = {
   }
 };
 
-export default SpendTimeReportModel;
+export default TimeTrackingReportModel;

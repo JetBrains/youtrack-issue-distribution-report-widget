@@ -100,12 +100,12 @@ const ReportConfigurationTabs = ({
   }, [report]);
 
   const newReportTabTitle = (
-    <span>{i18n('New report')}</span>
+    <span>{i18n('Create new report')}</span>
   );
 
   const existingReportTabTitle = (
     <span>
-      <span>{i18n('Existing report')}</span>&nbsp;
+      <span>{i18n('Display existing report')}</span>&nbsp;
       <span>
         <Select
           data={makeReportsOptionsList(reports)}
