@@ -19,7 +19,7 @@ import {
 } from './resources';
 import Configuration
   from './configuration';
-import {getReportTypePathPrefix} from './spend-time-report-types';
+import {getReportTypePathPrefix} from './time-tracking-report-types';
 import Content from './content';
 import './style/spend-time-report-widget.scss';
 

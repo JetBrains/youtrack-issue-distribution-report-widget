@@ -12,7 +12,7 @@ import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 import ReportModel from '../../../../components/src/report-model/report-model';
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 
-import TimeTrackingReportModel from './spend-time-report-model';
+import TimeTrackingReportModel from './time-tracking-report-form';
 import TimeTable from './time-table';
 
 const YAxisSelector = (

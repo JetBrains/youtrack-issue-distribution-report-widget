@@ -25,7 +25,7 @@ import ReportTimeScales from '../../../../components/src/report-model/report-tim
 import ReportConfigurationTabs from '../../../../components/src/report-form-controls/report-configuration-tabs';
 
 import {makeYouTrackFetcher} from './components/service-resource';
-import SpendTimeTrackingReportForm from './spend-time-report-form';
+import TimeTrackingReportForm from './time-tracking-report-form';
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -313,7 +313,7 @@ class Configuration extends React.Component {
           report={reportWithSettings}
           onChangeReport={this.changeReport}
         />
-        <SpendTimeTrackingReportForm
+        <TimeTrackingReportForm
           report={reportWithSettings}
           onReportSettingsChange={this.onReportSettingsChange}
           onValidStateChange={this.onReportValidStatusChange}
