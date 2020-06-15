@@ -5,13 +5,15 @@ msgstr ""
 "Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
+"X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-12 00:49\n"
+"PO-Revision-Date: 2020-06-15 03:15\n"
 
-#: src/app/distribution-report-form.js:450
+#: src/app/distribution-report-form.js:449
 msgid "Add project"
 msgstr "プロジェクトの追加"
 
@@ -19,7 +21,7 @@ msgstr "プロジェクトの追加"
 msgid "Bars"
 msgstr "バー"
 
-#: src/app/distribution-report-form.js:451
+#: src/app/distribution-report-form.js:450
 msgid "Calculate for all projects"
 msgstr "すべてのプロジェクトについて計算する"
 
@@ -27,13 +29,13 @@ msgstr "すべてのプロジェクトについて計算する"
 msgid "Calculating..."
 msgstr "計算中…"
 
-#: src/app/distribution-report-form.js:433
+#: src/app/distribution-report-form.js:429
 msgid "Can edit"
-msgstr "編集できます"
+msgstr ""
 
-#: src/app/distribution-report-form.js:424
+#: src/app/distribution-report-form.js:419
 msgid "Can view and use"
-msgstr "表示と使用を許可"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -51,23 +53,19 @@ msgstr "課題配布レポートが見つかりません"
 msgid "Cannot load selected report"
 msgstr "選択したレポートを読み込めません"
 
-#: src/app/configuration.js:264
+#: src/app/configuration.js:230
 msgid "Cannot save report"
 msgstr "レポートを保存できません"
 
-#: src/app/configuration.js:273
+#: src/app/configuration.js:239
 msgid "Cannot update widget"
 msgstr "ウィジェットを更新できません"
-
-#: src/app/distribution-report-form.js:497
-msgid "Edit report"
-msgstr "レポートの編集"
 
 #: src/app/content.js:67
 msgid "Edit settings"
 msgstr "設定の編集"
 
-#: src/app/distribution-report-form.js:478
+#: src/app/distribution-report-form.js:474
 msgid "Filter issues"
 msgstr "課題をフィルタリング"
 
@@ -75,7 +73,7 @@ msgstr "課題をフィルタリング"
 msgid "Issue Distribution Report"
 msgstr "課題配布レポート"
 
-#: src/app/distribution-report-form.js:380
+#: src/app/distribution-report-form.js:373
 msgid "Issues"
 msgstr "課題"
 
@@ -86,15 +84,6 @@ msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
-
-#: src/app/distribution-report-form.js:505
-msgid "Learn more about this report"
-msgstr "このレポートの詳細"
-
-#: src/app/configuration.js:92
-#: src/app/distribution-report-form.js:496
-msgid "New report"
-msgstr "新しいレポート"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -108,15 +97,19 @@ msgstr "不明なエラーが発生しました =("
 msgid "Pie chart"
 msgstr "円グラフ"
 
+#: src/app/distribution-report-form.js:442
+msgid "Projects"
+msgstr ""
+
+#: src/app/distribution-report-form.js:478
+msgid "Query"
+msgstr ""
+
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "ウィジェットを削除"
 
-#: src/app/distribution-report-form.js:493
-msgid "Report"
-msgstr "レポート"
-
-#: src/app/distribution-report-form.js:525
+#: src/app/distribution-report-form.js:502
 msgid "Report name"
 msgstr "レポート名"
 
@@ -124,27 +117,27 @@ msgstr "レポート名"
 msgid "Save"
 msgstr "保存"
 
-#: src/app/configuration.js:418
+#: src/app/configuration.js:353
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
-#: src/app/configuration.js:323
-msgid "Select report"
-msgstr "レポートを選択"
+#: src/app/distribution-report-form.js:418
+msgid "Sharing settings"
+msgstr ""
 
-#: src/app/distribution-report-form.js:277
-msgid "Show distribution by {{field}}"
-msgstr "{{field}}別に配布を表示"
+#: src/app/distribution-report-form.js:272
+msgid "Show distribution by"
+msgstr ""
 
-#: src/app/distribution-report-form.js:345
+#: src/app/distribution-report-form.js:340
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "{{mainFieldPresentation}}別に配布を表示"
 
-#: src/app/distribution-report-form.js:344
+#: src/app/distribution-report-form.js:339
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "{{mainFieldPresentation}} と {{secondaryFieldPresentation}} 別に配布を表示"
 
-#: src/app/distribution-report-form.js:372
+#: src/app/distribution-report-form.js:365
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "{{aggregationPolicy}}の合計を表示"
 
@@ -184,10 +177,6 @@ msgstr "総投票数"
 msgid "Total {{fieldName}}"
 msgstr "{{fieldName}}の合計"
 
-#: src/app/configuration.js:91
-msgid "Unnamed"
-msgstr "名称未設定"
-
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
 msgstr "ウィジェットは1分ごとに更新されます"
@@ -216,19 +205,11 @@ msgstr "件数順"
 msgid "desc"
 msgstr "降順"
 
-#: src/app/configuration.js:69
-msgid "existing reports"
-msgstr "既存のレポート"
-
-#: src/app/configuration.js:85
-msgid "me"
-msgstr "自分"
-
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
 msgstr "自然"
 
-#: src/app/configuration.js:52
+#: src/app/configuration.js:53
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "プロジェクト"

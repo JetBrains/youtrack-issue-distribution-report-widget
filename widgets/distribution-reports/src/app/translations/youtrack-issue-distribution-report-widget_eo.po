@@ -5,13 +5,15 @@ msgstr ""
 "Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: eo\n"
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
+"X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-12 00:49\n"
+"PO-Revision-Date: 2020-06-15 03:15\n"
 
-#: src/app/distribution-report-form.js:450
+#: src/app/distribution-report-form.js:449
 msgid "Add project"
 msgstr "crwdns933074:0crwdne933074:0"
 
@@ -19,7 +21,7 @@ msgstr "crwdns933074:0crwdne933074:0"
 msgid "Bars"
 msgstr "crwdns933076:0crwdne933076:0"
 
-#: src/app/distribution-report-form.js:451
+#: src/app/distribution-report-form.js:450
 msgid "Calculate for all projects"
 msgstr "crwdns933078:0crwdne933078:0"
 
@@ -27,11 +29,11 @@ msgstr "crwdns933078:0crwdne933078:0"
 msgid "Calculating..."
 msgstr "crwdns933080:0crwdne933080:0"
 
-#: src/app/distribution-report-form.js:433
+#: src/app/distribution-report-form.js:429
 msgid "Can edit"
 msgstr "crwdns9072638:0crwdne9072638:0"
 
-#: src/app/distribution-report-form.js:424
+#: src/app/distribution-report-form.js:419
 msgid "Can view and use"
 msgstr "crwdns9072640:0crwdne9072640:0"
 
@@ -51,23 +53,19 @@ msgstr "crwdns933086:0crwdne933086:0"
 msgid "Cannot load selected report"
 msgstr "crwdns933088:0crwdne933088:0"
 
-#: src/app/configuration.js:264
+#: src/app/configuration.js:230
 msgid "Cannot save report"
 msgstr "crwdns933090:0crwdne933090:0"
 
-#: src/app/configuration.js:273
+#: src/app/configuration.js:239
 msgid "Cannot update widget"
 msgstr "crwdns933092:0crwdne933092:0"
-
-#: src/app/distribution-report-form.js:497
-msgid "Edit report"
-msgstr "crwdns933094:0crwdne933094:0"
 
 #: src/app/content.js:67
 msgid "Edit settings"
 msgstr "crwdns933096:0crwdne933096:0"
 
-#: src/app/distribution-report-form.js:478
+#: src/app/distribution-report-form.js:474
 msgid "Filter issues"
 msgstr "crwdns933098:0crwdne933098:0"
 
@@ -75,7 +73,7 @@ msgstr "crwdns933098:0crwdne933098:0"
 msgid "Issue Distribution Report"
 msgstr "crwdns933100:0crwdne933100:0"
 
-#: src/app/distribution-report-form.js:380
+#: src/app/distribution-report-form.js:373
 msgid "Issues"
 msgstr "crwdns1253928:0crwdne1253928:0"
 
@@ -86,15 +84,6 @@ msgstr "crwdns933102:0crwdne933102:0"
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "crwdns933104:0crwdne933104:0"
-
-#: src/app/distribution-report-form.js:505
-msgid "Learn more about this report"
-msgstr "crwdns933106:0crwdne933106:0"
-
-#: src/app/configuration.js:92
-#: src/app/distribution-report-form.js:496
-msgid "New report"
-msgstr "crwdns933110:0crwdne933110:0"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -108,15 +97,19 @@ msgstr "crwdns933118:0crwdne933118:0"
 msgid "Pie chart"
 msgstr "crwdns1476886:0crwdne1476886:0"
 
+#: src/app/distribution-report-form.js:442
+msgid "Projects"
+msgstr "crwdns9375682:0crwdne9375682:0"
+
+#: src/app/distribution-report-form.js:478
+msgid "Query"
+msgstr "crwdns9375684:0crwdne9375684:0"
+
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "crwdns933122:0crwdne933122:0"
 
-#: src/app/distribution-report-form.js:493
-msgid "Report"
-msgstr "crwdns933124:0crwdne933124:0"
-
-#: src/app/distribution-report-form.js:525
+#: src/app/distribution-report-form.js:502
 msgid "Report name"
 msgstr "crwdns933130:0crwdne933130:0"
 
@@ -124,27 +117,27 @@ msgstr "crwdns933130:0crwdne933130:0"
 msgid "Save"
 msgstr "crwdns933132:0crwdne933132:0"
 
-#: src/app/configuration.js:418
+#: src/app/configuration.js:353
 msgid "Select YouTrack"
 msgstr "crwdns933134:0crwdne933134:0"
 
-#: src/app/configuration.js:323
-msgid "Select report"
-msgstr "crwdns933136:0crwdne933136:0"
+#: src/app/distribution-report-form.js:418
+msgid "Sharing settings"
+msgstr "crwdns9375686:0crwdne9375686:0"
 
-#: src/app/distribution-report-form.js:277
-msgid "Show distribution by {{field}}"
-msgstr "crwdns933138:0{{field}}crwdne933138:0"
+#: src/app/distribution-report-form.js:272
+msgid "Show distribution by"
+msgstr "crwdns9375688:0crwdne9375688:0"
 
-#: src/app/distribution-report-form.js:345
+#: src/app/distribution-report-form.js:340
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "crwdns933140:0{{mainFieldPresentation}}crwdne933140:0"
 
-#: src/app/distribution-report-form.js:344
+#: src/app/distribution-report-form.js:339
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "crwdns933142:0{{mainFieldPresentation}}crwdnd933142:0{{secondaryFieldPresentation}}crwdne933142:0"
 
-#: src/app/distribution-report-form.js:372
+#: src/app/distribution-report-form.js:365
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "crwdns1253930:0{{aggregationPolicy}}crwdne1253930:0"
 
@@ -184,10 +177,6 @@ msgstr "crwdns1253936:0crwdne1253936:0"
 msgid "Total {{fieldName}}"
 msgstr "crwdns1253938:0{{fieldName}}crwdne1253938:0"
 
-#: src/app/configuration.js:91
-msgid "Unnamed"
-msgstr "crwdns933158:0crwdne933158:0"
-
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
 msgstr "crwdns933160:0crwdne933160:0"
@@ -216,19 +205,11 @@ msgstr "crwdns933170:0crwdne933170:0"
 msgid "desc"
 msgstr "crwdns933174:0crwdne933174:0"
 
-#: src/app/configuration.js:69
-msgid "existing reports"
-msgstr "crwdns933176:0crwdne933176:0"
-
-#: src/app/configuration.js:85
-msgid "me"
-msgstr "crwdns933178:0crwdne933178:0"
-
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
 msgstr "crwdns933180:0crwdne933180:0"
 
-#: src/app/configuration.js:52
+#: src/app/configuration.js:53
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "crwdns933182:0crwdne933182:0"
