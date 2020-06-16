@@ -7,26 +7,19 @@ import {
 
 import {loadUser} from '../resources/resources';
 
-const LinkContent = ({user, homeUrl = ''}) => (
-  <Link
-    href={`${homeUrl}/users/${user.ringId || user.id}`}
-    pseudo={true}
-  >
-    {
-      user.name || user.fullName || user.login
-    }
-  </Link>
-);
-
-LinkContent.propTypes = {
-  user: PropTypes.object,
-  homeUrl: PropTypes.string
-};
-
 
 const UserLink = (
   {user, homeUrl = '', fetchHub}
 ) => {
+  const link = (
+    <Link
+      href={`${homeUrl}/users/${user.ringId || user.id || 'me'}`}
+      target="_blank"
+    >
+      {user.name || user.fullName || user.login}
+    </Link>
+  );
+
   if (!user.avatarUrl) {
     if (fetchHub) {
       const loadUserDetails = async () => {
@@ -40,13 +33,13 @@ const UserLink = (
       return (
         <span>
           <SmartUserCardTooltip userDataSource={loadUserDetails}>
-            <LinkContent user={user} homeUrl={homeUrl}/>
+            {link}
           </SmartUserCardTooltip>
         </span>
       );
     }
 
-    return <LinkContent user={user} homeUrl={homeUrl}/>;
+    return link;
   }
 
   return (
@@ -59,7 +52,7 @@ const UserLink = (
         href: `${homeUrl}/users/${user.ringId}`
       }}
       >
-        <LinkContent user={user} homeUrl={homeUrl}/>
+        {link}
       </UserCardTooltip>
     </span>
   );

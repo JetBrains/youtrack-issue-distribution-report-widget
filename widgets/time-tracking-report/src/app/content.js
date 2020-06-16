@@ -226,6 +226,7 @@ class Content extends React.Component {
         detailedGroups={detailedGroups}
         totalSpentTime={totalSpentTime}
         isIssueView={isIssueView}
+        homeUrl={this.props.youTrack.homeUrl}
       />
     );
   }

@@ -45,7 +45,7 @@ SidebarToggler.propTypes = {
 const TimeTable = ({
   grouping, columnsLegend, columnsHeader, generalGroups,
   totalSpentTime, detailedGroups, fetchHub,
-  presentationControlsPanel
+  presentationControlsPanel, homeUrl
 }) => {
 
   const [visibleSidebar, setVisibleSidebar] = useState(true);
@@ -80,6 +80,7 @@ const TimeTable = ({
       <div className={generalTableClasses}>
         <TimeTableGeneral
           grouping={grouping}
+          homeUrl={homeUrl}
           generalGroups={generalGroups}
           totalSpentTime={totalSpentTime}
           presentationControlsPanel={presentationControlsPanel}
@@ -117,6 +118,7 @@ TimeTable.propTypes = {
   columnsLegend: PropTypes.array,
   columnsHeader: PropTypes.array,
   totalSpentTime: PropTypes.object,
+  homeUrl: PropTypes.string,
   presentationControlsPanel: PropTypes.node
 };
 

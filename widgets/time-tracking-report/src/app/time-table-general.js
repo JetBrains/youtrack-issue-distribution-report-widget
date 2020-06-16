@@ -12,7 +12,7 @@ import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
 
 const TimeTableGeneralGroupLine = ({
-  line, fetchHub, isSubTitle, lineIdx, activeLineIdx, onActivateLine
+  line, fetchHub, isSubTitle, lineIdx, activeLineIdx, onActivateLine, homeUrl
 }) => {
   const activateLine = useCallback(
     () => onActivateLine(lineIdx), [lineIdx]
@@ -33,6 +33,7 @@ const TimeTableGeneralGroupLine = ({
           defaultText={line.text}
           meta={line.meta}
           fetchHub={fetchHub}
+          homeUrl={homeUrl}
         />
       </div>
       <div className="time-sheet-body-general__row-right">
@@ -60,12 +61,13 @@ TimeTableGeneralGroupLine.propTypes = {
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
   fetchHub: PropTypes.func.isRequired,
-  isSubTitle: PropTypes.bool
+  isSubTitle: PropTypes.bool,
+  homeUrl: PropTypes.string
 };
 
 
 const TimeTableGeneralGroupTitle = ({
-  meta, fetchHub, defaultText
+  meta, fetchHub, defaultText, homeUrl
 }) => {
 
   if (!meta) {
@@ -81,7 +83,8 @@ const TimeTableGeneralGroupTitle = ({
       <span>
         <Link
           className="yt-table__cell_link-identifier"
-          href={`issue/${meta.id}`}
+          href={`${homeUrl}/issue/${meta.id}`}
+          target="_blank"
         >
           {meta.title}
         </Link>
@@ -98,6 +101,7 @@ const TimeTableGeneralGroupTitle = ({
           {ringId: meta.id, login: meta.title}
         }
         fetchHub={fetchHub}
+        homeUrl={homeUrl}
       />
       <span>{meta.description}</span>
     </span>
@@ -107,13 +111,14 @@ const TimeTableGeneralGroupTitle = ({
 TimeTableGeneralGroupTitle.propTypes = {
   fetchHub: PropTypes.func.isRequired,
   meta: PropTypes.object,
-  defaultText: PropTypes.string
+  defaultText: PropTypes.string,
+  homeUrl: PropTypes.string
 };
 
 
 const TimeTableGeneralGroup = ({
   group, linesStartIdx, grouping, fetchHub,
-  activeLineIdx, onActivateLine
+  activeLineIdx, onActivateLine, homeUrl
 }) => (
   <div
     className={classNames(
@@ -126,6 +131,7 @@ const TimeTableGeneralGroup = ({
       <TimeTableGeneralGroupLine
         line={group}
         fetchHub={fetchHub}
+        homeUrl={homeUrl}
         isSubTitle={true}
         lineIdx={linesStartIdx}
         activeLineIdx={activeLineIdx}
@@ -137,6 +143,7 @@ const TimeTableGeneralGroup = ({
         <TimeTableGeneralGroupLine
           key={`general-group-line-${line.id}`}
           line={line}
+          homeUrl={homeUrl}
           fetchHub={fetchHub}
           activeLineIdx={activeLineIdx}
           onActivateLine={onActivateLine}
@@ -153,13 +160,14 @@ TimeTableGeneralGroup.propTypes = {
   linesStartIdx: PropTypes.number,
   fetchHub: PropTypes.func.isRequired,
   activeLineIdx: PropTypes.number,
-  onActivateLine: PropTypes.func
+  onActivateLine: PropTypes.func,
+  homeUrl: PropTypes.string
 };
 
 
 const TimeTableGeneral = ({
   grouping, generalGroups, totalSpentTime,
-  fetchHub, presentationControlsPanel,
+  fetchHub, presentationControlsPanel, homeUrl,
   onActivateLine, activeLineIdx, sumOfGroupSizesBeforeCurrentGroup
 }) =>
   (
@@ -180,6 +188,7 @@ const TimeTableGeneral = ({
           <TimeTableGeneralGroup
             key={`data-group-${group.id}`}
             group={group}
+            homeUrl={homeUrl}
             linesStartIdx={
               grouping
                 ? (sumOfGroupSizesBeforeCurrentGroup[idx] + idx)
@@ -204,7 +213,8 @@ TimeTableGeneral.propTypes = {
   presentationControlsPanel: PropTypes.node,
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
-  sumOfGroupSizesBeforeCurrentGroup: PropTypes.array
+  sumOfGroupSizesBeforeCurrentGroup: PropTypes.array,
+  homeUrl: PropTypes.string
 };
 
 export default TimeTableGeneral;
