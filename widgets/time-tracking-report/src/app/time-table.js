@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useMemo} from 'react';
+import React, {useCallback, useState, useMemo, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
@@ -50,6 +50,8 @@ const TimeTable = ({
 
   const [visibleSidebar, setVisibleSidebar] = useState(true);
   const [activeLineIdx, onActivateLine] = useState(undefined);
+  const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
+  const tableContainer = useRef(null);
 
   const resetActiveLineIdx = useCallback(
     () => onActivateLine(undefined), []
@@ -72,10 +74,18 @@ const TimeTable = ({
     [generalGroups]
   );
 
+  useEffect(() => {
+    setHasVerticalScroll(
+      visibleSidebar &&
+      window.innerHeight < tableContainer.current.getBoundingClientRect().height
+    );
+  }, [tableContainer, visibleSidebar]);
+
   return (
     <div
       className="time-sheet-body__wrapper"
       onMouseLeave={resetActiveLineIdx}
+      ref={tableContainer}
     >
       <div className={generalTableClasses}>
         <TimeTableGeneral
@@ -88,6 +98,7 @@ const TimeTable = ({
           activeLineIdx={activeLineIdx}
           onActivateLine={onActivateLine}
           sumOfGroupSizesBeforeCurrentGroup={sumOfGroupSizesBeforeCurrentGroup}
+          fixedHeader={hasVerticalScroll}
         />
       </div>
       <SidebarToggler
@@ -104,6 +115,7 @@ const TimeTable = ({
           activeLineIdx={activeLineIdx}
           onActivateLine={onActivateLine}
           sumOfGroupSizesBeforeCurrentGroup={sumOfGroupSizesBeforeCurrentGroup}
+          fixedHeader={hasVerticalScroll}
         />
       }
     </div>

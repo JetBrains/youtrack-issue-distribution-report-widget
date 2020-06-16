@@ -167,20 +167,32 @@ TimeTableGeneralGroup.propTypes = {
 
 const TimeTableGeneral = ({
   grouping, generalGroups, totalSpentTime,
-  fetchHub, presentationControlsPanel, homeUrl,
+  fetchHub, presentationControlsPanel, homeUrl, fixedHeader,
   onActivateLine, activeLineIdx, sumOfGroupSizesBeforeCurrentGroup
 }) =>
   (
-    <div className="time-sheet-body-general">
-      <div className="time-sheet-body-general__axys-title">
-        { presentationControlsPanel }
-      </div>
-      <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
-        <div className="time-sheet-body-general__row-left">
-          { i18n('Total time') }
+    <div
+      className={classNames({
+        'time-sheet-body-general': true,
+        'time-sheet-body-general_fixed': fixedHeader
+      })}
+    >
+      <div
+        className={classNames({
+          'time-sheet-body-general__header': true,
+          'time-sheet-body-general__header_fixed': fixedHeader
+        })}
+      >
+        <div className="time-sheet-body-general__axys-title">
+          { presentationControlsPanel }
         </div>
-        <div className="time-sheet-body-general__row-right">
-          <SpentTimeValue value={totalSpentTime}/>
+        <div className="time-sheet-body-general__row time-sheet-body-general__row_total">
+          <div className="time-sheet-body-general__row-left">
+            { i18n('Total time') }
+          </div>
+          <div className="time-sheet-body-general__row-right">
+            <SpentTimeValue value={totalSpentTime}/>
+          </div>
         </div>
       </div>
       {
@@ -214,6 +226,7 @@ TimeTableGeneral.propTypes = {
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
   sumOfGroupSizesBeforeCurrentGroup: PropTypes.array,
+  fixedHeader: PropTypes.bool,
   homeUrl: PropTypes.string
 };
 

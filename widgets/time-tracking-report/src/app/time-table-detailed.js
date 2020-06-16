@@ -1,6 +1,7 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import throttle from 'mout/function/throttle';
 
 import SpentTimeValue from '../../../../components/src/spent-time-value/spent-time-value';
 
@@ -40,7 +41,7 @@ TimeTableDetailedGroupLine.propTypes = {
 
 
 const TimeTableDetailedHeader = (
-  {legend, headers}
+  {legend, headers, left, fixed, hidden}
 ) => {
 
   const getTitleClasses = columnHeader => classNames(
@@ -51,8 +52,17 @@ const TimeTableDetailedHeader = (
     }
   );
 
+  const style = fixed ? {left, zIndex: 0} : {};
+  const classes = classNames('time-sheet-body-detailed__header', {
+    'time-sheet-body-detailed__header_fixed': fixed,
+    'time-sheet-body-detailed__header_hidden': hidden
+  });
+
   return (
-    <thead>
+    <thead
+      className={classes}
+      style={style}
+    >
       <tr className="yt-table__row yt-table__row-data">
         {
           legend.map(({legendText, startColumnIdx, colSpan}) => (
@@ -103,7 +113,10 @@ const TimeTableDetailedHeader = (
 
 TimeTableDetailedHeader.propTypes = {
   legend: PropTypes.array.isRequired,
-  headers: PropTypes.array.isRequired
+  headers: PropTypes.array.isRequired,
+  fixed: PropTypes.bool,
+  hidden: PropTypes.bool,
+  left: PropTypes.number
 };
 
 const TimeTableDetailedRow = ({
@@ -150,6 +163,7 @@ const TimeTableDetailedBody = ({
   const getGroupClassNames = idx =>
     classNames(
       'yt-table__group',
+      'time-sheet-body-detailed__body',
       {'yt-table__group_not-bordered': !idx}
     );
 
@@ -210,18 +224,41 @@ TimeTableDetailedBody.propTypes = {
 const TimeTableDetailed = ({
   hasGrouping, legend, headers, groups,
   activeLineIdx, onActivateLine,
-  sumOfGroupSizesBeforeCurrentGroup
-}) =>
+  sumOfGroupSizesBeforeCurrentGroup, fixedHeader
+}) => {
+  const [left, setLeft] = useState(null);
 
-//todo: yt-sticky-wide-table="" (+check why does it broken in youtrack-frontend)
+  const dataContainer = useRef(null);
 
-  (
-    <div className="time-sheet-body__data">
+  const throttleDelay = 100;
+  const onScroll = useCallback(throttle(() => {
+    const {current} = dataContainer;
+    setLeft(
+      current.getBoundingClientRect().left - current.scrollLeft
+    );
+  }, throttleDelay), [dataContainer, setLeft]);
+
+  return (
+    <div
+      className="time-sheet-body__data"
+      ref={dataContainer}
+      onScroll={onScroll}
+    >
       <table className="report yt-table">
         <TimeTableDetailedHeader
+          left={left}
+          fixed={fixedHeader}
           legend={legend}
           headers={headers}
         />
+        {
+          fixedHeader &&
+          <TimeTableDetailedHeader
+            hidden={true}
+            legend={legend}
+            headers={headers}
+          />
+        }
         <TimeTableDetailedBody
           hasGrouping={hasGrouping}
           headers={headers}
@@ -233,6 +270,7 @@ const TimeTableDetailed = ({
       </table>
     </div>
   );
+};
 
 
 TimeTableDetailed.propTypes = {
@@ -242,7 +280,8 @@ TimeTableDetailed.propTypes = {
   hasGrouping: PropTypes.bool,
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
-  sumOfGroupSizesBeforeCurrentGroup: PropTypes.array
+  sumOfGroupSizesBeforeCurrentGroup: PropTypes.array,
+  fixedHeader: PropTypes.bool
 };
 
 export default TimeTableDetailed;

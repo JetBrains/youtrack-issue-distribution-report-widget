@@ -31,11 +31,11 @@ const UserLink = (
       };
 
       return (
-        <span>
-          <SmartUserCardTooltip userDataSource={loadUserDetails}>
-            {link}
-          </SmartUserCardTooltip>
-        </span>
+        <SmartUserCardTooltip
+          userDataSource={loadUserDetails}
+        >
+          {link}
+        </SmartUserCardTooltip>
       );
     }
 
@@ -43,18 +43,17 @@ const UserLink = (
   }
 
   return (
-    <span>
-      <UserCardTooltip user={{
+    <UserCardTooltip
+      user={{
         login: user.login,
         name: user.name,
         email: user.email,
         avatarUrl: user.avatarUrl,
         href: `${homeUrl}/users/${user.ringId}`
       }}
-      >
-        {link}
-      </UserCardTooltip>
-    </span>
+    >
+      {link}
+    </UserCardTooltip>
   );
 };
 

@@ -193,6 +193,8 @@
   }
 
   &__sidebar-toggler {
+    z-index: 1;
+
     padding: 2px;
 
     cursor: pointer;
@@ -233,6 +235,8 @@
 
   &__data {
     overflow: auto;
+
+    margin-top: -2 * $ring-unit;
   }
 
   .header-legend {
@@ -265,6 +269,23 @@
 
 .time-sheet-body-general {
   flex-basis: 30%;
+
+  margin-top: -2 * $ring-unit;
+
+  &_fixed {
+    margin-top: 12 * $ring-unit;
+  }
+
+  &__header {
+    &_fixed {
+      position: fixed;
+
+      z-index: 1;
+      top: 0;
+
+      background-color: var(--ring-content-background-color);
+    }
+  }
 
   &__axys-title {
     display: flex;
@@ -354,6 +375,25 @@
       & .time-sheet-body-general__row-right {
         padding: 15px 5px 15px 2px;
       }
+    }
+  }
+}
+
+.time-sheet-body-detailed {
+  &__header {
+    &_fixed {
+      position: fixed;
+
+      z-index: 1;
+      top: 0;
+
+      transition: left 1ms linear;
+
+      background-color: var(--ring-content-background-color);
+    }
+
+    &_hidden {
+      opacity: 0;
     }
   }
 }

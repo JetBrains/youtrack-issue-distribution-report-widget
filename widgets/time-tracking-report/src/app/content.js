@@ -60,7 +60,7 @@ const TimeTableSettingsToolbar = (
         isIssueView={isIssueView}
         changeXAxis={onChange}
       />
-      <span>
+      <div>
         <span>{i18n('group by {{field}}', {field: ''})}</span>
         <ReportGroupingControl
           projects={projects}
@@ -69,7 +69,7 @@ const TimeTableSettingsToolbar = (
           disabled={disabled}
           fetchYouTrack={fetchYouTrack}
         />
-      </span>
+      </div>
     </div>
   );
 };
