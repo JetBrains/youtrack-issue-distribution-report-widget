@@ -44,11 +44,10 @@ SidebarToggler.propTypes = {
 
 const TimeTable = ({
   grouping, columnsLegend, columnsHeader, generalGroups,
-  totalSpentTime, detailedGroups, fetchHub,
-  presentationControlsPanel, homeUrl
+  totalSpentTime, detailedGroups, fetchHub, withDetails,
+  presentationControlsPanel, homeUrl, onChangeDetailsVisibility
 }) => {
 
-  const [visibleSidebar, setVisibleSidebar] = useState(true);
   const [activeLineIdx, onActivateLine] = useState(undefined);
   const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
   const tableContainer = useRef(null);
@@ -58,7 +57,7 @@ const TimeTable = ({
   );
 
   const generalTableClasses = classNames('time-sheet-body__general-table', {
-    'time-sheet-body__general-table_expanded': !visibleSidebar
+    'time-sheet-body__general-table_expanded': !withDetails
   });
 
   const sumOfGroupSizesBeforeCurrentGroup = useMemo(
@@ -76,10 +75,10 @@ const TimeTable = ({
 
   useEffect(() => {
     setHasVerticalScroll(
-      visibleSidebar &&
+      withDetails &&
       window.innerHeight < tableContainer.current.getBoundingClientRect().height
     );
-  }, [tableContainer, visibleSidebar]);
+  }, [tableContainer, withDetails]);
 
   return (
     <div
@@ -102,11 +101,11 @@ const TimeTable = ({
         />
       </div>
       <SidebarToggler
-        onToggleSidebar={setVisibleSidebar}
-        visibleSidebar={visibleSidebar}
+        onToggleSidebar={onChangeDetailsVisibility}
+        visibleSidebar={withDetails}
       />
       {
-        visibleSidebar &&
+        withDetails &&
         <TimeTableDetailed
           hasGrouping={!!grouping}
           legend={columnsLegend}
@@ -131,6 +130,8 @@ TimeTable.propTypes = {
   columnsHeader: PropTypes.array,
   totalSpentTime: PropTypes.object,
   homeUrl: PropTypes.string,
+  withDetails: PropTypes.bool,
+  onChangeDetailsVisibility: PropTypes.func.isRequired,
   presentationControlsPanel: PropTypes.node
 };
 

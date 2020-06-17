@@ -12,7 +12,14 @@ import '../../../../components/src/report-widget/report-widget.scss';
 import Widget from './widget';
 import TRANSLATIONS from './translations';
 
-const CONFIG_FIELDS = ['reportId', 'mainAxisSortOrder', 'secondaryAxisSortOrder', 'presentation', 'youTrack', 'refreshPeriod', 'yAxis'];
+const CONFIG_FIELDS = [
+  'reportId',
+  'presentation',
+  'youTrack',
+  'refreshPeriod',
+  'yAxis',
+  'withDetails'
+];
 
 DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
   setLocale(DashboardAddons.locale, TRANSLATIONS);

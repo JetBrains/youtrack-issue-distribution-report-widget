@@ -57,7 +57,6 @@ class SpendTimeReportsWidget extends React.Component {
   static getConfigAsObject = (configWrapper, fieldsToOverwrite) => {
     return {
       reportId: getFieldValue('reportId'),
-      mainAxisSortOrder: getFieldValue('mainAxisSortOrder'),
       yAxis: getFieldValue('yAxis'),
       presentation: getFieldValue('presentation'),
       youTrack: getFieldValue('youTrack'),
@@ -133,6 +132,8 @@ class SpendTimeReportsWidget extends React.Component {
 
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
     const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
+    const rawWithDetails = this.props.configWrapper.getFieldValue('withDetails');
+    const withDetails = typeof rawWithDetails === 'boolean' ? rawWithDetails : true;
     const report = (configReportId && {id: configReportId}) ||
       (await loadTimeReports(this.fetchYouTrack))[0];
 
@@ -145,7 +146,7 @@ class SpendTimeReportsWidget extends React.Component {
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD;
-      this.setState({report: reportWithData, refreshPeriod, yAxis});
+      this.setState({report: reportWithData, refreshPeriod, yAxis, withDetails});
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
@@ -294,6 +295,16 @@ class SpendTimeReportsWidget extends React.Component {
     return null;
   };
 
+  onChangeDetailsVisibility = async withDetails => {
+    this.setState({withDetails});
+
+    if (this.props.editable) {
+      return await this.props.configWrapper.update({withDetails});
+    }
+
+    return null;
+  };
+
   renderConfigurationForm() {
     const submitForm = async (selectedReportId, refreshPeriod, youTrack) => {
       const {yAxis} = this.state;
@@ -342,6 +353,7 @@ class SpendTimeReportsWidget extends React.Component {
       refreshPeriod,
       youTrack,
       isCalculationCompleted,
+      withDetails,
       yAxis
     } = this.state;
 
@@ -377,6 +389,8 @@ class SpendTimeReportsWidget extends React.Component {
         onOpenSettings={this.openWidgetsSettings}
         onChangeReportGrouping={this.onChangeReportGrouping}
         onChangeYAxis={this.onChangeYAxis}
+        withDetails={withDetails}
+        onChangeDetailsVisibility={this.onChangeDetailsVisibility}
       />
     );
   }

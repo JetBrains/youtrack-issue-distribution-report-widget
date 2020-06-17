@@ -93,7 +93,8 @@ class Content extends React.Component {
     dashboardApi: PropTypes.object,
     editable: PropTypes.bool,
     isIssueView: PropTypes.bool,
-
+    withDetails: PropTypes.bool,
+    onChangeDetailsVisibility: PropTypes.func.isRequired,
     onOpenSettings: PropTypes.func,
     onChangeReportGrouping: PropTypes.func,
     onChangeYAxis: PropTypes.func
@@ -227,6 +228,8 @@ class Content extends React.Component {
         totalSpentTime={totalSpentTime}
         isIssueView={isIssueView}
         homeUrl={this.props.youTrack.homeUrl}
+        withDetails={this.props.withDetails}
+        onChangeDetailsVisibility={this.props.onChangeDetailsVisibility}
       />
     );
   }
