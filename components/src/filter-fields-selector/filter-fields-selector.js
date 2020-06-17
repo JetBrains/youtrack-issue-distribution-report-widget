@@ -16,10 +16,15 @@ const getEmptyOption = emptyText => ({
   model: null
 });
 
+const capitalizeFirstLetter = str =>
+  (str && (str.substring(0, 1).toUpperCase() + str.substring(1)));
+
 const toSelectOption = filterField => (
   filterField && {
     key: filterField.id,
-    label: filterField.presentation || filterField.name,
+    label: capitalizeFirstLetter(
+      filterField.localizedName || filterField.presentation || filterField.name
+    ),
     model: filterField
   }
 );
