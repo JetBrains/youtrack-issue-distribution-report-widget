@@ -413,7 +413,7 @@ class SpendTimeReportsWidget extends React.Component {
     const content = withWidgetLoaderHOC(() => this.renderContent());
 
     return (
-      <div className="distribution-reports-widget">
+      <div className="time-report-widget">
         <ConfigurableWidget
           isConfiguring={this.state.isConfiguring}
           dashboardApi={this.props.dashboardApi}
