@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import throttle from 'mout/function/throttle';
@@ -224,24 +224,22 @@ TimeTableDetailedBody.propTypes = {
 const TimeTableDetailed = ({
   hasGrouping, legend, headers, groups,
   activeLineIdx, onActivateLine,
-  sumOfGroupSizesBeforeCurrentGroup, fixedHeader
+  sumOfGroupSizesBeforeCurrentGroup, fixedHeader, forwardRef
 }) => {
   const [left, setLeft] = useState(null);
 
-  const dataContainer = useRef(null);
-
   const throttleDelay = 100;
   const onScroll = useCallback(throttle(() => {
-    const {current} = dataContainer;
+    const {current} = forwardRef;
     setLeft(
       current.getBoundingClientRect().left - current.scrollLeft
     );
-  }, throttleDelay), [dataContainer, setLeft]);
+  }, throttleDelay), [forwardRef, setLeft]);
 
   return (
     <div
       className="time-sheet-body__data"
-      ref={dataContainer}
+      ref={forwardRef}
       onScroll={onScroll}
     >
       <table className="report yt-table">
@@ -281,7 +279,8 @@ TimeTableDetailed.propTypes = {
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
   sumOfGroupSizesBeforeCurrentGroup: PropTypes.array,
-  fixedHeader: PropTypes.bool
+  fixedHeader: PropTypes.bool,
+  forwardRef: PropTypes.object
 };
 
 export default TimeTableDetailed;

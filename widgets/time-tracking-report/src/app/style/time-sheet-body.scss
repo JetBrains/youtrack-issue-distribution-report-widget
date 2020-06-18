@@ -221,15 +221,17 @@
   }
 
   &__general-table {
-    flex-basis: 38%;
-
-    max-width: 38%;
-
     &_expanded {
       flex-basis: 100%;
 
       min-width: 80%;
       max-width: 100%;
+    }
+
+    &_auto-width {
+      flex-basis: 38%;
+
+      max-width: 38%;
     }
   }
 
@@ -282,6 +284,8 @@
 
       z-index: 1;
       top: 0;
+      left: 0;
+      padding-left: 2 * $ring-unit;
 
       background-color: var(--ring-content-background-color);
     }

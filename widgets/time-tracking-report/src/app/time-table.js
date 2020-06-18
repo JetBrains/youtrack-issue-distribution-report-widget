@@ -50,13 +50,16 @@ const TimeTable = ({
 
   const [activeLineIdx, onActivateLine] = useState(undefined);
   const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
+  const [generalTableWidth, setGeneralTableWidth] = useState(undefined);
   const tableContainer = useRef(null);
+  const detailedTableContainer = useRef(null);
 
   const resetActiveLineIdx = useCallback(
     () => onActivateLine(undefined), []
   );
 
   const generalTableClasses = classNames('time-sheet-body__general-table', {
+    'time-sheet-body__general-table_auto-width': !generalTableWidth && withDetails,
     'time-sheet-body__general-table_expanded': !withDetails
   });
 
@@ -74,11 +77,31 @@ const TimeTable = ({
   );
 
   useEffect(() => {
-    setHasVerticalScroll(
-      withDetails &&
-      window.innerHeight < tableContainer.current.getBoundingClientRect().height
-    );
+    const detectScroll = () => {
+      setHasVerticalScroll(true);
+      unbind();
+    };
+    window.addEventListener('scroll', detectScroll);
+
+    return () => unbind();
+
+    function unbind() {
+      window.removeEventListener('scroll', detectScroll);
+    }
   }, [tableContainer, withDetails]);
+
+  useEffect(() => {
+    const margins = 56;
+    const width = window.innerWidth - margins;
+    const detailsTableWidth =
+      (withDetails && (detailedTableContainer || {}).current)
+        ? detailedTableContainer.current.getBoundingClientRect().width
+        : 0;
+    const newGeneralTableWidth = detailsTableWidth < width
+      ? width - detailsTableWidth
+      : undefined;
+    setGeneralTableWidth(newGeneralTableWidth);
+  }, [tableContainer, withDetails, detailedTableContainer]);
 
   return (
     <div
@@ -86,7 +109,10 @@ const TimeTable = ({
       onMouseLeave={resetActiveLineIdx}
       ref={tableContainer}
     >
-      <div className={generalTableClasses}>
+      <div
+        className={generalTableClasses}
+        style={generalTableWidth && {width: generalTableWidth}}
+      >
         <TimeTableGeneral
           grouping={grouping}
           homeUrl={homeUrl}
@@ -98,6 +124,7 @@ const TimeTable = ({
           onActivateLine={onActivateLine}
           sumOfGroupSizesBeforeCurrentGroup={sumOfGroupSizesBeforeCurrentGroup}
           fixedHeader={hasVerticalScroll}
+          width={generalTableWidth}
         />
       </div>
       <SidebarToggler
@@ -107,6 +134,7 @@ const TimeTable = ({
       {
         withDetails &&
         <TimeTableDetailed
+          forwardRef={detailedTableContainer}
           hasGrouping={!!grouping}
           legend={columnsLegend}
           headers={columnsHeader}

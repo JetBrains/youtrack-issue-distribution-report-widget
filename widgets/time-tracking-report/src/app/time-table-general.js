@@ -168,7 +168,8 @@ TimeTableGeneralGroup.propTypes = {
 const TimeTableGeneral = ({
   grouping, generalGroups, totalSpentTime,
   fetchHub, presentationControlsPanel, homeUrl, fixedHeader,
-  onActivateLine, activeLineIdx, sumOfGroupSizesBeforeCurrentGroup
+  onActivateLine, activeLineIdx, sumOfGroupSizesBeforeCurrentGroup,
+  width
 }) =>
   (
     <div
@@ -182,6 +183,7 @@ const TimeTableGeneral = ({
           'time-sheet-body-general__header': true,
           'time-sheet-body-general__header_fixed': fixedHeader
         })}
+        style={(fixedHeader && width) ? {width} : null}
       >
         <div className="time-sheet-body-general__axys-title">
           { presentationControlsPanel }
@@ -227,7 +229,8 @@ TimeTableGeneral.propTypes = {
   onActivateLine: PropTypes.func,
   sumOfGroupSizesBeforeCurrentGroup: PropTypes.array,
   fixedHeader: PropTypes.bool,
-  homeUrl: PropTypes.string
+  homeUrl: PropTypes.string,
+  width: PropTypes.number
 };
 
 export default TimeTableGeneral;
