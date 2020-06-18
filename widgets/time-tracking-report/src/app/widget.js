@@ -132,8 +132,11 @@ class SpendTimeReportsWidget extends React.Component {
 
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
     const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
-    const rawWithDetails = this.props.configWrapper.getFieldValue('withDetails');
-    const withDetails = typeof rawWithDetails === 'boolean' ? rawWithDetails : true;
+    const rawWithDetails =
+      this.props.configWrapper.getFieldValue('withDetails');
+    const withDetails = typeof rawWithDetails === 'boolean'
+      ? rawWithDetails
+      : true;
     const report = (configReportId && {id: configReportId}) ||
       (await loadTimeReports(this.fetchYouTrack))[0];
 
@@ -146,7 +149,12 @@ class SpendTimeReportsWidget extends React.Component {
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD;
-      this.setState({report: reportWithData, refreshPeriod, yAxis, withDetails});
+      this.setState({
+        report: reportWithData,
+        refreshPeriod,
+        yAxis,
+        withDetails
+      });
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
