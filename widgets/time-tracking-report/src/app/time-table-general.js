@@ -2,17 +2,18 @@ import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
-import Link from '@jetbrains/ring-ui/components/link/link';
 
 import UserLink from '../../../../components/src/user-link/user-link';
 import SpentTimeValue from '../../../../components/src/spent-time-value/spent-time-value';
 import SpentTimeProgress from '../../../../components/src/spent-time-progress/spent-time-progress';
+import IssueLink from '../../../../components/src/issue-link/issue-link';
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
 
 const TimeTableGeneralGroupLine = ({
-  line, fetchHub, isSubTitle, lineIdx, activeLineIdx, onActivateLine, homeUrl
+  line, fetchHub, isSubTitle, lineIdx,
+  activeLineIdx, onActivateLine, homeUrl, fetchYouTrack
 }) => {
   const activateLine = useCallback(
     () => onActivateLine(lineIdx), [lineIdx]
@@ -33,6 +34,7 @@ const TimeTableGeneralGroupLine = ({
           defaultText={line.text}
           meta={line.meta}
           fetchHub={fetchHub}
+          fetchYouTrack={fetchYouTrack}
           homeUrl={homeUrl}
         />
       </div>
@@ -61,13 +63,14 @@ TimeTableGeneralGroupLine.propTypes = {
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
   fetchHub: PropTypes.func.isRequired,
+  fetchYouTrack: PropTypes.func.isRequired,
   isSubTitle: PropTypes.bool,
   homeUrl: PropTypes.string
 };
 
 
 const TimeTableGeneralGroupTitle = ({
-  meta, fetchHub, defaultText, homeUrl
+  meta, fetchHub, fetchYouTrack, defaultText, homeUrl
 }) => {
 
   if (!meta) {
@@ -78,23 +81,19 @@ const TimeTableGeneralGroupTitle = ({
     );
   }
 
-  if (meta.isIssue) {
-    return (
-      <span>
-        <Link
-          className="yt-table__cell_link-identifier"
-          href={`${homeUrl}/issue/${meta.id}`}
-          target="_blank"
-        >
-          {meta.title}
-        </Link>
-        <span>{meta.description}</span>
-      </span>
-    );
-  }
-
-  return (
-    <span>
+  const link = meta.isIssue
+    ? (
+      <IssueLink
+        issue={{
+          id: meta.id,
+          idReadable: meta.title,
+          summary: meta.description
+        }}
+        homeUrl={homeUrl}
+        fetchYouTrack={fetchYouTrack}
+        className="yt-table__cell_link-identifier"
+      />
+    ) : (
       <UserLink
         className="yt-table__cell_link-identifier"
         user={
@@ -103,6 +102,11 @@ const TimeTableGeneralGroupTitle = ({
         fetchHub={fetchHub}
         homeUrl={homeUrl}
       />
+    );
+
+  return (
+    <span>
+      {link}
       <span>{meta.description}</span>
     </span>
   );
@@ -110,6 +114,7 @@ const TimeTableGeneralGroupTitle = ({
 
 TimeTableGeneralGroupTitle.propTypes = {
   fetchHub: PropTypes.func.isRequired,
+  fetchYouTrack: PropTypes.func.isRequired,
   meta: PropTypes.object,
   defaultText: PropTypes.string,
   homeUrl: PropTypes.string
@@ -118,7 +123,7 @@ TimeTableGeneralGroupTitle.propTypes = {
 
 const TimeTableGeneralGroup = ({
   group, linesStartIdx, grouping, fetchHub,
-  activeLineIdx, onActivateLine, homeUrl
+  fetchYouTrack, activeLineIdx, onActivateLine, homeUrl
 }) => (
   <div
     className={classNames(
@@ -131,6 +136,7 @@ const TimeTableGeneralGroup = ({
       <TimeTableGeneralGroupLine
         line={group}
         fetchHub={fetchHub}
+        fetchYouTrack={fetchYouTrack}
         homeUrl={homeUrl}
         isSubTitle={true}
         lineIdx={linesStartIdx}
@@ -145,6 +151,7 @@ const TimeTableGeneralGroup = ({
           line={line}
           homeUrl={homeUrl}
           fetchHub={fetchHub}
+          fetchYouTrack={fetchYouTrack}
           activeLineIdx={activeLineIdx}
           onActivateLine={onActivateLine}
           lineIdx={grouping ? (linesStartIdx + idx + 1) : (linesStartIdx + idx)}
@@ -159,6 +166,7 @@ TimeTableGeneralGroup.propTypes = {
   grouping: PropTypes.object,
   linesStartIdx: PropTypes.number,
   fetchHub: PropTypes.func.isRequired,
+  fetchYouTrack: PropTypes.func.isRequired,
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,
   homeUrl: PropTypes.string
@@ -167,7 +175,7 @@ TimeTableGeneralGroup.propTypes = {
 
 const TimeTableGeneral = ({
   grouping, generalGroups, totalSpentTime,
-  fetchHub, presentationControlsPanel, homeUrl, fixedHeader,
+  fetchHub, fetchYouTrack, presentationControlsPanel, homeUrl, fixedHeader,
   onActivateLine, activeLineIdx, sumOfGroupSizesBeforeCurrentGroup,
   width
 }) =>
@@ -209,6 +217,7 @@ const TimeTableGeneral = ({
                 : sumOfGroupSizesBeforeCurrentGroup[idx]
             }
             grouping={grouping}
+            fetchYouTrack={fetchYouTrack}
             fetchHub={fetchHub}
             onActivateLine={onActivateLine}
             activeLineIdx={activeLineIdx}
@@ -224,6 +233,7 @@ TimeTableGeneral.propTypes = {
   grouping: PropTypes.object,
   isIssueView: PropTypes.bool,
   fetchHub: PropTypes.func.isRequired,
+  fetchYouTrack: PropTypes.func.isRequired,
   presentationControlsPanel: PropTypes.node,
   activeLineIdx: PropTypes.number,
   onActivateLine: PropTypes.func,

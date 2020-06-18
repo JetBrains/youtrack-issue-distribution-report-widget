@@ -100,6 +100,11 @@ class Content extends React.Component {
     onChangeYAxis: PropTypes.func
   };
 
+  fetchYouTrack = (url, params) =>
+    this.props.dashboardApi.fetch(
+      (this.props.youTrack || {}).id, url, params
+    );
+
   renderLoader() {
     return <LoaderInline/>;
   }
@@ -208,6 +213,7 @@ class Content extends React.Component {
       <TimeTable
         grouping={report.grouping}
         fetchHub={dashboardApi.fetchHub}
+        fetchYouTrack={this.fetchYouTrack}
         presentationControlsPanel={
           <TimeTableSettingsToolbar
             youTrack={this.props.youTrack}

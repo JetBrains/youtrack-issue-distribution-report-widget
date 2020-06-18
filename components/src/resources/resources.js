@@ -9,6 +9,10 @@ const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,onl
 const USER_GROUP_FIELDS = 'id,name,icon';
 const PROJECTS_FIELDS = 'id,name,shortName';
 
+const ISSUE_FIELD_VALUE_FIELDS = '$type,id,name,localizedName,fullName,minutes,text,markdownText,presentation,color(id)';
+const ISSUE_FIELD_FIELDS = `id,name,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(id,field(id,name))`;
+const ISSUE_FIELDS = `id,idReadable,summary,fields(${ISSUE_FIELD_FIELDS})`;
+
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation,localizedName';
 
@@ -256,6 +260,12 @@ async function loadUsers(
   );
 }
 
+async function loadIssue(fetchYoutrack, issueId) {
+  return await fetchYoutrack(
+    `api/issues/${issueId}?fields=${ISSUE_FIELDS}`
+  );
+}
+
 async function loadWorkItemTypes(fetchYouTrack) {
   return await fetchYouTrack(
     `api/admin/timeTrackingSettings/workItemTypes?fields=${WORK_ITEM_TYPE_FIELDS}`, {}
@@ -325,6 +335,7 @@ export {
   loadCurrentUser,
   loadUser,
   loadUsers,
+  loadIssue,
 
   loadWorkItemTypes,
 

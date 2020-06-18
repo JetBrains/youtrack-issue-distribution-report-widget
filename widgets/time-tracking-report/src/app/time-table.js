@@ -44,7 +44,7 @@ SidebarToggler.propTypes = {
 
 const TimeTable = ({
   grouping, columnsLegend, columnsHeader, generalGroups,
-  totalSpentTime, detailedGroups, fetchHub, withDetails,
+  totalSpentTime, detailedGroups, fetchHub, fetchYouTrack, withDetails,
   presentationControlsPanel, homeUrl, onChangeDetailsVisibility
 }) => {
 
@@ -120,6 +120,7 @@ const TimeTable = ({
           totalSpentTime={totalSpentTime}
           presentationControlsPanel={presentationControlsPanel}
           fetchHub={fetchHub}
+          fetchYouTrack={fetchYouTrack}
           activeLineIdx={activeLineIdx}
           onActivateLine={onActivateLine}
           sumOfGroupSizesBeforeCurrentGroup={sumOfGroupSizesBeforeCurrentGroup}
@@ -152,6 +153,7 @@ const TimeTable = ({
 TimeTable.propTypes = {
   grouping: PropTypes.object,
   fetchHub: PropTypes.func,
+  fetchYouTrack: PropTypes.func,
   generalGroups: PropTypes.array,
   detailedGroups: PropTypes.array,
   columnsLegend: PropTypes.array,
