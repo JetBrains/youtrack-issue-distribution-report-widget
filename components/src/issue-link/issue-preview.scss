@@ -4,7 +4,7 @@
   display: flex;
 
   overflow: hidden;
-  flex-direction: column;
+  flex-direction: row;
 
   width: 350px;
 
@@ -17,21 +17,22 @@
 
   line-height: var(--ring-line-height-lowest);
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__priority-wrapper {
+    flex-basis: 20px;
+  }
+
   &__header {
     display: flex;
-
-    width: 100%;
-
-    white-space: nowrap;
   }
 
   .yt-issue-preview__loader {
     display: flex;
     flex-direction: row;
-  }
-
-  .yt-issue-preview__priority-wrapper {
-    flex-basis: 20px;
   }
 
   .yt-issue-preview__priority {
@@ -56,9 +57,7 @@
   }
 
   &__summary {
-    overflow: hidden;
-
-    text-overflow: ellipsis;
+    word-break: break-word;
 
     color: var(--ring-text-color);
   }
