@@ -4,6 +4,7 @@
   display: flex;
 
   overflow: hidden;
+  flex-direction: column;
 
   width: 350px;
 
@@ -12,11 +13,17 @@
 
   text-align: left;
 
-  white-space: nowrap;
-
   font-size: var(--ring-font-size-smaller);
 
   line-height: var(--ring-line-height-lowest);
+
+  &__header {
+    display: flex;
+
+    width: 100%;
+
+    white-space: nowrap;
+  }
 
   .yt-issue-preview__loader {
     display: flex;
@@ -50,8 +57,6 @@
 
   &__summary {
     overflow: hidden;
-
-    max-width: 90%;
 
     text-overflow: ellipsis;
 
