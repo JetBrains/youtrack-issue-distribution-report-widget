@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import fecha from 'fecha';
 import PropTypes from 'prop-types';
 import Link from '@jetbrains/ring-ui/components/link/link';
 import classNames from 'classnames';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
+import {i18n} from 'hub-dashboard-addons/components/localization/src/localization';
 
 import {loadIssue} from '../resources/resources';
 
@@ -20,12 +22,46 @@ const isPriorityField = issueField => {
 const getPriorityIssueField = fields =>
   (fields || []).filter(isPriorityField)[0];
 
+const periodFormatter = value => {
+  const EMPTY_PERIOD_VALUE = i18n('{{minCount}}min', {minCount: 0});
+  return value.presentation || value.minutes || EMPTY_PERIOD_VALUE;
+};
+
+const dateFormatter = value =>
+  fecha.format(value, 'D ddd');
+
+const dateAndTimeFormatter = value =>
+  fecha.format(value, 'D ddd HH:mm');
+
+const floatFormatter = value => value;
+
+const fieldValueFormatters = {
+  period: periodFormatter,
+  date: dateFormatter,
+  float: floatFormatter,
+  'date and time': dateAndTimeFormatter
+};
+
+// eslint-disable-next-line complexity
+const formatAsIssueFieldValue = (value, fieldType) => {
+  if (!value) {
+    return '';
+  }
+  const formatter = fieldValueFormatters[fieldType];
+  if (formatter) {
+    return formatter(value);
+  }
+  return value.localizedName || value.name || value.fullName ||
+    value.login || value;
+};
+
 // eslint-disable-next-line complexity
 const getCustomFieldTextPresentation = (field, noEmptyText) => {
   const value = (field.value && field.value[0]) || field.value;
   if (value) {
-    return value.localizedName || value.name || value.fullName ||
-      value.login || value || '';
+    const cfPrototype = (field.projectCustomField || {}).field || {};
+    const cfPrototypeType = (cfPrototype.fieldType || {}).valueType;
+    return formatAsIssueFieldValue(value, cfPrototypeType);
   }
   return noEmptyText
     ? ''

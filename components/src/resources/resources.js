@@ -10,7 +10,7 @@ const USER_GROUP_FIELDS = 'id,name,icon';
 const PROJECTS_FIELDS = 'id,name,shortName';
 
 const ISSUE_FIELD_VALUE_FIELDS = '$type,id,name,localizedName,fullName,minutes,text,markdownText,presentation,color(id)';
-const ISSUE_FIELD_FIELDS = `id,name,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(id,field(id,name),emptyFieldText)`;
+const ISSUE_FIELD_FIELDS = `id,name,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(id,field(id,name,fieldType(valueType)),emptyFieldText)`;
 const ISSUE_FIELDS = `id,idReadable,summary,fields(${ISSUE_FIELD_FIELDS})`;
 
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
