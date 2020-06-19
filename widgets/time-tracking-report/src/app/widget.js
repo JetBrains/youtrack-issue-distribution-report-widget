@@ -289,7 +289,7 @@ class SpendTimeReportsWidget extends React.Component {
 
       if (this.props.editable && report.editable) {
         await saveReportSettings(this.fetchYouTrack, report, true);
-        this.setState({report}, () => this.onWidgetRefresh());
+        this.onWidgetRefresh();
       }
     };
 
