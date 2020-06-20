@@ -29,6 +29,11 @@ class SpendTimeReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static PROGRESS_BAR_REFRESH_PERIOD = 0.5;
 
+  static X_AXIS = {
+    issue: 'issue',
+    user: 'user'
+  };
+
   static applyReportSettingsFromWidgetConfig = (report, config) => {
     if (!config || config.reportId !== report.id) {
       return report;
@@ -121,17 +126,22 @@ class SpendTimeReportsWidget extends React.Component {
       this.setError(ReportModel.ErrorTypes.NO_YOUTRACK);
       return;
     }
+
+    const defaultXAxis = SpendTimeReportsWidget.X_AXIS.user;
     if (this.props.configWrapper.isNewConfig()) {
       this.openWidgetsSettings();
       this.setState({
         isNewWidget: true,
-        refreshPeriod: SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD
+        refreshPeriod: SpendTimeReportsWidget.DEFAULT_REFRESH_PERIOD,
+        yAxis: defaultXAxis,
+        withDetails: true
       });
       return;
     }
 
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
-    const yAxis = this.props.configWrapper.getFieldValue('yAxis') || 'issue';
+    const yAxis =
+      this.props.configWrapper.getFieldValue('yAxis') || defaultXAxis;
     const rawWithDetails =
       this.props.configWrapper.getFieldValue('withDetails');
     const withDetails = typeof rawWithDetails === 'boolean'
