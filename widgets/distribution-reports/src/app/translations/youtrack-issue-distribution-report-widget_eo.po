@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-19 21:04\n"
+"PO-Revision-Date: 2020-06-21 05:36\n"
 
-#: src/app/distribution-report-form.js:449
+#: src/app/distribution-report-form.js:442
 msgid "Add project"
 msgstr "crwdns933074:0crwdne933074:0"
 
@@ -21,7 +21,7 @@ msgstr "crwdns933074:0crwdne933074:0"
 msgid "Bars"
 msgstr "crwdns933076:0crwdne933076:0"
 
-#: src/app/distribution-report-form.js:450
+#: src/app/distribution-report-form.js:443
 msgid "Calculate for all projects"
 msgstr "crwdns933078:0crwdne933078:0"
 
@@ -29,11 +29,11 @@ msgstr "crwdns933078:0crwdne933078:0"
 msgid "Calculating..."
 msgstr "crwdns933080:0crwdne933080:0"
 
-#: src/app/distribution-report-form.js:429
+#: src/app/distribution-report-form.js:423
 msgid "Can edit"
 msgstr "crwdns9072638:0crwdne9072638:0"
 
-#: src/app/distribution-report-form.js:419
+#: src/app/distribution-report-form.js:414
 msgid "Can view and use"
 msgstr "crwdns9072640:0crwdne9072640:0"
 
@@ -65,7 +65,7 @@ msgstr "crwdns933092:0crwdne933092:0"
 msgid "Edit settings"
 msgstr "crwdns933096:0crwdne933096:0"
 
-#: src/app/distribution-report-form.js:474
+#: src/app/distribution-report-form.js:467
 msgid "Filter issues"
 msgstr "crwdns933098:0crwdne933098:0"
 
@@ -73,7 +73,7 @@ msgstr "crwdns933098:0crwdne933098:0"
 msgid "Issue Distribution Report"
 msgstr "crwdns933100:0crwdne933100:0"
 
-#: src/app/distribution-report-form.js:373
+#: src/app/distribution-report-form.js:372
 msgid "Issues"
 msgstr "crwdns1253928:0crwdne1253928:0"
 
@@ -97,11 +97,11 @@ msgstr "crwdns933118:0crwdne933118:0"
 msgid "Pie chart"
 msgstr "crwdns1476886:0crwdne1476886:0"
 
-#: src/app/distribution-report-form.js:442
+#: src/app/distribution-report-form.js:435
 msgid "Projects"
 msgstr "crwdns9375682:0crwdne9375682:0"
 
-#: src/app/distribution-report-form.js:478
+#: src/app/distribution-report-form.js:471
 msgid "Query"
 msgstr "crwdns9375684:0crwdne9375684:0"
 
@@ -109,7 +109,7 @@ msgstr "crwdns9375684:0crwdne9375684:0"
 msgid "Remove widget"
 msgstr "crwdns933122:0crwdne933122:0"
 
-#: src/app/distribution-report-form.js:502
+#: src/app/distribution-report-form.js:495
 msgid "Report name"
 msgstr "crwdns933130:0crwdne933130:0"
 
@@ -121,23 +121,23 @@ msgstr "crwdns933132:0crwdne933132:0"
 msgid "Select YouTrack"
 msgstr "crwdns933134:0crwdne933134:0"
 
-#: src/app/distribution-report-form.js:418
+#: src/app/distribution-report-form.js:413
 msgid "Sharing settings"
 msgstr "crwdns9375686:0crwdne9375686:0"
 
-#: src/app/distribution-report-form.js:272
+#: src/app/distribution-report-form.js:271
 msgid "Show distribution by"
 msgstr "crwdns9375688:0crwdne9375688:0"
 
-#: src/app/distribution-report-form.js:340
+#: src/app/distribution-report-form.js:339
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "crwdns933140:0{{mainFieldPresentation}}crwdne933140:0"
 
-#: src/app/distribution-report-form.js:339
+#: src/app/distribution-report-form.js:338
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "crwdns933142:0{{mainFieldPresentation}}crwdnd933142:0{{secondaryFieldPresentation}}crwdne933142:0"
 
-#: src/app/distribution-report-form.js:365
+#: src/app/distribution-report-form.js:364
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "crwdns1253930:0{{aggregationPolicy}}crwdne1253930:0"
 

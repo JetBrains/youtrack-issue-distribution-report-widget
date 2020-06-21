@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-19 21:04\n"
+"PO-Revision-Date: 2020-06-21 05:36\n"
 
-#: src/app/distribution-report-form.js:449
+#: src/app/distribution-report-form.js:442
 msgid "Add project"
 msgstr "Ajouter un projet"
 
@@ -21,7 +21,7 @@ msgstr "Ajouter un projet"
 msgid "Bars"
 msgstr "Barres"
 
-#: src/app/distribution-report-form.js:450
+#: src/app/distribution-report-form.js:443
 msgid "Calculate for all projects"
 msgstr "Calculer pour tous les projets"
 
@@ -29,11 +29,11 @@ msgstr "Calculer pour tous les projets"
 msgid "Calculating..."
 msgstr "Calcul..."
 
-#: src/app/distribution-report-form.js:429
+#: src/app/distribution-report-form.js:423
 msgid "Can edit"
 msgstr ""
 
-#: src/app/distribution-report-form.js:419
+#: src/app/distribution-report-form.js:414
 msgid "Can view and use"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr "Impossible de mettre à jour le widget"
 msgid "Edit settings"
 msgstr "Modifier les paramètres"
 
-#: src/app/distribution-report-form.js:474
+#: src/app/distribution-report-form.js:467
 msgid "Filter issues"
 msgstr "Filtrer les tickets"
 
@@ -73,7 +73,7 @@ msgstr "Filtrer les tickets"
 msgid "Issue Distribution Report"
 msgstr "Rapport de distribution de ticket"
 
-#: src/app/distribution-report-form.js:373
+#: src/app/distribution-report-form.js:372
 msgid "Issues"
 msgstr "Tickets"
 
@@ -97,11 +97,11 @@ msgstr "Oups ! Un problème est survenu =("
 msgid "Pie chart"
 msgstr "Graphique camembert"
 
-#: src/app/distribution-report-form.js:442
+#: src/app/distribution-report-form.js:435
 msgid "Projects"
 msgstr ""
 
-#: src/app/distribution-report-form.js:478
+#: src/app/distribution-report-form.js:471
 msgid "Query"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Remove widget"
 msgstr "Supprimer le gadget"
 
-#: src/app/distribution-report-form.js:502
+#: src/app/distribution-report-form.js:495
 msgid "Report name"
 msgstr "Nom du rapport"
 
@@ -121,23 +121,23 @@ msgstr "Enregistrer"
 msgid "Select YouTrack"
 msgstr "Sélectionner YouTrack"
 
-#: src/app/distribution-report-form.js:418
+#: src/app/distribution-report-form.js:413
 msgid "Sharing settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:272
+#: src/app/distribution-report-form.js:271
 msgid "Show distribution by"
 msgstr ""
 
-#: src/app/distribution-report-form.js:340
+#: src/app/distribution-report-form.js:339
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Afficher la distribution par {{mainFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:339
+#: src/app/distribution-report-form.js:338
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Afficher la distribution par {{mainFieldPresentation}} et {{secondaryFieldPresentation}}"
 
-#: src/app/distribution-report-form.js:365
+#: src/app/distribution-report-form.js:364
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Afficher les totaux pour : {{aggregationPolicy}}"
 
