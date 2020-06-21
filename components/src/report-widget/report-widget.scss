@@ -1,5 +1,9 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
+body {
+  color: var(--ring-text-color);
+}
+
 .report-widget {
   &__icon {
     position: relative;

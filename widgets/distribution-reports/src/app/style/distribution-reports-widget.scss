@@ -1,8 +1,6 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
 .distribution-reports-widget {
-  color: var(--ring-text-color);
-
   &__label {
     margin-right: $ring-unit;
   }

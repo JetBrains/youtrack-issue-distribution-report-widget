@@ -21,7 +21,6 @@ import BackendTypes from '../../../../components/src/backend-types/backend-types
 import Configuration
   from './configuration';
 import Content from './content';
-import './style/agile-chart-widget.scss';
 
 class AgileProgressDiagramWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
