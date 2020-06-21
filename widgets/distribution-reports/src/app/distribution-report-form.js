@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
   InfoIcon,
@@ -18,11 +17,10 @@ import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
 import {loadUsers, loadVisibilityUserGroups} from '../../../../components/src/resources/resources';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
+import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
 
 import {
   loadProjects,
-  loadUserGroups,
-  underlineAndSuggest,
   loadReportsFilterFields,
   loadReportsAggregationFilterFields
 } from './resources';
@@ -111,11 +109,8 @@ class DistributionReportForm extends React.Component {
     }
   }
 
-  changeReportName = evt => {
-    const {report} = this.state;
-    report.name = evt.target.value;
-    this.onReportEditOperation(report);
-  };
+  changeReportName = evt =>
+    this.getReportEditOperationHandler('name')(evt.target.value);
 
   onAddProjectToReport = evt => {
     if (evt.tag && evt.tag.model) {
@@ -131,23 +126,6 @@ class DistributionReportForm extends React.Component {
       report.projects = report.projects.
         filter(project => project.id !== evt.tag.model.id);
       this.onReportEditOperation(report);
-    }
-  };
-
-  onReportQueryChange = evt => {
-    const {report} = this.state;
-    report.query = evt.query;
-    this.onReportEditOperation(report);
-  };
-
-  openVisibilitySelector = async () => {
-    if (!this.state.userGroups.length) {
-      const userGroups = await loadUserGroups(this.state.fetchYouTrack);
-      this.setState({userGroups});
-    }
-    if (!this.state.users.length) {
-      const users = await loadUsers(this.state.fetchYouTrack, {});
-      this.setState({users});
     }
   };
 
@@ -458,19 +436,13 @@ class DistributionReportForm extends React.Component {
       disabled
     } = this.state;
 
-    const queryAssistDataSource = async queryAssistModel =>
-      await underlineAndSuggest(
-        fetchYouTrack, queryAssistModel.query, queryAssistModel.caret
-      );
-
     return (
       <StandardFormGroup label={i18n('Filter issues')}>
-        <QueryAssist
+        <ReportIssuesFilter
           disabled={disabled}
           query={report.query}
-          placeholder={i18n('Query')}
-          onChange={this.onReportQueryChange}
-          dataSource={queryAssistDataSource}
+          fetchYouTrack={fetchYouTrack}
+          onChange={this.getReportEditOperationHandler('query')}
         />
       </StandardFormGroup>
     );

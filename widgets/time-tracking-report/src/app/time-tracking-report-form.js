@@ -1,7 +1,6 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import QueryAssist from '@jetbrains/ring-ui/components/query-assist/query-assist';
 import DatePicker from '@jetbrains/ring-ui/components/date-picker/date-picker';
 import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
@@ -26,47 +25,12 @@ import ReportNamedTimeRanges
 import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-button-group';
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
+import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
 
 
-//////TODO:::: projectBased=false !!!!!!!!!!!!
 import {
-  loadProjects,
-  underlineAndSuggest
+  loadProjects
 } from './resources';
-
-const ReportIssuesFilter = ({
-  query, disabled, fetchYouTrack, onChange
-}) => {
-
-  const queryAssistDataSource = useCallback(async model =>
-    await underlineAndSuggest(
-      fetchYouTrack, model.query, model.caret
-    ),
-  [fetchYouTrack]
-  );
-
-  const onChangeQueryAssistModel = useCallback(
-    model => onChange(model.query || ''),
-    [onChange]
-  );
-
-  return (
-    <QueryAssist
-      disabled={disabled}
-      query={query}
-      placeholder={i18n('Query')}
-      onChange={onChangeQueryAssistModel}
-      dataSource={queryAssistDataSource}
-    />
-  );
-};
-
-ReportIssuesFilter.propTypes = {
-  query: PropTypes.string,
-  disabled: PropTypes.bool,
-  fetchYouTrack: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
-};
 
 const ReportTagsInput = ({
   options, optionToTag, onChange, ...restProps
