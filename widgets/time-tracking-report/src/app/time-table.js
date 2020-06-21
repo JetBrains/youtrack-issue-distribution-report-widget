@@ -77,30 +77,38 @@ const TimeTable = ({
   );
 
   useEffect(() => {
-    const detectScroll = () => {
-      setHasVerticalScroll(true);
-      unbind();
+    const calculateWidth = () => {
+      const margins = 56;
+      const width = window.innerWidth - margins;
+      const detailsTableWidth =
+        (withDetails && (detailedTableContainer || {}).current)
+          ? detailedTableContainer.current.getBoundingClientRect().width
+          : 0;
+      const newGeneralTableWidth = detailsTableWidth < width
+        ? width - detailsTableWidth
+        : undefined;
+      setGeneralTableWidth(newGeneralTableWidth);
     };
-    window.addEventListener('scroll', detectScroll);
+
+    const checkScroll = () => {
+      const bodyHeight = window.document.body.getBoundingClientRect().height;
+      const hasScroll = window.innerHeight < bodyHeight;
+      setHasVerticalScroll(hasScroll);
+    };
+
+    const setWindowSizeDependantStates = () => {
+      calculateWidth();
+      checkScroll();
+    };
+
+    setWindowSizeDependantStates();
+    window.addEventListener('resize', setWindowSizeDependantStates);
 
     return () => unbind();
 
     function unbind() {
-      window.removeEventListener('scroll', detectScroll);
+      window.removeEventListener('scroll', setWindowSizeDependantStates);
     }
-  }, [tableContainer, withDetails]);
-
-  useEffect(() => {
-    const margins = 56;
-    const width = window.innerWidth - margins;
-    const detailsTableWidth =
-      (withDetails && (detailedTableContainer || {}).current)
-        ? detailedTableContainer.current.getBoundingClientRect().width
-        : 0;
-    const newGeneralTableWidth = detailsTableWidth < width
-      ? width - detailsTableWidth
-      : undefined;
-    setGeneralTableWidth(newGeneralTableWidth);
   }, [tableContainer, withDetails, detailedTableContainer]);
 
   return (
