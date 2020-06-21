@@ -2,7 +2,6 @@ import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import DatePicker from '@jetbrains/ring-ui/components/date-picker/date-picker';
-import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
   InfoIcon,
   EyeIcon,
@@ -26,47 +25,12 @@ import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-b
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
+import ReportTagsInput from '../../../../components/src/report-form-controls/report-tags-input';
 
 
 import {
   loadProjects
 } from './resources';
-
-const ReportTagsInput = ({
-  options, optionToTag, onChange, ...restProps
-}) => {
-
-  const onAddOption = useCallback(({tag}) => {
-    if (tag && tag.model) {
-      onChange((options || []).concat([tag.model]));
-    }
-  }, [options]);
-
-  const onRemoveOption = useCallback(({tag}) => {
-    if (tag && tag.model) {
-      onChange(
-        (options || []).filter(option => option.id !== tag.model.id)
-      );
-    }
-  }, [options]);
-
-  return (
-    <RerenderableTagsInput
-      className="ring-form__group"
-      tags={(options || []).map(optionToTag)}
-      onAddTag={onAddOption}
-      onRemoveTag={onRemoveOption}
-      {...restProps}
-    />
-  );
-};
-
-ReportTagsInput.propTypes = {
-  options: PropTypes.array,
-  onChange: PropTypes.func.isRequired,
-  optionToTag: PropTypes.func.isRequired
-};
-
 
 const ReportProjects = ({
   projects, reportId, disabled, fetchYouTrack, fetchHub, onChange
