@@ -14,7 +14,8 @@ import BackendTypes from '../../../../components/src/backend-types/backend-types
 import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
 import {
-  loadUsers, loadVisibilityUserGroups,
+  loadUsers,
+  loadVisibilityUserGroups,
   loadWorkItemTypes
 } from '../../../../components/src/resources/resources';
 import ReportTimeScales
@@ -27,52 +28,7 @@ import StandardFormGroup from '../../../../components/src/report-form-controls/s
 import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
 import ReportTagsInput from '../../../../components/src/report-form-controls/report-tags-input';
 import ReportProjects from '../../../../components/src/report-form-controls/report-projects';
-
-
-const ReportUsers = ({
-  users, projects, disabled, fetchYouTrack, onChange
-}) => {
-  const getUsersOptions = useCallback(async ({query}) => {
-    const projectId = (projects || []).map(project => project.id);
-    const newUsers = await loadUsers(fetchYouTrack, {query, projectId});
-    return (newUsers || []).map(toUserTag);
-  }, [projects]);
-
-  return (
-    <ReportTagsInput
-      className="ring-form__group"
-      disabled={disabled}
-      options={users}
-      onChange={onChange}
-      optionToTag={toUserTag}
-      placeholder={
-        users.length
-          ? (!disabled && i18n('Add user') || '')
-          : i18n('All users')
-      }
-      maxPopupHeight={250}
-      dataSource={getUsersOptions}
-    />
-  );
-
-  function toUserTag(user) {
-    return ({
-      key: user.id,
-      label: user.name,
-      description: user.login,
-      avatar: user.avatarUrl,
-      model: user
-    });
-  }
-};
-
-ReportUsers.propTypes = {
-  users: PropTypes.array,
-  projects: PropTypes.array,
-  disabled: PropTypes.bool,
-  fetchYouTrack: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
-};
+import ReportUsers from '../../../../components/src/report-form-controls/report-users';
 
 
 const ReportWorkTypes = ({
