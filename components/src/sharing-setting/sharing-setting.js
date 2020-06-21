@@ -1,8 +1,10 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import Anchor from '@jetbrains/ring-ui/components/dropdown/anchor';
+
+import BackendTypes from '../backend-types/backend-types';
 
 import {
   makeDropdownOptions, userGroupToSelectOption, hideUsersFromList
@@ -45,12 +47,24 @@ function formatSelectedOptionsText(
   }
 }
 
+function settingValueToSelectedArray(sharingSettingValue) {
+  return [
+    ...(sharingSettingValue.permittedUsers || []),
+    ...(sharingSettingValue.permittedGroups || [])
+  ];
+}
+
 
 const SharingSetting = (
-  {selected, implicitSelected, getOptions, onChange, disabled}
+  {value, implicitSelected, getOptions, onChange, disabled}
 ) => {
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState(null);
+  const [selected, setSelected] = useState(settingValueToSelectedArray(value));
+
+  useEffect(() => {
+    setSelected(settingValueToSelectedArray(value));
+  }, [value]);
 
   const getAllOptions = useCallback(() => [
     ...selected,
@@ -66,11 +80,20 @@ const SharingSetting = (
   }, [getOptions]);
 
   const onChangeValue = useCallback(selectedOptions => {
-    const values = selectedOptions.
+    const valuableOptions = selectedOptions.
       map(selectedOption => getAllOptions().
-        find(o => o.id === selectedOption.key));
-    onChange(values.filter(v => !!v));
-  }, [getAllOptions, onChange]);
+        find(o => o.id === selectedOption.key)).
+      filter(v => !!v);
+    onChange({
+      id: value.id,
+      $type: value.$type,
+      projectBased: value.projectBased || false,
+      permittedUsers: (valuableOptions || []).
+        filter(option => option.$type === BackendTypes.get().User),
+      permittedGroups: (valuableOptions || []).
+        filter(option => option.$type === BackendTypes.get().UserGroup)
+    });
+  }, [getAllOptions, onChange, value]);
 
   const dropdownOptions = useMemo(() => (
     options ? makeDropdownOptions(options) : []
@@ -129,7 +152,7 @@ const SharingSetting = (
 };
 
 SharingSetting.propTypes = {
-  selected: PropTypes.array,
+  value: PropTypes.object.isRequired,
   implicitSelected: PropTypes.array,
   getOptions: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,

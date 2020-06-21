@@ -6,7 +6,7 @@ const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,online';
-const USER_GROUP_FIELDS = 'id,name,icon';
+const USER_GROUP_FIELDS = 'id,ringId,name,icon';
 const PROJECTS_FIELDS = 'id,name,shortName';
 
 const ISSUE_FIELD_VALUE_FIELDS = '$type,id,name,localizedName,fullName,minutes,text,markdownText,presentation,color(id)';

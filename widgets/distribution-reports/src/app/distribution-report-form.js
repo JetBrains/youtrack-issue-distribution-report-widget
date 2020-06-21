@@ -176,13 +176,12 @@ class DistributionReportForm extends React.Component {
     this.onReportEditOperation(report);
   };
 
-  changeReadSharingSettings = options => {
-    this.changeSharingSettings('readSharingSettings', options);
-  };
-
-  changeUpdateSharingSettings = options => {
-    this.changeSharingSettings('updateSharingSettings', options);
-  };
+  getReportEditOperationHandler = propertyName =>
+    value => {
+      const {report} = this.state;
+      report[propertyName] = value;
+      this.onReportEditOperation(report);
+    };
 
   changeMainFilterField = selected => {
     const {report} = this.state;
@@ -377,7 +376,7 @@ class DistributionReportForm extends React.Component {
     );
   }
 
-  renderSharingSettingBlock(settingName, label, title, IconElement, onChange) {
+  renderSharingSettingBlock(settingName, label, title, IconElement) {
     const {
       disabled,
       report,
@@ -385,10 +384,6 @@ class DistributionReportForm extends React.Component {
     } = this.state;
 
     const sharingSetting = report && report[settingName] || {};
-    const selectedOptions = [
-      ...(sharingSetting.permittedUsers || []),
-      ...(sharingSetting.permittedGroups || [])
-    ];
     const implicitSelected = [report && report.owner || currentUser].filter(
       user => !!user
     );
@@ -403,8 +398,8 @@ class DistributionReportForm extends React.Component {
         {title}&nbsp;
         <SharingSetting
           getOptions={this.getSharingSettingsOptions}
-          selected={selectedOptions}
-          onChange={onChange}
+          value={sharingSetting}
+          onChange={this.getReportEditOperationHandler(settingName)}
           disabled={disabled}
           implicitSelected={implicitSelected}
         />
@@ -417,8 +412,7 @@ class DistributionReportForm extends React.Component {
       'readSharingSettings',
       i18n('Sharing settings'),
       i18n('Can view and use'),
-      EyeIcon,
-      this.changeReadSharingSettings
+      EyeIcon
     );
   }
 
@@ -427,8 +421,7 @@ class DistributionReportForm extends React.Component {
       'updateSharingSettings',
       '',
       i18n('Can edit'),
-      PencilIcon,
-      this.changeUpdateSharingSettings
+      PencilIcon
     );
   }
 

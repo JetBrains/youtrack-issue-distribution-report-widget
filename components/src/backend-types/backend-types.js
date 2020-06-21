@@ -21,7 +21,10 @@ const BackendTypesEnum = {
   NamedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.NamedTimeRange',
   FixedTimeRange: 'jetbrains.youtrack.reports.impl.gap.ranges.FixedTimeRange',
   TimeSheetReportScale: 'jetbrains.youtrack.reports.impl.time.gap.sheet.TimeSheetReportScale',
-  PredefinedFilterField: 'jetbrains.charisma.keyword.PredefinedFilterField'
+  PredefinedFilterField: 'jetbrains.charisma.keyword.PredefinedFilterField',
+
+  User: 'jetbrains.charisma.persistence.user.User',
+  UserGroup: 'jetbrains.charisma.persistence.user.UserGroup'
 };
 
 let types = BackendTypesEnum;

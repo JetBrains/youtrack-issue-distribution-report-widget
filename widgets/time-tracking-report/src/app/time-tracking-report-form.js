@@ -27,6 +27,8 @@ import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-b
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 
+
+//////TODO:::: projectBased=false !!!!!!!!!!!!
 import {
   loadProjects,
   underlineAndSuggest
@@ -421,14 +423,9 @@ class TimeTrackingReportForm extends React.Component {
     return {groups, users, currentUser};
   };
 
-  changeSharingSettings = (settingName, options) => {
+  changeSharingSettings = (settingName, value) => {
     const {report} = this.state;
-    report[settingName] = {
-      permittedUsers: (options || []).
-        filter(option => option.$type === 'User'),
-      permittedGroups: (options || []).
-        filter(option => option.$type === 'UserGroup')
-    };
+    report[settingName] = value;
     this.onReportEditOperation(report);
   };
 
@@ -570,17 +567,13 @@ class TimeTrackingReportForm extends React.Component {
   }
 
 
-  renderSharingSettingBlock(settingName, label, IconElement, onChange, title) {
+  renderSharingSettingBlock(settingName, label, IconElement, title) {
     const {
       disabled,
       report
     } = this.state;
 
     const sharingSetting = report && report[settingName] || {};
-    const selectedOptions = [
-      ...(sharingSetting.permittedUsers || []),
-      ...(sharingSetting.permittedGroups || [])
-    ];
     const implicitSelected = [TimeTrackingReportForm.getReportOwner(
       report, this.props.currentUser
     )].filter(user => !!user);
@@ -598,8 +591,8 @@ class TimeTrackingReportForm extends React.Component {
           </span>
           <SharingSetting
             getOptions={this.getSharingSettingsOptions}
-            selected={selectedOptions}
-            onChange={onChange}
+            value={sharingSetting}
+            onChange={this.getReportEditOperationHandler(settingName)}
             disabled={disabled}
             implicitSelected={implicitSelected}
           />
@@ -613,7 +606,6 @@ class TimeTrackingReportForm extends React.Component {
       'readSharingSettings',
       i18n('Can view and use'),
       EyeIcon,
-      this.changeReadSharingSettings,
       i18n('Sharing settings')
     );
   }
@@ -622,8 +614,7 @@ class TimeTrackingReportForm extends React.Component {
     return this.renderSharingSettingBlock(
       'updateSharingSettings',
       i18n('Can edit'),
-      PencilIcon,
-      this.changeUpdateSharingSettings
+      PencilIcon
     );
   }
 
