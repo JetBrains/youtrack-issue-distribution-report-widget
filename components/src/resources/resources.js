@@ -3,6 +3,8 @@ import BackendTypes from '../backend-types/backend-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 
+const PERMISSION_FIELDS = 'permission,key,global,projects(id)';
+
 const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,online';
@@ -59,6 +61,23 @@ async function underlineAndSuggest(fetchYouTrack, query, caret) {
 
 async function loadProjects(fetchYouTrack) {
   return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+}
+
+async function loadReportProjects(fetchYouTrack, fetchHub, report) {
+  if (report.id) {
+    return await fetchYouTrack(`api/reports/${report.id}/accessibleProjects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  }
+  const projects = await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  const permissionCache = await fetchHub(
+    `api/rest/permissions/cache?fields=${PERMISSION_FIELDS}`
+  );
+  const createReportPermission = permissionCache.find(it =>
+    it.permission.key === 'JetBrains.YouTrack.CREATE_REPORT');
+  if (!createReportPermission || createReportPermission.global) {
+    return projects;
+  }
+  const projectIds = createReportPermission.projects.map(it => it.id);
+  return projects.filter(it => projectIds.indexOf(it.ringId) >= 0);
 }
 
 async function loadAgiles(fetchYouTrack) {
@@ -327,6 +346,7 @@ export {
   getYouTrackService,
   underlineAndSuggest,
   loadProjects,
+  loadReportProjects,
   loadVisibilityUserGroups,
   loadAgiles,
   loadAgileReportSettings,

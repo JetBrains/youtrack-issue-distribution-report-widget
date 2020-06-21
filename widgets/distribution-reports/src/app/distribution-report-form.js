@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import {RerenderableTagsInput} from '@jetbrains/ring-ui/components/tags-input/tags-input';
 import {
   InfoIcon,
   CompareIcon,
@@ -18,9 +17,9 @@ import SharingSetting from
 import {loadUsers, loadVisibilityUserGroups} from '../../../../components/src/resources/resources';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
+import ReportProjects from '../../../../components/src/report-form-controls/report-projects';
 
 import {
-  loadProjects,
   loadReportsFilterFields,
   loadReportsAggregationFilterFields
 } from './resources';
@@ -112,23 +111,6 @@ class DistributionReportForm extends React.Component {
   changeReportName = evt =>
     this.getReportEditOperationHandler('name')(evt.target.value);
 
-  onAddProjectToReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.projects = (report.projects || []).concat([evt.tag.model]);
-      this.onReportEditOperation(report);
-    }
-  };
-
-  onRemoveProjectFromReport = evt => {
-    if (evt.tag && evt.tag.model) {
-      const {report} = this.state;
-      report.projects = report.projects.
-        filter(project => project.id !== evt.tag.model.id);
-      this.onReportEditOperation(report);
-    }
-  };
-
   getSharingSettingsOptions = async (query = '') => {
     const {report, currentUser, fetchYouTrack} = this.state;
 
@@ -201,28 +183,6 @@ class DistributionReportForm extends React.Component {
     report.xaxis.field = report.yaxis.field;
     report.yaxis.field = xaxisFieldBuff;
     this.onReportEditOperation(report);
-  };
-
-  projectsInputDataSource = async tagsInputModel => {
-    let {projects} = this.state;
-    if (!projects) {
-      projects = await loadProjects(this.state.fetchYouTrack,
-        this.state.fetchHub,
-        this.state.report);
-      if (projects) {
-        this.setState({projects});
-      }
-    }
-
-    const query = ((tagsInputModel && tagsInputModel.query) || '').
-      toLowerCase();
-    return (projects || []).
-      filter(project =>
-        !query ||
-        (project.name.toLowerCase().indexOf(query) > -1) ||
-        (project.shortName.toLowerCase().indexOf(query) === 0)
-      ).
-      map(DistributionReportForm.toProjectTag);
   };
 
   updateReport(report) {
@@ -405,25 +365,20 @@ class DistributionReportForm extends React.Component {
 
   renderProjectsSelectorBlock() {
     const {
-      report, disabled
+      report, disabled, fetchYouTrack, fetchHub
     } = this.state;
 
     return (
       <StandardFormGroup
         label={i18n('Projects')}
       >
-        <RerenderableTagsInput
+        <ReportProjects
+          projects={report.projects}
+          reportId={(report || {}).id}
           disabled={disabled}
-          tags={report.projects.map(DistributionReportForm.toProjectTag)}
-          placeholder={
-            report.projects.length
-              ? (!disabled && i18n('Add project') || '')
-              : i18n('Calculate for all projects')
-          }
-          maxPopupHeight={250}
-          dataSource={this.projectsInputDataSource}
-          onAddTag={this.onAddProjectToReport}
-          onRemoveTag={this.onRemoveProjectFromReport}
+          fetchYouTrack={fetchYouTrack}
+          fetchHub={fetchHub}
+          onChange={this.getReportEditOperationHandler('projects')}
         />
       </StandardFormGroup>
     );
