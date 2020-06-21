@@ -11,29 +11,21 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-21 05:36\n"
-
-#: src/app/distribution-report-form.js:442
-msgid "Add project"
-msgstr "プロジェクトの追加"
+"PO-Revision-Date: 2020-06-21 08:04\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
 msgstr "バー"
 
-#: src/app/distribution-report-form.js:443
-msgid "Calculate for all projects"
-msgstr "すべてのプロジェクトについて計算する"
-
 #: src/app/content.js:101
 msgid "Calculating..."
 msgstr "計算中…"
 
-#: src/app/distribution-report-form.js:423
+#: src/app/distribution-report-form.js:361
 msgid "Can edit"
 msgstr ""
 
-#: src/app/distribution-report-form.js:414
+#: src/app/distribution-report-form.js:352
 msgid "Can view and use"
 msgstr ""
 
@@ -65,7 +57,7 @@ msgstr "ウィジェットを更新できません"
 msgid "Edit settings"
 msgstr "設定の編集"
 
-#: src/app/distribution-report-form.js:467
+#: src/app/distribution-report-form.js:395
 msgid "Filter issues"
 msgstr "課題をフィルタリング"
 
@@ -73,7 +65,7 @@ msgstr "課題をフィルタリング"
 msgid "Issue Distribution Report"
 msgstr "課題配布レポート"
 
-#: src/app/distribution-report-form.js:372
+#: src/app/distribution-report-form.js:310
 msgid "Issues"
 msgstr "課題"
 
@@ -97,19 +89,15 @@ msgstr "不明なエラーが発生しました =("
 msgid "Pie chart"
 msgstr "円グラフ"
 
-#: src/app/distribution-report-form.js:435
+#: src/app/distribution-report-form.js:373
 msgid "Projects"
-msgstr ""
-
-#: src/app/distribution-report-form.js:471
-msgid "Query"
 msgstr ""
 
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "ウィジェットを削除"
 
-#: src/app/distribution-report-form.js:495
+#: src/app/distribution-report-form.js:422
 msgid "Report name"
 msgstr "レポート名"
 
@@ -121,23 +109,23 @@ msgstr "保存"
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
-#: src/app/distribution-report-form.js:413
+#: src/app/distribution-report-form.js:351
 msgid "Sharing settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:271
+#: src/app/distribution-report-form.js:209
 msgid "Show distribution by"
 msgstr ""
 
-#: src/app/distribution-report-form.js:339
+#: src/app/distribution-report-form.js:277
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "{{mainFieldPresentation}}別に配布を表示"
 
-#: src/app/distribution-report-form.js:338
+#: src/app/distribution-report-form.js:276
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "{{mainFieldPresentation}} と {{secondaryFieldPresentation}} 別に配布を表示"
 
-#: src/app/distribution-report-form.js:364
+#: src/app/distribution-report-form.js:302
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "{{aggregationPolicy}}の合計を表示"
 

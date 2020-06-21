@@ -11,29 +11,21 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-06-21 05:36\n"
-
-#: src/app/distribution-report-form.js:442
-msgid "Add project"
-msgstr "Projekt hinzufügen"
+"PO-Revision-Date: 2020-06-21 08:04\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
 msgstr "Balken"
 
-#: src/app/distribution-report-form.js:443
-msgid "Calculate for all projects"
-msgstr "Für alle Projekte berechnen"
-
 #: src/app/content.js:101
 msgid "Calculating..."
 msgstr "Berechnung läuft..."
 
-#: src/app/distribution-report-form.js:423
+#: src/app/distribution-report-form.js:361
 msgid "Can edit"
 msgstr ""
 
-#: src/app/distribution-report-form.js:414
+#: src/app/distribution-report-form.js:352
 msgid "Can view and use"
 msgstr ""
 
@@ -65,7 +57,7 @@ msgstr "Widget kann nicht aktualisiert werden"
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
-#: src/app/distribution-report-form.js:467
+#: src/app/distribution-report-form.js:395
 msgid "Filter issues"
 msgstr "Tickets filtern"
 
@@ -73,7 +65,7 @@ msgstr "Tickets filtern"
 msgid "Issue Distribution Report"
 msgstr "Ticketverteilungsbericht"
 
-#: src/app/distribution-report-form.js:372
+#: src/app/distribution-report-form.js:310
 msgid "Issues"
 msgstr "Tickets"
 
@@ -97,19 +89,15 @@ msgstr "Entschuldigung! Etwas ist schiefgegangen =("
 msgid "Pie chart"
 msgstr "Kreisdiagramm"
 
-#: src/app/distribution-report-form.js:435
+#: src/app/distribution-report-form.js:373
 msgid "Projects"
-msgstr ""
-
-#: src/app/distribution-report-form.js:471
-msgid "Query"
 msgstr ""
 
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "Widget entfernen"
 
-#: src/app/distribution-report-form.js:495
+#: src/app/distribution-report-form.js:422
 msgid "Report name"
 msgstr "Berichtsname"
 
@@ -121,23 +109,23 @@ msgstr "Speichern"
 msgid "Select YouTrack"
 msgstr "YouTrack auswählen"
 
-#: src/app/distribution-report-form.js:413
+#: src/app/distribution-report-form.js:351
 msgid "Sharing settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:271
+#: src/app/distribution-report-form.js:209
 msgid "Show distribution by"
 msgstr ""
 
-#: src/app/distribution-report-form.js:339
+#: src/app/distribution-report-form.js:277
 msgid "Show distribution by {{mainFieldPresentation}}"
 msgstr "Verteilung nach {{mainFieldPresentation}} anzeigen"
 
-#: src/app/distribution-report-form.js:338
+#: src/app/distribution-report-form.js:276
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
 msgstr "Verteilung nach {{mainFieldPresentation}} und {{secondaryFieldPresentation}} anzeigen"
 
-#: src/app/distribution-report-form.js:364
+#: src/app/distribution-report-form.js:302
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Gesamtwerte für {{aggregationPolicy}} anzeigen"
 
