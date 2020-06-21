@@ -117,12 +117,6 @@ class TimeTrackingReportForm extends React.Component {
     this.changeSharingSettings('updateSharingSettings', options);
   };
 
-  changeScaleSetting = selected => {
-    const {report} = this.state;
-    report.scale = {id: selected.id};
-    this.onReportEditOperation(report);
-  };
-
   changeReportType = async ({key}) => {
     const {report} = this.props;
     const reportSelectedKey = report.scale ? 'time' : 'work-types';
@@ -224,7 +218,7 @@ class TimeTrackingReportForm extends React.Component {
               <EnumButtonGroup
                 values={scales}
                 selected={reportScale}
-                onChange={this.changeScaleSetting}
+                onChange={this.getReportEditOperationHandler('scale')}
                 disabled={disabled}
               />
             </span>
