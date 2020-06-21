@@ -1,7 +1,6 @@
-import React, {useCallback, useMemo} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
-import DatePicker from '@jetbrains/ring-ui/components/date-picker/date-picker';
 import {
   InfoIcon,
   EyeIcon,
@@ -15,148 +14,18 @@ import SharingSetting from
   '../../../../components/src/sharing-setting/sharing-setting';
 import {
   loadUsers,
-  loadVisibilityUserGroups,
-  loadWorkItemTypes
+  loadVisibilityUserGroups
 } from '../../../../components/src/resources/resources';
 import ReportTimeScales
   from '../../../../components/src/report-model/report-time-scales';
-import ReportNamedTimeRanges
-  from '../../../../components/src/report-model/report-time-ranges';
 import EnumButtonGroup from '../../../../components/src/enum-button-group/enum-button-group';
 import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 import StandardFormGroup from '../../../../components/src/report-form-controls/standard-form-group';
 import ReportIssuesFilter from '../../../../components/src/report-form-controls/report-issues-filter';
-import ReportTagsInput from '../../../../components/src/report-form-controls/report-tags-input';
 import ReportProjects from '../../../../components/src/report-form-controls/report-projects';
 import ReportUsers from '../../../../components/src/report-form-controls/report-users';
-
-
-const ReportWorkTypes = ({
-  workTypes, projects, disabled, fetchYouTrack, onChange
-}) => {
-  const getWorkTypesOptions = useCallback(async ({query}) => {
-    const projectId = (projects).
-      map(project => project.id);
-    const loadedWorkTypes = await loadWorkItemTypes(
-      fetchYouTrack, {query, projectId}
-    );
-    return (loadedWorkTypes || []).map(toWorkTypeTag);
-  }, [workTypes, projects]);
-
-  return (
-    <ReportTagsInput
-      className="ring-form__group"
-      disabled={disabled}
-      options={workTypes}
-      onChange={onChange}
-      optionToTag={toWorkTypeTag}
-      placeholder={
-        workTypes.length
-          ? (!disabled && i18n('Add work type') || '')
-          : i18n('All work types')
-      }
-      maxPopupHeight={250}
-      dataSource={getWorkTypesOptions}
-    />
-  );
-
-  function toWorkTypeTag(type) {
-    return ({
-      key: type.id,
-      label: type.name,
-      model: type
-    });
-  }
-};
-
-ReportWorkTypes.propTypes = {
-  workTypes: PropTypes.array,
-  projects: PropTypes.array,
-  disabled: PropTypes.bool,
-  fetchYouTrack: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
-};
-
-
-const ReportPeriod = ({
-  period, disabled, onChange
-}) => {
-  const namedRange = (period || {}).range;
-
-  const ranges = useMemo(() => ReportNamedTimeRanges.allRanges().
-    map(range => ({
-      id: range.id,
-      label: range.text(),
-      description:
-        (range.id === ReportNamedTimeRanges.fixedRange().id
-          ? i18n('Custom dates interval') : undefined)
-    })), []);
-
-  const selected = useMemo(() => ranges.filter(range =>
-    range.id === (namedRange || ReportNamedTimeRanges.fixedRange()).id
-  )[0], [period]);
-
-  const changeRangeSetting = useCallback(({id}) => {
-    const newPeriod = getNewPeriod(id, (period || {}).id);
-    onChange(newPeriod);
-
-    function getNewPeriod(selectedId, periodId) {
-      if (selectedId === ReportNamedTimeRanges.fixedRange().id) {
-        return ({
-          id: periodId,
-          $type: BackendTypes.get().FixedTimeRange,
-          ...ReportNamedTimeRanges.fixedRange().getDefaultTimePeriod()
-        });
-      }
-
-      return ({
-        id: periodId,
-        $type: BackendTypes.get().NamedTimeRange,
-        range: {id: selectedId}
-      });
-    }
-  }, [period, onChange]);
-
-  const setRangeForFixedPeriod = useCallback(({from, to}) => {
-    if (period && !period.range) {
-      period.from = from.valueOf();
-      period.to = to.valueOf();
-
-      onChange(period);
-    }
-  }, [period, onChange]);
-
-  return (
-    <span>
-      <Select
-        data={ranges}
-        selected={selected}
-        onSelect={changeRangeSetting}
-        disabled={disabled}
-        type={Select.Type.INLINE}
-        filter={true}
-      />
-      {
-        !namedRange &&
-        <span className="time-report-widget__sub-control">
-          <DatePicker
-            from={period.from}
-            to={period.to}
-            onChange={setRangeForFixedPeriod}
-            range={true}
-            disabled={disabled}
-          />
-        </span>
-      }
-    </span>
-  );
-};
-
-ReportPeriod.propTypes = {
-  period: PropTypes.object,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func.isRequired
-};
+import ReportWorkTypes from '../../../../components/src/report-form-controls/report-work-types';
+import ReportPeriod from '../../../../components/src/report-form-controls/report-period';
 
 
 class TimeTrackingReportForm extends React.Component {
