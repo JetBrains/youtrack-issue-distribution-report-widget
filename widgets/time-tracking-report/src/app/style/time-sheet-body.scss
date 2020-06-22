@@ -284,11 +284,20 @@
 
       z-index: 1;
       top: 0;
-      left: 0;
-
-      padding-left: 2 * $ring-unit;
 
       background-color: var(--ring-content-background-color);
+
+      &:before {
+        position: fixed;
+        background-color: var(--ring-content-background-color);
+        content: ' ';
+
+        top: 0;
+        left: 0;
+
+        width: 2 * $ring-unit;
+        height: 16 * $ring-unit;
+      }
     }
   }
 

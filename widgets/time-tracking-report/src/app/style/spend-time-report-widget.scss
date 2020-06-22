@@ -1,6 +1,13 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
 .time-report-widget {
+  &__legend-group-by {
+    width: 25 * $ring-unit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   &__label {
     margin-right: $ring-unit;
   }

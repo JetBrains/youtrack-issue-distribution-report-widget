@@ -83,7 +83,7 @@ const TimeTable = ({
     const calculateWidth = () => {
       const togglerWidth = 8;
       const defaultMargins = 56;
-      const margins = (sniffr.browser.name === 'firefox')
+      const margins = (!withDetails && (sniffr.browser.name === 'firefox'))
         ? defaultMargins + togglerWidth
         : defaultMargins;
       const width = window.innerWidth - margins;

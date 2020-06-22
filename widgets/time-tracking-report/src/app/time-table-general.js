@@ -185,6 +185,7 @@ const TimeTableGeneral = ({
         'time-sheet-body-general': true,
         'time-sheet-body-general_fixed': fixedHeader
       })}
+      style={(fixedHeader && width) ? {width} : null}
     >
       <div
         className={classNames({
