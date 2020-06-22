@@ -5,6 +5,8 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import Tab from '@jetbrains/ring-ui/components/tabs/tab';
 import Tabs from '@jetbrains/ring-ui/components/tabs/dumb-tabs';
 
+import {usePermissions} from '../permissions/permissions';
+
 
 const reportToSelectItem = report => {
   if (!report) {
@@ -54,8 +56,11 @@ const ReportConfigurationTabs = ({
   report, onChange, children, reportsSource, onCreateReport
 }) => {
 
+  const [canCreateReports] =
+    usePermissions('JetBrains.YouTrack.CREATE_REPORT');
+
   const [selectedTab, onChangeSelectedTab] =
-    useState(getActiveTab(report));
+    useState(getActiveTab(report, canCreateReports));
 
   const [reports, onLoadReports] =
     useState([]);
@@ -81,14 +86,18 @@ const ReportConfigurationTabs = ({
 
   let subscribed = true;
   useEffect(() => {
-    onSelectTab(getActiveTab(report));
+    const tab = canCreateReports ? getActiveTab(report) : TabId.Existing;
+    onSelectTab(tab);
     const reportId = (report || {}).id;
     if (reportId || !selectedExistingReport) {
       (async () => {
         const loadedReports = await reportsSource();
         if (subscribed) {
           onLoadReports(loadedReports);
-          onSelectExistingReport(getSelectedReport(report, loadedReports));
+          const newSelectedExistingReport =
+            getSelectedReport(report, loadedReports);
+          onSelectExistingReport(newSelectedExistingReport);
+          onChange(tab === TabId.New ? reportDraft : newSelectedExistingReport);
         }
       })();
     } else if (!reportId) {
@@ -97,7 +106,7 @@ const ReportConfigurationTabs = ({
     return () => {
       subscribed = false;
     };
-  }, [report]);
+  }, [report, canCreateReports]);
 
   const newReportTabTitle = (
     <span>{i18n('Create new report')}</span>
@@ -124,12 +133,15 @@ const ReportConfigurationTabs = ({
       selected={selectedTab}
       onSelect={onSelectTab}
     >
-      <Tab
-        id={TabId.New}
-        title={newReportTabTitle}
-      >
-        {children}
-      </Tab>
+      {
+        canCreateReports &&
+        <Tab
+          id={TabId.New}
+          title={newReportTabTitle}
+        >
+          {children}
+        </Tab>
+      }
       {
         (reports && reports.length) &&
         <Tab
@@ -143,8 +155,8 @@ const ReportConfigurationTabs = ({
     </Tabs>
   );
 
-  function getActiveTab() {
-    return (report && report.id) ? TabId.Existing : TabId.New;
+  function getActiveTab(currentReport) {
+    return (currentReport && currentReport.id) ? TabId.Existing : TabId.New;
   }
 };
 

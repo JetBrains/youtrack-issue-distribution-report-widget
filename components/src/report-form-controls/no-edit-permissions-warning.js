@@ -4,6 +4,8 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
+import {usePermissions} from '../permissions/permissions';
+
 const NoEditPermissionsWarning = ({
   report, onChangeReport
 }) => {
@@ -11,6 +13,9 @@ const NoEditPermissionsWarning = ({
   if (report.editable) {
     return '';
   }
+
+  const [canCreateReports] =
+    usePermissions('JetBrains.YouTrack.CREATE_REPORT');
 
   const cloneReport = useCallback(() => {
     onChangeReport({
@@ -31,16 +36,20 @@ const NoEditPermissionsWarning = ({
       />&nbsp;
       <span>
         <span>
-          {
-            i18n('You do not have access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})
-          }
+          {i18n('You do not have access to edit report settings.')}
         </span>
-        <Link
-          pseudo={true}
-          onClick={cloneReport}
-        >
-          { i18n('{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it', {ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder: ''}) }
-        </Link>
+        {
+          canCreateReports &&
+          <span>
+            {i18n('If you want to customize your own copy of this report, {{cloneItPlaceholder}}', {cloneItPlaceholder: ''})}
+            <Link
+              pseudo={true}
+              onClick={cloneReport}
+            >
+              { i18n('{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it', {ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder: ''}) }
+            </Link>
+          </span>
+        }
       </span>
     </div>
   );

@@ -78,6 +78,8 @@ const TimeTable = ({
   );
 
   useEffect(() => {
+    let subscribed = true;
+
     const calculateWidth = () => {
       const togglerWidth = 8;
       const defaultMargins = 56;
@@ -92,13 +94,18 @@ const TimeTable = ({
       const newGeneralTableWidth = detailsTableWidth < width
         ? width - detailsTableWidth
         : undefined;
-      setGeneralTableWidth(newGeneralTableWidth);
+
+      if (subscribed) {
+        setGeneralTableWidth(newGeneralTableWidth);
+      }
     };
 
     const checkScroll = () => {
       const bodyHeight = window.document.body.getBoundingClientRect().height;
       const hasScroll = window.innerHeight < bodyHeight;
-      setHasVerticalScroll(hasScroll);
+      if (subscribed) {
+        setHasVerticalScroll(hasScroll);
+      }
     };
 
     const setWindowSizeDependantStates = () => {
@@ -112,6 +119,7 @@ const TimeTable = ({
     return () => unbind();
 
     function unbind() {
+      subscribed = false;
       window.removeEventListener('scroll', setWindowSizeDependantStates);
     }
   }, [tableContainer, withDetails, detailedTableContainer]);

@@ -8,6 +8,7 @@ import {setLocale} from 'hub-dashboard-addons/dist/localization';
 import ConfigWrapper from '@jetbrains/hub-widget-ui/dist/config-wrapper';
 
 import '../../../../components/src/report-widget/report-widget.scss';
+import {initFetcher} from '../../../../components/src/fetcher/fetcher';
 
 import Widget from './widget';
 import TRANSLATIONS from './translations';
@@ -23,6 +24,7 @@ const CONFIG_FIELDS = [
 
 DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
   setLocale(DashboardAddons.locale, TRANSLATIONS);
+  initFetcher(dashboardApi);
   const configWrapper = new ConfigWrapper(dashboardApi, CONFIG_FIELDS);
 
   render(
