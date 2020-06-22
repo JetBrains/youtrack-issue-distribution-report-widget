@@ -43,7 +43,7 @@ const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessa
 const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
 const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;
-const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,visibleTo(id,name),readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS}),${TIME_REPORT_SETTINGS_FIELDS}`;
+const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS}),${TIME_REPORT_SETTINGS_FIELDS}`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 
