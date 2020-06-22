@@ -34,6 +34,10 @@ body {
     margin: $ring-unit auto;
   }
 
+  &-no-wrap {
+    white-space: nowrap;
+  }
+
   &__disabled {
     color: var(--ring-disabled-color);
   }

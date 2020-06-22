@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import {DoubleChevronRightIcon} from '@jetbrains/ring-ui/components/icon';
+import sniffr from '@jetbrains/ring-ui/components/global/sniffer';
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
@@ -78,7 +79,11 @@ const TimeTable = ({
 
   useEffect(() => {
     const calculateWidth = () => {
-      const margins = 56;
+      const togglerWidth = 8;
+      const defaultMargins = 56;
+      const margins = (sniffr.browser.name === 'firefox')
+        ? defaultMargins + togglerWidth
+        : defaultMargins;
       const width = window.innerWidth - margins;
       const detailsTableWidth =
         (withDetails && (detailedTableContainer || {}).current)

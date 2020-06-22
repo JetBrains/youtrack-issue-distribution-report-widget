@@ -60,7 +60,7 @@ const TimeTableSettingsToolbar = (
         isIssueView={isIssueView}
         changeXAxis={onChange}
       />
-      <div>
+      <div className="report-widget-no-wrap">
         <span>{i18n('group by {{field}}', {field: ''})}</span>
         <ReportGroupingControl
           projects={projects}
