@@ -80,12 +80,16 @@ const TimeTable = ({
   useEffect(() => {
     let subscribed = true;
 
-    const calculateWidth = () => {
+    const calculateMargins = () => {
       const togglerWidth = 8;
       const defaultMargins = 56;
-      const margins = (!withDetails && (sniffr.browser.name === 'firefox'))
+      return (!withDetails && (sniffr.browser.name === 'firefox'))
         ? defaultMargins + togglerWidth
         : defaultMargins;
+    };
+
+    const calculateWidth = () => {
+      const margins = calculateMargins();
       const width = window.innerWidth - margins;
       const detailsTableWidth =
         (withDetails && (detailedTableContainer || {}).current)

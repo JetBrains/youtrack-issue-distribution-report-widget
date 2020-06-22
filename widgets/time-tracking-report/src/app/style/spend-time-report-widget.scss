@@ -2,10 +2,11 @@
 
 .time-report-widget {
   &__legend-group-by {
-    width: 25 * $ring-unit;
     overflow: hidden;
-    text-overflow: ellipsis;
+    width: 25 * $ring-unit;
     white-space: nowrap;
+
+    text-overflow: ellipsis;
   }
 
   &__label {
