@@ -4,86 +4,16 @@ import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inl
 import Link from '@jetbrains/ring-ui/components/link/link';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import ProgressBar from '@jetbrains/ring-ui/components/progress-bar/progress-bar';
-import Select from '@jetbrains/ring-ui/components/select/select';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-title';
 import withTimerHOC from '@jetbrains/hub-widget-ui/dist/timer';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
-import ReportGroupingControl from '../../../../components/src/report-form-controls/report-grouping-control';
 
 import TimeTrackingReportModel from './time-tracking-report-model';
 import TimeTable from './time-table';
+import TimeTableSettingsToolbar from './time-table-settings-toolbar';
 
-const YAxisSelector = (
-  {changeXAxis, isIssueView}
-) => {
-  const userOption = {
-    key: 'user',
-    label: i18n('Users')
-  };
-
-  const issueOption = {
-    key: 'issue',
-    label: i18n('Issues')
-  };
-
-  return (
-    <Select
-      data={[userOption, issueOption]}
-      selected={isIssueView ? issueOption : userOption}
-      onSelect={changeXAxis}
-      type={Select.Type.INLINE}
-    />
-  );
-};
-
-YAxisSelector.propTypes = {
-  changeXAxis: PropTypes.func.isRequired,
-  isIssueView: PropTypes.bool
-};
-
-const TimeTableSettingsToolbar = (
-  {
-    grouping, projects, isIssueView, youTrack, dashboardApi,
-    onChangeYAxis, onChangeReportGrouping, disabled
-  }
-) => {
-  const fetchYouTrack = (url, args) =>
-    dashboardApi.fetch(youTrack.id, url, args);
-
-  const onChange = ({key}) => onChangeYAxis(key);
-
-  return (
-    <div>
-      <YAxisSelector
-        isIssueView={isIssueView}
-        changeXAxis={onChange}
-      />
-      <div className="time-report-widget__legend-group-by">
-        <span>{i18n('group by {{field}}', {field: ''})}</span>
-        <ReportGroupingControl
-          projects={projects}
-          onChange={onChangeReportGrouping}
-          group={grouping}
-          disabled={disabled}
-          fetchYouTrack={fetchYouTrack}
-        />
-      </div>
-    </div>
-  );
-};
-
-TimeTableSettingsToolbar.propTypes = {
-  grouping: PropTypes.object,
-  projects: PropTypes.array,
-  youTrack: PropTypes.object,
-  dashboardApi: PropTypes.object,
-  onChangeYAxis: PropTypes.func.isRequired,
-  onChangeReportGrouping: PropTypes.func.isRequired,
-  isIssueView: PropTypes.bool,
-  disabled: PropTypes.bool
-};
 
 class Content extends React.Component {
   static propTypes = {
