@@ -72,11 +72,13 @@ const getCustomFieldTextPresentation = (field, noEmptyText) => {
     : (field.projectCustomField || {}).emptyFieldText;
 };
 
-const getColorId = field => {
-  const value = field && field.value && (
-    field.value.length === 1 ? field.value[0] : field.value
+const getColorsIds = field => {
+  const values = field && field.value && (
+    Number.isInteger(field.value.length) ? field.value : [field.value]
   );
-  return value && value.color && value.color.id;
+  return (values || []).
+    map(val => val.color && val.color.id).
+    filter(val => !!val);
 };
 
 const getFieldsValuesToDisplay = (fields, priorityField) => {
@@ -94,7 +96,7 @@ function toFieldValue(field, noEmptyText) {
   const presentation = field &&
     getCustomFieldTextPresentation(field, noEmptyText);
   return presentation
-    ? {id: field.id, colorId: getColorId(field), presentation}
+    ? {id: field.id, colorsIds: getColorsIds(field), presentation}
     : undefined;
 }
 
@@ -102,7 +104,9 @@ function toFieldValue(field, noEmptyText) {
 const IssueLink = (
   {homeUrl, issue, fetchYouTrack, ...restProps}
 ) => {
-  const [fields, setFields] = useState(issue.fields);
+  const [isLoading, setIsLoading] = useState(
+    !issue.fields || !issue.fields.length
+  );
   const [priorityFieldValue, setPriorityFieldValue] = useState(
     toFieldValue(getPriorityIssueField(issue.fields), true)
   );
@@ -114,15 +118,17 @@ const IssueLink = (
     let subscribed = true;
 
     (async function load() {
-      if (!issue.fields || !issue.fields.length) {
-        const loadedIssue = await loadIssue(fetchYouTrack, issue.id);
+      if (isLoading) {
+        const loadedIssue = await (
+          loadIssue(fetchYouTrack, issue.id).catch(() => issue)
+        );
         const newFields = loadedIssue.fields;
         const newPriorityField = getPriorityIssueField(newFields);
         const newFieldsValuesToDisplay =
           getFieldsValuesToDisplay(newFields, newPriorityField);
 
         if (subscribed) {
-          setFields(newFields);
+          setIsLoading(false);
           setPriorityFieldValue(toFieldValue(newPriorityField, true));
           setFieldsValuesToDisplay(newFieldsValuesToDisplay);
         }
@@ -132,12 +138,12 @@ const IssueLink = (
     return () => {
       subscribed = false;
     };
-  }, [issue, fetchYouTrack]);
+  }, [issue, fetchYouTrack, isLoading]);
 
   const priority = priorityFieldValue && (
     <span className={classNames(
       'yt-issue-preview__priority',
-      `color-fields__field-${priorityFieldValue.colorId || 'none'}`
+      `color-fields__field-${priorityFieldValue.colorsIds[0] || 'none'}`
     )}
     >
       { (priorityFieldValue.presentation || '')[0] }
@@ -174,22 +180,41 @@ const IssueLink = (
 
         <div className="yt-issue-preview__fields">
           {
-            (!fields || !fields.length) &&
+            isLoading &&
             <center>
               <LoaderInline/>
             </center>
           }
 
           {
-            (fieldsValuesToDisplay || []).map(({id, presentation, colorId}) => (
-              <span
-                key={`field-value-${id}`}
-                title={presentation}
-                className={classNames('yt-issue-preview__field', `color-fields__plain-color-${colorId}`)}
-              >
-                {presentation}
-              </span>
-            ))
+            (fieldsValuesToDisplay || []).
+              map(({id, presentation, colorsIds}) => (
+                <span
+                  key={`field-value-${id}`}
+                  title={presentation}
+                  className={classNames(
+                    'yt-issue-preview__field',
+                    colorsIds.length === 1 && `color-fields__plain-color-${colorsIds[0]}`
+                  )}
+                >
+                  {presentation}
+                  <span
+                    className="yt-issue-preview__field-marker"
+                  >
+                    {
+                      colorsIds.map(colorId => (
+                        <span
+                          key={`field-value-${id}-color-${colorId}`}
+                          className={classNames(
+                            'yt-issue-preview__field-sample',
+                            `color-fields__field-${colorId}`
+                          )}
+                        />
+                      ))
+                    }
+                  </span>
+                </span>
+              ))
           }
         </div>
       </div>

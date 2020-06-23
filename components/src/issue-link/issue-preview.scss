@@ -102,4 +102,39 @@
       border-left-color: transparent;
     }
   }
+
+  &__field-marker {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+
+    height: 5px;
+  }
+
+  &__field-sample {
+    display: inline-block;
+
+    width: 100%;
+
+    border: 1px solid var(--ring-popup-background-color);
+    border-top-left-radius: var(--ring-border-radius);
+
+    border-top-right-radius: var(--ring-border-radius);
+    box-shadow: -1px 0 0 var(--ring-popup-background-color);
+
+    &.yt-issue-preview__field-sample:not(:first-child) {
+      margin-left: 2px;
+    }
+
+    &.yt-issue-preview__field-sample:first-child {
+      margin-left: 4px;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
