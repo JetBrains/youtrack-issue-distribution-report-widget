@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import {DoubleChevronRightIcon} from '@jetbrains/ring-ui/components/icon';
-import sniffr from '@jetbrains/ring-ui/components/global/sniffer';
+import throttle from 'mout/function/throttle';
 
 import './style/report-time-sheet.scss';
 import './style/time-sheet-body.scss';
@@ -12,7 +12,7 @@ import TimeTableGeneral from './time-table-general';
 import TimeTableDetailed from './time-table-detailed';
 
 const SidebarToggler = ({
-  onToggleSidebar, visibleSidebar
+  onToggleSidebar, visibleSidebar, ...restProps
 }) => {
   const iconClasses = classNames('time-sheet-body__sideber-togger-icon', {
     'time-sheet-body__sideber-togger-icon_expanded': !visibleSidebar
@@ -28,6 +28,7 @@ const SidebarToggler = ({
       onClick={onClick}
       className="time-sheet-body__sidebar-toggler"
       title={visibleSidebar ? i18n('Hide details') : i18n('Show details')}
+      {...restProps}
     >
       <DoubleChevronRightIcon
         size={DoubleChevronRightIcon.Size.Size14}
@@ -80,16 +81,8 @@ const TimeTable = ({
   useEffect(() => {
     let subscribed = true;
 
-    const calculateMargins = () => {
-      const togglerWidth = 8;
-      const defaultMargins = 56;
-      return (!withDetails && (sniffr.browser.name === 'firefox'))
-        ? defaultMargins + togglerWidth
-        : defaultMargins;
-    };
-
     const calculateWidth = () => {
-      const margins = calculateMargins();
+      const margins = 56;
       const width = window.innerWidth - margins;
       const detailsTableWidth =
         (withDetails && (detailedTableContainer || {}).current)
@@ -112,21 +105,35 @@ const TimeTable = ({
       }
     };
 
-    const setWindowSizeDependantStates = () => {
-      calculateWidth();
-      checkScroll();
-    };
+    const throttleDelay = 100;
+    const throttleOnResize = throttle(
+      () => {
+        if (!withDetails) {
+          calculateWidth();
+        }
+        checkScroll();
+      }, throttleDelay
+    );
 
-    setWindowSizeDependantStates();
-    window.addEventListener('resize', setWindowSizeDependantStates);
+    calculateWidth();
+    checkScroll();
+    window.addEventListener('resize', throttleOnResize);
 
     return () => unbind();
 
     function unbind() {
       subscribed = false;
-      window.removeEventListener('scroll', setWindowSizeDependantStates);
+      window.removeEventListener('scroll', throttleOnResize);
     }
   }, [tableContainer, withDetails, detailedTableContainer]);
+
+  const togglerMargin = 12;
+  const sidebarTogglerStyles = (hasVerticalScroll && generalTableWidth) ? {
+    position: 'fixed',
+    left: generalTableWidth + togglerMargin,
+    top: togglerMargin,
+    height: window.innerHeight
+  } : {};
 
   return (
     <div
@@ -154,6 +161,7 @@ const TimeTable = ({
         />
       </div>
       <SidebarToggler
+        style={sidebarTogglerStyles}
         onToggleSidebar={onChangeDetailsVisibility}
         visibleSidebar={withDetails}
       />
