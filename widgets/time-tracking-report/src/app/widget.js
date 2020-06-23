@@ -9,7 +9,10 @@ import 'nvd3/nv.d3.css';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
-import {loadReportWithData, loadTimeReports} from '../../../../components/src/resources/resources';
+import {
+  loadTimeTrackingReportWithData,
+  loadTimeReports
+} from '../../../../components/src/resources/resources';
 import '../../../../components/src/report-widget/report-widget.scss';
 
 import {
@@ -250,7 +253,7 @@ class SpendTimeReportsWidget extends React.Component {
     const line = yAxis;
     try {
       const reportWithData =
-        await loadReportWithData(fetchYouTrack, reportId, {line});
+        await loadTimeTrackingReportWithData(fetchYouTrack, reportId, {line});
       return reportWithData;
     } catch (err) {
       this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);

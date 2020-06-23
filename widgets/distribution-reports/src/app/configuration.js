@@ -14,17 +14,16 @@ import NoEditPermissionsWarning
   from '../../../../components/src/report-form-controls/no-edit-permissions-warning';
 import ReportConfigurationTabs from '../../../../components/src/report-form-controls/report-configuration-tabs';
 import {
-  loadReportWithSettings
-} from '../../../../components/src/resources/resources';
-
-import {makeYouTrackFetcher} from './components/service-resource';
-import {
   getYouTrackServices,
   saveReportSettings,
   loadIssuesDistributionReports,
-  loadCurrentUser
-} from './resources';
+  loadCurrentUser,
+  loadIssueDistributionReportWithSettings,
+  makeYouTrackFetcher
+} from '../../../../components/src/resources/resources';
+
 import DistributionReportForm from './distribution-report-form';
+
 
 class Configuration extends React.Component {
   static propTypes = {
@@ -77,7 +76,7 @@ class Configuration extends React.Component {
     };
     const selectedReport = props.reportId
       ? {id: props.reportId}
-      : undefined;
+      : Configuration.createNewReport();
 
     this.state = {
       selectedYouTrack,
@@ -111,21 +110,21 @@ class Configuration extends React.Component {
     });
   }
 
-  changeReport = async selected => {
-    const report = (selected || {}).model || selected || {};
+  changeReport = async report => {
     const {selectedReport} = this.state;
     if (selectedReport && report.id === selectedReport.id) {
       return;
     }
+    const settingsAlreadyLoaded = Configuration.
+      areReportSettingsLoaded(report);
     this.setState({
       selectedReport: report,
       selectedReportSettingsAreChanged: false
+    }, () => {
+      if (!settingsAlreadyLoaded) {
+        this.loadReportSettings(report.id);
+      }
     });
-    const settingsAlreadyLoaded = Configuration.
-      areReportSettingsLoaded(report);
-    if (!settingsAlreadyLoaded) {
-      await this.loadReportSettings(report.id);
-    }
   };
 
   async initCurrentUser() {
@@ -144,7 +143,7 @@ class Configuration extends React.Component {
     const getUpdatedCurrentReport = async currentReportId => {
       if (currentReportId) {
         try {
-          return await loadReportWithSettings(
+          return await loadIssueDistributionReportWithSettings(
             this.fetchYouTrack, currentReportId
           );
         } catch (err) {
@@ -161,17 +160,17 @@ class Configuration extends React.Component {
       {selectedReport},
       async () => await this.changeReport(selectedReport)
     );
-  }
 
-  loadExistingReports = async () =>
-    await loadIssuesDistributionReports(
+    const reports = await loadIssuesDistributionReports(
       async (url, params) => this.fetchYouTrack(url, params)
     );
+    this.setState({reports});
+  }
 
   async loadReportSettings(reportId) {
     let reportWithSettings;
     try {
-      reportWithSettings = await loadReportWithSettings(
+      reportWithSettings = await loadIssueDistributionReportWithSettings(
         this.fetchYouTrack, reportId
       );
     } catch (err) {
@@ -188,6 +187,11 @@ class Configuration extends React.Component {
     }
     return reportWithSettings;
   }
+
+  loadReports = async () =>
+    await loadIssuesDistributionReports(
+      async (url, params) => this.fetchYouTrack(url, params)
+    )
 
   changeYouTrack = selected => {
     this.setState({
@@ -260,7 +264,7 @@ class Configuration extends React.Component {
     return await dashboardApi.fetch(selectedYouTrack.id, url, params);
   };
 
-  renderReportsSettings(reportWithSettings) {
+  renderTab(reportWithSettings) {
     const {
       selectedYouTrack,
       currentUser
@@ -268,25 +272,60 @@ class Configuration extends React.Component {
 
     return (
       <div>
-        <div>
-          <NoEditPermissionsWarning
+        <NoEditPermissionsWarning
+          report={reportWithSettings}
+          onChangeReport={this.changeReport}
+        />
+        <DistributionReportForm
+          report={reportWithSettings}
+          onReportSettingsChange={this.onReportSettingsChange}
+          onValidStateChange={this.onReportValidStatusChange}
+          disabled={!reportWithSettings.editable}
+          currentUser={currentUser}
+          fetchYouTrack={
+            makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
+          }
+          fetchHub={
+            this.props.dashboardApi.fetchHub
+          }
+        />
+      </div>
+    );
+  }
+
+  renderReportsSettings() {
+    const {
+      selectedReport,
+      reportSettingsLoadingError
+    } = this.state;
+
+    const reportWithSettings =
+      Configuration.areReportSettingsLoaded(selectedReport)
+        ? selectedReport
+        : undefined;
+
+    return (
+      <div>
+        {
+          (!!reportWithSettings) &&
+          <ReportConfigurationTabs
             report={reportWithSettings}
-            onChangeReport={this.changeReport}
-          />
-          <DistributionReportForm
-            report={reportWithSettings}
-            onReportSettingsChange={this.onReportSettingsChange}
-            onValidStateChange={this.onReportValidStatusChange}
-            disabled={!reportWithSettings.editable}
-            currentUser={currentUser}
-            fetchYouTrack={
-              makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
-            }
-            fetchHub={
-              this.props.dashboardApi.fetchHub
-            }
-          />
-        </div>
+            onChange={this.changeReport}
+            onCreateReport={Configuration.createNewReport}
+            reportsSource={this.loadReports}
+          >
+            {this.renderTab(reportWithSettings)}
+          </ReportConfigurationTabs>
+        }
+        {
+          !reportWithSettings && !reportSettingsLoadingError && <LoaderInline/>
+        }
+        {
+          !reportWithSettings && reportSettingsLoadingError &&
+          <div className="ring-form__group">
+            {reportSettingsLoadingError}
+          </div>
+        }
       </div>
     );
   }
@@ -318,8 +357,8 @@ class Configuration extends React.Component {
       youTracks,
       selectedYouTrack,
       errorMessage,
+      reports,
       selectedReport,
-      reportSettingsLoadingError,
       selectedReportIsValid
     } = this.state;
 
@@ -329,9 +368,6 @@ class Configuration extends React.Component {
       description: it.homeUrl,
       model: it
     };
-
-    const reportLoaded =
-      Configuration.areReportSettingsLoaded(selectedReport);
 
     return (
       <ConfigurationForm
@@ -355,24 +391,11 @@ class Configuration extends React.Component {
             />
           </div>
         }
-        <ReportConfigurationTabs
-          report={selectedReport}
-          onChange={this.changeReport}
-          onCreateReport={Configuration.createNewReport}
-          reportsSource={this.loadExistingReports}
-        >
-          {
-            reportLoaded &&
-            this.renderReportsSettings(selectedReport)
-          }
-        </ReportConfigurationTabs>
         {
-          reportSettingsLoadingError
-            ? (
-              <div className="ring-form__group">
-                {reportSettingsLoadingError}
-              </div>
-            ) : (!reportLoaded && <LoaderInline/>)
+          reports && this.renderReportsSettings()
+        }
+        {
+          !errorMessage && !reports && <LoaderInline/>
         }
       </ConfigurationForm>
     );

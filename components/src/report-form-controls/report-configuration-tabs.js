@@ -71,8 +71,11 @@ const ReportConfigurationTabs = ({
 
   const onSelectTab = useCallback(tab => {
     if (tab !== selectedTab) {
-      onChange(tab === TabId.New ? reportDraft : selectedExistingReport);
-      onChangeSelectedTab(tab);
+      const nextReport = tab === TabId.New
+        ? reportDraft
+        : (selectedExistingReport || reportDraft);
+      onChange(nextReport);
+      onChangeSelectedTab(nextReport.id ? TabId.Existing : TabId.New);
     }
   }, [selectedTab, onChange, reportDraft, selectedExistingReport]);
 

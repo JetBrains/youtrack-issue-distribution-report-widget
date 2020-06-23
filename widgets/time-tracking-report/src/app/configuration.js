@@ -16,9 +16,9 @@ import NoEditPermissionsWarning
 import {
   getYouTrackServices,
   saveReportSettings,
-  loadReportWithSettings,
   loadTimeReports,
-  loadCurrentUser
+  loadCurrentUser,
+  loadTimeTrackingReportWithSettings
 } from '../../../../components/src/resources/resources';
 import ReportNamedTimeRanges from '../../../../components/src/report-model/report-time-ranges';
 import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
@@ -153,15 +153,16 @@ class Configuration extends React.Component {
     if (selectedReport && report.id === selectedReport.id) {
       return;
     }
+    const settingsAlreadyLoaded = Configuration.
+      areReportSettingsLoaded(report);
     this.setState({
       selectedReport: report,
       selectedReportSettingsAreChanged: false
+    }, () => {
+      if (!settingsAlreadyLoaded) {
+        this.loadReportSettings(report.id);
+      }
     });
-    const settingsAlreadyLoaded = Configuration.
-      areReportSettingsLoaded(report);
-    if (!settingsAlreadyLoaded) {
-      await this.loadReportSettings(report.id);
-    }
   };
 
   async initCurrentUser() {
@@ -180,7 +181,7 @@ class Configuration extends React.Component {
     const getUpdatedCurrentReport = async currentReportId => {
       if (currentReportId) {
         try {
-          return await loadReportWithSettings(
+          return await loadTimeTrackingReportWithSettings(
             this.fetchYouTrack, currentReportId
           );
         } catch (err) {
@@ -207,7 +208,7 @@ class Configuration extends React.Component {
   async loadReportSettings(reportId) {
     let reportWithSettings;
     try {
-      reportWithSettings = await loadReportWithSettings(
+      reportWithSettings = await loadTimeTrackingReportWithSettings(
         this.fetchYouTrack, reportId
       );
     } catch (err) {

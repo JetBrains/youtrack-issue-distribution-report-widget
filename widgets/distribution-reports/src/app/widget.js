@@ -9,12 +9,14 @@ import 'nvd3/nv.d3.css';
 
 import ReportModel from '../../../../components/src/report-model/report-model';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
+import {
+  loadIssuesDistributionReports,
+  loadIssueDistributionReportWithData
+} from '../../../../components/src/resources/resources';
 
 import {
-  loadReportWithData,
   recalculateReport,
   getYouTrackService,
-  loadIssuesDistributionReports,
   saveReportSettings
 } from './resources';
 import Configuration
@@ -231,7 +233,7 @@ class DistributionReportsWidget extends React.Component {
         });
       }
     }
-  }
+  };
 
   async loadReport(reportId, optionalYouTrack) {
     const fetchYouTrack = !optionalYouTrack
@@ -239,22 +241,21 @@ class DistributionReportsWidget extends React.Component {
       : async (url, params) =>
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
     try {
-      return await loadReportWithData(fetchYouTrack, reportId);
+      return await loadIssueDistributionReportWithData(
+        fetchYouTrack, reportId
+      );
     } catch (err) {
       this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
       return undefined;
     }
   }
 
-  async loadReportWithAppliedConfigSettings(
-    reportId, optionalYouTrack
-  ) {
-    return DistributionReportsWidget.
-      applyReportSettingsFromWidgetConfig(
+  loadReportWithAppliedConfigSettings =
+    async (reportId, optionalYouTrack) =>
+      DistributionReportsWidget.applyReportSettingsFromWidgetConfig(
         await this.loadReport(reportId, optionalYouTrack),
         DistributionReportsWidget.getConfigAsObject(this.props.configWrapper)
       );
-  }
 
   saveConfig = async () => {
     const {report, refreshPeriod, youTrack} = this.state;
@@ -361,7 +362,12 @@ class DistributionReportsWidget extends React.Component {
 
   renderContent() {
     const {
-      report, error, isLoading, refreshPeriod, youTrack, isCalculationCompleted
+      report,
+      error,
+      isLoading,
+      refreshPeriod,
+      youTrack,
+      isCalculationCompleted
     } = this.state;
 
     const isCalculation = ReportModel.isReportCalculation(report);

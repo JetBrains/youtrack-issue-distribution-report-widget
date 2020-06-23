@@ -18,8 +18,7 @@ const ISSUE_FIELDS = `id,idReadable,summary,fields(${ISSUE_FIELD_FIELDS})`;
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation,localizedName';
 
-const TIME_REPORT_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS}),range($type,id,range($type,id),from,to)`;
-const REPORT_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,editable,xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS})),aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS})),xsortOrder,ysortOrder,customField(${REPORT_FILTER_FIELDS_FIELDS}),${TIME_REPORT_FIELDS}`;
+const REPORT_BASE_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,editable`;
 
 const SHARING_SETTINGS_FIELDS = `permittedGroups(${USER_GROUP_FIELDS}),permittedUsers(${USER_FIELDS})`;
 
@@ -28,6 +27,7 @@ const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';
 const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT_FIELDS}),remainingEstimation(${BURN_DOWN_REPORT_POINT_FIELDS}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT_FIELDS}),${Y_AXIS_TYPE_FIELDS}`;
 
 const PERIOD_FIELD_VALUE_FIELDS = 'value,presentation';
+const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
 
 const TIME_SHEET_REPORT_LINE_DATA = `id,entityId,presentation,avatarUrl,spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),totalSpentTime(${PERIOD_FIELD_VALUE_FIELDS})`;
 const TIME_REPORT_LINE_DATA = `id,issueId,userId,userVisibleName,description,avatarUrl,duration(${PERIOD_FIELD_VALUE_FIELDS}),totalDuration(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),typeDurations(duration(${PERIOD_FIELD_VALUE_FIELDS}),workType)`;
@@ -36,14 +36,37 @@ const TIME_GROUP_DATA_FIELDS = `name,meta(linkedIssue(idReadable,summary),linked
 const GROUP_DATA_FIELDS = `${TIME_SHEET_GROUP_DATA_FIELDS},${TIME_GROUP_DATA_FIELDS}`;
 const TIME_REPORT_DATA_FIELDS = `duration(${PERIOD_FIELD_VALUE_FIELDS}),typeDurations(workType,duration(${PERIOD_FIELD_VALUE_FIELDS})),groups(${GROUP_DATA_FIELDS})`;
 const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,headers(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${GROUP_DATA_FIELDS})`;
+const TIME_TRACKING_REPORT_DATA_FIELDS = `${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS}`;
+
+const ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
+const ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS = [
+  'tooBig',
+  'total(value,presentation)',
+  'counts(value,presentation)',
+  'issuesQueries',
+  `columns(${ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS})`,
+  `xcolumns(${ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS})`,
+  `ycolumns(${ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS})`
+].join(',');
+
 const REPORT_ITEM_VALUE_FIELDS = 'value,presentation';
 const CUMULATIVE_FLOW_REPORT_DATA_FIELDS = `xlabel,ylabel,sample(date,values(${REPORT_ITEM_VALUE_FIELDS})),names,colors,${Y_AXIS_TYPE_FIELDS}`;
 const REPORT_SPRINT_SHORT_FIELDS = 'id,name,agile(id,name,sprintsSettings(disableSprints))';
-const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
-const REPORT_WITH_DATA_FIELDS = `${REPORT_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+const REPORT_WITH_DATA_FIELDS = `${REPORT_BASE_FIELDS},data(${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS},${BURNDOWN_REPORT_DATA_FIELDS},${CUMULATIVE_FLOW_REPORT_DATA_FIELDS}),sprint(${REPORT_SPRINT_SHORT_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
 
-const TIME_REPORT_SETTINGS_FIELDS = `authors(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS})`;
-const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS}),${TIME_REPORT_SETTINGS_FIELDS}`;
+const TIME_TRACKING_REPORT_SETTINGS_FIELDS = `grouping(id,field(${REPORT_FILTER_FIELDS_FIELDS})),scale(id),projects(${PROJECTS_FIELDS}),authors(${USER_FIELDS}),users(${USER_FIELDS}),workTypes(${WORK_ITEM_TYPE_FIELDS}),range($type,id,range($type,id),from,to)`;
+const ISSUE_DISTRIBUTION_REPORT_SETTINGS_FIELDS = [
+  `xaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS}))`,
+  `yaxis(id,field(${REPORT_FILTER_FIELDS_FIELDS}))`,
+  `aggregationPolicy(id,field(${REPORT_FILTER_FIELDS_FIELDS}))`,
+  'xsortOrder',
+  'ysortOrder',
+  'presentation',
+  `customField(${REPORT_FILTER_FIELDS_FIELDS})`
+].join(',');
+const REPORT_WITH_SETTINGS_FIELDS = `${REPORT_BASE_FIELDS},projects(${PROJECTS_FIELDS}),query,own,readSharingSettings(${SHARING_SETTINGS_FIELDS}),updateSharingSettings(${SHARING_SETTINGS_FIELDS})`;
+const TIME_TRACKING_REPORT_WITH_SETTINGS_FIELDS = `${REPORT_WITH_SETTINGS_FIELDS},${TIME_TRACKING_REPORT_SETTINGS_FIELDS}`;
+const ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS = `${REPORT_WITH_SETTINGS_FIELDS},${ISSUE_DISTRIBUTION_REPORT_SETTINGS_FIELDS}`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 
@@ -98,16 +121,57 @@ async function loadSprint(fetchYouTrack, agileId, sprintId) {
   return getCurrentSprint(agile);
 }
 
-async function loadReportWithData(fetchYouTrack, reportId, params) {
+async function loadReportWithData(
+  fetchYouTrack, reportId, params, fields = REPORT_WITH_DATA_FIELDS
+) {
   const lineParam = params && params.line ? `&line=${params.line}` : '';
   return await fetchYouTrack(
-    `api/reports/${reportId}?fields=${REPORT_WITH_DATA_FIELDS}${lineParam}`
+    `api/reports/${reportId}?fields=${fields}${lineParam}`
   );
 }
 
-async function loadReportWithSettings(fetchYouTrack, reportId) {
+async function loadTimeTrackingReportWithData(
+  fetchYouTrack, reportId, params
+) {
+  const fields = `${TIME_TRACKING_REPORT_WITH_SETTINGS_FIELDS},data(${TIME_TRACKING_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+  return await loadReportWithData(
+    fetchYouTrack, reportId, params, fields
+  );
+}
+
+async function loadIssueDistributionReportWithData(
+  fetchYouTrack, reportId, params
+) {
+  const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+  //const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+  //const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
+  return await loadReportWithData(
+    fetchYouTrack, reportId, params, fields
+  );
+}
+
+
+async function loadReportWithSettings(
+  fetchYouTrack, reportId, fields = REPORT_WITH_SETTINGS_FIELDS
+) {
   return await fetchYouTrack(
-    `api/reports/${reportId}?fields=${REPORT_WITH_SETTINGS_FIELDS}`
+    `api/reports/${reportId}?fields=${fields}`
+  );
+}
+
+async function loadTimeTrackingReportWithSettings(
+  fetchYouTrack, reportId
+) {
+  return await loadReportWithSettings(
+    fetchYouTrack, reportId, TIME_TRACKING_REPORT_WITH_SETTINGS_FIELDS
+  );
+}
+
+async function loadIssueDistributionReportWithSettings(
+  fetchYouTrack, reportId
+) {
+  return await loadReportWithSettings(
+    fetchYouTrack, reportId, ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS
   );
 }
 
@@ -115,7 +179,7 @@ async function loadReportsList(fetchYouTrack, reportTypes = []) {
   const typesParameter = reportTypes.map(BackendTypes.toShortType).join(',');
 
   return (
-    await fetchYouTrack(`api/reports?fields=${REPORT_FIELDS}&$top=300&types=${typesParameter}`)
+    await fetchYouTrack(`api/reports?fields=${REPORT_BASE_FIELDS}&$top=300&types=${typesParameter}`)
   ) || [];
 }
 
@@ -220,7 +284,7 @@ async function saveReportSettings(
   const reportIdPart = report.id ? `/${report.id}` : '';
   const fields = isFullReportWithDataResponse
     ? REPORT_WITH_DATA_FIELDS
-    : REPORT_FIELDS;
+    : REPORT_BASE_FIELDS;
   return await fetchYouTrack(`api/reports${reportIdPart}?fields=${fields}`, {
     method: 'POST',
     body: report
@@ -338,8 +402,12 @@ export {
   loadIssuesDistributionReports,
   loadTimeReports,
   loadReportWithSettings,
+  loadTimeTrackingReportWithSettings,
+  loadIssueDistributionReportWithSettings,
   loadReportsAggregationFilterFields,
   loadReportsGroupingFilterFields,
+  loadTimeTrackingReportWithData,
+  loadIssueDistributionReportWithData,
   saveReportSettings,
   recalculateReport,
   getYouTrackServices,
