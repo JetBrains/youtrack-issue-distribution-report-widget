@@ -110,6 +110,8 @@ const FilterFieldsSelector = ({
       filter={true}
       label={placeholder || i18n('＋Add field')}
       type={Select.Type.INLINE}
+      disableMoveOverflow={true}
+      maxHeight={170}
     />
   );
 
