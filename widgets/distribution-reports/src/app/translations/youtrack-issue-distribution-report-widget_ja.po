@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-22 21:04\n"
+"PO-Revision-Date: 2020-06-24 23:34\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -45,11 +45,11 @@ msgstr "課題配布レポートが見つかりません"
 msgid "Cannot load selected report"
 msgstr "選択したレポートを読み込めません"
 
-#: src/app/configuration.js:230
+#: src/app/configuration.js:234
 msgid "Cannot save report"
 msgstr "レポートを保存できません"
 
-#: src/app/configuration.js:239
+#: src/app/configuration.js:243
 msgid "Cannot update widget"
 msgstr "ウィジェットを更新できません"
 
@@ -61,7 +61,7 @@ msgstr "設定の編集"
 msgid "Filter issues"
 msgstr "課題をフィルタリング"
 
-#: src/app/widget.js:56
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "課題配布レポート"
 
@@ -105,7 +105,7 @@ msgstr "レポート名"
 msgid "Save"
 msgstr "保存"
 
-#: src/app/configuration.js:353
+#: src/app/configuration.js:389
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
@@ -197,7 +197,7 @@ msgstr "降順"
 msgid "natural"
 msgstr "自然"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "プロジェクト"

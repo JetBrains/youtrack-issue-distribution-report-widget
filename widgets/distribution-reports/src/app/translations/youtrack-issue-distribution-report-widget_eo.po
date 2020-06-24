@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-22 21:05\n"
+"PO-Revision-Date: 2020-06-24 23:34\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -45,11 +45,11 @@ msgstr "crwdns933086:0crwdne933086:0"
 msgid "Cannot load selected report"
 msgstr "crwdns933088:0crwdne933088:0"
 
-#: src/app/configuration.js:230
+#: src/app/configuration.js:234
 msgid "Cannot save report"
 msgstr "crwdns933090:0crwdne933090:0"
 
-#: src/app/configuration.js:239
+#: src/app/configuration.js:243
 msgid "Cannot update widget"
 msgstr "crwdns933092:0crwdne933092:0"
 
@@ -61,7 +61,7 @@ msgstr "crwdns933096:0crwdne933096:0"
 msgid "Filter issues"
 msgstr "crwdns933098:0crwdne933098:0"
 
-#: src/app/widget.js:56
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "crwdns933100:0crwdne933100:0"
 
@@ -105,7 +105,7 @@ msgstr "crwdns933130:0crwdne933130:0"
 msgid "Save"
 msgstr "crwdns933132:0crwdne933132:0"
 
-#: src/app/configuration.js:353
+#: src/app/configuration.js:389
 msgid "Select YouTrack"
 msgstr "crwdns933134:0crwdne933134:0"
 
@@ -197,7 +197,7 @@ msgstr "crwdns933174:0crwdne933174:0"
 msgid "natural"
 msgstr "crwdns933180:0crwdne933180:0"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "crwdns933182:0crwdne933182:0"

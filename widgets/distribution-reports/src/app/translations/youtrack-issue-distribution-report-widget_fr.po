@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-22 21:04\n"
+"PO-Revision-Date: 2020-06-24 23:34\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -45,11 +45,11 @@ msgstr "Impossible de trouver un rapport de distribution des tickets"
 msgid "Cannot load selected report"
 msgstr "Impossible de charger le rapport sélectionné"
 
-#: src/app/configuration.js:230
+#: src/app/configuration.js:234
 msgid "Cannot save report"
 msgstr "Impossible d'enregistrer le rapport"
 
-#: src/app/configuration.js:239
+#: src/app/configuration.js:243
 msgid "Cannot update widget"
 msgstr "Impossible de mettre à jour le widget"
 
@@ -61,7 +61,7 @@ msgstr "Modifier les paramètres"
 msgid "Filter issues"
 msgstr "Filtrer les tickets"
 
-#: src/app/widget.js:56
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "Rapport de distribution de ticket"
 
@@ -105,7 +105,7 @@ msgstr "Nom du rapport"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/app/configuration.js:353
+#: src/app/configuration.js:389
 msgid "Select YouTrack"
 msgstr "Sélectionner YouTrack"
 
@@ -197,7 +197,7 @@ msgstr "desc"
 msgid "natural"
 msgstr "naturel"
 
-#: src/app/configuration.js:53
+#: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
 msgstr "projet"
