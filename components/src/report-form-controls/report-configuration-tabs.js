@@ -87,8 +87,8 @@ const ReportConfigurationTabs = ({
     }
   }, [onChange, reports]);
 
-  let subscribed = true;
   useEffect(() => {
+    let subscribed = true;
     const tab = canCreateReports ? getActiveTab(report) : TabId.Existing;
     onSelectTab(tab);
     const reportId = (report || {}).id;
@@ -109,7 +109,12 @@ const ReportConfigurationTabs = ({
     return () => {
       subscribed = false;
     };
-  }, [report, canCreateReports]);
+  }, [report, canCreateReports, reportsSource, selectedExistingReport]);
+
+  useEffect(() => {
+    onSelectExistingReport(null);
+    onLoadReports([]);
+  }, [reportsSource]);
 
   const newReportTabTitle = (
     <span>{i18n('Create new report')}</span>

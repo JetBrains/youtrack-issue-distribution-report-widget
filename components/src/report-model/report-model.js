@@ -1,6 +1,9 @@
+import {i18n} from 'hub-dashboard-addons/dist/localization';
+
 import BackendTypes from '../backend-types/backend-types';
 
 import ReportNamedTimeRanges from './report-time-ranges';
+import ReportTimeScales from './report-time-scales';
 
 const ReportTypes = {
   isCumulativeFlow: report =>
@@ -74,6 +77,55 @@ const NewReport = {
     sprint: sprint && sprint.id && {
       id: sprint.id
     }
+  }),
+
+  timeTracking: () => ({
+    id: NewReport.NEW_REPORT_ID,
+    $type: BackendTypes.get().TimeSheetReport,
+    name: '',
+    projects: [],
+    range: {
+      $type: BackendTypes.get().NamedTimeRange,
+      range: {
+        id: ReportNamedTimeRanges.LastWeek.id
+      }
+    },
+    scale: {
+      id: ReportTimeScales.Day.id,
+      $type: BackendTypes.get().TimeSheetReportScale
+    },
+    workTypes: [],
+    authors: [],
+    query: '',
+    grouping: null,
+    own: true,
+    editable: true
+  }),
+
+  issueDistribution: (xsortOrder = 'COUNT_INDEX_DESC') => ({
+    id: NewReport.NEW_REPORT_ID,
+    $type: BackendTypes.get().FlatDistributionReport,
+    name: '',
+    projects: [],
+    xsortOrder,
+    xaxis: {
+      field: {
+        $type: BackendTypes.get().PredefinedFilterField,
+        id: 'project',
+        presentation: i18n('project')
+      }
+    },
+    query: '',
+    editable: true,
+    own: true,
+    readSharingSettings: {
+      permittedGroups: [],
+      permittedUsers: []
+    },
+    updateSharingSettings: {
+      permittedGroups: [],
+      permittedUsers: []
+    }
   })
 };
 
@@ -93,12 +145,18 @@ const ReportDataValidity = {
 };
 
 const ReportModel = {
+  ResponseStatus: {
+    NOT_FOUND: 404,
+    NO_ACCESS: 403
+  },
+
   ErrorTypes: {
     OK: 0,
     UNKNOWN_ERROR: 1,
     NO_YOUTRACK: 2,
     NO_REPORT: 3,
-    CANNOT_LOAD_REPORT: 4
+    CANNOT_LOAD_REPORT: 4,
+    NO_PERMISSIONS_FOR_REPORT: 5
   },
 
   isReportCalculation: report =>
@@ -134,6 +192,9 @@ const ReportModel = {
     }
     return ReportDataValidity.burnDown(reportData);
   },
+
+  hasSettings: report =>
+    report && report.projects,
 
   getSizeValue: size =>
     ((typeof size === 'number')

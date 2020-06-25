@@ -88,11 +88,16 @@ class Content extends React.Component {
     }
     if (error === ReportModel.ErrorTypes.NO_REPORT) {
       return this.renderReportError(
-        i18n('Cannot find any issue distribution report')
+        i18n('Cannot find any report')
       );
     }
     if (error === ReportModel.ErrorTypes.CANNOT_LOAD_REPORT) {
       return this.renderReportError(i18n('Cannot load selected report'));
+    }
+    if (error === ReportModel.ErrorTypes.NO_PERMISSIONS_FOR_REPORT) {
+      return this.renderReportError(
+        i18n('You don\'t have access to the report')
+      );
     }
     return this.renderFatalError(
       i18n('Oops... Something went wrong =(')

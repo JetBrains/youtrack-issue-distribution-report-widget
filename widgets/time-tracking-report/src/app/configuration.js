@@ -7,10 +7,11 @@ import {i18n} from 'hub-dashboard-addons/dist/localization';
 import WidgetRefreshPeriod from '@jetbrains/hub-widget-ui/dist/refresh-period';
 import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
 import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form';
+import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
+import Link from '@jetbrains/ring-ui/components/link/link';
 
 import '@jetbrains/ring-ui/components/form/form.scss';
 
-import BackendTypes from '../../../../components/src/backend-types/backend-types';
 import NoEditPermissionsWarning
   from '../../../../components/src/report-form-controls/no-edit-permissions-warning';
 import {
@@ -20,11 +21,10 @@ import {
   loadCurrentUser,
   loadTimeTrackingReportWithSettings
 } from '../../../../components/src/resources/resources';
-import ReportNamedTimeRanges from '../../../../components/src/report-model/report-time-ranges';
-import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
 import ReportConfigurationTabs from '../../../../components/src/report-form-controls/report-configuration-tabs';
+import ReportModel from '../../../../components/src/report-model/report-model';
+import fetcher from '../../../../components/src/fetcher/fetcher';
 
-import {makeYouTrackFetcher} from './components/service-resource';
 import TimeTrackingReportForm from './time-tracking-report-form';
 
 class Configuration extends React.Component {
@@ -33,78 +33,27 @@ class Configuration extends React.Component {
     refreshPeriod: PropTypes.number.isRequired,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
+    onGetReportDraft: PropTypes.func.isRequired,
     dashboardApi: PropTypes.object,
     youTrackId: PropTypes.string
   };
 
-  static NEW_REPORT_ID = undefined;
+  static getReportsSource = (youtrackId, onConnectionError) => {
+    fetcher().setYouTrack(youtrackId);
 
-  static createNewReport = () => ({
-    id: Configuration.NEW_REPORT_ID,
-    $type: BackendTypes.get().TimeSheetReport,
-    name: '',
-    projects: [],
-    range: {
-      $type: BackendTypes.get().NamedTimeRange,
-      range: {
-        id: ReportNamedTimeRanges.LastWeek.id
+    return async () => {
+      try {
+        return await (loadTimeReports(
+          async (url, params) =>
+            await fetcher().fetchYouTrack(url, params)
+        ));
+      } catch (e) {
+        onConnectionError(HttpErrorHandler.getMessage(e));
+        return [];
       }
-    },
-    scale: {
-      id: ReportTimeScales.Day.id,
-      $type: BackendTypes.get().TimeSheetReportScale
-    },
-    workTypes: [],
-    authors: [],
-    query: '',
-    grouping: null,
-    own: true,
-    editable: true
-  });
-
-  static makeReportsOptionsList = reports => reports.map(
-    Configuration.reportToSelectItem
-  );
-
-  static reportToSelectItem = report => {
-    if (!report) {
-      return {};
-    }
-
-    const getOptionDescription = currentReport => {
-      const description = currentReport.owner &&
-        (currentReport.owner.name || currentReport.owner.login);
-      return description && currentReport.own
-        ? `${description} (${i18n('me')})`
-        : description;
-    };
-
-    const getOptionLabel = currentReport => (
-      currentReport.id
-        ? currentReport.name || i18n('Unnamed')
-        : i18n('New report')
-    );
-
-    return {
-      key: report.id,
-      label: getOptionLabel(report),
-      description: getOptionDescription(report),
-      model: report
     };
   };
 
-  static areReportSettingsLoaded = report =>
-    report && report.projects;
-
-  static getSelectedReportOption = (selectedReport, reports) => {
-    if (selectedReport && selectedReport.id) {
-      return Configuration.reportToSelectItem(selectedReport);
-    }
-    if (reports[0]) {
-      return Configuration.reportToSelectItem(reports[0]);
-    }
-    return undefined;
-  };
 
   constructor(props) {
     super(props);
@@ -114,20 +63,23 @@ class Configuration extends React.Component {
     };
     const selectedReport = props.reportId
       ? {id: props.reportId}
-      : Configuration.createNewReport();
+      : props.onGetReportDraft();
 
     this.state = {
       selectedYouTrack,
       selectedReport,
       youTracks: [selectedYouTrack],
       currentUser: null,
-      refreshPeriod: props.refreshPeriod
+      refreshPeriod: props.refreshPeriod,
+      loadReports: props.youTrackId
+        ? Configuration.getReportsSource(
+          props.youTrackId, e => this.setConnectionError(e)
+        ) : () => []
     };
   }
 
   componentDidMount() {
     this.loadYouTrackList();
-    this.onAfterYouTrackChanged();
     this.initCurrentUser();
   }
 
@@ -135,17 +87,37 @@ class Configuration extends React.Component {
     this.setState({refreshPeriod: props.refreshPeriod});
   }
 
+  setConnectionError(error) {
+    this.setState({
+      connectionError: error
+    });
+  }
+
+  async removeWidget() {
+    return await this.props.dashboardApi.removeWidget();
+  }
+
   async loadYouTrackList() {
-    const {selectedYouTrack} = this.state;
+    const {
+      selectedYouTrack,
+      selectedReport
+    } = this.state;
     const youTracks = await getYouTrackServices(
-      this.props.dashboardApi.fetchHub
+      fetcher().fetchHub
     );
     const selectedYouTrackWithAllFields = youTracks.filter(
-      yt => yt.id === selectedYouTrack.id
+      yt => yt.id === (selectedYouTrack || {}).id
     )[0];
-    this.setState({
-      youTracks, selectedYouTrack: selectedYouTrackWithAllFields
-    });
+
+    if (selectedYouTrackWithAllFields) {
+      this.setState({
+        youTracks, selectedYouTrack: selectedYouTrackWithAllFields
+      }, () => this.setSelectedReport(selectedReport));
+    } else {
+      this.setState({
+        connectionError: i18n('Failed to find proper YouTrack installation')
+      });
+    }
   }
 
   changeReport = async report => {
@@ -153,17 +125,20 @@ class Configuration extends React.Component {
     if (selectedReport && report.id === selectedReport.id) {
       return;
     }
-    const settingsAlreadyLoaded = Configuration.
-      areReportSettingsLoaded(report);
+    this.setSelectedReport(report);
+  };
+
+  setSelectedReport(report) {
+    const hasSettings = ReportModel.hasSettings(report);
     this.setState({
       selectedReport: report,
       selectedReportSettingsAreChanged: false
     }, () => {
-      if (!settingsAlreadyLoaded) {
+      if (!hasSettings) {
         this.loadReportSettings(report.id);
       }
     });
-  };
+  }
 
   async initCurrentUser() {
     let currentUser;
@@ -177,47 +152,29 @@ class Configuration extends React.Component {
     this.setState({currentUser});
   }
 
-  async updateReportsSelectorModel() {
-    const getUpdatedCurrentReport = async currentReportId => {
-      if (currentReportId) {
-        try {
-          return await loadTimeTrackingReportWithSettings(
-            this.fetchYouTrack, currentReportId
-          );
-        } catch (err) {
-          return Configuration.createNewReport();
-        }
-      }
-      return Configuration.createNewReport();
-    };
-
-    const selectedReport = await getUpdatedCurrentReport(
-      (this.state.selectedReport || {}).id
-    );
-    this.setState(
-      {selectedReport},
-      async () => await this.changeReport(selectedReport)
-    );
-
-    const reports = await loadTimeReports(
-      async (url, params) => this.fetchYouTrack(url, params)
-    );
-    this.setState({reports});
-  }
-
   async loadReportSettings(reportId) {
     let reportWithSettings;
     try {
       reportWithSettings = await loadTimeTrackingReportWithSettings(
-        this.fetchYouTrack, reportId
+        fetcher().fetchYouTrack, reportId
       );
     } catch (err) {
-      this.setState({
-        reportSettingsLoadingError: HttpErrorHandler.getMessage(err)
-      });
-      return null;
+      if (
+        err.status === ReportModel.ResponseStatus.NOT_FOUND ||
+        err.status === ReportModel.ResponseStatus.NO_ACCESS
+      ) {
+        reportWithSettings = ReportModel.NewReport.timeTracking();
+      } else {
+        this.setState({
+          reportSettingsLoadingError: HttpErrorHandler.getMessage(err)
+        });
+        return null;
+      }
     }
-    if (reportWithSettings.id === (this.state.selectedReport || {}).id) {
+    if (
+      reportWithSettings.id === (this.state.selectedReport || {}).id ||
+      reportWithSettings.id === ReportModel.NewReport.NEW_REPORT_ID
+    ) {
       this.setState({
         selectedReport: reportWithSettings,
         reportSettingsLoadingError: null
@@ -226,16 +183,20 @@ class Configuration extends React.Component {
     return reportWithSettings;
   }
 
-  loadReports = async () =>
-    await loadTimeReports(
-      async (url, params) => this.fetchYouTrack(url, params)
-    )
-
   changeYouTrack = selected => {
     this.setState({
       selectedYouTrack: selected.model,
-      errorMessage: ''
-    }, () => this.onAfterYouTrackChanged());
+      selectedReport: {},
+      errorMessage: '',
+      isLoading: true,
+      connectionError: null,
+      loadReports: Configuration.getReportsSource(
+        selected.model.id, e => this.setConnectionError(e)
+      )
+    }, () => this.setState({
+      isLoading: false,
+      selectedReport: ReportModel.NewReport.timeTracking()
+    }));
   };
 
   onReportSettingsChange = report =>
@@ -265,7 +226,7 @@ class Configuration extends React.Component {
     if (this.state.selectedReportSettingsAreChanged) {
       try {
         const savedReport = await saveReportSettings(
-          this.fetchYouTrack, selectedReport
+          fetcher().fetchYouTrack, selectedReport
         );
         reportId = savedReport.id;
       } catch (err) {
@@ -284,27 +245,8 @@ class Configuration extends React.Component {
     return this.setState({isLoading: false});
   };
 
-  async onAfterYouTrackChanged() {
-    this.setState({isLoading: true});
-    try {
-      await this.updateReportsSelectorModel();
-    } catch (err) {
-      this.setState({
-        errorMessage: HttpErrorHandler.getMessage(err)
-      });
-    }
-    this.setState({isLoading: false});
-  }
-
-  fetchYouTrack = async (url, params) => {
-    const {dashboardApi} = this.props;
-    const {selectedYouTrack} = this.state;
-    return await dashboardApi.fetch(selectedYouTrack.id, url, params);
-  };
-
   renderTab(reportWithSettings) {
     const {
-      selectedYouTrack,
       currentUser
     } = this.state;
 
@@ -320,26 +262,14 @@ class Configuration extends React.Component {
           onValidStateChange={this.onReportValidStatusChange}
           disabled={!reportWithSettings.editable}
           currentUser={currentUser}
-          fetchYouTrack={
-            makeYouTrackFetcher(this.props.dashboardApi, selectedYouTrack)
-          }
-          fetchHub={
-            this.props.dashboardApi.fetchHub
-          }
+          fetchYouTrack={fetcher().fetchYouTrack}
+          fetchHub={fetcher().fetchHub}
         />
       </div>
     );
   }
 
-  renderReportsSettings() {
-    const {
-      selectedReport,
-      reportSettingsLoadingError
-    } = this.state;
-
-    const reportWithSettings = Configuration.
-      areReportSettingsLoaded(selectedReport) ? selectedReport : undefined;
-
+  renderReportsSettings(reportWithSettings) {
     return (
       <div>
         {
@@ -347,20 +277,11 @@ class Configuration extends React.Component {
           <ReportConfigurationTabs
             report={reportWithSettings}
             onChange={this.changeReport}
-            onCreateReport={Configuration.createNewReport}
-            reportsSource={this.loadReports}
+            onCreateReport={this.props.onGetReportDraft}
+            reportsSource={this.state.loadReports}
           >
             {this.renderTab(reportWithSettings)}
           </ReportConfigurationTabs>
-        }
-        {
-          !reportWithSettings && !reportSettingsLoadingError && <LoaderInline/>
-        }
-        {
-          !reportWithSettings && reportSettingsLoadingError &&
-          <div className="ring-form__group">
-            {reportSettingsLoadingError}
-          </div>
         }
       </div>
     );
@@ -388,14 +309,10 @@ class Configuration extends React.Component {
     );
   }
 
-  render() {
+  renderYouTrackSelect() {
     const {
       youTracks,
-      selectedYouTrack,
-      errorMessage,
-      reports,
-      selectedReport,
-      selectedReportIsValid
+      selectedYouTrack
     } = this.state;
 
     const youTrackServiceToSelectItem = it => it && {
@@ -404,6 +321,63 @@ class Configuration extends React.Component {
       description: it.homeUrl,
       model: it
     };
+
+    return youTracks.length > 1 && (
+      <div className="ring-form__group">
+        <Select
+          data={youTracks.map(youTrackServiceToSelectItem)}
+          selected={youTrackServiceToSelectItem(selectedYouTrack)}
+          onSelect={this.changeYouTrack}
+          filter={true}
+          label={i18n('Select YouTrack')}
+          size={InputSize.FULL}
+        />
+      </div>
+    );
+  }
+
+  renderConnectionError() {
+    const {
+      youTracks,
+      connectionError
+    } = this.state;
+
+    return (
+      <div>
+        {
+          this.renderYouTrackSelect()
+        }
+        <EmptyWidget
+          face={EmptyWidgetFaces.ERROR}
+          message={
+            youTracks.length > 1
+              ? i18n('Failed to load data from selected YouTrack')
+              : connectionError
+          }
+        >
+          <Link
+            pseudo={true}
+            onClick={this.removeWidget}
+          >
+            {i18n('Remove widget')}
+          </Link>
+        </EmptyWidget>
+      </div>
+    );
+  }
+
+  renderConfigurationOptions() {
+    const {
+      errorMessage,
+      selectedReport,
+      reportSettingsLoadingError,
+      selectedReportIsValid
+    } = this.state;
+
+    const reportWithSettings =
+      ReportModel.hasSettings(selectedReport)
+        ? selectedReport
+        : undefined;
 
     return (
       <ConfigurationForm
@@ -415,26 +389,33 @@ class Configuration extends React.Component {
         onCancel={this.props.onCancel}
       >
         {
-          youTracks.length > 1 &&
-          <div className="ring-form__group">
-            <Select
-              data={youTracks.map(youTrackServiceToSelectItem)}
-              selected={youTrackServiceToSelectItem(selectedYouTrack)}
-              onSelect={this.changeYouTrack}
-              filter={true}
-              label={i18n('Select YouTrack')}
-              size={InputSize.FULL}
-            />
-          </div>
+          this.renderYouTrackSelect()
         }
         {
-          reports && this.renderReportsSettings()
+          this.renderReportsSettings(reportWithSettings)
         }
         {
-          !errorMessage && !reports && <LoaderInline/>
+          !reportWithSettings &&
+          (
+            reportSettingsLoadingError
+              ? (
+                <div className="ring-form__group">
+                  {reportSettingsLoadingError}
+                </div>
+              ) : <LoaderInline/>
+          )
         }
       </ConfigurationForm>
     );
+  }
+
+  render() {
+    const {connectionError} = this.state;
+
+    if (connectionError) {
+      return this.renderConnectionError();
+    }
+    return this.renderConfigurationOptions();
   }
 }
 

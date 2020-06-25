@@ -38,7 +38,7 @@ class SpendTimeReportsWidget extends React.Component {
   };
 
   static applyReportSettingsFromWidgetConfig = (report, config) => {
-    if (!config || config.reportId !== report.id) {
+    if (!config || config.reportId !== (report || {}).id) {
       return report;
     }
     if (config.presentation) {
@@ -49,6 +49,16 @@ class SpendTimeReportsWidget extends React.Component {
 
   static getDefaultWidgetTitle = () =>
     i18n('Time Tracking Report');
+
+  static responseReportStatusToError = errStatus => {
+    if (errStatus === ReportModel.ResponseStatus.NO_ACCESS) {
+      return ReportModel.ErrorTypes.NO_PERMISSIONS_FOR_REPORT;
+    }
+    if (errStatus === ReportModel.ResponseStatus.NOT_FOUND) {
+      return ReportModel.ErrorTypes.CANNOT_LOAD_REPORT;
+    }
+    return ReportModel.ErrorTypes.UNKNOWN_ERROR;
+  }
 
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {
@@ -104,7 +114,11 @@ class SpendTimeReportsWidget extends React.Component {
         });
       },
       onRefresh: async () => {
-        await this.recalculateReport();
+        if (this.state.error === ReportModel.ErrorTypes.OK) {
+          await this.recalculateReport();
+        } else {
+          await this.onWidgetRefresh();
+        }
       }
     });
   }
@@ -215,8 +229,12 @@ class SpendTimeReportsWidget extends React.Component {
       return;
     }
 
-    report.status = await recalculateReport(this.fetchYouTrack, report);
-    this.setState({report, refreshPeriod});
+    try {
+      report.status = await recalculateReport(this.fetchYouTrack, report);
+      this.setState({report, refreshPeriod});
+    } catch (e) {
+      await this.onWidgetRefresh();
+    }
   }
 
   onWidgetRefresh = async () => {
@@ -252,11 +270,13 @@ class SpendTimeReportsWidget extends React.Component {
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
     const line = yAxis;
     try {
-      const reportWithData =
-        await loadTimeTrackingReportWithData(fetchYouTrack, reportId, {line});
-      return reportWithData;
+      return await loadTimeTrackingReportWithData(
+        fetchYouTrack, reportId, {line}
+      );
     } catch (err) {
-      this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
+      this.setError(
+        SpendTimeReportsWidget.responseReportStatusToError(err.status)
+      );
       return undefined;
     }
   }
@@ -360,6 +380,7 @@ class SpendTimeReportsWidget extends React.Component {
         refreshPeriod={refreshPeriod}
         onSubmit={submitForm}
         onCancel={this.cancelConfig}
+        onGetReportDraft={ReportModel.NewReport.timeTracking}
         dashboardApi={this.props.dashboardApi}
         youTrackId={youTrack.id}
       />

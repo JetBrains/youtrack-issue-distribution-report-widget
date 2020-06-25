@@ -74,11 +74,11 @@ const getCustomFieldTextPresentation = (field, noEmptyText) => {
 
 const getColorsIds = field => {
   const values = field && field.value && (
-    Number.isInteger(field.value.length) ? field.value : [field.value]
+    Array.isArray(field.value.length) ? field.value : [field.value]
   );
-  return (values || []).
-    map(val => val.color && val.color.id).
-    filter(val => !!val);
+  return (values || []).map(
+    val => val.color && val.color.id
+  ).filter(val => !!val);
 };
 
 const getFieldsValuesToDisplay = (fields, priorityField) => {
