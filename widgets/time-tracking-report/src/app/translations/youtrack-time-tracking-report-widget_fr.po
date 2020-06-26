@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-26 13:09\n"
+"PO-Revision-Date: 2020-06-26 13:19\n"
 
 #: src/app/distribution-report-form.js:433
 msgid "Add project"
