@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-26 12:55\n"
+"PO-Revision-Date: 2020-06-26 13:25\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
