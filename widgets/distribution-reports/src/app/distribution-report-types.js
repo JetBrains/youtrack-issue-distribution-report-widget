@@ -28,21 +28,16 @@ const getReportTypesMap = () => ({
 
 function getReportTypePresentation(report) {
   if (report.$type === BackendTypes.get().IssuePerProjectReport) {
-    return i18n('project');
+    return i18n('Project');
   }
   if (report.$type === BackendTypes.get().IssuePerAssigneeReport) {
-    return i18n('assignee');
+    return i18n('Assignee');
   }
   const ordinateForPresentation = report.yaxis || report.xaxis;
   return (
     ordinateForPresentation && ordinateForPresentation.field &&
       ordinateForPresentation.field.presentation
   ) || '';
-}
-
-function getReportTypeExampleLink(report) {
-  const reportTypeData = getReportTypesMap()[report && report.$type];
-  return reportTypeData && reportTypeData.docs;
 }
 
 function isTypeWithEditableXAxis(report) {
@@ -61,6 +56,5 @@ function getReportTypePathPrefix(report) {
 export {
   getReportTypePathPrefix,
   getReportTypePresentation,
-  getReportTypeExampleLink,
   isTypeWithEditableXAxis
 };

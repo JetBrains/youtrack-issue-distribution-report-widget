@@ -199,83 +199,74 @@ class DistributionReportForm extends React.Component {
     }
   }
 
-  renderIssueDistributionFieldsEditableSelectors(disabled) {
+  renderIssueDistributionFieldsEditableSelectors() {
     const {report, fetchYouTrack} = this.state;
 
     const filterFieldsSource = async projects =>
       await loadReportsFilterFields(fetchYouTrack, projects);
 
     return (
-      <StandardFormGroup label={i18n('Show distribution by')}>
-        <div>
-          <span className="distribution-reports-widget__filter-field-selector">
-            {
-              report.yaxis &&
-              <span className="distribution-reports-widget__axis-label">
-                {'↓'}
-              </span>
-            }
-            <FilterFieldsSelector
-              selectedField={
-                DistributionReportAxises.getMainAxis(report).field
-              }
-              disabled={disabled}
-              projects={report.projects}
-              onChange={this.changeMainFilterField}
-              filterFieldsSource={filterFieldsSource}
-              canBeEmpty={false}
-            />
-          </span>
+      <div>
+        <span className="distribution-reports-widget__filter-field-selector">
           {
-            report.yaxis && !disabled &&
-            <CompareIcon
-              className="distribution-reports-widget__icon distribution-reports-widget__icon_btn distribution-reports-widget__transpose-icon"
-              onClick={this.changeAxisPlaces}
-              color={CompareIcon.Color.GRAY}
-              size={CompareIcon.Size.Size16}
-            />
-          }
-          {
-            DistributionReportForm.canShowSecondaryAxisOption(report) &&
-            <span className="distribution-reports-widget__filter-field-selector">
-              <span className="distribution-reports-widget__axis-label">
-                {report.yaxis ? '→' : ''}
-              </span>
-              <FilterFieldsSelector
-                selectedField={
-                  report.yaxis
-                    ? DistributionReportAxises.
-                      getSecondaryAxis(report).field
-                    : undefined
-                }
-                disabled={disabled}
-                projects={report.projects}
-                onChange={this.changeSplittingBarsFilterField}
-                filterFieldsSource={filterFieldsSource}
-                canBeEmpty={DistributionReportForm.isNewReport(report)}
-              />
+            report.yaxis &&
+            <span className="distribution-reports-widget__axis-label">
+              {'↓'}
             </span>
           }
-        </div>
-      </StandardFormGroup>
+          <FilterFieldsSelector
+            selectedField={
+              DistributionReportAxises.getMainAxis(report).field
+            }
+            projects={report.projects}
+            onChange={this.changeMainFilterField}
+            filterFieldsSource={filterFieldsSource}
+            canBeEmpty={false}
+          />
+        </span>
+        {
+          report.yaxis &&
+          <CompareIcon
+            className="distribution-reports-widget__icon distribution-reports-widget__icon_btn distribution-reports-widget__transpose-icon"
+            onClick={this.changeAxisPlaces}
+            color={CompareIcon.Color.GRAY}
+            size={CompareIcon.Size.Size16}
+          />
+        }
+        {
+          DistributionReportForm.canShowSecondaryAxisOption(report) &&
+          <span className="distribution-reports-widget__filter-field-selector">
+            <span className="distribution-reports-widget__axis-label">
+              {report.yaxis ? '→' : ''}
+            </span>
+            <FilterFieldsSelector
+              selectedField={
+                report.yaxis
+                  ? DistributionReportAxises.getSecondaryAxis(report).field
+                  : undefined
+              }
+              projects={report.projects}
+              onChange={this.changeSplittingBarsFilterField}
+              filterFieldsSource={filterFieldsSource}
+              canBeEmpty={DistributionReportForm.isNewReport(report)}
+            />
+          </span>
+        }
+      </div>
     );
   }
 
   renderIssueDistributionFieldsReadonlyLabels() {
     const {report} = this.state;
-
-    const mainFieldPresentation =
-      DistributionReportAxises.getMainAxisPresentation(report);
-    const secondaryFieldPresentation =
-      DistributionReportAxises.getSecondaryAxisPresentation(report);
+    const labels = [
+      DistributionReportAxises.getMainAxisPresentation(report),
+      report.yaxis &&
+      DistributionReportAxises.getSecondaryAxisPresentation(report)
+    ].filter(it => !!it).join(` ${i18n('and')} `);
 
     return (
       <div className="distribution-reports-widget__filter-fields">
-        {
-          report.yaxis
-            ? i18n('Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}', {mainFieldPresentation, secondaryFieldPresentation})
-            : i18n('Show distribution by {{mainFieldPresentation}}', {mainFieldPresentation})
-        }
+        { labels }
       </div>
     );
   }
@@ -286,8 +277,14 @@ class DistributionReportForm extends React.Component {
       disabled
     } = this.state;
 
-    return this.renderIssueDistributionFieldsEditableSelectors(
-      disabled || !isTypeWithEditableXAxis(report)
+    return (
+      <StandardFormGroup label={i18n('Show distribution by')}>
+        {
+          (!disabled && isTypeWithEditableXAxis(report))
+            ? this.renderIssueDistributionFieldsEditableSelectors()
+            : this.renderIssueDistributionFieldsReadonlyLabels()
+        }
+      </StandardFormGroup>
     );
   }
 

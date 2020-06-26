@@ -32,8 +32,9 @@ class DistributionReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static PROGRESS_BAR_REFRESH_PERIOD = 0.5;
 
+  // eslint-disable-next-line complexity
   static applyReportSettingsFromWidgetConfig = (report, config) => {
-    if (!config || config.reportId !== report.id) {
+    if (!config || config.reportId !== (report || {}).id) {
       return report;
     }
     if (!DistributionReportAxises.SortOrder.isEditable(report)) {
@@ -56,6 +57,16 @@ class DistributionReportsWidget extends React.Component {
 
   static getDefaultWidgetTitle = () =>
     i18n('Issue Distribution Report');
+
+  static responseReportStatusToError = errStatus => {
+    if (errStatus === ReportModel.ResponseStatus.NO_ACCESS) {
+      return ReportModel.ErrorTypes.NO_PERMISSIONS_FOR_REPORT;
+    }
+    if (errStatus === ReportModel.ResponseStatus.NOT_FOUND) {
+      return ReportModel.ErrorTypes.CANNOT_LOAD_REPORT;
+    }
+    return ReportModel.ErrorTypes.UNKNOWN_ERROR;
+  }
 
   static getPresentationModeWidgetTitle = (report, youTrack) => {
     if (report && report.name) {
@@ -112,7 +123,11 @@ class DistributionReportsWidget extends React.Component {
         });
       },
       onRefresh: async () => {
-        await this.recalculateReport();
+        if (this.state.error === ReportModel.ErrorTypes.OK) {
+          await this.recalculateReport();
+        } else {
+          await this.onWidgetRefresh();
+        }
       }
     });
   }
@@ -206,8 +221,12 @@ class DistributionReportsWidget extends React.Component {
       return;
     }
 
-    report.status = await recalculateReport(this.fetchYouTrack, report);
-    this.setState({report, refreshPeriod});
+    try {
+      report.status = await recalculateReport(this.fetchYouTrack, report);
+      this.setState({report, refreshPeriod});
+    } catch (e) {
+      await this.onWidgetRefresh();
+    }
   }
 
   onWidgetRefresh = async () => {
@@ -245,7 +264,9 @@ class DistributionReportsWidget extends React.Component {
         fetchYouTrack, reportId
       );
     } catch (err) {
-      this.setError(ReportModel.ErrorTypes.CANNOT_LOAD_REPORT);
+      this.setError(
+        DistributionReportsWidget.responseReportStatusToError(err.status)
+      );
       return undefined;
     }
   }
@@ -354,6 +375,7 @@ class DistributionReportsWidget extends React.Component {
         refreshPeriod={refreshPeriod}
         onSubmit={submitForm}
         onCancel={this.cancelConfig}
+        onGetReportDraft={ReportModel.NewReport.issueDistribution}
         dashboardApi={this.props.dashboardApi}
         youTrackId={youTrack.id}
       />

@@ -143,8 +143,6 @@ async function loadIssueDistributionReportWithData(
   fetchYouTrack, reportId, params
 ) {
   const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
-  //const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
-  //const fields = `${ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS},data(${ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS}),status(${REPORT_STATUS_FIELDS})`;
   return await loadReportWithData(
     fetchYouTrack, reportId, params, fields
   );
