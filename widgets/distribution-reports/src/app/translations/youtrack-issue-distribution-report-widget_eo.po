@@ -11,7 +11,11 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-26 13:25\n"
+"PO-Revision-Date: 2020-06-27 18:00\n"
+
+#: src/app/distribution-report-types.js:34
+msgid "Assignee"
+msgstr "crwdns9697800:0crwdne9697800:0"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -21,11 +25,11 @@ msgstr "crwdns933076:0crwdne933076:0"
 msgid "Calculating..."
 msgstr "crwdns933080:0crwdne933080:0"
 
-#: src/app/distribution-report-form.js:361
+#: src/app/distribution-report-form.js:358
 msgid "Can edit"
 msgstr "crwdns9072638:0crwdne9072638:0"
 
-#: src/app/distribution-report-form.js:352
+#: src/app/distribution-report-form.js:349
 msgid "Can view and use"
 msgstr "crwdns9072640:0crwdne9072640:0"
 
@@ -45,27 +49,19 @@ msgstr "crwdns933086:0crwdne933086:0"
 msgid "Cannot load selected report"
 msgstr "crwdns933088:0crwdne933088:0"
 
-#: src/app/configuration.js:234
-msgid "Cannot save report"
-msgstr "crwdns933090:0crwdne933090:0"
-
-#: src/app/configuration.js:243
-msgid "Cannot update widget"
-msgstr "crwdns933092:0crwdne933092:0"
-
 #: src/app/content.js:67
 msgid "Edit settings"
 msgstr "crwdns933096:0crwdne933096:0"
 
-#: src/app/distribution-report-form.js:395
+#: src/app/distribution-report-form.js:392
 msgid "Filter issues"
 msgstr "crwdns933098:0crwdne933098:0"
 
-#: src/app/widget.js:58
+#: src/app/widget.js:59
 msgid "Issue Distribution Report"
 msgstr "crwdns933100:0crwdne933100:0"
 
-#: src/app/distribution-report-form.js:310
+#: src/app/distribution-report-form.js:307
 msgid "Issues"
 msgstr "crwdns1253928:0crwdne1253928:0"
 
@@ -89,7 +85,11 @@ msgstr "crwdns933118:0crwdne933118:0"
 msgid "Pie chart"
 msgstr "crwdns1476886:0crwdne1476886:0"
 
-#: src/app/distribution-report-form.js:373
+#: src/app/distribution-report-types.js:31
+msgid "Project"
+msgstr "crwdns9697802:0crwdne9697802:0"
+
+#: src/app/distribution-report-form.js:370
 msgid "Projects"
 msgstr "crwdns9375682:0crwdne9375682:0"
 
@@ -97,7 +97,7 @@ msgstr "crwdns9375682:0crwdne9375682:0"
 msgid "Remove widget"
 msgstr "crwdns933122:0crwdne933122:0"
 
-#: src/app/distribution-report-form.js:422
+#: src/app/distribution-report-form.js:419
 msgid "Report name"
 msgstr "crwdns933130:0crwdne933130:0"
 
@@ -105,27 +105,15 @@ msgstr "crwdns933130:0crwdne933130:0"
 msgid "Save"
 msgstr "crwdns933132:0crwdne933132:0"
 
-#: src/app/configuration.js:389
-msgid "Select YouTrack"
-msgstr "crwdns933134:0crwdne933134:0"
-
-#: src/app/distribution-report-form.js:351
+#: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
 msgstr "crwdns9375686:0crwdne9375686:0"
 
-#: src/app/distribution-report-form.js:209
+#: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
 msgstr "crwdns9375688:0crwdne9375688:0"
 
-#: src/app/distribution-report-form.js:277
-msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr "crwdns933140:0{{mainFieldPresentation}}crwdne933140:0"
-
-#: src/app/distribution-report-form.js:276
-msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr "crwdns933142:0{{mainFieldPresentation}}crwdnd933142:0{{secondaryFieldPresentation}}crwdne933142:0"
-
-#: src/app/distribution-report-form.js:302
+#: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "crwdns1253930:0{{aggregationPolicy}}crwdne1253930:0"
 
@@ -177,13 +165,13 @@ msgstr "crwdns933162:0{{minutesCount}}crwdne933162:0"
 msgid "am|pm"
 msgstr "crwdns933164:0crwdne933164:0"
 
+#: src/app/distribution-report-form.js:265
+msgid "and"
+msgstr "crwdns9697804:0crwdne9697804:0"
+
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
 msgstr "crwdns933166:0crwdne933166:0"
-
-#: src/app/distribution-report-types.js:34
-msgid "assignee"
-msgstr "crwdns933168:0crwdne933168:0"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -196,11 +184,6 @@ msgstr "crwdns933174:0crwdne933174:0"
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
 msgstr "crwdns933180:0crwdne933180:0"
-
-#: src/app/configuration.js:52
-#: src/app/distribution-report-types.js:31
-msgid "project"
-msgstr "crwdns933182:0crwdne933182:0"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

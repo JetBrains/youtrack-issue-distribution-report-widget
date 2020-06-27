@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-26 13:24\n"
+"PO-Revision-Date: 2020-06-27 17:59\n"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -47,11 +47,11 @@ msgstr "Impossible de charger le rapport sélectionné"
 
 #: src/app/configuration.js:234
 msgid "Cannot save report"
-msgstr "Impossible d'enregistrer le rapport"
+msgstr ""
 
 #: src/app/configuration.js:243
 msgid "Cannot update widget"
-msgstr "Impossible de mettre à jour le widget"
+msgstr ""
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,7 +107,7 @@ msgstr "Enregistrer"
 
 #: src/app/configuration.js:389
 msgid "Select YouTrack"
-msgstr "Sélectionner YouTrack"
+msgstr ""
 
 #: src/app/distribution-report-form.js:351
 msgid "Sharing settings"
@@ -119,11 +119,11 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:277
 msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr "Afficher la distribution par {{mainFieldPresentation}}"
+msgstr ""
 
 #: src/app/distribution-report-form.js:276
 msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr "Afficher la distribution par {{mainFieldPresentation}} et {{secondaryFieldPresentation}}"
+msgstr ""
 
 #: src/app/distribution-report-form.js:302
 msgid "Show totals for {{aggregationPolicy}}"
@@ -183,7 +183,7 @@ msgstr "asc"
 
 #: src/app/distribution-report-types.js:34
 msgid "assignee"
-msgstr "responsable"
+msgstr ""
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -200,7 +200,7 @@ msgstr "naturel"
 #: src/app/configuration.js:52
 #: src/app/distribution-report-types.js:31
 msgid "project"
-msgstr "projet"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
