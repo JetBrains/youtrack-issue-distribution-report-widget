@@ -92,10 +92,6 @@ class BaseConfiguration extends React.Component {
     });
   }
 
-  async removeWidget() {
-    return await this.props.dashboardApi.removeWidget();
-  }
-
   async loadYouTrackList() {
     const {
       selectedYouTrack,
@@ -160,7 +156,7 @@ class BaseConfiguration extends React.Component {
         err.status === ReportModel.ResponseStatus.NOT_FOUND ||
         err.status === ReportModel.ResponseStatus.NO_ACCESS
       ) {
-        reportWithSettings = ReportModel.NewReport.timeTracking();
+        reportWithSettings = this.props.onGetReportDraft();
       } else {
         this.setState({
           reportSettingsLoadingError: HttpErrorHandler.getMessage(err)
@@ -180,6 +176,9 @@ class BaseConfiguration extends React.Component {
     return reportWithSettings;
   }
 
+  removeWidget = async () =>
+    await this.props.dashboardApi.removeWidget();
+
   changeYouTrack = selected => {
     this.setState({
       selectedYouTrack: selected.model,
@@ -194,7 +193,7 @@ class BaseConfiguration extends React.Component {
       )
     }, () => this.setState({
       isLoading: false,
-      selectedReport: ReportModel.NewReport.timeTracking()
+      selectedReport: this.props.onGetReportDraft()
     }));
   };
 
