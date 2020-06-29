@@ -22,6 +22,7 @@ import {
 import ReportConfigurationTabs from '../report-form-controls/report-configuration-tabs';
 import ReportModel from '../report-model/report-model';
 import fetcher from '../fetcher/fetcher';
+import permissions from '../permissions/permissions';
 
 
 class BaseConfiguration extends React.Component {
@@ -43,7 +44,14 @@ class BaseConfiguration extends React.Component {
 
     return async () => {
       try {
-        return await reportsSource();
+        const result = await reportsSource();
+        if (!result || !result.length) {
+          const permissionCache = await permissions.load();
+          if (!permissionCache.has('JetBrains.YouTrack.CREATE_REPORT')) {
+            onConnectionError(i18n('Cannot find any time tracking reports'));
+          }
+        }
+        return result;
       } catch (e) {
         onConnectionError(HttpErrorHandler.getMessage(e));
         return [];
@@ -86,10 +94,8 @@ class BaseConfiguration extends React.Component {
     this.setState({refreshPeriod: props.refreshPeriod});
   }
 
-  setConnectionError(error) {
-    this.setState({
-      connectionError: error
-    });
+  setConnectionError(connectionError) {
+    this.setState({connectionError});
   }
 
   async loadYouTrackList() {
