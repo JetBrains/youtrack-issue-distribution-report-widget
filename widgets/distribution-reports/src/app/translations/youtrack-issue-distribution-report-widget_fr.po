@@ -11,7 +11,11 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-27 17:59\n"
+"PO-Revision-Date: 2020-06-29 16:10\n"
+
+#: src/app/distribution-report-types.js:34
+msgid "Assignee"
+msgstr ""
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -21,11 +25,11 @@ msgstr "Barres"
 msgid "Calculating..."
 msgstr "Calcul..."
 
-#: src/app/distribution-report-form.js:361
+#: src/app/distribution-report-form.js:358
 msgid "Can edit"
 msgstr ""
 
-#: src/app/distribution-report-form.js:352
+#: src/app/distribution-report-form.js:349
 msgid "Can view and use"
 msgstr ""
 
@@ -45,27 +49,19 @@ msgstr "Impossible de trouver un rapport de distribution des tickets"
 msgid "Cannot load selected report"
 msgstr "Impossible de charger le rapport sélectionné"
 
-#: src/app/configuration.js:234
-msgid "Cannot save report"
-msgstr ""
-
-#: src/app/configuration.js:243
-msgid "Cannot update widget"
-msgstr ""
-
 #: src/app/content.js:67
 msgid "Edit settings"
 msgstr "Modifier les paramètres"
 
-#: src/app/distribution-report-form.js:395
+#: src/app/distribution-report-form.js:392
 msgid "Filter issues"
 msgstr "Filtrer les tickets"
 
-#: src/app/widget.js:58
+#: src/app/widget.js:59
 msgid "Issue Distribution Report"
 msgstr "Rapport de distribution de ticket"
 
-#: src/app/distribution-report-form.js:310
+#: src/app/distribution-report-form.js:307
 msgid "Issues"
 msgstr "Tickets"
 
@@ -89,7 +85,11 @@ msgstr "Oups ! Un problème est survenu =("
 msgid "Pie chart"
 msgstr "Graphique camembert"
 
-#: src/app/distribution-report-form.js:373
+#: src/app/distribution-report-types.js:31
+msgid "Project"
+msgstr ""
+
+#: src/app/distribution-report-form.js:370
 msgid "Projects"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Remove widget"
 msgstr "Supprimer le gadget"
 
-#: src/app/distribution-report-form.js:422
+#: src/app/distribution-report-form.js:419
 msgid "Report name"
 msgstr "Nom du rapport"
 
@@ -105,27 +105,15 @@ msgstr "Nom du rapport"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/app/configuration.js:389
-msgid "Select YouTrack"
-msgstr ""
-
-#: src/app/distribution-report-form.js:351
+#: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:209
+#: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
 msgstr ""
 
-#: src/app/distribution-report-form.js:277
-msgid "Show distribution by {{mainFieldPresentation}}"
-msgstr ""
-
-#: src/app/distribution-report-form.js:276
-msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr ""
-
-#: src/app/distribution-report-form.js:302
+#: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr "Afficher les totaux pour : {{aggregationPolicy}}"
 
@@ -177,13 +165,13 @@ msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 msgid "am|pm"
 msgstr "am|pm"
 
+#: src/app/distribution-report-form.js:265
+msgid "and"
+msgstr ""
+
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
 msgstr "asc"
-
-#: src/app/distribution-report-types.js:34
-msgid "assignee"
-msgstr ""
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -196,11 +184,6 @@ msgstr "desc"
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
 msgstr "naturel"
-
-#: src/app/configuration.js:52
-#: src/app/distribution-report-types.js:31
-msgid "project"
-msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

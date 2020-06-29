@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-28 21:05\n"
+"PO-Revision-Date: 2020-06-29 16:11\n"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
