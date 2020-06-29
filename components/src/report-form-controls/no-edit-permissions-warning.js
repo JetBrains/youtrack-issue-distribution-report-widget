@@ -23,6 +23,7 @@ const NoEditPermissionsWarning = ({
       id: undefined,
       name: `${report.name} - ${i18n('clone')}`,
       own: true,
+      owner: undefined,
       editable: true
     });
   }, [report, onChangeReport]);
