@@ -11,14 +11,13 @@ import ReportModel from '../../../../components/src/report-model/report-model';
 import BackendTypes from '../../../../components/src/backend-types/backend-types';
 import {
   loadIssuesDistributionReports,
-  loadIssueDistributionReportWithData
-} from '../../../../components/src/resources/resources';
-
-import {
-  recalculateReport,
   getYouTrackService,
+  loadIssueDistributionReportWithData,
+  recalculateReport,
   saveReportSettings
-} from './resources';
+} from '../../../../components/src/resources/resources';
+import fetcher from '../../../../components/src/fetcher/fetcher';
+
 import Configuration
   from './configuration';
 import {getReportTypePathPrefix} from './distribution-report-types';
@@ -146,16 +145,19 @@ class DistributionReportsWidget extends React.Component {
     const ytTrackService = await getYouTrackService(
       fetchHub, youTrack && youTrack.id
     );
-    if (ytTrackService && ytTrackService.id) {
+    const hasYouTrack = ytTrackService && ytTrackService.id;
+    if (hasYouTrack) {
       this.setYouTrack(ytTrackService);
     } else {
       this.setError(ReportModel.ErrorTypes.NO_YOUTRACK);
-      return;
     }
-    if (this.props.configWrapper.isNewConfig()) {
-      this.openWidgetsSettings();
+    const isNewWidget = this.props.configWrapper.isNewConfig();
+    if (isNewWidget || !hasYouTrack) {
+      if (isNewWidget) {
+        this.openWidgetsSettings();
+      }
       this.setState({
-        isNewWidget: true,
+        isNewWidget,
         refreshPeriod: DistributionReportsWidget.DEFAULT_REFRESH_PERIOD
       });
       return;
@@ -163,7 +165,7 @@ class DistributionReportsWidget extends React.Component {
 
     const configReportId = this.props.configWrapper.getFieldValue('reportId');
     const report = (configReportId && {id: configReportId}) ||
-      (await loadIssuesDistributionReports(this.fetchYouTrack))[0];
+      (await loadIssuesDistributionReports(fetcher().fetchYouTrack))[0];
 
     if (report) {
       const reportWithData = await this.loadReportWithAppliedConfigSettings(
@@ -182,13 +184,8 @@ class DistributionReportsWidget extends React.Component {
     this.setLoadingEnabled(false);
   };
 
-  fetchYouTrack = async (url, params) => {
-    const {dashboardApi} = this.props;
-    const {youTrack} = this.state;
-    return await dashboardApi.fetch(youTrack.id, url, params);
-  };
-
   setYouTrack(youTrackService) {
+    fetcher().setYouTrack(youTrackService);
     BackendTypes.setYtVersion(youTrackService.version);
     this.setState({
       youTrack: {
@@ -222,7 +219,7 @@ class DistributionReportsWidget extends React.Component {
     }
 
     try {
-      report.status = await recalculateReport(this.fetchYouTrack, report);
+      report.status = await recalculateReport(fetcher().fetchYouTrack, report);
       this.setState({report, refreshPeriod});
     } catch (e) {
       await this.onWidgetRefresh();
@@ -256,7 +253,7 @@ class DistributionReportsWidget extends React.Component {
 
   async loadReport(reportId, optionalYouTrack) {
     const fetchYouTrack = !optionalYouTrack
-      ? this.fetchYouTrack
+      ? fetcher().fetchYouTrack
       : async (url, params) =>
         await this.props.dashboardApi.fetch(optionalYouTrack.id, url, params);
     try {
@@ -317,7 +314,7 @@ class DistributionReportsWidget extends React.Component {
 
       if (this.props.editable) {
         return SortOrder.isEditable(report)
-          ? await saveReportSettings(this.fetchYouTrack, report, true)
+          ? await saveReportSettings(fetcher().fetchYouTrack, report, true)
           : await this.props.configWrapper.update({
             reportId: report.id, mainAxisSortOrder, secondaryAxisSortOrder
           });
@@ -333,7 +330,7 @@ class DistributionReportsWidget extends React.Component {
 
     if (this.props.editable) {
       return report.own
-        ? await saveReportSettings(this.fetchYouTrack, report, true)
+        ? await saveReportSettings(fetcher().fetchYouTrack, report, true)
         : await this.props.configWrapper.update({
           reportId: report.id, presentation
         });
@@ -377,7 +374,7 @@ class DistributionReportsWidget extends React.Component {
         onCancel={this.cancelConfig}
         onGetReportDraft={ReportModel.NewReport.issueDistribution}
         dashboardApi={this.props.dashboardApi}
-        youTrackId={youTrack.id}
+        youTrackId={(youTrack || {}).id}
       />
     );
   }
