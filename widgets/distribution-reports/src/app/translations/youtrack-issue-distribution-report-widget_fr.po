@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-29 16:10\n"
+"PO-Revision-Date: 2020-06-30 11:58\n"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
@@ -57,7 +57,7 @@ msgstr "Modifier les paramètres"
 msgid "Filter issues"
 msgstr "Filtrer les tickets"
 
-#: src/app/widget.js:59
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "Rapport de distribution de ticket"
 

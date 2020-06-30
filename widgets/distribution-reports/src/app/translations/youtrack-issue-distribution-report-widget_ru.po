@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-06-29 16:11\n"
+"PO-Revision-Date: 2020-06-30 11:58\n"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
@@ -57,7 +57,7 @@ msgstr "Изменить параметры"
 msgid "Filter issues"
 msgstr "Фильтровать задачи"
 
-#: src/app/widget.js:59
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "Отчет о распределении задач"
 

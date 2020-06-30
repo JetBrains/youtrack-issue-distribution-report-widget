@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-29 16:11\n"
+"PO-Revision-Date: 2020-06-30 11:59\n"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
@@ -57,7 +57,7 @@ msgstr "crwdns933096:0crwdne933096:0"
 msgid "Filter issues"
 msgstr "crwdns933098:0crwdne933098:0"
 
-#: src/app/widget.js:59
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr "crwdns933100:0crwdne933100:0"
 
