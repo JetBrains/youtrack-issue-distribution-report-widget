@@ -42,6 +42,17 @@ const ReportTypes = {
     ])
 };
 
+const defaultSharingSettings = () => ({
+  readSharingSettings: {
+    permittedGroups: [],
+    permittedUsers: []
+  },
+  updateSharingSettings: {
+    permittedGroups: [],
+    permittedUsers: []
+  }
+});
+
 const NewReport = {
   NEW_REPORT_ID: undefined,
 
@@ -99,7 +110,8 @@ const NewReport = {
     query: '',
     grouping: null,
     own: true,
-    editable: true
+    editable: true,
+    ...defaultSharingSettings()
   }),
 
   issueDistribution: (xsortOrder = 'COUNT_INDEX_DESC') => ({
@@ -118,15 +130,10 @@ const NewReport = {
     query: '',
     editable: true,
     own: true,
-    readSharingSettings: {
-      permittedGroups: [],
-      permittedUsers: []
-    },
-    updateSharingSettings: {
-      permittedGroups: [],
-      permittedUsers: []
-    }
-  })
+    ...defaultSharingSettings()
+  }),
+
+  defaultSharingSettings
 };
 
 const ReportDataValidity = {

@@ -5,6 +5,7 @@ import {WarningIcon} from '@jetbrains/ring-ui/components/icon';
 import Link from '@jetbrains/ring-ui/components/link/link';
 
 import {usePermissions} from '../permissions/permissions';
+import ReportModel from "../report-model/report-model";
 
 const NoEditPermissionsWarning = ({
   report, onChangeReport
@@ -20,7 +21,8 @@ const NoEditPermissionsWarning = ({
   const cloneReport = useCallback(() => {
     onChangeReport({
       ...report,
-      id: undefined,
+      ...ReportModel.NewReport.defaultSharingSettings(),
+      id: ReportModel.NewReport.NEW_REPORT_ID,
       name: `${report.name} - ${i18n('clone')}`,
       own: true,
       owner: undefined,

@@ -132,7 +132,8 @@ class BaseConfiguration extends React.Component {
   setSelectedReport(report) {
     this.setState({
       selectedReport: report,
-      selectedReportSettingsAreChanged: false
+      selectedReportSettingsAreChanged:
+        ReportModel.NewReport.NEW_REPORT_ID === report.id
     }, () => {
       if (!ReportModel.hasSettings(report)) {
         this.loadReportSettings(report.id);
