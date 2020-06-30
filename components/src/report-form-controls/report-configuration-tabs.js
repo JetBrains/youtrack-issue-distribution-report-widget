@@ -8,7 +8,7 @@ import Tabs from '@jetbrains/ring-ui/components/tabs/dumb-tabs';
 import {usePermissions} from '../permissions/permissions';
 
 
-const reportToSelectItem = report => {
+const reportToSelectItem = (report, trimmedLabel) => {
   if (!report) {
     return null;
   }
@@ -27,17 +27,27 @@ const reportToSelectItem = report => {
       : i18n('New report')
   );
 
+  const trimLimit = 20;
+  const trimToLimit = label => {
+    if (!label || label.length < trimLimit) {
+      return label;
+    }
+    return `${(label || '').substring(0, trimLimit).trim()}...`;
+  };
+
   return {
     key: report.id,
-    label: getOptionLabel(report),
+    label: trimmedLabel
+      ? trimToLimit(getOptionLabel(report))
+      : getOptionLabel(report),
     description: getOptionDescription(report),
     model: report
   };
 };
 
 
-const makeReportsOptionsList =
-    reports => reports.map(reportToSelectItem);
+const makeReportsOptionsList = reports =>
+  reports.map(report => reportToSelectItem(report));
 
 
 const getSelectedReport = (selectedReport, reports) => (
@@ -126,7 +136,7 @@ const ReportConfigurationTabs = ({
       <span>
         <Select
           data={makeReportsOptionsList(reports)}
-          selected={reportToSelectItem(selectedExistingReport)}
+          selected={reportToSelectItem(selectedExistingReport, true)}
           onSelect={onSelectExistingReportOption}
           filter={true}
           label={i18n('Select report')}

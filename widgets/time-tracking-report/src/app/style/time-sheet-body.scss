@@ -305,6 +305,8 @@
 
   &__axys-title {
     display: flex;
+
+    overflow: hidden;
     flex-direction: column-reverse;
 
     height: 56px;

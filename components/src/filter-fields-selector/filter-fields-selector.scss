@@ -1,12 +1,10 @@
 @import '~@jetbrains/ring-ui/components/global/global';
 
 .filter-fields-selector {
-  display: inline-block;
+  display: inline;
   overflow-x: hidden;
 
   max-width: 18 * $ring-unit;
-
-  vertical-align: top;
 
   white-space: nowrap;
   text-overflow: ellipsis;
