@@ -4,63 +4,131 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: src/app/distribution-report-form.js:433
+#: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
 msgstr ""
 
-#: src/app/report-chart.js:312
+#: ../../components/src/report-form-controls/report-users.js:29
+msgid "Add user"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-work-types.js:32
+msgid "Add work type"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-projects.js:54
+msgid "All projects"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-users.js:30
+msgid "All users"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-work-types.js:33
+msgid "All work types"
+msgstr ""
+
+#: src/app/distribution-report-types.js:34
+msgid "Assignee"
+msgstr ""
+
+#: src/app/report-chart.js:277
 msgid "Bars"
 msgstr ""
 
-#: src/app/distribution-report-form.js:434
-msgid "Calculate for all projects"
-msgstr ""
-
-#: src/app/content.js:92
+#: src/app/content.js:101
 msgid "Calculating..."
 msgstr ""
 
-#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:52
+#: src/app/distribution-report-form.js:358
+msgid "Can edit"
+msgstr ""
+
+#: src/app/distribution-report-form.js:349
+msgid "Can view and use"
+msgstr ""
+
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
 msgstr ""
 
-#: src/app/content.js:68
+#: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
 msgstr ""
 
-#: src/app/content.js:73
+#: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
 msgstr ""
 
-#: src/app/content.js:77
+#: ../../components/src/base-configuration/base-configuration.js:51
+msgid "Cannot find any time tracking reports"
+msgstr ""
+
+#: src/app/content.js:86
 msgid "Cannot load selected report"
 msgstr ""
 
-#: src/app/configuration.js:266
+#: ../../components/src/base-configuration/base-configuration.js:238
 msgid "Cannot save report"
 msgstr ""
 
-#: src/app/configuration.js:275
+#: ../../components/src/base-configuration/base-configuration.js:247
 msgid "Cannot update widget"
 msgstr ""
 
-#: src/app/distribution-report-form.js:480
-msgid "Edit report"
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:130
+msgid "Create new report"
 msgstr ""
 
-#: src/app/content.js:59
+#: ../../components/src/report-form-controls/report-period.js:21
+msgid "Custom dates interval"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-scales.js:6
+msgid "Day"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:135
+msgid "Display existing report"
+msgstr ""
+
+#: src/app/content.js:67
 msgid "Edit settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:461
+#: ../../components/src/base-configuration/base-configuration.js:119
+msgid "Failed to find proper YouTrack installation"
+msgstr ""
+
+#: ../../components/src/base-configuration/base-configuration.js:361
+msgid "Failed to load data from selected YouTrack"
+msgstr ""
+
+#: src/app/distribution-report-form.js:392
 msgid "Filter issues"
 msgstr ""
 
-#: src/app/widget.js:48
+#: ../../components/src/sharing-setting/sharing-setting.js:131
+msgid "Filter users, groups, and teams"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-ranges.js:6
+msgid "Fixed"
+msgstr ""
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:38
+msgid "Groups and teams"
+msgstr ""
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
+msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
+msgstr ""
+
+#: src/app/widget.js:58
 msgid "Issue Distribution Report"
 msgstr ""
 
-#: src/app/distribution-report-form.js:360
+#: src/app/distribution-report-form.js:307
 msgid "Issues"
 msgstr ""
 
@@ -72,20 +140,31 @@ msgstr ""
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr ""
 
-#: src/app/distribution-report-form.js:488
-msgid "Learn more about this report"
+#: ../../components/src/report-model/report-time-ranges.js:54
+msgid "Last month"
 msgstr ""
 
-#: src/app/distribution-report-form.js:89
-msgid "Me only"
+#: ../../components/src/report-model/report-time-ranges.js:50
+msgid "Last week"
 msgstr ""
 
-#: src/app/configuration.js:94
-#: src/app/distribution-report-form.js:479
+#: ../../components/src/report-model/report-time-ranges.js:34
+msgid "Last working day"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-scales.js:14
+msgid "Month"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:23
+#: ../../components/src/report-form-controls/report-grouping-control.js:60
+msgid "No grouping"
+msgstr ""
+
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
 msgstr ""
 
@@ -93,59 +172,77 @@ msgstr ""
 msgid "Oops! Something went wrong..."
 msgstr ""
 
-#: src/app/content.js:80
+#: src/app/content.js:89
 msgid "Oops... Something went wrong =("
 msgstr ""
 
-#: src/app/configuration.js:341
-msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
+#: ../../components/src/sharing-setting/make-dropdown-options.js:38
+msgid "Other groups and teams"
 msgstr ""
 
-#: src/app/content.js:43
+#: ../../components/src/sharing-setting/sharing-setting.js:19
+#: ../../components/src/sharing-setting/sharing-setting.js:20
+msgid "Owner"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:23
+msgid "Parent issue"
+msgstr ""
+
+#: src/app/report-chart.js:300
+msgid "Pie chart"
+msgstr ""
+
+#: src/app/distribution-report-types.js:31
+msgid "Project"
+msgstr ""
+
+#: src/app/distribution-report-form.js:370
+msgid "Projects"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-issues-filter.js:30
+msgid "Query"
+msgstr ""
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:37
+msgid "Recommended groups and teams"
+msgstr ""
+
+#: ../../components/src/base-configuration/base-configuration.js:369
+#: src/app/content.js:48
 msgid "Remove widget"
 msgstr ""
 
-#: src/app/distribution-report-form.js:476
-msgid "Report"
-msgstr ""
-
-#: src/app/distribution-report-form.js:384
-msgid "Report is private"
-msgstr ""
-
-#: src/app/distribution-report-form.js:383
-msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr ""
-
-#: src/app/distribution-report-form.js:508
+#: src/app/distribution-report-form.js:419
 msgid "Report name"
 msgstr ""
 
-#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:45
+#: ../../components/src/sharing-setting/sharing-setting.js:145
+msgid "Reset to default (owner)"
+msgstr ""
+
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
 msgstr ""
 
-#: src/app/configuration.js:468
+#: ../../components/src/base-configuration/base-configuration.js:339
 msgid "Select YouTrack"
 msgstr ""
 
-#: src/app/configuration.js:379
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
 msgstr ""
 
-#: src/app/distribution-report-form.js:257
-msgid "Show distribution by {{field}}"
+#: src/app/distribution-report-form.js:348
+msgid "Sharing settings"
 msgstr ""
 
-#: src/app/distribution-report-form.js:325
-msgid "Show distribution by {{mainFieldPresentation}}"
+#: src/app/distribution-report-form.js:281
+msgid "Show distribution by"
 msgstr ""
 
-#: src/app/distribution-report-form.js:324
-msgid "Show distribution by {{mainFieldPresentation}} and {{secondaryFieldPresentation}}"
-msgstr ""
-
-#: src/app/distribution-report-form.js:352
+#: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
 msgstr ""
 
@@ -157,44 +254,64 @@ msgstr ""
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr ""
 
-#: src/app/report-chart.js:321
+#: src/app/report-chart.js:288
 msgid "Table"
 msgstr ""
 
-#: src/app/content.js:107
+#: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr ""
 
-#: src/app/content.js:112
+#: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:151
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
 msgid "This field does not exist in some of the selected projects"
 msgstr ""
 
-#: src/app/configuration.js:322
-msgid "This report is owned by {{ownerNamePlaceholder}}"
+#: ../../components/src/report-model/report-time-ranges.js:42
+msgid "This month"
 msgstr ""
 
-#: src/app/report-chart.js:290
+#: ../../components/src/report-model/report-time-ranges.js:38
+msgid "This week"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-ranges.js:46
+msgid "This year"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-ranges.js:24
+msgid "Today"
+msgstr ""
+
+#: src/app/report-chart.js:249
 msgid "Total"
 msgstr ""
 
-#: src/app/content.js:119
+#: src/app/content.js:128
 msgid "Total issues count"
 msgstr ""
 
-#: src/app/content.js:122
+#: src/app/content.js:131
 msgid "Total votes count"
 msgstr ""
 
-#: src/app/content.js:125
+#: src/app/content.js:134
 msgid "Total {{fieldName}}"
 msgstr ""
 
-#: src/app/configuration.js:93
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
+msgstr ""
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:39
+msgid "Users"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-scales.js:10
+msgid "Week"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
@@ -205,23 +322,39 @@ msgstr ""
 msgid "Widget refreshes every {{minutesCount}} minutes"
 msgstr ""
 
+#: ../../components/src/report-form-controls/report-grouping-control.js:18
+msgid "Work author"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:13
+msgid "Work type"
+msgstr ""
+
+#: ../../components/src/report-model/report-time-ranges.js:29
+msgid "Yesterday"
+msgstr ""
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
+msgid "You do not have access to edit report settings."
+msgstr ""
+
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
+msgstr ""
+
+#: src/app/distribution-report-form.js:265
+msgid "and"
 msgstr ""
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
 msgstr ""
 
-#: src/app/distribution-report-types.js:37
-msgid "assignee"
-msgstr ""
-
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
 msgstr ""
 
-#: src/app/configuration.js:305
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
 msgstr ""
 
@@ -229,11 +362,19 @@ msgstr ""
 msgid "desc"
 msgstr ""
 
-#: src/app/configuration.js:71
-msgid "existing reports"
+#: ../../components/src/spent-time-progress/spent-time-progress.js:23
+msgid "estimation"
 msgstr ""
 
-#: src/app/configuration.js:87
+#: ../../components/src/spent-time-value/spent-time-value.js:28
+msgid "h"
+msgstr ""
+
+#: ../../components/src/spent-time-value/spent-time-value.js:19
+msgid "m"
+msgstr ""
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
 msgstr ""
 
@@ -241,19 +382,30 @@ msgstr ""
 msgid "natural"
 msgstr ""
 
-#: src/app/configuration.js:54
-#: src/app/distribution-report-types.js:34
+#: ../../components/src/spent-time-progress/spent-time-progress.js:47
+msgid "overdue"
+msgstr ""
+
+#: ../../components/src/report-model/report-model.js:127
 msgid "project"
 msgstr ""
 
-#: src/app/configuration.js:348
+#: ../../components/src/spent-time-progress/spent-time-progress.js:34
+msgid "total spent time"
+msgstr ""
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
+msgstr ""
+
+#: ../../components/src/issue-link/issue-link.js:26
+msgid "{{minCount}}min"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
 msgstr ""
 
-#: src/app/report-filter-fields-selector.js:139
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
 msgid "＋Add field"
 msgstr ""

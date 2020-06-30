@@ -13,7 +13,7 @@
     "test": "karma start",
     "ci-test": "xvfb-maybe karma start --teamcity",
     "start": "webpack-dev-server -d --history-api-fallback --inline --hot --colors --port 9012",
-    "i18n:extract": "angular-gettext-cli --files \"{src/**/*.js,node_modules/hub-dashboard-addons/components/**/*.js,node_modules/@jetbrains/hub-widget-ui/src/**/*.js}\" --dest src/app/translations/agile-progress-diagram-widget.pot --marker-name=i18n",
+    "i18n:extract": "angular-gettext-cli --files \"{src/**/*.js,../../components/src/**/*.js,node_modules/hub-dashboard-addons/components/**/*.js,node_modules/@jetbrains/hub-widget-ui/src/**/*.js}\" --dest src/app/translations/youtrack-agile-chart-widget.pot --marker-name=i18n",
     "clean": "rm -rf node_modules"
   },
   "babel": {

@@ -420,6 +420,7 @@ class SpendTimeReportsWidget extends React.Component {
     return (
       <Content
         report={report}
+        lastDayOfWeek={undefined}
         error={error}
         youTrack={youTrack}
         dashboardApi={this.props.dashboardApi}

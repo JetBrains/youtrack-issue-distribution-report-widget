@@ -89,7 +89,7 @@ const TimeTrackingReportModel = {
     );
   },
 
-  getColumnsHeader: report => {
+  getColumnsHeader: (report, lastDayOfWeek) => {
     const {data, scale} = report;
 
     if (isTimeReport(report)) {
@@ -105,7 +105,6 @@ const TimeTrackingReportModel = {
 
     const scaleId = (scale || {}).id;
     const headers = (data || {}).headers || [];
-    const lastDayOfWeek = 6;//todo
 
     return headers.map((header, idx) => ({
       id: header.start,

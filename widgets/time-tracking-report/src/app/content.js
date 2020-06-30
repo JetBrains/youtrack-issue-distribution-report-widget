@@ -18,6 +18,7 @@ import TimeTableSettingsToolbar from './time-table-settings-toolbar';
 class Content extends React.Component {
   static propTypes = {
     report: PropTypes.object,
+    lastDayOfWeek: PropTypes.number,
     error: PropTypes.number,
     youTrack: PropTypes.object,
     dashboardApi: PropTypes.object,
@@ -105,7 +106,7 @@ class Content extends React.Component {
   }
 
   renderReportBody() {
-    const {report, dashboardApi, isIssueView} = this.props;
+    const {report, dashboardApi, isIssueView, lastDayOfWeek} = this.props;
 
     if (ReportModel.isReportCalculation(report)) {
       const fromPercentsCoefficient = 0.01;
@@ -136,7 +137,8 @@ class Content extends React.Component {
     }
 
     const columnsLegend = TimeTrackingReportModel.getColumnsLegend(report);
-    const columnsHeader = TimeTrackingReportModel.getColumnsHeader(report);
+    const columnsHeader =
+      TimeTrackingReportModel.getColumnsHeader(report, lastDayOfWeek);
 
     const generalGroups =
       TimeTrackingReportModel.getGeneralGroupedLines(report, isIssueView);

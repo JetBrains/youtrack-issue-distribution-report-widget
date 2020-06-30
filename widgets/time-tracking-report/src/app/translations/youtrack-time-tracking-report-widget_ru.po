@@ -267,3 +267,6 @@ msgstr "{{minutesCount}} мин"
 msgid "＋Add field"
 msgstr ""
 
+#: src/app/time-tracking-report-form.js:389
+msgid "Name"
+msgstr "Имя"

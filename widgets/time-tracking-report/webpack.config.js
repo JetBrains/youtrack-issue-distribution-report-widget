@@ -20,8 +20,10 @@ const webpackConfig = () => ({
     mainFields: ['module', 'browser', 'main'],
     alias: {
       react: resolve('./node_modules/react'),
+      fecha: resolve('../../components/node_modules/fecha'),
       'react-dom': resolve('./node_modules/react-dom'),
-      '@jetbrains/ring-ui': resolve('./node_modules/@jetbrains/ring-ui')
+      '@jetbrains/ring-ui': resolve('./node_modules/@jetbrains/ring-ui'),
+      'hub-dashboard-addons/dist/localization': resolve('./node_modules/hub-dashboard-addons/components/localization/src/localization.js')
     }
   },
   output: {
@@ -54,6 +56,7 @@ const webpackConfig = () => ({
         test: /\.js$/,
         include: [
           join(__dirname, 'node_modules/chai-as-promised'),
+          join(__dirname, 'node_modules/hub-dashboard-addons'),
           join(__dirname, '../../components'),
           componentsPath
         ],

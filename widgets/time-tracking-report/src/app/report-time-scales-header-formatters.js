@@ -1,8 +1,13 @@
 import fecha from 'fecha';
+import DashboardAddons from 'hub-dashboard-addons';
 
 import ReportTimeScales from '../../../../components/src/report-model/report-time-scales';
 
-const DEFAULT_LAST_DAY_OF_WEEK = 6;
+const DEFAULT_LAST_DAY_OF_WEEK = (
+  // eslint-disable-next-line no-magic-numbers
+  locale => ((locale === 'en' || locale === 'ja') ? 6 : 0)
+)(DashboardAddons.locale);
+
 const TWO_WEEKS_DAY_COUNT = 14;
 
 const isNextMonthOrLater = (dateA, dateB) => (
