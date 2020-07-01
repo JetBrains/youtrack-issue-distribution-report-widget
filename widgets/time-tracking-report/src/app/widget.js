@@ -26,6 +26,10 @@ import {getReportTypePathPrefix} from './time-tracking-report-types';
 import Content from './content';
 import './style/spend-time-report-widget.scss';
 
+const getDefaultLastDayOfWeek =
+  // eslint-disable-next-line no-magic-numbers
+  locale => ((locale === 'en' || locale === 'ja') ? 6 : 0);
+
 class SpendTimeReportsWidget extends React.Component {
   // eslint-disable-next-line no-magic-numbers
   static DEFAULT_REFRESH_PERIOD = 900;
@@ -91,6 +95,7 @@ class SpendTimeReportsWidget extends React.Component {
     dashboardApi: PropTypes.object.isRequired,
     registerWidgetApi: PropTypes.func.isRequired,
     editable: PropTypes.bool,
+    locale: PropTypes.string,
     configWrapper: PropTypes.object.isRequired
   };
 
@@ -420,7 +425,9 @@ class SpendTimeReportsWidget extends React.Component {
     return (
       <Content
         report={report}
-        lastDayOfWeek={undefined}
+        lastDayOfWeek={
+          getDefaultLastDayOfWeek(this.props.locale)
+        }
         error={error}
         youTrack={youTrack}
         dashboardApi={this.props.dashboardApi}

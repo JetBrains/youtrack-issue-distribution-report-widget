@@ -22,6 +22,9 @@ const CONFIG_FIELDS = [
   'withDetails'
 ];
 
+//TODO: minification problem of setLocale
+//TODO: problem with no data of current locale in i18n
+
 DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
   setLocale(DashboardAddons.locale, TRANSLATIONS);
   initFetcher(dashboardApi);
@@ -33,6 +36,7 @@ DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
       registerWidgetApi={registerWidgetApi}
       editable={DashboardAddons.editable}
       configWrapper={configWrapper}
+      locale={DashboardAddons.locale}
     />,
     document.getElementById('app')
   );
