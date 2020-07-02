@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-07-01 03:18\n"
+"PO-Revision-Date: 2020-07-02 11:12\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -408,7 +408,7 @@ msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr ""
 
 #: ../../components/src/issue-link/issue-link.js:26
-msgid "{{minCount}}min"
+msgid "{{minCount}}m"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
