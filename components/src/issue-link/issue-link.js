@@ -23,7 +23,7 @@ const getPriorityIssueField = fields =>
   (fields || []).filter(isPriorityField)[0];
 
 const periodFormatter = value => {
-  const EMPTY_PERIOD_VALUE = i18n('{{minCount}}min', {minCount: 0});
+  const EMPTY_PERIOD_VALUE = i18n('{{minCount}}m', {minCount: 0});
   return value.presentation || value.minutes || EMPTY_PERIOD_VALUE;
 };
 

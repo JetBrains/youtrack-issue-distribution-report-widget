@@ -128,11 +128,11 @@ msgstr ""
 msgid "Issues"
 msgstr ""
 
-#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
 msgstr ""
 
-#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr ""
 
@@ -238,7 +238,7 @@ msgstr ""
 msgid "Show details"
 msgstr ""
 
-#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
 msgstr ""
 
@@ -275,7 +275,7 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: src/app/widget.js:52
+#: src/app/widget.js:55
 msgid "Time Tracking Report"
 msgstr ""
 
@@ -339,7 +339,7 @@ msgstr ""
 msgid "You don't have access to the report"
 msgstr ""
 
-#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:92
 msgid "am|pm"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr ""
 
 #: ../../components/src/issue-link/issue-link.js:26
-msgid "{{minCount}}min"
+msgid "{{minCount}}m"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64

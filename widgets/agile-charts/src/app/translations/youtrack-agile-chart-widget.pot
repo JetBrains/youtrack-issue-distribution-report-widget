@@ -430,7 +430,7 @@ msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr ""
 
 #: ../../components/src/issue-link/issue-link.js:26
-msgid "{{minCount}}min"
+msgid "{{minCount}}m"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
