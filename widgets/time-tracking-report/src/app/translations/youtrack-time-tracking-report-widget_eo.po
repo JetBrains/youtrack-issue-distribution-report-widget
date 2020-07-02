@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-07-01 03:18\n"
+"PO-Revision-Date: 2020-07-02 11:14\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -393,8 +393,8 @@ msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
 msgstr "crwdns9375810:0{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}crwdne9375810:0"
 
 #: ../../components/src/issue-link/issue-link.js:26
-msgid "{{minCount}}min"
-msgstr "crwdns9737220:0{{minCount}}crwdne9737220:0"
+msgid "{{minCount}}m"
+msgstr "crwdns9761440:0{{minCount}}crwdne9761440:0"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
