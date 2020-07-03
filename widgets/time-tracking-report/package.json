@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "npm rebuild node-sass",
     "create-component": "yo @jetbrains/ring-ui:react --path $npm_package_config_components",
-    "build": "webpack -p --devtool sourcemap",
+    "build": "webpack -p",
     "test": "karma start",
     "ci-test": "xvfb-maybe karma start --teamcity",
     "start": "webpack-dev-server -d --history-api-fallback --inline --hot --colors --port 9014",
