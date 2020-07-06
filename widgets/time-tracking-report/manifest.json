@@ -1,16 +1,16 @@
 {
   "key": "time-tracking-report",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "Time Tracking Report",
   "description": "Display a report that tracks the amount of time spent working on issues in one or more YouTrack projects. This widget presents this data in the time report or timesheet report format.",
   "applicationName": "YouTrack",
   "author": "JetBrains",
   "dependencies": {
-    "YouTrack": ">=2020.2.00877",
+    "YouTrack": ">=2020.1.3111",
     "Hub": ">=2018.1"
   },
   "products": {
-    "YouTrack": ">=2020.2.00877",
+    "YouTrack": ">=2020.1.3111",
     "Hub": ">=2018.1"
   },
   "capabilities": {
