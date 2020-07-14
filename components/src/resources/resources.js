@@ -308,7 +308,7 @@ async function loadVisibilityUserGroups(fetchYouTrack, {query}) {
   const result = await fetchYouTrack(
     `api/visibilityGroups?fields=visibilityGroups(${USER_GROUP_FIELDS})`, {
       method: 'POST',
-      body: {query}
+      body: {prefix: query}
     }
   );
   return (result || {}).visibilityGroups || [];
@@ -349,7 +349,7 @@ async function loadIssue(fetchYoutrack, issueId) {
 
 async function loadWorkItemTypes(fetchYouTrack) {
   return await fetchYouTrack(
-    `api/admin/timeTrackingSettings/workItemTypes?fields=${WORK_ITEM_TYPE_FIELDS}`, {}
+    `api/admin/timeTrackingSettings/workItemTypes?fields=${WORK_ITEM_TYPE_FIELDS}&top=-1`, {}
   );
 }
 

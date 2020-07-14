@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 
@@ -11,14 +11,26 @@ import ReportTagsInput from './report-tags-input';
 const ReportWorkTypes = ({
   workTypes, projects, disabled, fetchYouTrack, onChange
 }) => {
+
+  const [loadedWorkTypesOptions, setLoadedWorkTypesOptions] = useState(null);
+
   const getWorkTypesOptions = useCallback(async ({query}) => {
-    const projectId = (projects).
-      map(project => project.id);
-    const loadedWorkTypes = await loadWorkItemTypes(
-      fetchYouTrack, {query, projectId}
-    );
-    return (loadedWorkTypes || []).map(toWorkTypeTag);
-  }, [workTypes, projects]);
+    let resultOptions = loadedWorkTypesOptions;
+    if (!resultOptions) {
+      const projectId = (projects).
+        map(project => project.id);
+      const loadedWorkTypes = await loadWorkItemTypes(
+        fetchYouTrack, {query, projectId}
+      );
+      resultOptions = loadedWorkTypes.map(toWorkTypeTag);
+      setLoadedWorkTypesOptions(resultOptions);
+    }
+    return filterWorkTypesOptions(resultOptions, query);
+  }, [workTypes, projects, loadedWorkTypesOptions]);
+
+  useEffect(() => {
+    setLoadedWorkTypesOptions(null);
+  }, [fetchYouTrack, projects]);
 
   return (
     <ReportTagsInput
@@ -43,6 +55,15 @@ const ReportWorkTypes = ({
       label: type.name,
       model: type
     });
+  }
+
+  function filterWorkTypesOptions(options, query) {
+    const str = (query || '').toLowerCase();
+    return (str && options)
+      ? (options.filter(
+        option => (option.label || '').toLowerCase().indexOf(str) > -1
+      ))
+      : options;
   }
 };
 
