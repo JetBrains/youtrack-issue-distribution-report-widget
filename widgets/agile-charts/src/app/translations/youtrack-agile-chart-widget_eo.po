@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-07-06 21:16\n"
+"PO-Revision-Date: 2020-07-14 17:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -22,7 +22,7 @@ msgstr "crwdns1366844:0crwdne1366844:0"
 msgid "Add user"
 msgstr "crwdns9736866:0crwdne9736866:0"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
 msgstr "crwdns9736868:0crwdne9736868:0"
 
@@ -42,7 +42,7 @@ msgstr "crwdns9736874:0crwdne9736874:0"
 msgid "All users"
 msgstr "crwdns9736876:0crwdne9736876:0"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
 msgstr "crwdns9736878:0crwdne9736878:0"
 

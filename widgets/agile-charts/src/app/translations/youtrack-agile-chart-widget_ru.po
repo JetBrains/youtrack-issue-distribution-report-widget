@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-07-06 21:16\n"
+"PO-Revision-Date: 2020-07-14 17:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -20,39 +20,39 @@ msgstr "Добавить проект"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Добавить пользователя"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Добавить единицу работы"
 
 #: src/app/widget.js:32
 msgid "Agile Chart"
-msgstr ""
+msgstr "Agile-диаграмма"
 
 #: src/app/burn-down-chart.js:68
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "Опережение"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Все проекты"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Все пользователи"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Все типы работы"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "Всегда отображать текущий спринт"
 
 #: src/app/burn-down-chart.js:67
 msgid "Behind Schedule"
-msgstr ""
+msgstr "Отставание"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
@@ -72,15 +72,15 @@ msgstr "Не удалось найти установленный YouTrack"
 
 #: src/app/content.js:81
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "Диаграммы сгорания задач не найдены"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Отчетов о затратах времени не найдено"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "Невозможно загрузить список Agile-досок."
 
 #: src/app/content.js:85
 msgid "Cannot load selected report"
@@ -98,23 +98,23 @@ msgstr "Невозможно обновить виджет"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "Создать доску"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Создать новый отчет"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Настраиваемый диапазон дат"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Показать имеющийся отчет"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
@@ -126,11 +126,11 @@ msgstr "Изменить параметры"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Подходящий экземпляр YouTrack не найден"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Не удалось загрузить данные из выбранного экземпляра YouTrack"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
@@ -138,31 +138,31 @@ msgstr "Фильтровать задачи"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Фильтровать пользователей, группы и команды"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Исправлена"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "Для заданного набора задач"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "Для имеющейся доски"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "Группы и команды"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "Идеальный Burndown"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -178,15 +178,15 @@ msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|н
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "В прошлом месяце"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "На прошлой неделе"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Последний рабочий день"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
@@ -194,7 +194,7 @@ msgstr "Только я"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Месяц"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
@@ -204,11 +204,11 @@ msgstr "Новый отчет"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "Доски не найдены."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "Нет группирования"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
@@ -224,16 +224,16 @@ msgstr "К сожалению, возникла какая-то проблема
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Другие группы и команды"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
-msgstr ""
+msgstr "Просроченные трудозатраты"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -241,19 +241,19 @@ msgstr "Изменять параметры отчета могут только
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Родительская задача"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Запрос"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Рекомендованные группы и команды"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "Оставшиеся трудозатраты"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
 #: src/app/content.js:47
@@ -278,7 +278,7 @@ msgstr "Имя отчета"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Вернуть значения по умолчанию"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -291,7 +291,7 @@ msgstr "Выберите YouTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "Выберите доску"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
@@ -300,7 +300,7 @@ msgstr "Выберите отчет"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
-msgstr ""
+msgstr "Выберите спринт"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
@@ -308,7 +308,7 @@ msgstr "Показать суммарные значения для: {{aggregati
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
-msgstr ""
+msgstr "Затраченное время"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -332,7 +332,7 @@ msgstr "Это поле не существует в некоторых из в�
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "В этом месяце"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
@@ -340,15 +340,15 @@ msgstr "Владельцем этого отчета является {{ownerNam
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "На этой неделе"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "В этом году"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Сегодня"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
@@ -357,11 +357,11 @@ msgstr "Без имени"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Неделя"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -373,19 +373,19 @@ msgstr "Виджет обновляется раз в {{minutesCount}} мин"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "Автор работы"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "Тип работы"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчера"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Вы не можете менять настройки отчета."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -398,7 +398,7 @@ msgstr "клон"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "оценка"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
@@ -406,15 +406,15 @@ msgstr "имеющиеся отчеты"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "ч"
 
 #: src/app/chart-presentation-model.js:115
 msgid "h|m"
-msgstr ""
+msgstr "ч.|мин."
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "м"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
@@ -423,7 +423,7 @@ msgstr "я"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "просрочено"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -431,7 +431,7 @@ msgstr "проект"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "суммарное затраченное время"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
@@ -440,7 +440,7 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} клонир�
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} мин."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

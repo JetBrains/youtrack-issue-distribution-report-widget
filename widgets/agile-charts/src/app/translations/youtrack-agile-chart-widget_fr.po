@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-07-06 21:16\n"
+"PO-Revision-Date: 2020-07-14 17:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -20,39 +20,39 @@ msgstr "Ajouter un projet"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Ajouter un utilisateur"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Ajouter un type de travail"
 
 #: src/app/widget.js:32
 msgid "Agile Chart"
-msgstr ""
+msgstr "Graphique agile"
 
 #: src/app/burn-down-chart.js:68
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "En avance"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Tous les projets"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Tous les utilisateurs"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Tous les types de travaux"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "Toujours afficher le sprint actuel"
 
 #: src/app/burn-down-chart.js:67
 msgid "Behind Schedule"
-msgstr ""
+msgstr "En retard"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
@@ -72,15 +72,15 @@ msgstr "Impossible de trouver une installation de YouTrack"
 
 #: src/app/content.js:81
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "Impossible de trouver des graphiques d'avancement"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Impossible de trouver des rapports de suivi du temps"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "Impossible de charger la liste des tableaux agiles."
 
 #: src/app/content.js:85
 msgid "Cannot load selected report"
@@ -98,23 +98,23 @@ msgstr "Impossible de mettre à jour le widget"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "Créer un tableau"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Créer un rapport"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Plage de dates personnalisée"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Jour"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Afficher un rapport existant"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
@@ -126,11 +126,11 @@ msgstr "Éditer les paramètres"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Impossible de trouver une installation YouTrack appropriée"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Impossible de charger les données du YouTrack sélectionné"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
@@ -138,31 +138,31 @@ msgstr "Filtrer les tickets"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Filtrer les utilisateurs, les groupes et les équipes"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Corrigé"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "Pour un ensemble personnalisé de tickets"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "Pour un tableau de bord existant"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "Groupes et équipes"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "Avancement idéal"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Si vous souhaitez personnaliser votre propre copie de ce rapport, {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -178,15 +178,15 @@ msgstr "Jan|Fév|Mar|Avr|Mai|Jun|Jul|Aoû|Sep|Oct|Nov|Déc"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "Le mois dernier"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "La semaine dernière"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Dernier jour ouvré"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
@@ -194,7 +194,7 @@ msgstr "Moi seulement"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Mois"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
@@ -204,11 +204,11 @@ msgstr "Nouveau rapport"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "Aucun tableau trouvé."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "Aucun regroupement"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
@@ -224,16 +224,16 @@ msgstr "Oups... Un problème est survenu =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Autres groupes et équipes"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
-msgstr ""
+msgstr "Travail en retard"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -241,19 +241,19 @@ msgstr "Les propriétaires disposent d'un accès exclusif leur permettant de mod
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Ticket parent"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Requête"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Groupes et équipes recommandés"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "Travail restant"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
 #: src/app/content.js:47
@@ -278,7 +278,7 @@ msgstr "Nom du rapport"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Rétablir les paramètres par défaut (propriétaire)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -291,7 +291,7 @@ msgstr "Sélectionner YouTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "Sélectionner un tableau"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
@@ -300,7 +300,7 @@ msgstr "Sélectionner le rapport"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
-msgstr ""
+msgstr "Sélectionner un sprint"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
@@ -308,7 +308,7 @@ msgstr "Afficher les totaux pour {{aggregationPolicy}}"
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
-msgstr ""
+msgstr "Temps passé"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -332,7 +332,7 @@ msgstr "Ce champ n'existe pas dans une partie des projets sélectionnés."
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "Ce mois-ci"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
@@ -340,15 +340,15 @@ msgstr "Ce rapport appartient à {{ownerNamePlaceholder}}"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "Cette semaine"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "Cette année"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Aujourd’hui"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
@@ -357,11 +357,11 @@ msgstr "Sans nom"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "utilisateurs"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Semaine"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -373,19 +373,19 @@ msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "Auteur du travail"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "Type de travail"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Hier"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Vous n’avez pas l’accès nécessaire pour modifier les paramètres du rapport."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -398,7 +398,7 @@ msgstr "cloner"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "estimation"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
@@ -406,15 +406,15 @@ msgstr "rapports existants"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #: src/app/chart-presentation-model.js:115
 msgid "h|m"
-msgstr ""
+msgstr "h|m"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
@@ -423,7 +423,7 @@ msgstr "moi"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "en retard"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -431,7 +431,7 @@ msgstr "projet"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "temps passé total"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
@@ -440,7 +440,7 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}, clonez-le"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} m"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
