@@ -11,35 +11,35 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-07-06 21:16\n"
+"PO-Revision-Date: 2020-07-14 17:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr ""
+msgstr "Projekt hinzufügen"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Benutzer hinzufügen"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Arbeitstyp hinzufügen"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Alle Projekte"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Alle Benutzer"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Alle Arbeitstypen"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
-msgstr ""
+msgstr "Bearbeiter"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -51,11 +51,11 @@ msgstr "Berechnung läuft..."
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
-msgstr ""
+msgstr "Kann bearbeiten"
 
 #: src/app/distribution-report-form.js:349
 msgid "Can view and use"
-msgstr ""
+msgstr "Kann anzeigen und verwenden"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -79,15 +79,15 @@ msgstr "Ausgewählter Bericht kann nicht geladen werden"
 
 #: ../../components/src/base-configuration/base-configuration.js:238
 msgid "Cannot save report"
-msgstr ""
+msgstr "Bericht kann nicht gespeichert werden"
 
 #: ../../components/src/base-configuration/base-configuration.js:247
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Widget kann nicht aktualisiert werden"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Neuen Bericht erstellen"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Tag"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -119,15 +119,15 @@ msgstr "Tickets filtern"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Filtern Sie Benutzer, Gruppen und Teams"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Behoben"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "Gruppen und Teams"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -151,31 +151,31 @@ msgstr "Jan|Feb|Mär|Apr|Mai|Jun|Jul|Aug|Sep|Okt|Nov|Dez"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "Letzten Monat"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "Letzte Woche"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Letzter Werktag"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Monat"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "Neuer Bericht"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "Keine Gruppierung"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "Kein Wert"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -187,16 +187,16 @@ msgstr "Entschuldigung! Etwas ist schiefgegangen =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Andere Gruppen und Teams"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "Besitzer"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Übergeordnetes Ticket"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -204,19 +204,19 @@ msgstr "Kreisdiagramm"
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
-msgstr ""
+msgstr "Projekte"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Abfrage"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Empfohlene Gruppen und Teams"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
 #: src/app/content.js:48
@@ -237,19 +237,19 @@ msgstr "Speichern"
 
 #: ../../components/src/base-configuration/base-configuration.js:339
 msgid "Select YouTrack"
-msgstr ""
+msgstr "YouTrack auswählen"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "Bericht auswählen"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
-msgstr ""
+msgstr "Teilen von Einstellungen"
 
 #: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
-msgstr ""
+msgstr "Verteilung anzeigen nach"
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
@@ -277,23 +277,23 @@ msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstell
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Dieses Feld ist in einigen ausgewählten Projekten nicht vorhanden."
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "Diesen Monat"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "Diese Woche"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "Dieses Jahr"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: src/app/report-chart.js:249
 msgid "Total"
@@ -313,15 +313,15 @@ msgstr "{{fieldName}} gesamt"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "Unbenannt"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "Benutzer"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Woche"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -333,15 +333,15 @@ msgstr "Widget wird alle {{minutesCount}} Minuten aktualisiert"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "Autor der Arbeit"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "Arbeitstyp"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Gestern"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -353,7 +353,7 @@ msgstr "AM|PM"
 
 #: src/app/distribution-report-form.js:265
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
@@ -365,7 +365,7 @@ msgstr "nach Anzahl"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "klonen"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
@@ -373,19 +373,19 @@ msgstr "absteigend"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "Zeitschätzung"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "mir,mich"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -393,19 +393,19 @@ msgstr "natürlich"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "überfällig"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "Projekt"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "Gesamter Zeitaufwand"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonen Sie ihn"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
@@ -417,5 +417,5 @@ msgstr "{{minutesCount}} Min."
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Feld hinzufügen"
 

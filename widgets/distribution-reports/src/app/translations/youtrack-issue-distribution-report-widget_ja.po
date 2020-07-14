@@ -11,35 +11,35 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-07-07 10:48\n"
+"PO-Revision-Date: 2020-07-14 17:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr ""
+msgstr "プロジェクトの追加"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "ユーザーの追加"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "作業タイプを追加"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "すべてのプロジェクト"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "すべてのユーザー"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "すべての作業タイプ"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
-msgstr ""
+msgstr "担当者"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -51,11 +51,11 @@ msgstr "計算中…"
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
-msgstr ""
+msgstr "編集できます"
 
 #: src/app/distribution-report-form.js:349
 msgid "Can view and use"
-msgstr ""
+msgstr "表示と使用を許可"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -71,7 +71,7 @@ msgstr "課題配布レポートが見つかりません"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "タイムトラッキングレポートが見つかりません"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
@@ -79,27 +79,27 @@ msgstr "選択したレポートを読み込めません"
 
 #: ../../components/src/base-configuration/base-configuration.js:238
 msgid "Cannot save report"
-msgstr ""
+msgstr "レポートを保存できません"
 
 #: ../../components/src/base-configuration/base-configuration.js:247
 msgid "Cannot update widget"
-msgstr ""
+msgstr "ウィジェットを更新できません"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "新規レポートの作成"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "カスタム日付間隔"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "日"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "既存レポートの表示"
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,11 +107,11 @@ msgstr "設定の編集"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "適切な YouTrack のインストールを検出できませんでした"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "選択した YouTrack からデータを読み込めませんでした"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
@@ -119,19 +119,19 @@ msgstr "課題をフィルタリング"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "ユーザー、グループ、チームを絞り込む"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "修正済み"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "グループとチーム"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "このレポートの独自のコピーをカスタマイズしたい場合は、{{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
@@ -151,31 +151,31 @@ msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "先月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "先週"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最終作業日"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "新しいレポート"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "グループ化なし"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "値がありません"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -187,16 +187,16 @@ msgstr "不明なエラーが発生しました =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "その他のグループとチーム"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "オーナー"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "親の課題"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -204,19 +204,19 @@ msgstr "円グラフ"
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "プロジェクト"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
-msgstr ""
+msgstr "プロジェクト"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "クエリ"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "推奨するグループとチーム"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
 #: src/app/content.js:48
@@ -229,7 +229,7 @@ msgstr "レポート名"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "デフォルトにリセット (オーナー)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -237,19 +237,19 @@ msgstr "保存"
 
 #: ../../components/src/base-configuration/base-configuration.js:339
 msgid "Select YouTrack"
-msgstr ""
+msgstr "YouTrackを選択"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "レポートを選択"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
-msgstr ""
+msgstr "共有設定"
 
 #: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
-msgstr ""
+msgstr "指定条件で分布を表示"
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
@@ -277,23 +277,23 @@ msgstr "レポート設定のフィルタと一致する課題はありません
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "このフィールドは選択したプロジェクトの一部には存在しません"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "今月"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "今週"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "今年"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "今日"
 
 #: src/app/report-chart.js:249
 msgid "Total"
@@ -313,15 +313,15 @@ msgstr "{{fieldName}}の合計"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "名称未設定"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "ユーザー"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "週"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -333,19 +333,19 @@ msgstr "ウィジェットは{{minutesCount}}分ごとに更新されます"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "作業の作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "作業タイプ"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "昨日"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "レポート設定を編集するためのアクセス権がありません。"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -353,7 +353,7 @@ msgstr "am|pm"
 
 #: src/app/distribution-report-form.js:265
 msgid "and"
-msgstr ""
+msgstr "および"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
@@ -365,7 +365,7 @@ msgstr "件数順"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "クローン"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
@@ -373,19 +373,19 @@ msgstr "降順"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "予測"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "時間"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "自分"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -393,23 +393,23 @@ msgstr "自然"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "超過"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "プロジェクト"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "合計経過時間"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}、それを複製します"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} 分"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
@@ -417,5 +417,5 @@ msgstr "{{minutesCount}} 分"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
 msgid "＋Add field"
-msgstr ""
+msgstr "＋フィールドの追加"
 
