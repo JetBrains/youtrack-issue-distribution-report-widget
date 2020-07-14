@@ -11,131 +11,131 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-07-07 10:48\n"
+"PO-Revision-Date: 2020-07-14 17:40\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr ""
+msgstr "Добавить проект"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Добавить пользователя"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Добавить единицу работы"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Все проекты"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Все пользователи"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Все типы работы"
 
 #: src/app/content.js:116
 msgid "Calculating..."
-msgstr ""
+msgstr "Идет расчет..."
 
 #: src/app/time-tracking-report-form.js:290
 msgid "Can edit"
-msgstr ""
+msgstr "Могут редактировать"
 
 #: src/app/time-tracking-report-form.js:281
 msgid "Can view and use"
-msgstr ""
+msgstr "Могут просматривать и использовать"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: src/app/content.js:87
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Не удалось найти установленный YouTrack"
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr ""
+msgstr "Отчетов не найдено"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Отчетов о затратах времени не найдено"
 
 #: src/app/content.js:96
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Не удалось загрузить выбранный отчет"
 
 #: ../../components/src/base-configuration/base-configuration.js:238
 msgid "Cannot save report"
-msgstr ""
+msgstr "Невозможно сохранить отчет"
 
 #: ../../components/src/base-configuration/base-configuration.js:247
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Невозможно обновить виджет"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Создать новый отчет"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Настраиваемый диапазон дат"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Показать имеющийся отчет"
 
 #: src/app/content.js:77
 msgid "Edit settings"
-msgstr ""
+msgstr "Изменить параметры"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Подходящий экземпляр YouTrack не найден"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Не удалось загрузить данные из выбранного экземпляра YouTrack"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Фильтровать пользователей, группы и команды"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Исправлена"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr ""
+msgstr "Сгруппировать по полю «{{field}}»"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "Группы и команды"
 
 #: src/app/time-table.js:30
 msgid "Hide details"
-msgstr ""
+msgstr "Скрыть подробности"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Чтобы настроить вашу копию этого отчета, необходимо {{cloneItPlaceholder}}"
 
 #: src/app/time-tracking-report-form.js:367
 msgid "Issue filter"
-msgstr ""
+msgstr "Фильтр задач"
 
 #: src/app/time-table-settings-toolbar.js:18
 msgid "Issues"
-msgstr ""
+msgstr "Задачи"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -147,35 +147,35 @@ msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|н
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "В прошлом месяце"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "На прошлой неделе"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Последний рабочий день"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Месяц"
 
 #: src/app/time-tracking-report-form.js:389
 msgid "Name"
-msgstr ""
+msgstr "Фреймворк"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "Новый отчет"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "Нет группирования"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "Нет значения"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -183,69 +183,69 @@ msgstr "К сожалению, возникла какая-то проблема
 
 #: src/app/content.js:104
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "К сожалению, возникла какая-то проблема =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Другие группы и команды"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Родительская задача"
 
 #: src/app/time-tracking-report-form.js:233
 msgid "Period"
-msgstr ""
+msgstr "Период"
 
 #: src/app/time-tracking-report-form.js:302
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Запрос"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Рекомендованные группы и команды"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
 #: src/app/content.js:58
 msgid "Remove widget"
-msgstr ""
+msgstr "Удалить виджет"
 
 #: src/app/time-tracking-report-form.js:395
 msgid "Report name"
-msgstr ""
+msgstr "Имя отчета"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Вернуть значения по умолчанию"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: ../../components/src/base-configuration/base-configuration.js:339
 msgid "Select YouTrack"
-msgstr ""
+msgstr "Выберите YouTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "Выберите отчет"
 
 #: src/app/time-tracking-report-form.js:283
 msgid "Sharing settings"
-msgstr ""
+msgstr "Настройки совместного доступа"
 
 #: src/app/time-table.js:30
 msgid "Show details"
-msgstr ""
+msgstr "Показать подробности"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -257,11 +257,11 @@ msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
 #: src/app/content.js:131
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "Невозможно рассчитать отчет: фильтры в настройках отчета возвращают слишком много задач"
 
 #: src/app/content.js:136
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "Нет задач, соответствующих фильтрам в настройках отчета"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
 msgid "This field does not exist in some of the selected projects"
@@ -269,32 +269,32 @@ msgstr "Это поле не существует в некоторых из в�
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "В этом месяце"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "На этой неделе"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "В этом году"
 
 #: src/app/time-tracking-report-form.js:189
 #: src/app/time-tracking-report-form.js:212
 msgid "Time"
-msgstr ""
+msgstr "Время"
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr ""
+msgstr "Отчет о затратах времени"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Сегодня"
 
 #: src/app/time-table-general.js:202
 msgid "Total time"
-msgstr ""
+msgstr "Суммарное время"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
@@ -303,11 +303,11 @@ msgstr "Без имени"
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 #: src/app/time-table-settings-toolbar.js:13
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Неделя"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -320,33 +320,33 @@ msgstr "Виджет обновляется раз в {{minutesCount}} мин"
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 #: src/app/time-tracking-report-form.js:324
 msgid "Work author"
-msgstr ""
+msgstr "Автор работы"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 #: src/app/time-tracking-report-form.js:345
 msgid "Work type"
-msgstr ""
+msgstr "Тип работы"
 
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
 msgid "Work types"
-msgstr ""
+msgstr "Типы работы"
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
-msgstr ""
+msgstr "Ось X"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчера"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Вы не можете менять настройки отчета."
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
-msgstr ""
+msgstr "У вас нет доступа к этому отчету"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -358,35 +358,35 @@ msgstr "клон"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "оценка"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr ""
+msgstr "сгруппировать по полю «{{field}}»"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "ч"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "м"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "я"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "просрочено"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "проект"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "суммарное затраченное время"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
@@ -394,7 +394,7 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} клонир�
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} мин."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
@@ -402,5 +402,5 @@ msgstr "{{minutesCount}} мин"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Добавить поле"
 

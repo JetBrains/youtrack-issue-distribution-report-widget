@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-07-07 10:48\n"
+"PO-Revision-Date: 2020-07-14 17:40\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -21,7 +21,7 @@ msgstr "crwdns9375690:0crwdne9375690:0"
 msgid "Add user"
 msgstr "crwdns9737100:0crwdne9737100:0"
 
-#: ../../components/src/report-form-controls/report-work-types.js:32
+#: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
 msgstr "crwdns9737102:0crwdne9737102:0"
 
@@ -33,7 +33,7 @@ msgstr "crwdns9737104:0crwdne9737104:0"
 msgid "All users"
 msgstr "crwdns9737106:0crwdne9737106:0"
 
-#: ../../components/src/report-form-controls/report-work-types.js:33
+#: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
 msgstr "crwdns9737108:0crwdne9737108:0"
 
