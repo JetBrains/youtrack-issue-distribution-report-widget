@@ -19,15 +19,22 @@ const getEmptyOption = emptyText => ({
 const capitalizeFirstLetter = str =>
   (str && (str.substring(0, 1).toUpperCase() + str.substring(1)));
 
-const toSelectOption = filterField => (
-  filterField && {
+const toSelectOption = filterField => {
+  const getDescription = () => (
+    filterField && filterField.customField &&
+    filterField.customField.fieldType &&
+    filterField.customField.fieldType.presentation
+  ) || '';
+
+  return filterField && {
     key: filterField.id,
     label: capitalizeFirstLetter(
       filterField.localizedName || filterField.presentation || filterField.name
     ),
-    model: filterField
-  }
-);
+    model: filterField,
+    description: getDescription()
+  };
+};
 
 const getFilterFieldsOptions = (filterFields, canBeEmpty, emptyText) => {
   const options = filterFields.map(toSelectOption);

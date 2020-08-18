@@ -1,7 +1,7 @@
 import BackendTypes
   from '../../../../components/src/backend-types/backend-types';
 
-const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
+const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation,localizedName,customField(fieldType(presentation))';
 
 async function loadReportsFilterFields(fetchYouTrack, projects) {
   const fld = serializeArrayParameter('fld',

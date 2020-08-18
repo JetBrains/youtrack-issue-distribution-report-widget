@@ -16,7 +16,7 @@ const ISSUE_FIELD_FIELDS = `id,name,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCu
 const ISSUE_FIELDS = `id,idReadable,summary,fields(${ISSUE_FIELD_FIELDS})`;
 
 const WORK_ITEM_TYPE_FIELDS = 'id,name';
-const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation,localizedName';
+const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation,localizedName,customField(fieldType(presentation))';
 
 const REPORT_BASE_FIELDS = `id,name,owner(${USER_FIELDS}),pinned,own,editable`;
 
