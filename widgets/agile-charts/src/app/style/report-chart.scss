@@ -12,10 +12,14 @@
 
   &__body {
     position: fixed;
-    top: 6 * $ring-unit;
-    right: 0;
-    bottom: 3 * $ring-unit;
-    left: 0;
+    top: 2 * $ring-unit;
+    bottom: 4 * $ring-unit;
+
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
+
+    width: 100%;
   }
 
   svg text {

@@ -22,6 +22,9 @@ class Content extends React.Component {
     dashboardApi: PropTypes.object,
     editable: PropTypes.bool,
 
+    datePattern: PropTypes.string,
+    dateNoYearPattern: PropTypes.string,
+
     onOpenSettings: PropTypes.func
   };
 
@@ -90,7 +93,7 @@ class Content extends React.Component {
   }
 
   renderReportBody() {
-    const {report} = this.props;
+    const {report, datePattern, dateNoYearPattern} = this.props;
 
     if (ReportModel.isReportCalculation(report)) {
       const fromPercentsCoefficient = 0.01;
@@ -124,6 +127,8 @@ class Content extends React.Component {
       return (
         <BurnDownChart
           reportData={report.data}
+          datePattern={datePattern}
+          dateNoYearPattern={dateNoYearPattern}
         />
       );
     }
@@ -131,6 +136,8 @@ class Content extends React.Component {
     return (
       <CumulativeFlowChart
         reportData={report.data}
+        datePattern={datePattern}
+        dateNoYearPattern={dateNoYearPattern}
       />
     );
   }

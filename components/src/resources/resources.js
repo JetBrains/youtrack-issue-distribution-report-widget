@@ -318,9 +318,17 @@ async function loadCurrentUser(fetchHub) {
   return await loadUser(fetchHub);
 }
 
-async function loadUser(fetchHub, ringId = 'me') {
+async function loadUserGeneralProfile(fetchYouTrack, userId = 'me') {
+  const EXTENDED_USER_FIELDS = 'dateFieldFormat(datePattern,dateNoYearPattern)';
+
+  return await fetchYouTrack(
+    `api/users/${userId}/profiles/general?fields=${EXTENDED_USER_FIELDS}`
+  );
+}
+
+async function loadUser(fetchHub, ringId = 'me', fields = USER_FIELDS) {
   return await fetchHub(
-    `api/rest/users/${ringId}?fields=${USER_FIELDS}`
+    `api/rest/users/${ringId}?fields=${fields}`
   );
 }
 
@@ -419,6 +427,7 @@ export {
   loadSprint,
   loadUserGroups,
   loadCurrentUser,
+  loadUserGeneralProfile,
   loadUser,
   loadUsers,
   loadIssue,

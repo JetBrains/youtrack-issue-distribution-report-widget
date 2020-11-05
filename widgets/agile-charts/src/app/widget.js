@@ -12,7 +12,8 @@ import {
   loadIndependentBurnDownReports,
   loadSprint,
   saveReportSettings,
-  loadAgileReportSettings
+  loadAgileReportSettings,
+  loadUserGeneralProfile
 } from '../../../../components/src/resources/resources';
 import ReportModel
   from '../../../../components/src/report-model/report-model';
@@ -94,7 +95,8 @@ class AgileProgressDiagramWidget extends React.Component {
       isConfiguring: false,
       isLoading: true,
       error: ReportModel.ErrorTypes.OK,
-      refreshPeriod: AgileProgressDiagramWidget.DEFAULT_REFRESH_PERIOD
+      refreshPeriod: AgileProgressDiagramWidget.DEFAULT_REFRESH_PERIOD,
+      dateFieldFormat: {}
     };
 
     registerWidgetApi({
@@ -152,7 +154,13 @@ class AgileProgressDiagramWidget extends React.Component {
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         AgileProgressDiagramWidget.DEFAULT_REFRESH_PERIOD;
-      this.setState({report: reportWithData, refreshPeriod});
+
+      const generalProfile = await loadUserGeneralProfile(
+        (url, params) => this.fetchYouTrack(url, params)
+      );
+      const dateFieldFormat = (generalProfile || {}).dateFieldFormat || {};
+
+      this.setState({report: reportWithData, refreshPeriod, dateFieldFormat});
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
@@ -325,7 +333,9 @@ class AgileProgressDiagramWidget extends React.Component {
 
   renderContent() {
     const {
-      report, error, isLoading, refreshPeriod, youTrack, isCalculationCompleted
+      report, error, isLoading,
+      refreshPeriod, youTrack, isCalculationCompleted,
+      dateFieldFormat
     } = this.state;
 
     const isCalculation = ReportModel.isReportCalculation(report);
@@ -355,6 +365,10 @@ class AgileProgressDiagramWidget extends React.Component {
         widgetLoader={isLoading || isCalculation}
         tickPeriod={tickPeriodSec * millisInSec}
         editable={this.props.editable}
+
+        datePattern={dateFieldFormat.datePattern}
+        dateNoYearPattern={dateFieldFormat.dateNoYearPattern}
+
         onTick={this.onWidgetRefresh}
         onOpenSettings={this.openWidgetsSettings}
       />

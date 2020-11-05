@@ -129,8 +129,7 @@ const ChartPresentationModel = {
     return d3.format('d');
   },
 
-  getXScale: () =>
-    d3.time.scale(),
+  getXScale: () => d3.time.scale(),
 
   getYScale: yaxisType => {
     const typeName = ((yaxisType || {}).name || '').toLowerCase();
