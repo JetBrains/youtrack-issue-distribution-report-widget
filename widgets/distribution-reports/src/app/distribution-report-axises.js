@@ -89,7 +89,7 @@ const SortOrder = {
   },
 
   isEditable: report =>
-    isTypeWithEditableXAxis(report) && report.own
+    isTypeWithEditableXAxis(report) && report.editable
 };
 
 const DistributionReportAxises = {

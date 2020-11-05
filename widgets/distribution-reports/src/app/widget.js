@@ -185,11 +185,12 @@ class DistributionReportsWidget extends React.Component {
   };
 
   setYouTrack(youTrackService) {
-    fetcher().setYouTrack(youTrackService);
+    const youTrackId = (youTrackService || {}).id;
+    fetcher().setYouTrack(youTrackId);
     BackendTypes.setYtVersion(youTrackService.version);
     this.setState({
       youTrack: {
-        id: youTrackService.id,
+        id: youTrackId,
         homeUrl: youTrackService.homeUrl
       }
     });
@@ -329,7 +330,7 @@ class DistributionReportsWidget extends React.Component {
     this.setState({report});
 
     if (this.props.editable) {
-      return report.own
+      return report.editable
         ? await saveReportSettings(fetcher().fetchYouTrack, report, true)
         : await this.props.configWrapper.update({
           reportId: report.id, presentation
