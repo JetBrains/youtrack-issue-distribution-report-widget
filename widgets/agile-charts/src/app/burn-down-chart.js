@@ -52,7 +52,9 @@ class BurnDownChart extends React.Component {
       ChartPresentationModel.getBurnDownChartModelData(reportData);
 
     nv.addGraph(() => {
-      const shortDateToValueMap = {};
+      const dateTickFormatter = ChartPresentationModel.makeDateTickFormatter(
+        this.props.dateNoYearPattern, this.props.datePattern
+      );
 
       const multiBarHorizontalChart = nv.models.burnDownChart();
       const chart = multiBarHorizontalChart.
@@ -77,18 +79,9 @@ class BurnDownChart extends React.Component {
         chart.yDomain(chartModelDomain);
       }
 
-
-      const dateTickPattern = (this.props.dateNoYearPattern || '').
-        toUpperCase();
       chart.xAxis.
         axisLabel(reportData.xlabel).
-        tickFormat(
-         d => {
-           const shortDate = ChartPresentationModel.getXAxisTickFormat(dateTickPattern)(d);
-           shortDateToValueMap[shortDate] = d;
-           return shortDate;
-         }
-        ).
+        tickFormat(dateTickFormatter.formatLabel).
         showMaxMin(false);
 
       chart.yAxis.
@@ -97,18 +90,8 @@ class BurnDownChart extends React.Component {
           ChartPresentationModel.getYAxisTickFormat(reportData.yaxisType)
         );
 
-      const dateTickLabelPattern = (this.props.datePattern || '').
-        toUpperCase();
       chart.interactiveLayer.tooltip.
-        headerFormatter(
-          header => {
-            const date = shortDateToValueMap[header];
-            if (date) {
-              return ChartPresentationModel.getXAxisTickFormat(dateTickLabelPattern)(date)
-            }
-            return header;
-          }
-        );
+        headerFormatter(dateTickFormatter.formatHeader);
 
       d3.select(barChartNode).
         datum(chartModelData).

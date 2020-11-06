@@ -100,7 +100,9 @@ const ChartPresentationModel = {
       const accurate = date.getHours() === 0 &&
         date.getMinutes() === 0 &&
         date.getSeconds() === 0;
-      return accurate ? fecha.format(date, datePattern) : '';
+      return accurate
+        ? fecha.format(date, (datePattern || '').toUpperCase())
+        : '';
     },
 
   getYAxisTickFormat: yaxisType => {
@@ -199,6 +201,26 @@ const ChartPresentationModel = {
       scale.copy = () => periodLinearScale(domain, range);
       return rescale();
     }
+  },
+
+  makeDateTickFormatter: (shortDatePattern, longDatePattern) => {
+    const shortDateToValueMap = {};
+
+    return {
+      formatLabel: d => {
+        const shortDate =
+          ChartPresentationModel.getXAxisTickFormat(shortDatePattern)(d);
+        shortDateToValueMap[shortDate] = d;
+        return shortDate;
+      },
+
+      formatHeader: header => {
+        const date = shortDateToValueMap[header];
+        return date
+          ? ChartPresentationModel.getXAxisTickFormat(longDatePattern)(date)
+          : header;
+      }
+    };
   }
 };
 

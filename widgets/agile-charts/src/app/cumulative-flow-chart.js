@@ -14,11 +14,13 @@ const CHART_MARGIN = 22;
 class CumulativeFlowChart extends React.Component {
   static propTypes = {
     reportData: PropTypes.object,
-    datePattern: PropTypes.string
+    datePattern: PropTypes.string,
+    dateNoYearPattern: PropTypes.string
   };
 
   static defaultProps = {
-    datePattern: 'YYYY-MM-DD'
+    datePattern: 'DD/MM YYYY',
+    dateNoYearPattern: 'DD/MM'
   };
 
   constructor(props) {
@@ -50,6 +52,10 @@ class CumulativeFlowChart extends React.Component {
 
     nv.addGraph(() => {
 
+      const dateTickFormatter = ChartPresentationModel.makeDateTickFormatter(
+        this.props.dateNoYearPattern, this.props.datePattern
+      );
+
       const chart = nv.models.stackedAreaChart().
         margin({
           top: 0,
@@ -74,13 +80,14 @@ class CumulativeFlowChart extends React.Component {
         chart.yDomain(chartModelDomain);
       }
 
-      chart.xAxis.tickFormat(
-        ChartPresentationModel.getXAxisTickFormat(this.props.datePattern)
-      ).showMaxMin(true);
+      chart.xAxis.tickFormat(dateTickFormatter.formatLabel).showMaxMin(true);
 
       chart.yAxis.tickFormat(
         ChartPresentationModel.getYAxisTickFormat(reportData.yaxisType)
       );
+
+      chart.interactiveLayer.tooltip.
+        headerFormatter(dateTickFormatter.formatHeader);
 
       d3.select(chartNode).
         datum(chartModelData).
