@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 12:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -26,11 +26,11 @@ msgstr "Добавить пользователя"
 msgid "Add work type"
 msgstr "Добавить единицу работы"
 
-#: src/app/widget.js:32
+#: src/app/widget.js:33
 msgid "Agile Chart"
 msgstr "Agile-диаграмма"
 
-#: src/app/burn-down-chart.js:68
+#: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
 msgstr "Опережение"
 
@@ -50,7 +50,7 @@ msgstr "Все типы работы"
 msgid "Always display current sprint"
 msgstr "Всегда отображать текущий спринт"
 
-#: src/app/burn-down-chart.js:67
+#: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
 msgstr "Отставание"
 
@@ -58,7 +58,7 @@ msgstr "Отставание"
 msgid "Calculate for all projects"
 msgstr "Рассчитывать для всех проектов"
 
-#: src/app/content.js:100
+#: src/app/content.js:103
 msgid "Calculating..."
 msgstr "Идет расчет..."
 
@@ -66,11 +66,11 @@ msgstr "Идет расчет..."
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/app/content.js:76
+#: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
 msgstr "Не удалось найти установленный YouTrack"
 
-#: src/app/content.js:81
+#: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
 msgstr "Диаграммы сгорания задач не найдены"
 
@@ -82,7 +82,7 @@ msgstr "Отчетов о затратах времени не найдено"
 msgid "Cannot load list of agile boards."
 msgstr "Невозможно загрузить список Agile-досок."
 
-#: src/app/content.js:85
+#: src/app/content.js:88
 msgid "Cannot load selected report"
 msgstr "Не удалось загрузить выбранный отчет"
 
@@ -120,7 +120,7 @@ msgstr "Показать имеющийся отчет"
 msgid "Edit report"
 msgstr "Редактировать отчет"
 
-#: src/app/content.js:66
+#: src/app/content.js:69
 msgid "Edit settings"
 msgstr "Изменить параметры"
 
@@ -218,7 +218,7 @@ msgstr "Нет значения"
 msgid "Oops! Something went wrong..."
 msgstr "К сожалению, возникла какая-то проблема..."
 
-#: src/app/content.js:88
+#: src/app/content.js:91
 msgid "Oops... Something went wrong =("
 msgstr "К сожалению, возникла какая-то проблема =("
 
@@ -256,7 +256,7 @@ msgid "Remaining Effort"
 msgstr "Оставшиеся трудозатраты"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
-#: src/app/content.js:47
+#: src/app/content.js:50
 msgid "Remove widget"
 msgstr "Удалить виджет"
 
@@ -318,15 +318,15 @@ msgstr "воскресенье|понедельник|вторник|среда|
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
-#: src/app/content.js:115
+#: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "Невозможно рассчитать отчет: фильтры в настройках отчета возвращают слишком много задач"
 
-#: src/app/content.js:120
+#: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Нет задач, соответствующих фильтрам в настройках отчета"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Это поле не существует в некоторых из выбранных проектов"
 
@@ -408,7 +408,7 @@ msgstr "имеющиеся отчеты"
 msgid "h"
 msgstr "ч"
 
-#: src/app/chart-presentation-model.js:115
+#: src/app/chart-presentation-model.js:117
 msgid "h|m"
 msgstr "ч.|мин."
 
@@ -446,7 +446,7 @@ msgstr "{{minCount}} мин."
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} мин"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Добавить поле"
 

@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 12:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -26,11 +26,11 @@ msgstr "crwdns9736866:0crwdne9736866:0"
 msgid "Add work type"
 msgstr "crwdns9736868:0crwdne9736868:0"
 
-#: src/app/widget.js:32
+#: src/app/widget.js:33
 msgid "Agile Chart"
 msgstr "crwdns9736870:0crwdne9736870:0"
 
-#: src/app/burn-down-chart.js:68
+#: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
 msgstr "crwdns9736872:0crwdne9736872:0"
 
@@ -50,7 +50,7 @@ msgstr "crwdns9736878:0crwdne9736878:0"
 msgid "Always display current sprint"
 msgstr "crwdns9736880:0crwdne9736880:0"
 
-#: src/app/burn-down-chart.js:67
+#: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
 msgstr "crwdns9736882:0crwdne9736882:0"
 
@@ -58,7 +58,7 @@ msgstr "crwdns9736882:0crwdne9736882:0"
 msgid "Calculate for all projects"
 msgstr "crwdns1366848:0crwdne1366848:0"
 
-#: src/app/content.js:100
+#: src/app/content.js:103
 msgid "Calculating..."
 msgstr "crwdns1366850:0crwdne1366850:0"
 
@@ -66,11 +66,11 @@ msgstr "crwdns1366850:0crwdne1366850:0"
 msgid "Cancel"
 msgstr "crwdns1366852:0crwdne1366852:0"
 
-#: src/app/content.js:76
+#: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
 msgstr "crwdns1366854:0crwdne1366854:0"
 
-#: src/app/content.js:81
+#: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
 msgstr "crwdns9736884:0crwdne9736884:0"
 
@@ -82,7 +82,7 @@ msgstr "crwdns9736886:0crwdne9736886:0"
 msgid "Cannot load list of agile boards."
 msgstr "crwdns9736888:0crwdne9736888:0"
 
-#: src/app/content.js:85
+#: src/app/content.js:88
 msgid "Cannot load selected report"
 msgstr "crwdns1366858:0crwdne1366858:0"
 
@@ -120,7 +120,7 @@ msgstr "crwdns9736898:0crwdne9736898:0"
 msgid "Edit report"
 msgstr "crwdns1366864:0crwdne1366864:0"
 
-#: src/app/content.js:66
+#: src/app/content.js:69
 msgid "Edit settings"
 msgstr "crwdns1366866:0crwdne1366866:0"
 
@@ -218,7 +218,7 @@ msgstr "crwdns1366884:0crwdne1366884:0"
 msgid "Oops! Something went wrong..."
 msgstr "crwdns1366886:0crwdne1366886:0"
 
-#: src/app/content.js:88
+#: src/app/content.js:91
 msgid "Oops... Something went wrong =("
 msgstr "crwdns1366888:0crwdne1366888:0"
 
@@ -256,7 +256,7 @@ msgid "Remaining Effort"
 msgstr "crwdns9736942:0crwdne9736942:0"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
-#: src/app/content.js:47
+#: src/app/content.js:50
 msgid "Remove widget"
 msgstr "crwdns1366892:0crwdne1366892:0"
 
@@ -318,15 +318,15 @@ msgstr "crwdns1366916:0crwdne1366916:0"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "crwdns1366918:0crwdne1366918:0"
 
-#: src/app/content.js:115
+#: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "crwdns1366922:0crwdne1366922:0"
 
-#: src/app/content.js:120
+#: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "crwdns1366924:0crwdne1366924:0"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "crwdns1366926:0crwdne1366926:0"
 
@@ -408,7 +408,7 @@ msgstr "crwdns1366956:0crwdne1366956:0"
 msgid "h"
 msgstr "crwdns9736974:0crwdne9736974:0"
 
-#: src/app/chart-presentation-model.js:115
+#: src/app/chart-presentation-model.js:117
 msgid "h|m"
 msgstr "crwdns9736976:0crwdne9736976:0"
 
@@ -446,7 +446,7 @@ msgstr "crwdns9761442:0{{minCount}}crwdne9761442:0"
 msgid "{{minutesCount}} min"
 msgstr "crwdns1366966:0{{minutesCount}}crwdne1366966:0"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "crwdns1366968:0crwdne1366968:0"
 

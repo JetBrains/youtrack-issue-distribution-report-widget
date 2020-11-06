@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 12:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -26,11 +26,11 @@ msgstr "Benutzer hinzufügen"
 msgid "Add work type"
 msgstr "Arbeitstyp hinzufügen"
 
-#: src/app/widget.js:32
+#: src/app/widget.js:33
 msgid "Agile Chart"
-msgstr ""
+msgstr "Agile-Diagramm"
 
-#: src/app/burn-down-chart.js:68
+#: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
 msgstr "Dem Zeitplan voraus"
 
@@ -50,7 +50,7 @@ msgstr "Alle Arbeitstypen"
 msgid "Always display current sprint"
 msgstr "Aktuellen Sprint immer anzeigen"
 
-#: src/app/burn-down-chart.js:67
+#: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
 msgstr "Hinter dem Zeitplan"
 
@@ -58,7 +58,7 @@ msgstr "Hinter dem Zeitplan"
 msgid "Calculate for all projects"
 msgstr "Für alle Projekte berechnen"
 
-#: src/app/content.js:100
+#: src/app/content.js:103
 msgid "Calculating..."
 msgstr "Berechnung läuft..."
 
@@ -66,23 +66,23 @@ msgstr "Berechnung läuft..."
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/app/content.js:76
+#: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
 msgstr "YouTrack-Installation kann nicht gefunden werden"
 
-#: src/app/content.js:81
+#: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "Es wurden keine Burndown-Diagramme gefunden"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Es wurden keine Zeiterfassungsberichte gefunden"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "Liste der Agile-Boards kann nicht geladen werden."
 
-#: src/app/content.js:85
+#: src/app/content.js:88
 msgid "Cannot load selected report"
 msgstr "Ausgewählter Bericht kann nicht geladen werden"
 
@@ -106,7 +106,7 @@ msgstr "Neuen Bericht erstellen"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Benutzerdefiniertes Datumsintervall"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -114,23 +114,23 @@ msgstr "Tag"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Bestehenden Bericht anzeigen"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
 msgstr "Bericht bearbeiten"
 
-#: src/app/content.js:66
+#: src/app/content.js:69
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Die richtige YouTrack-Installation konnte nicht gefunden werden"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Daten konnten nicht aus ausgewählter YouTrack-Instanz geladen werden"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
@@ -146,11 +146,11 @@ msgstr "Behoben"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "Für benutzerdefinierte Ticketauswahl"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "Für vorhandenes Board"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -162,7 +162,7 @@ msgstr "Idealer Burndown"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Wenn Sie diesen Bericht anpassen möchten, {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -218,7 +218,7 @@ msgstr "Kein Wert"
 msgid "Oops! Something went wrong..."
 msgstr "Entschuldigung! Etwas ist schiefgegangen."
 
-#: src/app/content.js:88
+#: src/app/content.js:91
 msgid "Oops... Something went wrong =("
 msgstr "Entschuldigung! Etwas ist schiefgegangen =("
 
@@ -256,7 +256,7 @@ msgid "Remaining Effort"
 msgstr "Verbleibender Aufwand"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
-#: src/app/content.js:47
+#: src/app/content.js:50
 msgid "Remove widget"
 msgstr "Widget entfernen"
 
@@ -278,7 +278,7 @@ msgstr "Berichtsname"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Standardwerte wiederherstellen (Besitzer)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -318,15 +318,15 @@ msgstr "Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "So|Mo|Di|Mi|Do|Fr|Sa"
 
-#: src/app/content.js:115
+#: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "Der Bericht kann nicht berechnet werden: Es gibt zu viele Tickets, die den Filtern in den Berichtseinstellungen entsprechen."
 
-#: src/app/content.js:120
+#: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstellungen entsprechen."
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Dieses Feld ist in einigen ausgewählten Projekten nicht vorhanden."
 
@@ -385,7 +385,7 @@ msgstr "Gestern"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Sie sind nicht berechtigt, die Berichtseinstellungen zu bearbeiten."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -408,9 +408,9 @@ msgstr "vorhandene Berichte"
 msgid "h"
 msgstr "h"
 
-#: src/app/chart-presentation-model.js:115
+#: src/app/chart-presentation-model.js:117
 msgid "h|m"
-msgstr ""
+msgstr "h|m"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
@@ -440,13 +440,13 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonen Sie ih
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} m"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} Min."
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Feld hinzufügen"
 

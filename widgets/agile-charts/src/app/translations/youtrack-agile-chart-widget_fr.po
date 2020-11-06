@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 12:23\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -26,11 +26,11 @@ msgstr "Ajouter un utilisateur"
 msgid "Add work type"
 msgstr "Ajouter un type de travail"
 
-#: src/app/widget.js:32
+#: src/app/widget.js:33
 msgid "Agile Chart"
 msgstr "Graphique agile"
 
-#: src/app/burn-down-chart.js:68
+#: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
 msgstr "En avance"
 
@@ -50,7 +50,7 @@ msgstr "Tous les types de travaux"
 msgid "Always display current sprint"
 msgstr "Toujours afficher le sprint actuel"
 
-#: src/app/burn-down-chart.js:67
+#: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
 msgstr "En retard"
 
@@ -58,7 +58,7 @@ msgstr "En retard"
 msgid "Calculate for all projects"
 msgstr "Calculer pour tous les projets"
 
-#: src/app/content.js:100
+#: src/app/content.js:103
 msgid "Calculating..."
 msgstr "Calcul..."
 
@@ -66,11 +66,11 @@ msgstr "Calcul..."
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/app/content.js:76
+#: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
 msgstr "Impossible de trouver une installation de YouTrack"
 
-#: src/app/content.js:81
+#: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
 msgstr "Impossible de trouver des graphiques d'avancement"
 
@@ -82,7 +82,7 @@ msgstr "Impossible de trouver des rapports de suivi du temps"
 msgid "Cannot load list of agile boards."
 msgstr "Impossible de charger la liste des tableaux agiles."
 
-#: src/app/content.js:85
+#: src/app/content.js:88
 msgid "Cannot load selected report"
 msgstr "Impossible de charger le rapport sélectionné"
 
@@ -120,7 +120,7 @@ msgstr "Afficher un rapport existant"
 msgid "Edit report"
 msgstr "Éditer le rapport"
 
-#: src/app/content.js:66
+#: src/app/content.js:69
 msgid "Edit settings"
 msgstr "Éditer les paramètres"
 
@@ -218,7 +218,7 @@ msgstr "Aucune valeur"
 msgid "Oops! Something went wrong..."
 msgstr "Oups ! Un problème est survenu..."
 
-#: src/app/content.js:88
+#: src/app/content.js:91
 msgid "Oops... Something went wrong =("
 msgstr "Oups... Un problème est survenu =("
 
@@ -256,7 +256,7 @@ msgid "Remaining Effort"
 msgstr "Travail restant"
 
 #: ../../components/src/base-configuration/base-configuration.js:369
-#: src/app/content.js:47
+#: src/app/content.js:50
 msgid "Remove widget"
 msgstr "Supprimer le widget"
 
@@ -318,15 +318,15 @@ msgstr "Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dim|Lun|Mar|Mer|Jeu|Ven|Sam"
 
-#: src/app/content.js:115
+#: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "Impossible de calculer le rapport : les filtres des paramètres du rapport renvoient trop de tickets"
 
-#: src/app/content.js:120
+#: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Les filtres définis pour le rapport ne renvoient aucun ticket."
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Ce champ n'existe pas dans une partie des projets sélectionnés."
 
@@ -408,7 +408,7 @@ msgstr "rapports existants"
 msgid "h"
 msgstr "h"
 
-#: src/app/chart-presentation-model.js:115
+#: src/app/chart-presentation-model.js:117
 msgid "h|m"
 msgstr "h|m"
 
@@ -446,7 +446,7 @@ msgstr "{{minCount}} m"
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} mn"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "+ Ajouter le champ"
 
