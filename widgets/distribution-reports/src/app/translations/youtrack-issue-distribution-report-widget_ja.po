@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 13:42\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -275,7 +275,7 @@ msgstr "レポートを計算できません：レポート設定のフィルタ
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "レポート設定のフィルタと一致する課題はありません"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "このフィールドは選択したプロジェクトの一部には存在しません"
 
@@ -415,7 +415,7 @@ msgstr "{{minCount}} 分"
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} 分"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋フィールドの追加"
 

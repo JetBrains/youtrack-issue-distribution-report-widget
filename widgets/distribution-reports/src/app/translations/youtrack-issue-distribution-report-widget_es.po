@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-07-14 17:41\n"
+"PO-Revision-Date: 2020-11-06 13:42\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -71,7 +71,7 @@ msgstr "No es posible encontrar ningún informe de distribución de incidencias"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "No se puede encontrar ningún informe de control de tiempo"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
@@ -91,7 +91,7 @@ msgstr "Crear informe nuevo"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Intervalo de fechas personalizable"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -99,7 +99,7 @@ msgstr "Día"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Mostrar informe existente"
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,11 +107,11 @@ msgstr "Editar configuración"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "No se puede encontrar una instalación de YouTrack adecuada"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "No se pueden cargar datos de la instancia de YouTrack seleccionada"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
@@ -131,7 +131,7 @@ msgstr "Grupos y equipos"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Si quiere personalizar su propia copia de este informe, {{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
@@ -229,7 +229,7 @@ msgstr "Nombre del informe"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Restablecer los valores predeterminados (propietario)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -275,7 +275,7 @@ msgstr "El informe no puede calcularse: los filtros de la configuración del inf
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "No hay ninguna incidencia que coincida con los filtros de la configuración de informe"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Este campo no existe en algunos de los proyectos seleccionados"
 
@@ -345,7 +345,7 @@ msgstr "Ayer"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "No tiene el acceso necesario para editar la configuración de informes."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -409,13 +409,13 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}, clónelo"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} min"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} min"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Añadir campo"
 
