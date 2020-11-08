@@ -6,11 +6,11 @@ const getTranslations = translationFiles =>
       const lang = fileKey.split('.po')[0].split('_')[1];
       const fileJson = translationFiles(fileKey);
       result[lang] = Object.keys(fileJson).
-      reduce(
-        (accumulator, propertyKey) =>
-          ({...accumulator, ...fileJson[propertyKey]}),
-        {}
-      );
+        reduce(
+          (accumulator, propertyKey) =>
+            ({...accumulator, ...fileJson[propertyKey]}),
+          {}
+        );
       return result;
     }, {});
 

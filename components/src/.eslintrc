@@ -11,5 +11,9 @@
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "import/no-unresolved": "off",
+    "import/extensions": "off"
   }
 }
