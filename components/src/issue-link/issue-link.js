@@ -5,7 +5,7 @@ import Link from '@jetbrains/ring-ui/components/link/link';
 import classNames from 'classnames';
 import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
-import {i18n} from 'hub-dashboard-addons/components/localization/src/localization';
+import {i18n} from 'hub-dashboard-addons/dist/localization';
 
 import {loadIssue} from '../resources/resources';
 
