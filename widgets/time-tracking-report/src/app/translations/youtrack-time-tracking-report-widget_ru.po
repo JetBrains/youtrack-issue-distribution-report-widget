@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-07-14 17:40\n"
+"PO-Revision-Date: 2020-11-09 21:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -111,7 +111,7 @@ msgstr "Фильтровать пользователей, группы и ко�
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr "Исправлена"
+msgstr "Фиксированный период"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
@@ -163,7 +163,7 @@ msgstr "Месяц"
 
 #: src/app/time-tracking-report-form.js:389
 msgid "Name"
-msgstr "Фреймворк"
+msgstr "Название"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
@@ -263,7 +263,7 @@ msgstr "Невозможно рассчитать отчет: фильтры в 
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Нет задач, соответствующих фильтрам в настройках отчета"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Это поле не существует в некоторых из выбранных проектов"
 
@@ -400,7 +400,7 @@ msgstr "{{minCount}} мин."
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} мин"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Добавить поле"
 

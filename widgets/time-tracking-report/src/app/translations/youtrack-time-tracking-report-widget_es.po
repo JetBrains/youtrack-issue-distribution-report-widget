@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-07-14 17:40\n"
+"PO-Revision-Date: 2020-11-09 21:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -59,11 +59,11 @@ msgstr "No es posible encontrar la instalación de YouTrack"
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr ""
+msgstr "No se puede encontrar ningún informe"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "No se puede encontrar ningún informe de control de tiempo"
 
 #: src/app/content.js:96
 msgid "Cannot load selected report"
@@ -83,7 +83,7 @@ msgstr "Crear informe nuevo"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Intervalo de fechas personalizable"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -91,7 +91,7 @@ msgstr "Día"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Mostrar informe existente"
 
 #: src/app/content.js:77
 msgid "Edit settings"
@@ -99,11 +99,11 @@ msgstr "Editar configuración"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "No se puede encontrar una instalación de YouTrack adecuada"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "No se pueden cargar datos de la instancia de YouTrack seleccionada"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
@@ -115,7 +115,7 @@ msgstr "Fija"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr ""
+msgstr "Agrupar por {{field}}"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -127,7 +127,7 @@ msgstr "Ocultar detalles"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Si quiere personalizar su propia copia de este informe, {{cloneItPlaceholder}}"
 
 #: src/app/time-tracking-report-form.js:367
 msgid "Issue filter"
@@ -225,7 +225,7 @@ msgstr "Nombre del informe"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Restablecer los valores predeterminados (propietario)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -263,7 +263,7 @@ msgstr "El informe no puede calcularse: los filtros de la configuración del inf
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "No hay ninguna incidencia que coincida con los filtros de la configuración de informe"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Este campo no existe en algunos de los proyectos seleccionados"
 
@@ -286,7 +286,7 @@ msgstr "Hora"
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr ""
+msgstr "Informe de control de tiempo"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
@@ -330,7 +330,7 @@ msgstr "Tipo de trabajo"
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
 msgid "Work types"
-msgstr ""
+msgstr "Tipos de trabajo"
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
@@ -342,7 +342,7 @@ msgstr "Ayer"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "No tiene el acceso necesario para editar la configuración de informes."
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
@@ -362,7 +362,7 @@ msgstr "estimación"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr ""
+msgstr "agrupar por {{field}}"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -394,13 +394,13 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}, clónelo"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} min"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} min"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Añadir campo"
 

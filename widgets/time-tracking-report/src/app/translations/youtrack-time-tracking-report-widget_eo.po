@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-07-14 17:40\n"
+"PO-Revision-Date: 2020-11-08 21:15\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -263,7 +263,7 @@ msgstr "crwdns9375768:0crwdne9375768:0"
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "crwdns9375770:0crwdne9375770:0"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "crwdns9375772:0crwdne9375772:0"
 
@@ -400,7 +400,7 @@ msgstr "crwdns9761440:0{{minCount}}crwdne9761440:0"
 msgid "{{minutesCount}} min"
 msgstr "crwdns9375812:0{{minutesCount}}crwdne9375812:0"
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "crwdns9375814:0crwdne9375814:0"
 

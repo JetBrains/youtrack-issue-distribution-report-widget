@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2020-07-14 17:40\n"
+"PO-Revision-Date: 2020-11-09 21:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -59,11 +59,11 @@ msgstr "YouTrack-Installation kann nicht gefunden werden"
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr ""
+msgstr "Es wurde kein Bericht gefunden"
 
 #: ../../components/src/base-configuration/base-configuration.js:51
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Es wurden keine Zeiterfassungsberichte gefunden"
 
 #: src/app/content.js:96
 msgid "Cannot load selected report"
@@ -83,7 +83,7 @@ msgstr "Neuen Bericht erstellen"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Benutzerdefiniertes Datumsintervall"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -91,7 +91,7 @@ msgstr "Tag"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Bestehenden Bericht anzeigen"
 
 #: src/app/content.js:77
 msgid "Edit settings"
@@ -99,11 +99,11 @@ msgstr "Einstellungen bearbeiten"
 
 #: ../../components/src/base-configuration/base-configuration.js:119
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Die richtige YouTrack-Installation konnte nicht gefunden werden"
 
 #: ../../components/src/base-configuration/base-configuration.js:361
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Daten konnten nicht aus ausgewählter YouTrack-Instanz geladen werden"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
@@ -115,7 +115,7 @@ msgstr "Behoben"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr ""
+msgstr "Gruppieren nach {{field}}"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -127,7 +127,7 @@ msgstr "Details ausblenden"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Wenn Sie diesen Bericht anpassen möchten, {{cloneItPlaceholder}}"
 
 #: src/app/time-tracking-report-form.js:367
 msgid "Issue filter"
@@ -225,7 +225,7 @@ msgstr "Berichtsname"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Standardwerte wiederherstellen (Besitzer)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -263,7 +263,7 @@ msgstr "Der Bericht kann nicht berechnet werden: Es gibt zu viele Tickets, die d
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstellungen entsprechen."
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:125
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
 msgstr "Dieses Feld ist in einigen ausgewählten Projekten nicht vorhanden."
 
@@ -286,7 +286,7 @@ msgstr "Uhrzeit"
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr ""
+msgstr "Zeiterfassungsbericht"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
@@ -330,7 +330,7 @@ msgstr "Arbeitstyp"
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
 msgid "Work types"
-msgstr ""
+msgstr "Arbeitstypen"
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
@@ -342,7 +342,7 @@ msgstr "Gestern"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Sie sind nicht berechtigt, die Berichtseinstellungen zu bearbeiten."
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
@@ -362,7 +362,7 @@ msgstr "Zeitschätzung"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr ""
+msgstr "Gruppieren nach {{field}}"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -394,13 +394,13 @@ msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonen Sie ih
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} m"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
 msgstr "{{minutesCount}} Min."
 
-#: ../../components/src/filter-fields-selector/filter-fields-selector.js:111
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
 msgstr "＋Feld hinzufügen"
 
