@@ -39,12 +39,12 @@ function makeMetaFromGroup(group, isIssueView) {
 
 function makeMetaFromLine(line, isIssueView) {
   const id = getMetaId();
-  if (!id) {
-    return null;
-  }
 
   const description = line.description || line.presentation;
   const title = (isIssueView ? id : line.userVisibleName) || description;
+  if (!title) {
+    return null;
+  }
   return {
     id, title,
     description: description !== title ? description : undefined,
