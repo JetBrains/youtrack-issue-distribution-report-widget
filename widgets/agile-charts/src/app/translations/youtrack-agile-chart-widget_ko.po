@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2020-11-08 21:17\n"
+"PO-Revision-Date: 2021-01-28 21:05\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "사용자 추가"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "모든 프로젝트"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "모든 작업 유형"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "항상 현재 스프린트 표시"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "새 보고서 생성"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -142,7 +142,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "수정됨"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
@@ -166,15 +166,15 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
-msgstr ""
+msgstr "이슈"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "보드를 찾을 수 없습니다."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -216,7 +216,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "죄송합니다. 오류가 발생했습니다."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
@@ -262,7 +262,7 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
-msgstr ""
+msgstr "보고서"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
@@ -282,16 +282,16 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: ../../components/src/base-configuration/base-configuration.js:339
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
-msgstr ""
+msgstr "YouTrack 선택"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "보드 선택"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
@@ -308,15 +308,15 @@ msgstr ""
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
-msgstr ""
+msgstr "소요 시간"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "일요일|월요일|화요일|수요일|목요일|금요일|토요일"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "일|월|화|수|목|금|토"
 
 #: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
@@ -357,7 +357,7 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "사용자"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
@@ -365,11 +365,11 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "위젯은 1분마다 새로고침됩니다"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "위젯은 {{minutesCount}}분마다 새로고침됩니다"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
@@ -389,7 +389,7 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "오전|오후"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "시"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
@@ -414,7 +414,7 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "분"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
@@ -444,7 +444,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}}분"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"

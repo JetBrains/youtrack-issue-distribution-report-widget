@@ -11,12 +11,12 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2020-11-09 21:19\n"
+"PO-Revision-Date: 2021-02-01 21:34\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
 msgid "Add project"
-msgstr ""
+msgstr "Přidat projekt"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
@@ -212,11 +212,11 @@ msgstr ""
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "Žádná hodnota"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Jejda! Něco se pokazilo…"
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
@@ -233,7 +233,7 @@ msgstr ""
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "Vlastník"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -274,7 +274,7 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:332
 msgid "Report name"
-msgstr ""
+msgstr "Název reportu"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
@@ -369,7 +369,7 @@ msgstr "Widget se aktualizuje každou minutu"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Widget se aktualizuje každých {{minutesCount}} minut"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
@@ -444,7 +444,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} min"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
