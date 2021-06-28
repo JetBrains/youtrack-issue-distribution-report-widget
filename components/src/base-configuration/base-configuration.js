@@ -9,13 +9,13 @@ import HttpErrorHandler from '@jetbrains/hub-widget-ui/dist/http-error-handler';
 import ConfigurationForm from '@jetbrains/hub-widget-ui/dist/configuration-form';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import Link from '@jetbrains/ring-ui/components/link/link';
+import ServiceResources from '@jetbrains/hub-widget-ui/dist/service-resources';
 
 import '@jetbrains/ring-ui/components/form/form.scss';
 
 import NoEditPermissionsWarning
   from '../report-form-controls/no-edit-permissions-warning';
 import {
-  getYouTrackServices,
   saveReportSettings,
   loadCurrentUser
 } from '../resources/resources';
@@ -29,6 +29,7 @@ class BaseConfiguration extends React.Component {
   static propTypes = {
     EditReportForm: PropTypes.func,
     reportId: PropTypes.string,
+    youTrackMinVersion: PropTypes.string,
     refreshPeriod: PropTypes.number.isRequired,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -103,8 +104,8 @@ class BaseConfiguration extends React.Component {
       selectedYouTrack,
       selectedReport
     } = this.state;
-    const youTracks = await getYouTrackServices(
-      fetcher().fetchHub
+    const youTracks = await ServiceResources.getYouTrackServices(
+      this.props.dashboardApi, this.props.youTrackMinVersion
     );
     const selectedYouTrackWithAllFields = youTracks.filter(
       yt => yt.id === (selectedYouTrack || {}).id

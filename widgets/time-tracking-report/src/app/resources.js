@@ -1,7 +1,3 @@
-const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
-
-const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
-
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,email';
 
 const REPORT_FILTER_FIELDS_FIELDS = 'id,name,presentation';
@@ -33,44 +29,7 @@ async function recalculateReport(fetchYouTrack, report) {
   });
 }
 
-async function getYouTrackServices(fetchHub) {
-  const data = await fetchHub(`api/rest/services?fields=${SERVICE_FIELDS}&query=applicationName:YouTrack`);
-  return (data && data.services || []).filter(
-    service => !!service.homeUrl && satisfyingVersion(service.version)
-  );
-
-  // eslint-disable-next-line complexity
-  function satisfyingVersion(currentVersion) {
-    const currentVersionTokens = currentVersion.split('.').map(Number);
-    const requestedVersionTokens = REQUESTED_YOUTRACK_VERSION.
-      split('.').map(Number);
-    for (let i = 0; i < requestedVersionTokens.length; ++i) {
-      if ((currentVersionTokens[i] > requestedVersionTokens[i]) ||
-        (!isNaN(currentVersionTokens[i]) && isNaN(requestedVersionTokens[i]))
-      ) {
-        return true;
-      }
-      if (requestedVersionTokens[i] > currentVersionTokens[i] ||
-        (isNaN(currentVersionTokens[i]) && !isNaN(requestedVersionTokens[i]))
-      ) {
-        return false;
-      }
-    }
-    return true;
-  }
-}
-
-async function getYouTrackService(fetchHub, optionalYtId) {
-  let services = await getYouTrackServices(fetchHub);
-  if (optionalYtId) {
-    services = services.filter(service => service.id === optionalYtId);
-  }
-  return services[0];
-}
-
 export {
   saveReportSettings,
-  recalculateReport,
-  getYouTrackServices,
-  getYouTrackService
+  recalculateReport
 };

@@ -25,7 +25,7 @@ const reportsSettingsSource = async reportId =>
 
 const Configuration = ({
   reportId, refreshPeriod, onSubmit, onCancel,
-  onGetReportDraft, dashboardApi, youTrackId
+  onGetReportDraft, dashboardApi, youTrackId, youTrackMinVersion
 }) => (
   <BaseConfiguration
     EditReportForm={TimeTrackingReportForm}
@@ -38,6 +38,7 @@ const Configuration = ({
     youTrackId={youTrackId}
     reportsSource={reportsSource}
     reportSettingsSource={reportsSettingsSource}
+    youTrackMinVersion={youTrackMinVersion}
   />
 );
 
@@ -48,7 +49,8 @@ Configuration.propTypes = {
   onCancel: PropTypes.func,
   onGetReportDraft: PropTypes.func.isRequired,
   dashboardApi: PropTypes.object,
-  youTrackId: PropTypes.string
+  youTrackId: PropTypes.string,
+  youTrackMinVersion: PropTypes.string
 };
 
 export default Configuration;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import ConfigurableWidget from '@jetbrains/hub-widget-ui/dist/configurable-widget';
 import withWidgetLoaderHOC from '@jetbrains/hub-widget-ui/dist/widget-loader';
+import ServiceResources from '@jetbrains/hub-widget-ui/dist/service-resources';
 import 'd3/d3';
 import 'nvd3/nv.d3';
 import 'nvd3/nv.d3.css';
@@ -17,7 +18,6 @@ import '../../../../components/src/report-widget/report-widget.scss';
 
 import {
   recalculateReport,
-  getYouTrackService,
   saveReportSettings
 } from './resources';
 import Configuration
@@ -137,10 +137,9 @@ class SpendTimeReportsWidget extends React.Component {
     this.setLoadingEnabled(true);
     await this.props.configWrapper.init();
 
-    const fetchHub = dashboardApi.fetchHub.bind(dashboardApi);
     const youTrack = this.props.configWrapper.getFieldValue('youTrack');
-    const ytTrackService = await getYouTrackService(
-      fetchHub, youTrack && youTrack.id
+    const ytTrackService = await ServiceResources.getYouTrackService(
+      dashboardApi, youTrack && youTrack.id
     );
     if (ytTrackService && ytTrackService.id) {
       this.setYouTrack(ytTrackService);
@@ -388,6 +387,7 @@ class SpendTimeReportsWidget extends React.Component {
         onGetReportDraft={ReportModel.NewReport.timeTracking}
         dashboardApi={this.props.dashboardApi}
         youTrackId={youTrack.id}
+        youTrackMinVersion="2020.1.3111"
       />
     );
   }
