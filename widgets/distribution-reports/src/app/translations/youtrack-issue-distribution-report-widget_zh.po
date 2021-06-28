@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-02-01 21:34\n"
+"PO-Revision-Date: 2021-06-28 13:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -23,7 +23,7 @@ msgstr "添加用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "添加工作类型"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
@@ -31,11 +31,11 @@ msgstr "所有项目"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "所有用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "所有工作类型"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
@@ -47,15 +47,15 @@ msgstr ""
 
 #: src/app/content.js:101
 msgid "Calculating..."
-msgstr ""
+msgstr "正在计算..."
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
-msgstr ""
+msgstr "可编辑"
 
 #: src/app/distribution-report-form.js:349
 msgid "Can view and use"
-msgstr ""
+msgstr "可以查看和使用"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -63,27 +63,27 @@ msgstr "取消"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "找不到 YouTrack 安装"
 
 #: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "找不到时间跟踪报告"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "无法加载选定的报告"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr ""
+msgstr "无法保存报告"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr ""
+msgstr "无法更新微件"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -91,35 +91,35 @@ msgstr "创建新报告"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "自定义日期间隔"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "显示现有报告"
 
 #: src/app/content.js:67
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "无法找到合适的 YouTrack 安装"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "从选定的 YouTrack 安装加载数据失败"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
-msgstr ""
+msgstr "筛选问题"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "筛选用户、组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -127,11 +127,11 @@ msgstr "已修复"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "组和团队"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "如果您要自定义此报告的副本，请 {{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
@@ -151,31 +151,31 @@ msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 �
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "上个月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "上个星期"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最后一个工作日"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "新报告"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "无分组"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "无值"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -183,20 +183,20 @@ msgstr "哎呀，出了些问题..."
 
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "哎呀... 出了点问题=("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "其他组和团队"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "所有者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "父问题"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
@@ -212,36 +212,36 @@ msgstr "项目"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "查询"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "推荐的小组和团队"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
-msgstr ""
+msgstr "删除小部件"
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
-msgstr ""
+msgstr "报告名称"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "重置为默认值（所有者）"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
 msgstr "保存"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "选择 YoutTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "选择报告"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
@@ -253,7 +253,7 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "显示 {{aggregationPolicy}} 的总数"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -293,7 +293,7 @@ msgstr "本年度"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: src/app/report-chart.js:249
 msgid "Total"
@@ -313,7 +313,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "未命名"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -321,7 +321,7 @@ msgstr "用户"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -333,11 +333,11 @@ msgstr "微件每 {{minutesCount}} 分钟刷新一次"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "工作作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "工作类型"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
@@ -345,7 +345,7 @@ msgstr "昨天"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "您无法访问编辑报告设置。"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -357,7 +357,7 @@ msgstr "以及"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "升序"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -365,15 +365,15 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "克隆"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr ""
+msgstr "降序"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "估计"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -385,7 +385,7 @@ msgstr "分"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "我"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -393,7 +393,7 @@ msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "过期"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -401,7 +401,7 @@ msgstr "项目"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "共花费的时间"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
@@ -417,5 +417,5 @@ msgstr "{{minutesCount}} 分钟"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "+添加字段"
 

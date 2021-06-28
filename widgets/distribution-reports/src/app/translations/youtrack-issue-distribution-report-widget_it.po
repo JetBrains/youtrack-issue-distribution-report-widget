@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-01-17 21:02\n"
+"PO-Revision-Date: 2021-06-28 13:23\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Cannot find any issue distribution report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr ""
 
@@ -77,17 +77,17 @@ msgstr ""
 msgid "Cannot load selected report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Crea nuovo report"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -105,11 +105,11 @@ msgstr ""
 msgid "Edit settings"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Risolto"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -139,7 +139,7 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:307
 msgid "Issues"
-msgstr ""
+msgstr "Ticket"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
@@ -212,13 +212,13 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Cerca"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr ""
@@ -235,7 +235,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr ""
 

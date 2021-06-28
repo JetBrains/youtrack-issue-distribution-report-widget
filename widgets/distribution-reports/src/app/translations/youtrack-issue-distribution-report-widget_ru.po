@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 13:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -69,7 +69,7 @@ msgstr "Не удалось найти установленный YouTrack"
 msgid "Cannot find any issue distribution report"
 msgstr "Отчетов о распределении задач не найдено"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "Отчетов о распределении задач не найдено"
 
@@ -77,11 +77,11 @@ msgstr "Отчетов о распределении задач не найде�
 msgid "Cannot load selected report"
 msgstr "Не удалось загрузить выбранный отчет"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr "Невозможно сохранить отчет"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr "Невозможно обновить виджет"
 
@@ -105,11 +105,11 @@ msgstr "Показать имеющийся отчет"
 msgid "Edit settings"
 msgstr "Изменить параметры"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "Подходящий экземпляр YouTrack не найден"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "Не удалось загрузить данные из выбранного экземпляра YouTrack"
 
@@ -218,7 +218,7 @@ msgstr "Запрос"
 msgid "Recommended groups and teams"
 msgstr "Рекомендованные группы и команды"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "Удалить виджет"
@@ -235,7 +235,7 @@ msgstr "Вернуть значение по умолчанию"
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "Выберите YouTrack"
 

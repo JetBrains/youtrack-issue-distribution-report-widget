@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-11-10 13:53\n"
+"PO-Revision-Date: 2021-06-28 13:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -69,7 +69,7 @@ msgstr "crwdns933084:0crwdne933084:0"
 msgid "Cannot find any issue distribution report"
 msgstr "crwdns933086:0crwdne933086:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "crwdns9736998:0crwdne9736998:0"
 
@@ -77,11 +77,11 @@ msgstr "crwdns9736998:0crwdne9736998:0"
 msgid "Cannot load selected report"
 msgstr "crwdns933088:0crwdne933088:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr "crwdns9737000:0crwdne9737000:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr "crwdns9737002:0crwdne9737002:0"
 
@@ -105,11 +105,11 @@ msgstr "crwdns9737010:0crwdne9737010:0"
 msgid "Edit settings"
 msgstr "crwdns933096:0crwdne933096:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "crwdns9737012:0crwdne9737012:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "crwdns9737014:0crwdne9737014:0"
 
@@ -218,7 +218,7 @@ msgstr "crwdns9737044:0crwdne9737044:0"
 msgid "Recommended groups and teams"
 msgstr "crwdns9737046:0crwdne9737046:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr "crwdns933122:0crwdne933122:0"
@@ -235,7 +235,7 @@ msgstr "crwdns9737048:0crwdne9737048:0"
 msgid "Save"
 msgstr "crwdns933132:0crwdne933132:0"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "crwdns9737050:0crwdne9737050:0"
 

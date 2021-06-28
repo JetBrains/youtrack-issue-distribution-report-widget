@@ -3,23 +3,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: youtrack-custom-localization\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Crowdin-Project: youtrack-custom-localization\n"
 "X-Crowdin-Project-ID: 309400\n"
-"X-Crowdin-Language: hu\n"
+"X-Crowdin-Language: uk\n"
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
 "X-Crowdin-File-ID: 266770\n"
-"Language-Team: Hungarian\n"
-"Language: hu_HU\n"
-"PO-Revision-Date: 2021-06-28 13:22\n"
+"Language-Team: Ukrainian\n"
+"Language: uk_UA\n"
+"PO-Revision-Date: 2021-06-28 13:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr "Projekt hozzáadása"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr "Felhasználó hozzáadása"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr "Minden projekt"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
@@ -35,15 +35,15 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr "Minden munkatípus"
+msgstr ""
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
-msgstr "Felelős"
+msgstr ""
 
 #: src/app/report-chart.js:277
 msgid "Bars"
-msgstr "Sávok"
+msgstr ""
 
 #: src/app/content.js:101
 msgid "Calculating..."
@@ -51,15 +51,15 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
-msgstr "Szerkeszteni tudja"
+msgstr ""
 
 #: src/app/distribution-report-form.js:349
 msgid "Can view and use"
-msgstr "Meg tudja tekinteni és használni tudja"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr ""
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr "Új jelentés létrehozása"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr "Nap"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -103,7 +103,7 @@ msgstr ""
 
 #: src/app/content.js:67
 msgid "Edit settings"
-msgstr "Beállítások szerkesztése"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
@@ -119,15 +119,15 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr "Felhasználók, csoportok és csapatok szűrése"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr "Javítva"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr "Csoportok és csapatok"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -139,31 +139,31 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:307
 msgid "Issues"
-msgstr "Hibajegyek"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr "Január|Február|Március|Április|Május|Június|Július|Augusztus|Szeptember|Október|November|December"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr "Jan|Febr|Már|Ápr|Máj|Jún|Júl|Aug|Szept|Okt|Nov|Dec"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr "Előző hónap"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr "Múlt hét"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr "Utolsó munkanap"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr "Hónap"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
@@ -171,11 +171,11 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr "Nincs csoportosítás"
+msgstr ""
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr "Nincs érték"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -187,36 +187,36 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr "További csoportok és csapatok"
+msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr "Tulajdonos"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr "Fölérendelt hibajegy"
+msgstr ""
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
-msgstr "Kördiagram"
+msgstr ""
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
-msgstr "Projektek"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr "Lekérdezés"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr "Ajánlott csoportok és csapatok"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
@@ -225,7 +225,7 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
-msgstr "Jelentés elnevezése"
+msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
@@ -233,11 +233,11 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr "Mentés"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
-msgstr "YouTrack kiválasztása"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
@@ -257,15 +257,15 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr "Vasárnap|Hétfő|Kedd|Szerda|Csütörtök|Péntek|Szombat"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr "Vas|Hét|Ked|Sze|Csü|Pén|Szo"
+msgstr ""
 
 #: src/app/report-chart.js:288
 msgid "Table"
-msgstr "Tábla"
+msgstr ""
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
@@ -281,23 +281,23 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr "Aktuális hónap"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr "Aktuális hét"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr "Aktuális év"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr "Ma"
+msgstr ""
 
 #: src/app/report-chart.js:249
 msgid "Total"
-msgstr "Összesen"
+msgstr ""
 
 #: src/app/content.js:128
 msgid "Total issues count"
@@ -317,15 +317,15 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr "Felhasználók"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr "Hét"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr "A widget percenként frissül"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
@@ -333,15 +333,15 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr "Munkavégző"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr "Munka típusa"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr "Tegnap"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -349,15 +349,15 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr "am|pm"
+msgstr ""
 
 #: src/app/distribution-report-form.js:265
 msgid "and"
-msgstr "és"
+msgstr ""
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr "növekvő"
+msgstr ""
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -365,27 +365,27 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr "klón"
+msgstr ""
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr "csökkenő"
+msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr "becslés"
+msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr "ó"
+msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr "p"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr "én"
+msgstr ""
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -393,15 +393,15 @@ msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr "lejárt"
+msgstr ""
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr "projekt"
+msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr "összes ráfordított idő"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"

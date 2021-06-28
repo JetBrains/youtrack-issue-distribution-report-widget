@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-01-07 21:17\n"
+"PO-Revision-Date: 2021-06-28 13:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -47,7 +47,7 @@ msgstr "Barras"
 
 #: src/app/content.js:101
 msgid "Calculating..."
-msgstr ""
+msgstr "Calculando..."
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Cannot find any issue distribution report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr ""
 
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Cannot load selected report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr ""
 
@@ -105,11 +105,11 @@ msgstr ""
 msgid "Edit settings"
 msgstr "Editar configurações"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr ""
 
@@ -218,7 +218,7 @@ msgstr "Consulta"
 msgid "Recommended groups and teams"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
 msgstr ""
@@ -235,7 +235,7 @@ msgstr ""
 msgid "Save"
 msgstr "Salvar"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "Selecionar YouTrack"
 
@@ -265,7 +265,7 @@ msgstr "Dom|Seg|Ter|Qua|Qui|Sex|Sáb"
 
 #: src/app/report-chart.js:288
 msgid "Table"
-msgstr ""
+msgstr "Tabela"
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
@@ -329,7 +329,7 @@ msgstr "Widget atualiza a cada minuto"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Widget atualiza a cada {{minutesCount}} minutos"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
@@ -413,9 +413,9 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} minutos"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Adicionar campo"
 
