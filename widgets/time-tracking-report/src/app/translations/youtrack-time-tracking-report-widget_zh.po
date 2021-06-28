@@ -3,404 +3,404 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: youtrackjetbrains\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: youtrackjetbrains\n"
 "X-Crowdin-Project-ID: 295498\n"
-"X-Crowdin-Language: eo\n"
+"X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /widgets/youtrack-time-report-widget/youtrack-time-tracking-report-widget.pot\n"
 "X-Crowdin-File-ID: 222890\n"
-"Language-Team: Esperanto\n"
-"Language: eo_UY\n"
-"PO-Revision-Date: 2021-06-28 13:16\n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"PO-Revision-Date: 2021-06-28 13:14\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr "crwdns9375690:0crwdne9375690:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr "crwdns9737100:0crwdne9737100:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr "crwdns9737102:0crwdne9737102:0"
+msgstr "添加工作类型"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr "crwdns9737104:0crwdne9737104:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr "crwdns9737106:0crwdne9737106:0"
+msgstr "所有用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr "crwdns9737108:0crwdne9737108:0"
+msgstr "所有工作类型"
 
 #: src/app/content.js:116
 msgid "Calculating..."
-msgstr "crwdns9375696:0crwdne9375696:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:290
 msgid "Can edit"
-msgstr "crwdns9737110:0crwdne9737110:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:281
 msgid "Can view and use"
-msgstr "crwdns9737112:0crwdne9737112:0"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr "crwdns9375698:0crwdne9375698:0"
+msgstr ""
 
 #: src/app/content.js:87
 msgid "Cannot find YouTrack installation"
-msgstr "crwdns9375700:0crwdne9375700:0"
+msgstr ""
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr "crwdns9737114:0crwdne9737114:0"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr "crwdns9737116:0crwdne9737116:0"
+msgstr "找不到时间跟踪报告"
 
 #: src/app/content.js:96
 msgid "Cannot load selected report"
-msgstr "crwdns9375704:0crwdne9375704:0"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr "crwdns9375706:0crwdne9375706:0"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr "crwdns9375708:0crwdne9375708:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr "crwdns9737118:0crwdne9737118:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr "crwdns9737120:0crwdne9737120:0"
+msgstr "自定义日期间隔"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr "crwdns9737122:0crwdne9737122:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr "crwdns9737124:0crwdne9737124:0"
+msgstr "显示现有报告"
 
 #: src/app/content.js:77
 msgid "Edit settings"
-msgstr "crwdns9375712:0crwdne9375712:0"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr "crwdns9737126:0crwdne9737126:0"
+msgstr "无法找到合适的 YouTrack 安装"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr "crwdns9737128:0crwdne9737128:0"
+msgstr "从选定的 YouTrack 安装加载数据失败"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr "crwdns9737130:0crwdne9737130:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr "crwdns9737132:0crwdne9737132:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr "crwdns9737134:0{{field}}crwdne9737134:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr "crwdns9737136:0crwdne9737136:0"
+msgstr ""
 
 #: src/app/time-table.js:30
 msgid "Hide details"
-msgstr "crwdns9737138:0crwdne9737138:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr "crwdns9737140:0{{cloneItPlaceholder}}crwdne9737140:0"
+msgstr "如果您要自定义此报告的副本，请 {{cloneItPlaceholder}}"
 
 #: src/app/time-tracking-report-form.js:367
 msgid "Issue filter"
-msgstr "crwdns9737142:0crwdne9737142:0"
+msgstr ""
 
 #: src/app/time-table-settings-toolbar.js:18
 msgid "Issues"
-msgstr "crwdns9375718:0crwdne9375718:0"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr "crwdns9375720:0crwdne9375720:0"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr "crwdns9375722:0crwdne9375722:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr "crwdns9737144:0crwdne9737144:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr "crwdns9737146:0crwdne9737146:0"
+msgstr "上个星期"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr "crwdns9737148:0crwdne9737148:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr "crwdns9737150:0crwdne9737150:0"
+msgstr "月"
 
 #: src/app/time-tracking-report-form.js:389
 msgid "Name"
-msgstr "crwdns9737152:0crwdne9737152:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr "crwdns9375728:0crwdne9375728:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr "crwdns9737154:0crwdne9737154:0"
+msgstr "无分组"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr "crwdns9375730:0crwdne9375730:0"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr "crwdns9375732:0crwdne9375732:0"
+msgstr "哎呀，出了些问题..."
 
 #: src/app/content.js:104
 msgid "Oops... Something went wrong =("
-msgstr "crwdns9375734:0crwdne9375734:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr "crwdns9737156:0crwdne9737156:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr "crwdns9737158:0crwdne9737158:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr "crwdns9737160:0crwdne9737160:0"
+msgstr "父问题"
 
 #: src/app/time-tracking-report-form.js:233
 msgid "Period"
-msgstr "crwdns9737162:0crwdne9737162:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:302
 msgid "Projects"
-msgstr "crwdns9737164:0crwdne9737164:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr "crwdns9737166:0crwdne9737166:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr "crwdns9737168:0crwdne9737168:0"
+msgstr "推荐组和团队"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:58
 msgid "Remove widget"
-msgstr "crwdns9375738:0crwdne9375738:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:395
 msgid "Report name"
-msgstr "crwdns9375746:0crwdne9375746:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr "crwdns9737170:0crwdne9737170:0"
+msgstr "重置为默认值（所有者）"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr "crwdns9375748:0crwdne9375748:0"
+msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
-msgstr "crwdns9375750:0crwdne9375750:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr "crwdns9375752:0crwdne9375752:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:283
 msgid "Sharing settings"
-msgstr "crwdns9737172:0crwdne9737172:0"
+msgstr ""
 
 #: src/app/time-table.js:30
 msgid "Show details"
-msgstr "crwdns9737174:0crwdne9737174:0"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr "crwdns9375762:0crwdne9375762:0"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr "crwdns9375764:0crwdne9375764:0"
+msgstr ""
 
 #: src/app/content.js:131
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr "crwdns9375768:0crwdne9375768:0"
+msgstr ""
 
 #: src/app/content.js:136
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr "crwdns9375770:0crwdne9375770:0"
+msgstr ""
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr "crwdns9375772:0crwdne9375772:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr "crwdns9737176:0crwdne9737176:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr "crwdns9737178:0crwdne9737178:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr "crwdns9737180:0crwdne9737180:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:189
 #: src/app/time-tracking-report-form.js:212
 msgid "Time"
-msgstr "crwdns9737182:0crwdne9737182:0"
+msgstr ""
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr "crwdns9737184:0crwdne9737184:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr "crwdns9737186:0crwdne9737186:0"
+msgstr ""
 
 #: src/app/time-table-general.js:202
 msgid "Total time"
-msgstr "crwdns9737188:0crwdne9737188:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr "crwdns9375784:0crwdne9375784:0"
+msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 #: src/app/time-table-settings-toolbar.js:13
 msgid "Users"
-msgstr "crwdns9737190:0crwdne9737190:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr "crwdns9737192:0crwdne9737192:0"
+msgstr "周"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr "crwdns9375786:0crwdne9375786:0"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr "crwdns9375788:0{{minutesCount}}crwdne9375788:0"
+msgstr "微件每 {{minutesCount}} 分钟刷新一次"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 #: src/app/time-tracking-report-form.js:324
 msgid "Work author"
-msgstr "crwdns9737194:0crwdne9737194:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 #: src/app/time-tracking-report-form.js:345
 msgid "Work type"
-msgstr "crwdns9737196:0crwdne9737196:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
 msgid "Work types"
-msgstr "crwdns9737198:0crwdne9737198:0"
+msgstr ""
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
-msgstr "crwdns9737200:0crwdne9737200:0"
+msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr "crwdns9737202:0crwdne9737202:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr "crwdns9737204:0crwdne9737204:0"
+msgstr "您无法访问编辑报告设置。"
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
-msgstr "crwdns9737206:0crwdne9737206:0"
+msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr "crwdns9375790:0crwdne9375790:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr "crwdns9375798:0crwdne9375798:0"
+msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr "crwdns9737208:0crwdne9737208:0"
+msgstr "估计"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr "crwdns9737210:0{{field}}crwdne9737210:0"
+msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr "crwdns9737212:0crwdne9737212:0"
+msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr "crwdns9737214:0crwdne9737214:0"
+msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr "crwdns9375804:0crwdne9375804:0"
+msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr "crwdns9737216:0crwdne9737216:0"
+msgstr "过期"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr "crwdns9375808:0crwdne9375808:0"
+msgstr ""
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr "crwdns9737218:0crwdne9737218:0"
+msgstr "共花费的时间"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr "crwdns9375810:0{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}}crwdne9375810:0"
+msgstr ""
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr "crwdns9761440:0{{minCount}}crwdne9761440:0"
+msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr "crwdns9375812:0{{minutesCount}}crwdne9375812:0"
+msgstr "{{minutesCount}} 分钟"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr "crwdns9375814:0crwdne9375814:0"
+msgstr "+添加字段"
 

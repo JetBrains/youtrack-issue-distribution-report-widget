@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 13:16\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -61,7 +61,7 @@ msgstr "No es posible encontrar la instalación de YouTrack"
 msgid "Cannot find any report"
 msgstr "No se puede encontrar ningún informe"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "No se puede encontrar ningún informe de control de tiempo"
 
@@ -69,11 +69,11 @@ msgstr "No se puede encontrar ningún informe de control de tiempo"
 msgid "Cannot load selected report"
 msgstr "No se puede cargar el informe seleccionado"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr "No es posible guardar el informe"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr "No es posible actualizar el widget"
 
@@ -97,11 +97,11 @@ msgstr "Mostrar informe existente"
 msgid "Edit settings"
 msgstr "Editar configuración"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "No se puede encontrar una instalación de YouTrack adecuada"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "No se pueden cargar datos de la instancia de YouTrack seleccionada"
 
@@ -135,7 +135,7 @@ msgstr "Filtro de la incidencia"
 
 #: src/app/time-table-settings-toolbar.js:18
 msgid "Issues"
-msgstr ""
+msgstr "Incidencias"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -214,7 +214,7 @@ msgstr "Consulta"
 msgid "Recommended groups and teams"
 msgstr "Grupos y equipos recomendados"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:58
 msgid "Remove widget"
 msgstr "Eliminar widget"
@@ -231,7 +231,7 @@ msgstr "Restablecer los valores predeterminados (propietario)"
 msgid "Save"
 msgstr "Guardar"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "Seleccionar YouTrack"
 

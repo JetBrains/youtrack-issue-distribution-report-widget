@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 13:15\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -61,7 +61,7 @@ msgstr "YouTrack-Installation kann nicht gefunden werden"
 msgid "Cannot find any report"
 msgstr "Es wurde kein Bericht gefunden"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "Es wurden keine Zeiterfassungsberichte gefunden"
 
@@ -69,11 +69,11 @@ msgstr "Es wurden keine Zeiterfassungsberichte gefunden"
 msgid "Cannot load selected report"
 msgstr "Ausgewählter Bericht kann nicht geladen werden"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
 msgstr "Bericht kann nicht gespeichert werden"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
 msgstr "Widget kann nicht aktualisiert werden"
 
@@ -97,11 +97,11 @@ msgstr "Bestehenden Bericht anzeigen"
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "Die richtige YouTrack-Installation konnte nicht gefunden werden"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "Daten konnten nicht aus ausgewählter YouTrack-Instanz geladen werden"
 
@@ -214,7 +214,7 @@ msgstr "Abfrage"
 msgid "Recommended groups and teams"
 msgstr "Empfohlene Gruppen und Teams"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:58
 msgid "Remove widget"
 msgstr "Widget entfernen"
@@ -231,7 +231,7 @@ msgstr "Standardwerte wiederherstellen (Besitzer)"
 msgid "Save"
 msgstr "Speichern"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
 msgstr "YouTrack auswählen"
 
