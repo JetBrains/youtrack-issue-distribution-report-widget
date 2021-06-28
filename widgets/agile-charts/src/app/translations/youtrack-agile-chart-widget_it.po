@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-01-17 21:02\n"
+"PO-Revision-Date: 2021-06-28 16:23\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Cannot find any Burn Down Charts"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr ""
 
@@ -86,12 +86,12 @@ msgstr ""
 msgid "Cannot load selected report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
 msgstr ""
@@ -102,7 +102,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "Crea nuovo report"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -124,11 +124,11 @@ msgstr ""
 msgid "Edit settings"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "Risolto"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
@@ -166,7 +166,7 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
-msgstr ""
+msgstr "Ticket"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "Cerca"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
@@ -255,14 +255,14 @@ msgstr ""
 msgid "Remaining Effort"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
 msgstr ""
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
-msgstr ""
+msgstr "Report"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr ""

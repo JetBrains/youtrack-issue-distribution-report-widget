@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
-"PO-Revision-Date: 2021-01-20 21:17\n"
+"PO-Revision-Date: 2021-06-28 16:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Cannot find any Burn Down Charts"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr ""
 
@@ -86,12 +86,12 @@ msgstr ""
 msgid "Cannot load selected report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
 msgstr ""
@@ -124,11 +124,11 @@ msgstr ""
 msgid "Edit settings"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr ""
 
@@ -216,7 +216,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Hoppala! Bir şeyler ters gitti..."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
@@ -255,7 +255,7 @@ msgstr ""
 msgid "Remaining Effort"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
 msgstr ""
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr ""
@@ -365,11 +365,11 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "Widget dakikada bir yenilenmekte"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Widget {{minutesCount}} dakikada bir yenilenmekte"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
@@ -389,7 +389,7 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "öö|ös"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
@@ -444,7 +444,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} dk"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"

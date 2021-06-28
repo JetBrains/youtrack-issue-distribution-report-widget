@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-02-01 21:34\n"
+"PO-Revision-Date: 2021-06-28 16:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -24,15 +24,15 @@ msgstr "添加用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "添加工作类型"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
-msgstr ""
+msgstr "敏捷图表"
 
 #: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "进度提前"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
@@ -40,27 +40,27 @@ msgstr "所有项目"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "所有用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "所有工作类型"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "始终显示当前冲刺"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
-msgstr ""
+msgstr "进度落后"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
-msgstr ""
+msgstr "计算所有项目"
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr ""
+msgstr "正在计算..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -68,37 +68,37 @@ msgstr "取消"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "找不到 YouTrack 安装"
 
 #: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "找不到燃尽图"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "找不到时间跟踪报告"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "无法加载敏捷面板列表。"
 
 #: src/app/content.js:88
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "无法加载选定的报告"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
-msgstr ""
+msgstr "无法保存报告"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
-msgstr ""
+msgstr "无法更新微件"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "创建面板"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -106,39 +106,39 @@ msgstr "创建新报告"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "自定义日期间隔"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "显示现有报告"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
-msgstr ""
+msgstr "编辑报告"
 
 #: src/app/content.js:69
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "无法找到合适的 YouTrack 安装"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "从选定的 YouTrack 安装加载数据失败"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
-msgstr ""
+msgstr "筛选问题"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "筛选用户、组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -146,15 +146,15 @@ msgstr "已修复"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "对于自定义问题集"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "对于已经存在的面板"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "组和团队"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
@@ -162,7 +162,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "如果您要自定义此报告的副本，请 {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -178,41 +178,41 @@ msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 �
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "上个月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "上个星期"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最后一个工作日"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
-msgstr ""
+msgstr "仅限我"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
 #: src/app/configuration.js:92
 msgid "New report"
-msgstr ""
+msgstr "新报告"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "找不到面板。"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "无分组"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "无值"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -220,45 +220,45 @@ msgstr "哎呀，出了些问题..."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "哎呀... 出了点问题=("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "其他组和团队"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
-msgstr ""
+msgstr "逾期工作"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "所有者"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "所有者可以独家访问编辑报告设置。如果您要自定义此报告的副本，请 {{cloneItPlaceholder}}"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "父问题"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "查询"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "推荐组和团队"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "剩余工作量(工时数)"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
-msgstr ""
+msgstr "删除小部件"
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
@@ -266,45 +266,45 @@ msgstr "报告"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
-msgstr ""
+msgstr "报告是私有的"
 
 #: src/app/burn-down-chart-form.js:222
 msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr ""
+msgstr "报告对 {{visibilityPresentation}} 成员可见"
 
 #: src/app/burn-down-chart-form.js:332
 msgid "Report name"
-msgstr ""
+msgstr "报告名称"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "重置为默认值（所有者）"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
 msgstr "保存"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr "选择 YoutTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "选择面板"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
 msgid "Select report"
-msgstr ""
+msgstr "选择报告"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
-msgstr ""
+msgstr "选择冲刺"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "显示 {{aggregationPolicy}} 的总数"
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
@@ -348,12 +348,12 @@ msgstr "本年度"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
 msgid "Unnamed"
-msgstr ""
+msgstr "未命名"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -361,7 +361,7 @@ msgstr "用户"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -373,11 +373,11 @@ msgstr "微件每 {{minutesCount}} 分钟刷新一次"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "工作作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "工作类型"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
@@ -385,7 +385,7 @@ msgstr "昨天"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "您无法访问编辑报告设置。"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -394,15 +394,15 @@ msgstr "上午|下午"
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
 msgid "clone"
-msgstr ""
+msgstr "克隆"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "估计"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
-msgstr ""
+msgstr "现有报告"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -419,11 +419,11 @@ msgstr "分"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "我"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "过期"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -431,7 +431,7 @@ msgstr "项目"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "共花费的时间"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
@@ -448,5 +448,5 @@ msgstr "{{minutesCount}} 分钟"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "+添加字段"
 

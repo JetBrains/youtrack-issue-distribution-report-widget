@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 16:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -74,7 +74,7 @@ msgstr "Не удалось найти установленный YouTrack"
 msgid "Cannot find any Burn Down Charts"
 msgstr "Диаграммы сгорания задач не найдены"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "Отчетов о затратах времени не найдено"
 
@@ -86,12 +86,12 @@ msgstr "Невозможно загрузить список Agile-досок."
 msgid "Cannot load selected report"
 msgstr "Не удалось загрузить выбранный отчет"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
 msgstr "Невозможно сохранить отчет"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
 msgstr "Невозможно обновить виджет"
@@ -124,11 +124,11 @@ msgstr "Редактировать отчет"
 msgid "Edit settings"
 msgstr "Изменить параметры"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "Подходящий экземпляр YouTrack не найден"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "Не удалось загрузить данные из выбранного экземпляра YouTrack"
 
@@ -255,7 +255,7 @@ msgstr "Рекомендованные группы и команды"
 msgid "Remaining Effort"
 msgstr "Оставшиеся трудозатраты"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
 msgstr "Удалить виджет"
@@ -284,7 +284,7 @@ msgstr "Вернуть значения по умолчанию"
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr "Выберите YouTrack"

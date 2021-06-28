@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 16:19\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -74,7 +74,7 @@ msgstr "Impossible de trouver une installation de YouTrack"
 msgid "Cannot find any Burn Down Charts"
 msgstr "Impossible de trouver des graphiques d'avancement"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "Impossible de trouver des rapports de suivi du temps"
 
@@ -86,12 +86,12 @@ msgstr "Impossible de charger la liste des tableaux agiles."
 msgid "Cannot load selected report"
 msgstr "Impossible de charger le rapport sélectionné"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
 msgstr "Impossible d'enregistrer le rapport"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
 msgstr "Impossible de mettre à jour le widget"
@@ -124,11 +124,11 @@ msgstr "Éditer le rapport"
 msgid "Edit settings"
 msgstr "Éditer les paramètres"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "Impossible de trouver une installation YouTrack appropriée"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "Impossible de charger les données du YouTrack sélectionné"
 
@@ -255,7 +255,7 @@ msgstr "Groupes et équipes recommandés"
 msgid "Remaining Effort"
 msgstr "Travail restant"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
 msgstr "Supprimer le widget"
@@ -284,7 +284,7 @@ msgstr "Rétablir les paramètres par défaut (propriétaire)"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr "Sélectionner YouTrack"

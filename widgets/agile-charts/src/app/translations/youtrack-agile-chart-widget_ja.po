@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2021-01-28 21:29\n"
+"PO-Revision-Date: 2021-06-28 16:19\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -74,7 +74,7 @@ msgstr "YouTrackのインストールが見つかりません"
 msgid "Cannot find any Burn Down Charts"
 msgstr "バーンダウンチャートが見つかりません"
 
-#: ../../components/src/base-configuration/base-configuration.js:51
+#: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
 msgstr "タイムトラッキングレポートが見つかりません"
 
@@ -86,12 +86,12 @@ msgstr "アジャイルボードのリストを読み込めません。"
 msgid "Cannot load selected report"
 msgstr "選択したレポートを読み込めません"
 
-#: ../../components/src/base-configuration/base-configuration.js:238
+#: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
 msgstr "レポートを保存できません"
 
-#: ../../components/src/base-configuration/base-configuration.js:247
+#: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
 msgstr "ウィジェットを更新できません"
@@ -124,11 +124,11 @@ msgstr "レポートの編集"
 msgid "Edit settings"
 msgstr "設定の編集"
 
-#: ../../components/src/base-configuration/base-configuration.js:119
+#: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
 msgstr "適切な YouTrack のインストールを検出できませんでした"
 
-#: ../../components/src/base-configuration/base-configuration.js:361
+#: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
 msgstr "選択した YouTrack からデータを読み込めませんでした"
 
@@ -255,7 +255,7 @@ msgstr "推奨するグループとチーム"
 msgid "Remaining Effort"
 msgstr "残作業"
 
-#: ../../components/src/base-configuration/base-configuration.js:369
+#: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
 msgstr "ウィジェットを削除"
@@ -284,7 +284,7 @@ msgstr "デフォルトにリセット (オーナー)"
 msgid "Save"
 msgstr "保存"
 
-#: ../../components/src/base-configuration/base-configuration.js:339
+#: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
