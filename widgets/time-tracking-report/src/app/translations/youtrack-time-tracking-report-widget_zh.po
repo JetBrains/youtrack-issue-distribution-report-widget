@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-06-28 16:19\n"
+"PO-Revision-Date: 2021-07-05 17:35\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr ""
+msgstr "添加项目"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "添加用户"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
@@ -27,7 +27,7 @@ msgstr "添加工作类型"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "所有项目"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
@@ -39,27 +39,27 @@ msgstr "所有工作类型"
 
 #: src/app/content.js:116
 msgid "Calculating..."
-msgstr ""
+msgstr "正在计算..."
 
 #: src/app/time-tracking-report-form.js:290
 msgid "Can edit"
-msgstr ""
+msgstr "可编辑"
 
 #: src/app/time-tracking-report-form.js:281
 msgid "Can view and use"
-msgstr ""
+msgstr "可以查看和使用"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: src/app/content.js:87
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "找不到 YouTrack 安装"
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr ""
+msgstr "找不到任何报告"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
@@ -67,19 +67,19 @@ msgstr "找不到时间跟踪报告"
 
 #: src/app/content.js:96
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "无法加载选定的报告"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr ""
+msgstr "无法保存报告"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr ""
+msgstr "无法更新微件"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
-msgstr ""
+msgstr "创建新报告"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
@@ -87,7 +87,7 @@ msgstr "自定义日期间隔"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -95,7 +95,7 @@ msgstr "显示现有报告"
 
 #: src/app/content.js:77
 msgid "Edit settings"
-msgstr ""
+msgstr "编辑设置"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
@@ -107,23 +107,23 @@ msgstr "从选定的 YouTrack 安装加载数据失败"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "筛选用户、组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "已修正"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr ""
+msgstr "按{{field}}分组"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "组和团队"
 
 #: src/app/time-table.js:30
 msgid "Hide details"
-msgstr ""
+msgstr "隐藏详细信息"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -131,23 +131,23 @@ msgstr "如果您要自定义此报告的副本，请 {{cloneItPlaceholder}}"
 
 #: src/app/time-tracking-report-form.js:367
 msgid "Issue filter"
-msgstr ""
+msgstr "问题筛选器"
 
 #: src/app/time-table-settings-toolbar.js:18
 msgid "Issues"
-msgstr ""
+msgstr "问题"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 月"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 月"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "上个月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
@@ -155,7 +155,7 @@ msgstr "上个星期"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最后一个工作日"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
@@ -163,11 +163,11 @@ msgstr "月"
 
 #: src/app/time-tracking-report-form.js:389
 msgid "Name"
-msgstr ""
+msgstr "姓名"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "新报告"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -175,7 +175,7 @@ msgstr "无分组"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "无值"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -183,16 +183,16 @@ msgstr "哎呀，出了些问题..."
 
 #: src/app/content.js:104
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "哎呀... 出了点问题=("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "其他组和团队"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "所有者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
@@ -200,15 +200,15 @@ msgstr "父问题"
 
 #: src/app/time-tracking-report-form.js:233
 msgid "Period"
-msgstr ""
+msgstr "期间"
 
 #: src/app/time-tracking-report-form.js:302
 msgid "Projects"
-msgstr ""
+msgstr "项目"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "查询"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
@@ -217,11 +217,11 @@ msgstr "推荐组和团队"
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:58
 msgid "Remove widget"
-msgstr ""
+msgstr "删除小部件"
 
 #: src/app/time-tracking-report-form.js:395
 msgid "Report name"
-msgstr ""
+msgstr "报告名称"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
@@ -229,81 +229,81 @@ msgstr "重置为默认值（所有者）"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
-msgstr ""
+msgstr "选择 YouTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "选择报告"
 
 #: src/app/time-tracking-report-form.js:283
 msgid "Sharing settings"
-msgstr ""
+msgstr "共享设置"
 
 #: src/app/time-table.js:30
 msgid "Show details"
-msgstr ""
+msgstr "显示详细信息"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "星期日|星期一|星期二|星期三|星期四|星期五|星期六"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "周日|周一|周二|周三|周四|周五|周六"
 
 #: src/app/content.js:131
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "无法计算报告：报告设置中的筛选器返回了太多的问题"
 
 #: src/app/content.js:136
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "没有任何问题与报告设置中的筛选器匹配"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "此字段在某些选定的项目中不存在"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "本月"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "本周"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "今年"
 
 #: src/app/time-tracking-report-form.js:189
 #: src/app/time-tracking-report-form.js:212
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr ""
+msgstr "时间跟踪报告"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: src/app/time-table-general.js:202
 msgid "Total time"
-msgstr ""
+msgstr "总时间"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "未命名"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 #: src/app/time-table-settings-toolbar.js:13
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
@@ -311,7 +311,7 @@ msgstr "周"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "微件每分钟刷新一次"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
@@ -320,25 +320,25 @@ msgstr "微件每 {{minutesCount}} 分钟刷新一次"
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 #: src/app/time-tracking-report-form.js:324
 msgid "Work author"
-msgstr ""
+msgstr "工作作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 #: src/app/time-tracking-report-form.js:345
 msgid "Work type"
-msgstr ""
+msgstr "工作类型"
 
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
 msgid "Work types"
-msgstr ""
+msgstr "工作类型"
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
-msgstr ""
+msgstr "X 轴"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "昨天"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -346,15 +346,15 @@ msgstr "您无法访问编辑报告设置。"
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
-msgstr ""
+msgstr "您没有访问报告的权限"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "上午|下午"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "克隆"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
@@ -362,19 +362,19 @@ msgstr "估计"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr ""
+msgstr "按{{field}}分组"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "时"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "分"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "我"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
@@ -382,7 +382,7 @@ msgstr "过期"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "项目"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
@@ -390,11 +390,11 @@ msgstr "共花费的时间"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} 克隆它"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}}分钟"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
