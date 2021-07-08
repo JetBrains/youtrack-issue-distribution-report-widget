@@ -10,10 +10,12 @@ const DistributionReportModel = {
         key: xCol.name,
         name: xCol.name,
         user: xCol.user,
+        issue: xCol.issue,
         values: reportData.ycolumns.map(yCol => ({
           key: yCol.name,
           name: yCol.name,
           user: yCol.user,
+          issue: yCol.issue,
           issuesQuery: reportData.issuesQueries[xCol.index][yCol.index],
           size: ReportModel.getSizeValue(
             reportData.counts[xCol.index][yCol.index]
@@ -27,9 +29,11 @@ const DistributionReportModel = {
     }
     return ((reportData.columns || []).map(xCol => ({
       user: xCol.user,
+      issue: xCol.issue,
       values: (reportData.columns || []).map(yCol => ({
         name: yCol.name,
         user: yCol.user,
+        issue: yCol.issue,
         issuesQuery: yCol.issuesQuery,
         size: yCol.name === xCol.name
           ? ReportModel.getSizeValue(yCol.size)

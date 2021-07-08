@@ -38,7 +38,7 @@ const TIME_REPORT_DATA_FIELDS = `duration(${PERIOD_FIELD_VALUE_FIELDS}),typeDura
 const TIME_SHEET_REPORT_DATA_FIELDS = `hasIssueView,headers(start,end,holiday,spentTime(${PERIOD_FIELD_VALUE_FIELDS})),spentTime(${PERIOD_FIELD_VALUE_FIELDS}),groups(${GROUP_DATA_FIELDS})`;
 const TIME_TRACKING_REPORT_DATA_FIELDS = `${TIME_SHEET_REPORT_DATA_FIELDS},${TIME_REPORT_DATA_FIELDS}`;
 
-const ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
+const ISSUE_DISTRIBUTION_REPORT_DATA_COLUMN_FIELDS = `id,name,size(value,presentation),naturalSortIndex,index,user(${USER_FIELDS}),issue(id,idReadable,resolved,summary),colorIndex(id,foreground,background),issuesQuery,queryUrl`;
 const ISSUE_DISTRIBUTION_REPORT_DATA_FIELDS = [
   'tooBig',
   'total(value,presentation)',
