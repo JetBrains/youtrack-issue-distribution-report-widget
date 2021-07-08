@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: /widgets/youtrack-issue-distribution-report-widget/youtrack-issue-distribution-report-widget.pot\n"
-"X-Crowdin-File-ID: 266770\n"
+"X-Crowdin-File-ID: 35340\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-06-28 16:24\n"
+"PO-Revision-Date: 2021-07-05 21:17\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -23,7 +23,7 @@ msgstr "Adicionar usuário"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Adicionar tipo de trabalho"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
@@ -31,7 +31,7 @@ msgstr "Todos os projetos"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Todos os usuários"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
@@ -63,27 +63,27 @@ msgstr "Cancelar"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Não foi possível encontrar uma instalação do YouTrack"
 
 #: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
-msgstr ""
+msgstr "Não foi possível encontrar nenhum relatório de distribuição de issues"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Não foi possível encontrar nenhum relatório de controle de tempo"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Não foi possível carregar relatório selecionado"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr ""
+msgstr "Não foi possível salvar relatório"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Não foi possível atualizar o widget"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -91,7 +91,7 @@ msgstr "Criar novo relatório"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Intervalo de datas personalizado"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -99,7 +99,7 @@ msgstr "Dia"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Exibir relatório existente"
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,19 +107,19 @@ msgstr "Editar configurações"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Não foi possível encontrar uma instalação adequada do YouTrack"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Não foi possível carregar dados do YouTrack selecionado"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
-msgstr ""
+msgstr "Filtrar issues"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Filtrar usuários, grupos e equipes"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -127,15 +127,15 @@ msgstr "Corrigida"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "Grupos e equipes"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Se você deseja personalizar sua própria cópia deste relatório, {{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
-msgstr ""
+msgstr "Relatório de distribuição de issues"
 
 #: src/app/distribution-report-form.js:307
 msgid "Issues"
@@ -167,7 +167,7 @@ msgstr "Mês"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "Novo relatório"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -179,15 +179,15 @@ msgstr "Nenhum valor"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Oops! Algo deu errado..."
 
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "Oops... Algo deu errado =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Outros grupos e equipes"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
@@ -216,12 +216,12 @@ msgstr "Consulta"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Grupos e equipes recomendados"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
-msgstr ""
+msgstr "Remover widget"
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
@@ -229,7 +229,7 @@ msgstr "Nome do relatório"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Redefinir para o default (proprietário)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -241,19 +241,19 @@ msgstr "Selecionar YouTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "Selecionar relatório"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
-msgstr ""
+msgstr "Configurações de compartilhamento"
 
 #: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
-msgstr ""
+msgstr "Mostrar distribuição por"
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "Mostrar totais para {{aggregationPolicy}}"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -269,15 +269,15 @@ msgstr "Tabela"
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "O relatório não pode ser calculado: os filtros nas configurações do relatório retornam issues demais"
 
 #: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "Não há issues que correspondam aos filtros nas configurações do relatório"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Este campo não existe em alguns dos projetos selecionados"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
@@ -301,19 +301,19 @@ msgstr "Total"
 
 #: src/app/content.js:128
 msgid "Total issues count"
-msgstr ""
+msgstr "Contagem total de issues"
 
 #: src/app/content.js:131
 msgid "Total votes count"
-msgstr ""
+msgstr "Contagem total de votos"
 
 #: src/app/content.js:134
 msgid "Total {{fieldName}}"
-msgstr ""
+msgstr "Total {{fieldName}}"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "Sem nome"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -345,7 +345,7 @@ msgstr "Ontem"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Você não tem permissões de acesso para editar as configurações do relatório."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -361,7 +361,7 @@ msgstr "asc"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
-msgstr ""
+msgstr "por contagem"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
@@ -389,7 +389,7 @@ msgstr "eu"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
-msgstr ""
+msgstr "natural"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
@@ -405,11 +405,11 @@ msgstr "tempo gasto total"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone-o"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}} min"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
