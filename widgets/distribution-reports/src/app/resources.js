@@ -7,8 +7,9 @@ async function loadReportsFilterFields(fetchYouTrack, projects) {
   const fld = serializeArrayParameter('fld',
     (projects || []).map(project => project.id)
   );
+  const types = serializeArrayParameter('fieldTypes', ['custom', 'predefined', 'board', 'link']);
   const params = [
-    fld, '$top=300', `fields=${REPORT_FILTER_FIELDS_FIELDS}`
+    fld, '$top=300', `fields=${REPORT_FILTER_FIELDS_FIELDS}`, types
   ].filter(param => param.length > 0).join('&');
 
   return await fetchYouTrack(`api/filterFields?${params}`);
