@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /widgets/youtrack-agile-chart-widget/youtrack-agile-chart-widget.pot\n"
-"X-Crowdin-File-ID: 266764\n"
+"X-Crowdin-File-ID: 48988\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-06-28 16:20\n"
+"PO-Revision-Date: 2021-07-05 17:35\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -142,7 +142,7 @@ msgstr "筛选用户、组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr "已修复"
+msgstr "已修正"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
@@ -158,7 +158,7 @@ msgstr "组和团队"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "理想燃尽图"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -287,7 +287,7 @@ msgstr "保存"
 #: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
-msgstr "选择 YoutTrack"
+msgstr "选择 YouTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
@@ -320,15 +320,15 @@ msgstr "周日|周一|周二|周三|周四|周五|周六"
 
 #: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "无法计算报告：报告设置中的筛选器返回了太多的问题"
 
 #: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "没有任何问题与报告设置中的筛选器匹配"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "此字段在某些选定的项目中不存在"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
@@ -336,7 +336,7 @@ msgstr "本月"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "本报告归 {{ownerNamePlaceholder}} 所有"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
@@ -410,7 +410,7 @@ msgstr "时"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
-msgstr ""
+msgstr "小时|分钟"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
@@ -436,11 +436,11 @@ msgstr "共花费的时间"
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} 克隆它"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}}分钟"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

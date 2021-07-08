@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /widgets/youtrack-agile-chart-widget/youtrack-agile-chart-widget.pot\n"
-"X-Crowdin-File-ID: 266764\n"
+"X-Crowdin-File-ID: 48988\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2021-06-28 16:23\n"
+"PO-Revision-Date: 2021-07-05 17:35\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -24,15 +24,15 @@ msgstr "사용자 추가"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "작업 유형 추가"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
-msgstr ""
+msgstr "애자일 차트"
 
 #: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "일정에 앞서는 중"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
@@ -40,7 +40,7 @@ msgstr "모든 프로젝트"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "모든 사용자"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
@@ -52,15 +52,15 @@ msgstr "항상 현재 스프린트 표시"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
-msgstr ""
+msgstr "일정에 뒤쳐지는 중"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
-msgstr ""
+msgstr "모든 프로젝트 계산"
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr ""
+msgstr "계산 중..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -68,37 +68,37 @@ msgstr "취소"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "YouTrack 설치를 찾을 수 없습니다"
 
 #: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "번 다운 차트를 찾을 수 없습니다"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "시간 추적 보고서를 찾을 수 없습니다"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "애자일 보드 리스트를 불러올 수 없습니다."
 
 #: src/app/content.js:88
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "선택한 보고서를 불러올 수 없습니다"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
-msgstr ""
+msgstr "보고서를 저장할 수 없습니다"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
-msgstr ""
+msgstr "위젯을 업데이트할 수 없습니다"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "보드 생성"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -106,39 +106,39 @@ msgstr "새 보고서 생성"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "사용자 지정 날짜 간격"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "일"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "기존 보고서 표시"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
-msgstr ""
+msgstr "보고서 편집"
 
 #: src/app/content.js:69
 msgid "Edit settings"
-msgstr ""
+msgstr "설정 편집"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "적절한 YouTrack 설치본을 찾는 데 실패했습니다"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "선택된 YouTrack에서 데이터를 불러오는 데 실패했습니다"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
-msgstr ""
+msgstr "이슈 필터링"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "사용자, 그룹 및 팀 필터링"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -146,23 +146,23 @@ msgstr "수정됨"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "사용자 지정 이슈 세트용"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "기존 보드용"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "그룹 및 팀"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "Ideal Burndown"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "이 보고서의 사본을 사용자화하려면 {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -178,29 +178,29 @@ msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "지난 달"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "지난 주"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "최근 작업일"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
-msgstr ""
+msgstr "나만"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "월"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
 #: src/app/configuration.js:92
 msgid "New report"
-msgstr ""
+msgstr "신규 보고서"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
@@ -208,11 +208,11 @@ msgstr "보드를 찾을 수 없습니다."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "그룹화 없음"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "값 없음"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
@@ -220,65 +220,65 @@ msgstr "죄송합니다. 오류가 발생했습니다."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "이런... 오류가 발생했습니다 =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "기타 그룹 및 팀"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
-msgstr ""
+msgstr "경과 시간"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "소유자"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "소유자에게는 보고서 설정을 편집할 수 있는 독점적 엑세스가 있습니다. 이 보고서의 사본을 사용자화하려면 {{cloneItPlaceholder}}"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "상위 이슈"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "쿼리"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "권장 그룹 및 팀"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "잔여 시간"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
-msgstr ""
+msgstr "위젯 제거"
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
-msgstr "보고서"
+msgstr "보고"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
-msgstr ""
+msgstr "비공개 보고서입니다"
 
 #: src/app/burn-down-chart-form.js:222
 msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr ""
+msgstr "{{visibilityPresentation}}의 구성원만 볼 수 있는 보고서입니다"
 
 #: src/app/burn-down-chart-form.js:332
 msgid "Report name"
-msgstr ""
+msgstr "보고서 이름"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "기본 (소유자)로 초기화"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -296,15 +296,15 @@ msgstr "보드 선택"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
 msgid "Select report"
-msgstr ""
+msgstr "보고서 선택"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
-msgstr ""
+msgstr "스프린트 선택"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "{{aggregationPolicy}}의 합계 표시"
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
@@ -320,40 +320,40 @@ msgstr "일|월|화|수|목|금|토"
 
 #: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "보고서를 계산할 수 없습니다. 보고서 설정의 필터링이 너무 많은 이슈를 반환합니다."
 
 #: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "보고서 설정의 필터에 해당하는 이슈가 없습니다."
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "선택한 프로젝트 중 일부에 이 필드가 존재하지 않습니다"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "이번 달"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "이 보고서의 소유자는 {{ownerNamePlaceholder}}입니다."
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "이번 주"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "올해"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "오늘"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
 msgid "Unnamed"
-msgstr ""
+msgstr "이름 없음"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -361,7 +361,7 @@ msgstr "사용자"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "주"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -373,11 +373,11 @@ msgstr "위젯은 {{minutesCount}}분마다 새로고침됩니다"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "작업 작성자"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "작업 유형"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
@@ -385,7 +385,7 @@ msgstr "어제"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "보고서 설정을 편집할 액세스가 없습니다."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -394,15 +394,15 @@ msgstr "오전|오후"
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
 msgid "clone"
-msgstr ""
+msgstr "복제"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "예측 시간"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
-msgstr ""
+msgstr "기존 보고서"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -410,7 +410,7 @@ msgstr "시"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
-msgstr ""
+msgstr "시간|분"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
@@ -419,28 +419,28 @@ msgstr "분"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "나"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "기한 경과"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "프로젝트"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "총 소요 시간"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} 복제하세요"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}}분"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
@@ -448,5 +448,5 @@ msgstr "{{minutesCount}}분"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "＋필드 추가"
 
