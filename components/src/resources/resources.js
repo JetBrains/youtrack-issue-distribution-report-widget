@@ -9,7 +9,7 @@ const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,online';
 const USER_GROUP_FIELDS = 'id,ringId,name,icon';
-const PROJECTS_FIELDS = 'id,name,shortName';
+const PROJECTS_FIELDS = 'id,name,shortName,template,archived';
 
 const ISSUE_FIELD_VALUE_FIELDS = '$type,id,name,localizedName,fullName,minutes,text,markdownText,presentation,color(id)';
 const ISSUE_FIELD_FIELDS = `id,name,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(id,field(id,name,fieldType(valueType)),emptyFieldText)`;
@@ -71,7 +71,7 @@ const ISSUE_DISTRIBUTION_REPORT_WITH_SETTINGS_FIELDS = `${REPORT_WITH_SETTINGS_F
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 
 const SPRINT_FIELDS = 'id,name,start,finish,report(id)';
-const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName)`;
+const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName),projects(id,template,archived)`;
 const AGILE_REPORT_SETTINGS_FIELDS = 'extensions(reportSettings(doNotUseBurndown))';
 
 
@@ -83,14 +83,17 @@ async function underlineAndSuggest(fetchYouTrack, query, caret) {
 }
 
 async function loadProjects(fetchYouTrack) {
-  return await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  const projects = await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  return (projects || []).filter(
+    project => !project.template && !project.archived
+  );
 }
 
 async function loadReportProjects(fetchYouTrack, fetchHub, report) {
   if (report.id) {
     return await fetchYouTrack(`api/reports/${report.id}/accessibleProjects?fields=${PROJECTS_FIELDS}&$top=-1`);
   }
-  const projects = await fetchYouTrack(`api/admin/projects?fields=${PROJECTS_FIELDS}&$top=-1`);
+  const projects = await loadProjects(fetchYouTrack);
   const permissionCache = await fetchHub(
     `api/rest/permissions/cache?fields=${PERMISSION_FIELDS}`
   );
@@ -104,7 +107,11 @@ async function loadReportProjects(fetchYouTrack, fetchHub, report) {
 }
 
 async function loadAgiles(fetchYouTrack) {
-  return await fetchYouTrack(`api/agiles?fields=${AGILE_FIELDS}&$top=-1`);
+  const agiles = await fetchYouTrack(`api/agiles?fields=${AGILE_FIELDS}&$top=-1`);
+  return (agiles || []).filter(
+    ({projects}) =>
+      projects.some(project => !project.template && !project.archived)
+  );
 }
 
 async function loadAgileReportSettings(fetchYouTrack, agileId) {
