@@ -142,7 +142,7 @@ class Configuration extends React.Component {
   async loadYouTrackList() {
     const {selectedYouTrack} = this.state;
     const youTracks = await getYouTrackServices(
-      this.props.dashboardApi.fetchHub
+      this.props.dashboardApi
     );
     const selectedYouTrackWithAllFields = youTracks.filter(
       yt => yt.id === selectedYouTrack.id
@@ -361,12 +361,12 @@ class Configuration extends React.Component {
             name: reportWithSettings.owner.name,
             email: reportWithSettings.owner.email,
             avatarUrl: reportWithSettings.owner.avatarUrl,
-            href: `${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`
+            href: `${selectedYouTrack.homeUrl}users/${reportWithSettings.owner.ringId}`
           }}
           >
             <Link
               pseudo={true}
-              href={`${selectedYouTrack.homeUrl}/users/${reportWithSettings.owner.ringId}`}
+              href={`${selectedYouTrack.homeUrl}users/${reportWithSettings.owner.ringId}`}
             >
               { reportWithSettings.owner.name }
             </Link>

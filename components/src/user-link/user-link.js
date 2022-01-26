@@ -13,7 +13,7 @@ const UserLink = (
 ) => {
   const link = (
     <Link
-      href={`${homeUrl}/users/${user.ringId || user.id || 'me'}`}
+      href={`${homeUrl}users/${user.ringId || user.id || 'me'}`}
       target="_blank"
     >
       {user.name || user.fullName || user.login}
@@ -49,7 +49,7 @@ const UserLink = (
         name: user.name,
         email: user.email,
         avatarUrl: user.avatarUrl,
-        href: `${homeUrl}/users/${user.ringId}`
+        href: `${homeUrl}users/${user.ringId}`
       }}
     >
       {link}

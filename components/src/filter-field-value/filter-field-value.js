@@ -14,7 +14,7 @@ class FilterFieldValue extends React.Component {
   };
 
   static defaultProps = {
-    homeUrl: ''
+    homeUrl: '/'
   };
 
   render() {
@@ -47,11 +47,11 @@ class FilterFieldValue extends React.Component {
             name: value.user.name,
             email: value.user.email,
             avatarUrl: value.user.avatarUrl,
-            href: `${this.props.homeUrl}/users/${value.user.ringId}`
+            href: `${this.props.homeUrl}users/${value.user.ringId}`
           }}
           >
             <Link
-              href={`${homeUrl}/users/${value.user.ringId}`}
+              href={`${homeUrl}users/${value.user.ringId}`}
               pseudo={true}
             >
               {

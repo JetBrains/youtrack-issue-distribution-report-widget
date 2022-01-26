@@ -36,12 +36,12 @@ class AgileProgressDiagramWidget extends React.Component {
     text: agile.sprintsSettings.disableSprints
       ? agile.name
       : `${agile.name}: ${sprint.name}`,
-    href: homeUrl && `${homeUrl}/agiles/${agile.id}/${sprint.id}?chart`
+    href: homeUrl && `${homeUrl}agiles/${agile.id}/${sprint.id}?chart`
   });
 
   static getReportTitle = (homeUrl, report) => ({
     text: report.name,
-    href: homeUrl && `${homeUrl}/reports/burndown/${report.id}`
+    href: homeUrl && `${homeUrl}reports/burndown/${report.id}`
   });
 
   static getPresentationModeWidgetTitle = (report, youTrack) => {
@@ -122,10 +122,9 @@ class AgileProgressDiagramWidget extends React.Component {
     this.setLoadingEnabled(true);
     await this.props.configWrapper.init();
 
-    const fetchHub = dashboardApi.fetchHub.bind(dashboardApi);
     const youTrack = this.props.configWrapper.getFieldValue('youTrack');
     const youTrackService = await getYouTrackService(
-      fetchHub, youTrack && youTrack.id
+      dashboardApi, youTrack && youTrack.id
     );
     if (youTrackService && youTrackService.id) {
       this.setYouTrack(youTrackService);

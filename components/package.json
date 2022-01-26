@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@jetbrains/babel-preset-jetbrains": "1.0.1",
-    "@jetbrains/ring-ui": "3.0.19",
+    "@jetbrains/hub-widget-ui": "2.0.1",
     "@jetbrains/icons": "3.6.0",
     "@jetbrains/logos": "^1.1.6",
-    "@jetbrains/hub-widget-ui": "1.0.46",
+    "@jetbrains/ring-ui": "3.0.19",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
     "babel-polyfill": "6.26.0",

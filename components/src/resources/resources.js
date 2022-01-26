@@ -1,11 +1,11 @@
+import ServiceResources from '@jetbrains/hub-widget-ui/dist/service-resources';
+
 import {getCurrentSprint} from '../agile-board-model/agile-board-model';
 import BackendTypes from '../backend-types/backend-types';
 
 const REQUESTED_YOUTRACK_VERSION = '2020.1.3111';
 
 const PERMISSION_FIELDS = 'permission,key,global,projects(id)';
-
-const SERVICE_FIELDS = 'id,name,applicationName,homeUrl,version';
 
 const USER_FIELDS = 'id,ringId,login,name,avatarUrl,avatar(url),email,banned,online';
 const USER_GROUP_FIELDS = 'id,ringId,name,icon';
@@ -74,6 +74,9 @@ const SPRINT_FIELDS = 'id,name,start,finish,report(id)';
 const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName),projects(id,template,archived)`;
 const AGILE_REPORT_SETTINGS_FIELDS = 'extensions(reportSettings(doNotUseBurndown))';
 
+function normalizedHomeUrl(homeUrl) {
+  return homeUrl.charAt(homeUrl.length - 1) === '/' ? homeUrl : `${homeUrl}/`;
+}
 
 async function underlineAndSuggest(fetchYouTrack, query, caret) {
   return await fetchYouTrack(`api/search/assist?fields=${QUERY_ASSIST_FIELDS}`, {
@@ -368,35 +371,14 @@ async function loadWorkItemTypes(fetchYouTrack) {
   );
 }
 
-async function getYouTrackServices(fetchHub) {
-  const data = await fetchHub(`api/rest/services?fields=${SERVICE_FIELDS}&query=applicationName:YouTrack`);
-  return (data && data.services || []).filter(
-    service => !!service.homeUrl && satisfyingVersion(service.version)
+async function getYouTrackServices(dashboardApi) {
+  return ServiceResources.getYouTrackServices(
+    dashboardApi, REQUESTED_YOUTRACK_VERSION
   );
-
-  // eslint-disable-next-line complexity
-  function satisfyingVersion(currentVersion) {
-    const currentVersionTokens = currentVersion.split('.').map(Number);
-    const requestedVersionTokens = REQUESTED_YOUTRACK_VERSION.
-      split('.').map(Number);
-    for (let i = 0; i < requestedVersionTokens.length; ++i) {
-      if ((currentVersionTokens[i] > requestedVersionTokens[i]) ||
-        (!isNaN(currentVersionTokens[i]) && isNaN(requestedVersionTokens[i]))
-      ) {
-        return true;
-      }
-      if (requestedVersionTokens[i] > currentVersionTokens[i] ||
-        (isNaN(currentVersionTokens[i]) && !isNaN(requestedVersionTokens[i]))
-      ) {
-        return false;
-      }
-    }
-    return true;
-  }
 }
 
-async function getYouTrackService(fetchHub, optionalYtId) {
-  let services = await getYouTrackServices(fetchHub);
+async function getYouTrackService(dashboardApi, optionalYtId) {
+  let services = await getYouTrackServices(dashboardApi);
   if (optionalYtId) {
     services = services.filter(service => service.id === optionalYtId);
   }

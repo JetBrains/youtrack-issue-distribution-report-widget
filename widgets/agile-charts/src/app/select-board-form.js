@@ -155,7 +155,7 @@ class SelectBoardForm extends React.Component {
       <div className="ring-form__group">
         <span>{i18n('No boards found.')}</span>&nbsp;
         <Link
-          href={`${(selectedYouTrack || {}).homeUrl}/agiles/create`}
+          href={`${(selectedYouTrack || {}).homeUrl}agiles/create`}
         >
           {i18n('Create board')}
         </Link>

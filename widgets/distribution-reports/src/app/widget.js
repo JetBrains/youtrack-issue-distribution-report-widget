@@ -73,7 +73,7 @@ class DistributionReportsWidget extends React.Component {
       const pathReportType = getReportTypePathPrefix(report);
       return {
         text: report.name,
-        href: homeUrl && `${homeUrl}/reports/${pathReportType}/${report.id}`
+        href: homeUrl && `${homeUrl}reports/${pathReportType}/${report.id}`
       };
     }
     return DistributionReportsWidget.getDefaultWidgetTitle();
@@ -140,10 +140,9 @@ class DistributionReportsWidget extends React.Component {
     this.setLoadingEnabled(true);
     await this.props.configWrapper.init();
 
-    const fetchHub = dashboardApi.fetchHub.bind(dashboardApi);
     const youTrack = this.props.configWrapper.getFieldValue('youTrack');
     const ytTrackService = await getYouTrackService(
-      fetchHub, youTrack && youTrack.id
+      dashboardApi, youTrack && youTrack.id
     );
     const hasYouTrack = ytTrackService && ytTrackService.id;
     if (hasYouTrack) {

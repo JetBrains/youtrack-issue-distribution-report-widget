@@ -162,7 +162,7 @@ const IssueLink = (
         <div className="yt-issue-preview__header">
           <div>
             <Link
-              href={`${homeUrl}/issue/${issue.idReadable}`}
+              href={`${homeUrl}issue/${issue.idReadable}`}
               target="_blank"
               className={classNames({
                 'yt-issue-preview__id': true,
@@ -227,7 +227,7 @@ const IssueLink = (
       popupProps={{sidePadding: 24}}
     >
       <Link
-        href={`${homeUrl}/issue/${issue.idReadable}`}
+        href={`${homeUrl}issue/${issue.idReadable}`}
         target="_blank"
         {...restProps}
       >

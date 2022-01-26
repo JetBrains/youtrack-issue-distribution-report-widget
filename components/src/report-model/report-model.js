@@ -214,7 +214,7 @@ const ReportModel = {
       : ((size || {}).presentation || 0)),
 
   getSearchUrl: (queryUrl, homeUrl) =>
-    `${homeUrl}/issues?q=${encodeURIComponent(queryUrl)}`,
+    `${homeUrl}issues?q=${encodeURIComponent(queryUrl)}`,
 
   ReportTypes,
 

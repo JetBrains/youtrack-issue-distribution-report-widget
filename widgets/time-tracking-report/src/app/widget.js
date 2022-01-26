@@ -70,7 +70,7 @@ class SpendTimeReportsWidget extends React.Component {
       const pathReportType = getReportTypePathPrefix(report);
       return {
         text: report.name,
-        href: homeUrl && `${homeUrl}/reports/${pathReportType}/${report.id}`
+        href: homeUrl && `${homeUrl}reports/${pathReportType}/${report.id}`
       };
     }
     return SpendTimeReportsWidget.getDefaultWidgetTitle();
