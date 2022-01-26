@@ -11,16 +11,16 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-12-01 13:05\n"
+"PO-Revision-Date: 2022-01-26 13:42\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
 msgid "Add project"
-msgstr ""
+msgstr "Aggiungi progetto"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Aggiungi utente"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
@@ -32,11 +32,11 @@ msgstr ""
 
 #: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "In anticipo sul programma"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Tutti i progetti"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Tutti i tipi di lavoro"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
-msgstr ""
+msgstr "In ritardo rispetto al programma"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "Crea bacheca"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Giorno"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -194,7 +194,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
@@ -282,7 +282,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
@@ -308,7 +308,7 @@ msgstr ""
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
-msgstr ""
+msgstr "Tempo impiegato"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Oggi"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
@@ -357,11 +357,11 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "Utenti"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Settimana"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Ieri"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "o"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
@@ -414,12 +414,12 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "io"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
