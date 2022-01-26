@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-12-01 13:05\n"
+"PO-Revision-Date: 2022-01-26 13:42\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
-msgstr ""
+msgstr "Aggiungi progetto"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "Aggiungi utente"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "Tutti i progetti"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Tutti i tipi di lavoro"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: src/app/report-chart.js:277
 msgid "Bars"
-msgstr ""
+msgstr "Barre"
 
 #: src/app/content.js:101
 msgid "Calculating..."
@@ -51,15 +51,15 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
-msgstr ""
+msgstr "Può modificare"
 
 #: src/app/distribution-report-form.js:349
 msgid "Can view and use"
-msgstr ""
+msgstr "Può visualizzare e utilizzare"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Giorno"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -163,7 +163,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: ../../components/src/base-configuration/base-configuration.js:340
 msgid "Select YouTrack"
@@ -293,11 +293,11 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "Oggi"
 
 #: src/app/report-chart.js:249
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 #: src/app/content.js:128
 msgid "Total issues count"
@@ -317,11 +317,11 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
-msgstr ""
+msgstr "Utenti"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Settimana"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "Ieri"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -353,11 +353,11 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:265
 msgid "and"
-msgstr ""
+msgstr "e"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "crescente"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -377,15 +377,15 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "o"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "io"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
