@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2022-01-26 13:42\n"
+"PO-Revision-Date: 2022-01-27 18:11\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -138,7 +138,7 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "Filtra utenti, gruppi e team"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
