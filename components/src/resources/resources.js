@@ -74,10 +74,6 @@ const SPRINT_FIELDS = 'id,name,start,finish,report(id)';
 const AGILE_FIELDS = `id,name,sprints(${SPRINT_FIELDS}),currentSprint(${SPRINT_FIELDS}),sprintsSettings(disableSprints,explicitQuery),columnSettings(field(id,name)),owner(id,ringId,fullName),projects(id,template,archived)`;
 const AGILE_REPORT_SETTINGS_FIELDS = 'extensions(reportSettings(doNotUseBurndown))';
 
-function normalizedHomeUrl(homeUrl) {
-  return homeUrl.charAt(homeUrl.length - 1) === '/' ? homeUrl : `${homeUrl}/`;
-}
-
 async function underlineAndSuggest(fetchYouTrack, query, caret) {
   return await fetchYouTrack(`api/search/assist?fields=${QUERY_ASSIST_FIELDS}`, {
     method: 'POST',
