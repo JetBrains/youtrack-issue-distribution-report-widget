@@ -169,6 +169,9 @@ const ReportModel = {
   isReportCalculation: report =>
     report && report.status && report.status.calculationInProgress,
 
+  isCalculationRequired: report =>
+    report && report.status && report.status.isOutdated,
+
   isReportCalculationCompleted: (updatedReport, prevReport) =>
     ReportModel.isReportCalculation(prevReport) &&
     !ReportModel.isReportCalculation(updatedReport),

@@ -27,7 +27,7 @@ const BURN_DOWN_REPORT_POINT_FIELDS = 'time,value';
 const BURNDOWN_REPORT_DATA_FIELDS = `xlabel,ylabel,sprintFinish,remainingEffortPresentation,ideal(${BURN_DOWN_REPORT_POINT_FIELDS}),remainingEstimation(${BURN_DOWN_REPORT_POINT_FIELDS}),cumulativeSpentTime(${BURN_DOWN_REPORT_POINT_FIELDS}),${Y_AXIS_TYPE_FIELDS}`;
 
 const PERIOD_FIELD_VALUE_FIELDS = 'value,presentation';
-const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage';
+const REPORT_STATUS_FIELDS = 'id,calculationInProgress,progress,error,errorMessage,isOutdated';
 
 const TIME_SHEET_REPORT_LINE_DATA = `id,entityId,presentation,avatarUrl,spentTime(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),totalSpentTime(${PERIOD_FIELD_VALUE_FIELDS})`;
 const TIME_REPORT_LINE_DATA = `id,issueId,userId,userVisibleName,description,avatarUrl,duration(${PERIOD_FIELD_VALUE_FIELDS}),totalDuration(${PERIOD_FIELD_VALUE_FIELDS}),estimation(${PERIOD_FIELD_VALUE_FIELDS}),cells(${PERIOD_FIELD_VALUE_FIELDS}),typeDurations(duration(${PERIOD_FIELD_VALUE_FIELDS}),workType)`;

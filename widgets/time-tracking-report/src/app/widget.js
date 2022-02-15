@@ -185,7 +185,7 @@ class SpendTimeReportsWidget extends React.Component {
         refreshPeriod,
         yAxis,
         withDetails
-      });
+      }, () => this.recalculateIfRequired());
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
@@ -241,6 +241,14 @@ class SpendTimeReportsWidget extends React.Component {
     }
   }
 
+  async recalculateIfRequired() {
+    const {report} = this.state;
+
+    if (ReportModel.isCalculationRequired(report)) {
+      await this.recalculateReport();
+    }
+  }
+
   onWidgetRefresh = async () => {
     const {
       isConfiguring,
@@ -262,7 +270,7 @@ class SpendTimeReportsWidget extends React.Component {
           isCalculationCompleted: isCalculationCompleted
             ? false
             : ReportModel.isReportCalculationCompleted(reportWithData, report)
-        });
+        }, () => this.recalculateIfRequired());
       }
     }
   };
@@ -350,6 +358,18 @@ class SpendTimeReportsWidget extends React.Component {
     return null;
   };
 
+  onCompleteRecalculationProgress = report => {
+    const COMPLETED_PROGRESS = 100;
+    const shouldShowCompletedProgress =
+      report.status.progress < COMPLETED_PROGRESS &&
+      !ReportModel.isReportError(report);
+
+    if (shouldShowCompletedProgress) {
+      report.status.calculationInProgress = true;
+      report.status.progress = COMPLETED_PROGRESS;
+    }
+  };
+
   renderConfigurationForm() {
     const submitForm = async (selectedReportId, refreshPeriod, youTrack) => {
       const {yAxis} = this.state;
@@ -369,7 +389,12 @@ class SpendTimeReportsWidget extends React.Component {
             isLoading: false,
             isNewWidget: false,
             refreshPeriod
-          }, async () => await this.saveConfig());
+          }, async () =>
+            await Promise.all([
+              this.recalculateIfRequired(),
+              this.saveConfig()
+            ])
+          );
         }
       });
     };
@@ -404,22 +429,15 @@ class SpendTimeReportsWidget extends React.Component {
       yAxis
     } = this.state;
 
-    const isCalculation = ReportModel.isReportCalculation(report);
+    const isCalculation = ReportModel.isReportCalculation(report) ||
+      ReportModel.isCalculationRequired(report);
     const tickPeriodSec = (isCalculation || isCalculationCompleted)
       ? SpendTimeReportsWidget.PROGRESS_BAR_REFRESH_PERIOD
       : refreshPeriod;
     const millisInSec = 1000;
 
     if (isCalculationCompleted) {
-      const COMPLETED_PROGRESS = 100;
-      const shouldShowCompletedProgress =
-        report.status.progress < COMPLETED_PROGRESS &&
-        !ReportModel.isReportError(report);
-
-      if (shouldShowCompletedProgress) {
-        report.status.calculationInProgress = true;
-        report.status.progress = COMPLETED_PROGRESS;
-      }
+      this.onCompleteRecalculationProgress(report);
     }
 
     return (

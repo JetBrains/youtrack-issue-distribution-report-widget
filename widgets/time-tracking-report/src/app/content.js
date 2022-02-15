@@ -108,9 +108,14 @@ class Content extends React.Component {
   renderReportBody() {
     const {report, dashboardApi, isIssueView, lastDayOfWeek} = this.props;
 
-    if (ReportModel.isReportCalculation(report)) {
+    if (
+      ReportModel.isReportCalculation(report) ||
+      ReportModel.isCalculationRequired(report)
+    ) {
       const fromPercentsCoefficient = 0.01;
-      const progressValue = report.status.progress * fromPercentsCoefficient;
+      const progress = Math.max(report.status.progress || 0, 0);
+      const progressValue = progress * fromPercentsCoefficient;
+
       return (
         <div className="report-widget__progress">
           <div>{i18n('Calculating...')}</div>
