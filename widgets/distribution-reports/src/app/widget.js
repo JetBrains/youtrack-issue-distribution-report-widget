@@ -174,13 +174,15 @@ class DistributionReportsWidget extends React.Component {
       const refreshPeriod =
         this.props.configWrapper.getFieldValue('refreshPeriod') ||
         DistributionReportsWidget.DEFAULT_REFRESH_PERIOD;
-      this.setState({report: reportWithData, refreshPeriod});
+      this.setState(
+        {report: reportWithData, refreshPeriod, isLoading: false},
+        () => this.recalculateIfRequired()
+      );
     } else {
+      this.setLoadingEnabled(false);
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
     }
-
-    this.setLoadingEnabled(false);
   };
 
   setYouTrack(youTrackService) {
@@ -226,6 +228,14 @@ class DistributionReportsWidget extends React.Component {
     }
   }
 
+  async recalculateIfRequired() {
+    const {report} = this.state;
+
+    if (ReportModel.isCalculationRequired(report)) {
+      await this.recalculateReport();
+    }
+  }
+
   onWidgetRefresh = async () => {
     const {
       isConfiguring,
@@ -246,7 +256,7 @@ class DistributionReportsWidget extends React.Component {
           isCalculationCompleted: isCalculationCompleted
             ? false
             : ReportModel.isReportCalculationCompleted(reportWithData, report)
-        });
+        }, () => this.recalculateIfRequired());
       }
     }
   };
@@ -280,7 +290,6 @@ class DistributionReportsWidget extends React.Component {
     await this.props.configWrapper.replace({
       reportId: report.id, youTrack, refreshPeriod
     });
-    this.setState({isConfiguring: false});
   };
 
   cancelConfig = async () => {
@@ -345,6 +354,7 @@ class DistributionReportsWidget extends React.Component {
       this.setState({
         youTrack,
         isLoading: reportIsChanged,
+        isConfiguring: false,
         report: reportIsChanged ? null : this.state.report,
         error: ReportModel.ErrorTypes.OK
       }, async () => {
@@ -357,7 +367,9 @@ class DistributionReportsWidget extends React.Component {
             isLoading: false,
             isNewWidget: false,
             refreshPeriod
-          }, async () => await this.saveConfig());
+          }, async () => await Promise.all([
+            this.recalculateIfRequired(), this.saveConfig()
+          ]));
         }
       });
     };

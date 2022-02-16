@@ -170,7 +170,8 @@ const ReportModel = {
     report && report.status && report.status.calculationInProgress,
 
   isCalculationRequired: report =>
-    report && report.status && report.status.isOutdated,
+    report && report.status &&
+    (report.status.isOutdated || report.data === null),
 
   isReportCalculationCompleted: (updatedReport, prevReport) =>
     ReportModel.isReportCalculation(prevReport) &&
