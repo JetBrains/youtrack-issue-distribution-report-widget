@@ -159,7 +159,13 @@ class AgileProgressDiagramWidget extends React.Component {
       );
       const dateFieldFormat = (generalProfile || {}).dateFieldFormat || {};
 
-      this.setState({report: reportWithData, refreshPeriod, dateFieldFormat});
+      this.setState({
+        report: reportWithData,
+        refreshPeriod,
+        dateFieldFormat,
+        isLoading: false
+      },
+      () => this.recalculateIfRequired());
     } else {
       this.setError(ReportModel.ErrorTypes.NO_REPORT);
       return;
@@ -217,6 +223,14 @@ class AgileProgressDiagramWidget extends React.Component {
     }
   }
 
+  async recalculateIfRequired() {
+    const {report} = this.state;
+
+    if (ReportModel.isCalculationRequired(report)) {
+      await this.recalculateReport();
+    }
+  }
+
   onWidgetRefresh = async () => {
     const {
       isConfiguring,
@@ -236,7 +250,7 @@ class AgileProgressDiagramWidget extends React.Component {
           isCalculationCompleted: isCalculationCompleted
             ? false
             : ReportModel.isReportCalculationCompleted(reportWithData, report)
-        });
+        }, () => this.recalculateIfRequired());
       }
     }
   }
@@ -258,9 +272,6 @@ class AgileProgressDiagramWidget extends React.Component {
     const {refreshPeriod, youTrack} = this.state;
     await this.props.configWrapper.replace({
       settings, youTrack, refreshPeriod
-    });
-    this.setState({
-      isConfiguring: false
     });
   };
 
@@ -290,6 +301,7 @@ class AgileProgressDiagramWidget extends React.Component {
       this.setState({
         youTrack,
         isLoading: reportIsChanged,
+        isConfiguring: false,
         report: reportIsChanged ? null : this.state.report,
         error: ReportModel.ErrorTypes.OK
       }, async () => {
@@ -306,7 +318,9 @@ class AgileProgressDiagramWidget extends React.Component {
             isLoading: false,
             isCalculationCompleted: false,
             refreshPeriod
-          }, async () => await this.saveConfig(settings));
+          }, async () => await Promise.all([
+            this.saveConfig(settings), this.recalculateIfRequired()
+          ]));
         }
       });
     };
