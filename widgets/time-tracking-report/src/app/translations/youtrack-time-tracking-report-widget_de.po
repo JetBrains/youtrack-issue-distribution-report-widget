@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2022-01-27 18:48\n"
+"PO-Revision-Date: 2022-05-17 20:07\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -37,7 +37,7 @@ msgstr "Alle Benutzer"
 msgid "All work types"
 msgstr "Alle Arbeitstypen"
 
-#: src/app/content.js:116
+#: src/app/content.js:121
 msgid "Calculating..."
 msgstr "Berechnung läuft..."
 
@@ -255,11 +255,11 @@ msgstr "Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "So|Mo|Di|Mi|Do|Fr|Sa"
 
-#: src/app/content.js:131
+#: src/app/content.js:136
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "Der Bericht kann nicht berechnet werden: Es gibt zu viele Tickets, die den Filtern in den Berichtseinstellungen entsprechen."
 
-#: src/app/content.js:136
+#: src/app/content.js:141
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "Es sind keine Tickets vorhanden, die den Filtern in den Berichtseinstellungen entsprechen."
 

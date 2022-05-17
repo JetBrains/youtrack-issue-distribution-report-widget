@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2022-01-27 18:48\n"
+"PO-Revision-Date: 2022-05-17 20:08\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -37,7 +37,7 @@ msgstr "crwdns9737106:0crwdne9737106:0"
 msgid "All work types"
 msgstr "crwdns9737108:0crwdne9737108:0"
 
-#: src/app/content.js:116
+#: src/app/content.js:121
 msgid "Calculating..."
 msgstr "crwdns9375696:0crwdne9375696:0"
 
@@ -255,11 +255,11 @@ msgstr "crwdns9375762:0crwdne9375762:0"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "crwdns9375764:0crwdne9375764:0"
 
-#: src/app/content.js:131
+#: src/app/content.js:136
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "crwdns9375768:0crwdne9375768:0"
 
-#: src/app/content.js:136
+#: src/app/content.js:141
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "crwdns9375770:0crwdne9375770:0"
 

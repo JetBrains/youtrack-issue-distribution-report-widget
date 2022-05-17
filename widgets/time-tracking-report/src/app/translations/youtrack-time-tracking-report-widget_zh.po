@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-01-27 18:47\n"
+"PO-Revision-Date: 2022-05-17 20:06\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -37,7 +37,7 @@ msgstr "所有用户"
 msgid "All work types"
 msgstr "所有工作类型"
 
-#: src/app/content.js:116
+#: src/app/content.js:121
 msgid "Calculating..."
 msgstr "正在计算..."
 
@@ -255,11 +255,11 @@ msgstr "星期日|星期一|星期二|星期三|星期四|星期五|星期六"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "周日|周一|周二|周三|周四|周五|周六"
 
-#: src/app/content.js:131
+#: src/app/content.js:136
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "无法计算报告：报告设置中的筛选器返回了太多的问题"
 
-#: src/app/content.js:136
+#: src/app/content.js:141
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "没有任何问题与报告设置中的筛选器匹配"
 

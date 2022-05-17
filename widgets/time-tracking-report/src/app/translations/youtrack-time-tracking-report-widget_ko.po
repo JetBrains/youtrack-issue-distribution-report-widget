@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2022-01-27 18:48\n"
+"PO-Revision-Date: 2022-05-17 20:07\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -37,7 +37,7 @@ msgstr "모든 사용자"
 msgid "All work types"
 msgstr "모든 작업 유형"
 
-#: src/app/content.js:116
+#: src/app/content.js:121
 msgid "Calculating..."
 msgstr "계산 중..."
 
@@ -255,11 +255,11 @@ msgstr "일요일|월요일|화요일|수요일|목요일|금요일|토요일"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "일|월|화|수|목|금|토"
 
-#: src/app/content.js:131
+#: src/app/content.js:136
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "보고서를 계산할 수 없습니다. 보고서 설정의 필터링이 너무 많은 이슈를 반환합니다."
 
-#: src/app/content.js:136
+#: src/app/content.js:141
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "보고서 설정의 필터에 해당하는 이슈가 없습니다."
 

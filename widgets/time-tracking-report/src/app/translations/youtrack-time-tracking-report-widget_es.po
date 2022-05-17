@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 222890\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2022-01-27 18:48\n"
+"PO-Revision-Date: 2022-05-17 20:08\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -37,7 +37,7 @@ msgstr "Todos los usuarios"
 msgid "All work types"
 msgstr "Todos los tipos de trabajo"
 
-#: src/app/content.js:116
+#: src/app/content.js:121
 msgid "Calculating..."
 msgstr "Calculando..."
 
@@ -255,11 +255,11 @@ msgstr "Domingo|Lunes|Martes|Miércoles|Jueves|Viernes|Sábado"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 
-#: src/app/content.js:131
+#: src/app/content.js:136
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
 msgstr "El informe no puede calcularse: los filtros de la configuración del informe devuelven demasiadas incidencias"
 
-#: src/app/content.js:136
+#: src/app/content.js:141
 msgid "There aren't any issues that match the filters in the report settings"
 msgstr "No hay ninguna incidencia que coincida con los filtros de la configuración de informe"
 
