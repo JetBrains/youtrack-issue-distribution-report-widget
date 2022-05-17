@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2022-02-16 22:09\n"
+"PO-Revision-Date: 2022-04-27 23:49\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Přidat typ práce"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
@@ -35,11 +35,11 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Všechny typy práce"
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
-msgstr ""
+msgstr "Řešitel"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Den"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -151,19 +151,19 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "minulý měsíc"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "minulý týden"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Poslední pracovní den"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Měsíc"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
@@ -281,11 +281,11 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "tento měsíc"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "tento týden"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -293,7 +293,7 @@ msgstr "Tento rok"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "dnes"
 
 #: src/app/report-chart.js:249
 msgid "Total"
@@ -321,7 +321,7 @@ msgstr "Uživatelé"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Týden"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "včera"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -357,7 +357,7 @@ msgstr "a"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "vzestupně"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -365,15 +365,15 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "klonovat"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr ""
+msgstr "sestupně"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "odhad"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -385,7 +385,7 @@ msgstr "m"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "já"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -417,5 +417,5 @@ msgstr "{{minutesCount}} min"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Přidat políčko"
 

@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2022-02-16 22:10\n"
+"PO-Revision-Date: 2022-04-21 14:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: src/app/distribution-report-types.js:34
 msgid "Assignee"
-msgstr ""
+msgstr "אחראי"
 
 #: src/app/report-chart.js:277
 msgid "Bars"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
@@ -151,15 +151,15 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "בחודש שעבר"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "בשבוע שעבר"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "יום העבודה האחרון"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "פרויקט"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
@@ -281,11 +281,11 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "החודש"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "השבוע"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "היום"
 
 #: src/app/report-chart.js:249
 msgid "Total"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "אתמול"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -357,7 +357,7 @@ msgstr "וגם"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "בסדר עולה"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr ""
+msgstr "בסדר יורד"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
@@ -385,7 +385,7 @@ msgstr "ד'"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "אני"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -397,7 +397,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "פרויקט"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
@@ -413,7 +413,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} דקות"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"

@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2022-02-16 22:09\n"
+"PO-Revision-Date: 2022-05-03 23:53\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -123,7 +123,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "已修復"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -151,15 +151,15 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "上個月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "上週"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最後工作日"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
@@ -192,11 +192,11 @@ msgstr ""
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "擁有者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "主問題"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
-msgstr ""
+msgstr "專案"
 
 #: src/app/distribution-report-form.js:370
 msgid "Projects"
@@ -281,11 +281,11 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "本月"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "本週"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -297,7 +297,7 @@ msgstr ""
 
 #: src/app/report-chart.js:249
 msgid "Total"
-msgstr ""
+msgstr "總共"
 
 #: src/app/content.js:128
 msgid "Total issues count"
@@ -329,19 +329,19 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "小工具每 {{minutesCount}} 分鐘重新整理一次"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "作品作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "工作類型"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "昨天"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -353,11 +353,11 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:265
 msgid "and"
-msgstr ""
+msgstr "和"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "asc"
-msgstr ""
+msgstr "升冪"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
@@ -365,11 +365,11 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
-msgstr ""
+msgstr "複製"
 
 #: src/app/report-chart-sort-order.js:31
 msgid "desc"
-msgstr ""
+msgstr "降冪"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
@@ -377,15 +377,15 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "小時"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "分鐘"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 msgid "me"
-msgstr ""
+msgstr "我"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
@@ -413,7 +413,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} 分鐘"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
