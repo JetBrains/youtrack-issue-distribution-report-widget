@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2022-02-16 22:09\n"
+"PO-Revision-Date: 2022-04-27 23:49\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -24,7 +24,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Přidat typ práce"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "Všechny typy práce"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "Vždy zobrazovat aktuální sprint"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "Vytvořit tabuli"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "Den"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
@@ -178,15 +178,15 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "minulý měsíc"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "minulý týden"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "Poslední pracovní den"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
@@ -194,7 +194,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "Měsíc"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "Nebyly nalezeny žádné tabule."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -291,7 +291,7 @@ msgstr "Vyberte YouTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "Vybrat tabuli"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
@@ -332,7 +332,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "tento měsíc"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "tento týden"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -348,7 +348,7 @@ msgstr "Tento rok"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "dnes"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
@@ -361,7 +361,7 @@ msgstr "Uživatelé"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "Týden"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "včera"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -394,11 +394,11 @@ msgstr "dopol|odpol"
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
 msgid "clone"
-msgstr ""
+msgstr "klonovat"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "odhad"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
@@ -419,7 +419,7 @@ msgstr "m"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "já"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
@@ -448,5 +448,5 @@ msgstr "{{minutesCount}} min"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Přidat políčko"
 

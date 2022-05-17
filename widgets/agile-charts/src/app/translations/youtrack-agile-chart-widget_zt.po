@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
-"PO-Revision-Date: 2022-02-16 22:09\n"
+"PO-Revision-Date: 2022-05-03 23:53\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -142,7 +142,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
-msgstr ""
+msgstr "已修復"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
@@ -178,15 +178,15 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "上個月"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "上週"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "最後工作日"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
@@ -233,7 +233,7 @@ msgstr ""
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "擁有者"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "主問題"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
@@ -262,7 +262,7 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
-msgstr ""
+msgstr "回報"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
-msgstr ""
+msgstr "耗時"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -332,7 +332,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "本月"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "本週"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -369,19 +369,19 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "小工具每 {{minutesCount}} 分鐘重新整理一次"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "作品作者"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "工作類型"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "昨天"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -394,7 +394,7 @@ msgstr ""
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
 msgid "clone"
-msgstr ""
+msgstr "複製"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
-msgstr ""
+msgstr "小時"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
@@ -414,12 +414,12 @@ msgstr ""
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
-msgstr ""
+msgstr "分鐘"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "我"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
@@ -444,7 +444,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} 分鐘"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"

@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2022-02-16 22:10\n"
+"PO-Revision-Date: 2022-04-27 23:49\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -24,7 +24,7 @@ msgstr "Felhasználó hozzáadása"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "Munkatípus hozzáadása"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr ""
+msgstr "Számolás..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -68,7 +68,7 @@ msgstr "Mégsem"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Nem található a telepített YouTrack"
 
 #: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
@@ -216,7 +216,7 @@ msgstr "Nincs érték"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Hoppá, valami hiba történt..."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
@@ -369,7 +369,7 @@ msgstr "A widget percenként frissül"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "A widget {{minutesCount}} percenként frissül"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
@@ -444,9 +444,9 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} perc"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "＋Mező hozzáadása"
 

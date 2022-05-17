@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2022-02-16 22:10\n"
+"PO-Revision-Date: 2022-04-21 14:24\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -64,7 +64,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
@@ -178,15 +178,15 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
-msgstr ""
+msgstr "בחודש שעבר"
 
 #: ../../components/src/report-model/report-time-ranges.js:50
 msgid "Last week"
-msgstr ""
+msgstr "בשבוע שעבר"
 
 #: ../../components/src/report-model/report-time-ranges.js:34
 msgid "Last working day"
-msgstr ""
+msgstr "יום העבודה האחרון"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
@@ -332,7 +332,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
-msgstr ""
+msgstr "החודש"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
-msgstr ""
+msgstr "השבוע"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
-msgstr ""
+msgstr "היום"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
@@ -381,7 +381,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
-msgstr ""
+msgstr "אתמול"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
@@ -419,7 +419,7 @@ msgstr "ד'"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:20
 #: src/app/configuration.js:85
 msgid "me"
-msgstr ""
+msgstr "אני"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
@@ -427,7 +427,7 @@ msgstr ""
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
-msgstr ""
+msgstr "פרויקט"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
@@ -444,7 +444,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} דקות"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
