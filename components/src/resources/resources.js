@@ -306,7 +306,7 @@ async function recalculateReport(fetchYouTrack, report) {
 
 async function loadUserGroups(fetchYouTrack) {
   return await fetchYouTrack(
-    `api/admin/groups?fields=${USER_GROUP_FIELDS}`
+    `api/groups?fields=${USER_GROUP_FIELDS}`
   );
 }
 
@@ -349,7 +349,7 @@ async function loadUsers(
     ).join('&');
   }
   return await fetchYouTrack(
-    `api/admin/users?fields=${USER_FIELDS}`, {
+    `api/users?fields=${USER_FIELDS}`, {
       query: queryParams
     }
   );
