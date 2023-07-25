@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35340\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2023-03-22 00:16\n"
+"PO-Revision-Date: 2023-07-25 13:00\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -47,7 +47,7 @@ msgstr "条状图"
 
 #: src/app/content.js:101
 msgid "Calculating..."
-msgstr "正在计算..."
+msgstr "正在计算…"
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
@@ -75,7 +75,7 @@ msgstr "找不到时间跟踪报告"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
-msgstr "无法加载选定的报告"
+msgstr "无法加载所选报告"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
@@ -111,7 +111,7 @@ msgstr "无法找到合适的 YouTrack 安装"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr "从选定的 YouTrack 安装加载数据失败"
+msgstr "从所选 YouTrack 安装加载数据失败"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
@@ -119,7 +119,7 @@ msgstr "筛选问题"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr "筛选用户、组和团队"
+msgstr "筛选用户、群组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -127,7 +127,7 @@ msgstr "已修正"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr "组和团队"
+msgstr "群组和团队"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -179,15 +179,15 @@ msgstr "无值"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr "哎呀，出了些问题..."
+msgstr "哎呀，出了些问题…"
 
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
-msgstr "哎呀... 出了点问题=("
+msgstr "哎呀… 出了点问题=("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr "其他组和团队"
+msgstr "其他群组和团队"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
@@ -216,12 +216,12 @@ msgstr "查询"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr "推荐组和团队"
+msgstr "推荐的群组和团队"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
-msgstr "删除小部件"
+msgstr "删除微件"
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
@@ -229,7 +229,7 @@ msgstr "报告名称"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr "重置为默认值（所有者）"
+msgstr "重置为默认值(所有者)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -269,7 +269,7 @@ msgstr "表格"
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr "无法计算报告：报告设置中的筛选器返回了太多的问题"
+msgstr "无法计算报告: 报告设置中的筛选器返回了太多的问题"
 
 #: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
@@ -277,7 +277,7 @@ msgstr "没有任何问题与报告设置中的筛选器匹配"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr "此字段在某些选定的项目中不存在"
+msgstr "此字段在某些所选项目中不存在"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"

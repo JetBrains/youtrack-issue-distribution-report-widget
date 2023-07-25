@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2023-03-22 09:38\n"
+"PO-Revision-Date: 2023-05-19 11:26\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -31,7 +31,7 @@ msgstr "Wszystkie projekty"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Wszyscy użytkownicy"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
@@ -47,7 +47,7 @@ msgstr "Pasek"
 
 #: src/app/content.js:101
 msgid "Calculating..."
-msgstr ""
+msgstr "Obliczanie..."
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
@@ -63,7 +63,7 @@ msgstr "Anuluj"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Nie można znaleźć instalacji YouTrack"
 
 #: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
@@ -71,19 +71,19 @@ msgstr ""
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Nie można znaleźć żadnych raportów dotyczących śledzenia czasu"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Nie można załadować wybranego raportu"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr ""
+msgstr "Nie można zapisać raportu"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Nie można zaktualizować widżetu"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -91,7 +91,7 @@ msgstr "Utwórz nowy raport"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Niestandardowy interwał dat"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -99,7 +99,7 @@ msgstr "Dzień"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Wyświetl istniejący raport"
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,7 +107,7 @@ msgstr "Zmień ustawienia"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Nie można znaleźć właściwej instalacji YouTrack"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
-msgstr ""
+msgstr "Filtruj zgłoszenia"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
@@ -131,7 +131,7 @@ msgstr "Grupy i zespoły"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Jeśli chcesz dostosować własną kopię tego raportu, {{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
@@ -167,7 +167,7 @@ msgstr "Miesiąc"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "Nowy raport"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -183,7 +183,7 @@ msgstr "Ups. Coś poszło nie tak..."
 
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "Ups! Coś poszło nie tak =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
@@ -221,7 +221,7 @@ msgstr "Polecane grupy i zespoły"
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
-msgstr ""
+msgstr "Usuń widżet"
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
@@ -229,7 +229,7 @@ msgstr "Nazwa raportu"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Przywróć ustawienie domyślne (właściciel)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -241,15 +241,15 @@ msgstr "Wybierz YouTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "Wybierz raport"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
-msgstr ""
+msgstr "Ustawienia udostępniania"
 
 #: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
-msgstr ""
+msgstr "Pokaż rozkład według"
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
@@ -269,15 +269,15 @@ msgstr "Tabela"
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "Nie można obliczyć raportu: filtry w ustawieniach raportu zwracają zbyt wiele zgłoszeń"
 
 #: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "Nie ma żadnych zgłoszeń, które pasują do filtrów w ustawieniach raportu"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "To pole nie istnieje w niektórych wybranych projektach"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
@@ -301,19 +301,19 @@ msgstr "Razem"
 
 #: src/app/content.js:128
 msgid "Total issues count"
-msgstr ""
+msgstr "Łączna liczba zgłoszeń"
 
 #: src/app/content.js:131
 msgid "Total votes count"
-msgstr ""
+msgstr "Łączna liczba głosów"
 
 #: src/app/content.js:134
 msgid "Total {{fieldName}}"
-msgstr ""
+msgstr "{{fieldName}} ogółem"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "Bez nazwy"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -345,7 +345,7 @@ msgstr "Wczoraj"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Nie masz dostępu do edycji ustawień raportu."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -361,7 +361,7 @@ msgstr "rosnąco"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
-msgstr ""
+msgstr "według liczby"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
@@ -389,7 +389,7 @@ msgstr "ja"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
-msgstr ""
+msgstr "naturalne"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
