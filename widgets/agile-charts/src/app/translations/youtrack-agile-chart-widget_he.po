@@ -11,40 +11,40 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2023-03-22 09:37\n"
+"PO-Revision-Date: 2023-05-16 00:10\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
 msgid "Add project"
-msgstr ""
+msgstr "הוספת פרויקט"
 
 #: ../../components/src/report-form-controls/report-users.js:29
 msgid "Add user"
-msgstr ""
+msgstr "הוספת משתמש"
 
 #: ../../components/src/report-form-controls/report-work-types.js:44
 msgid "Add work type"
-msgstr ""
+msgstr "הוספת סוג עבודה"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
-msgstr ""
+msgstr "תרשים Agile"
 
 #: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
-msgstr ""
+msgstr "מקדים את לוח הזמנים"
 
 #: ../../components/src/report-form-controls/report-projects.js:54
 msgid "All projects"
-msgstr ""
+msgstr "כל הפרויקטים"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "כל המשתמשים"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
-msgstr ""
+msgstr "כל סוגי העבודה"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
@@ -52,15 +52,15 @@ msgstr ""
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
-msgstr ""
+msgstr "מאחר לפי לוח הזמנים"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
-msgstr ""
+msgstr "לחשב עבור כל הפרויקטים"
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr ""
+msgstr "מתבצע חישוב..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -89,16 +89,16 @@ msgstr ""
 #: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
-msgstr ""
+msgstr "לא ניתן לשמור דו\"ח"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
-msgstr ""
+msgstr "לא ניתן לעדכן את הווידג'ט"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
-msgstr ""
+msgstr "יצירת לוח"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -106,23 +106,23 @@ msgstr "צור דוח חדש"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "מרווח תאריכים מותאם אישית"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
-msgstr ""
+msgstr "יום"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "הצגת דו\"ח קיים"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
-msgstr ""
+msgstr "עריכת דו\"ח"
 
 #: src/app/content.js:69
 msgid "Edit settings"
-msgstr ""
+msgstr "עריכת הגדרות"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
@@ -134,11 +134,11 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
-msgstr ""
+msgstr "סינון בעיות"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr ""
+msgstr "סינון משתמשים, קבוצות וצוותים"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -150,15 +150,15 @@ msgstr ""
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "עבור לוח קיים"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr ""
+msgstr "קבוצות וצוותים"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "התקדמות אידיאלית"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -174,7 +174,7 @@ msgstr "ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|או�
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "ינו'|פבר'|מרץ|אפר'|מאי|יונ'|יול'|אוג'|ספט'|אוק'|נוב'|דצמ'"
 
 #: ../../components/src/report-model/report-time-ranges.js:54
 msgid "Last month"
@@ -190,50 +190,50 @@ msgstr "יום העבודה האחרון"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
-msgstr ""
+msgstr "רק אני"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
-msgstr ""
+msgstr "חודש"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 #: src/app/burn-down-chart-form.js:318
 #: src/app/configuration.js:92
 msgid "New report"
-msgstr ""
+msgstr "דו\"ח חדש"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "לא נמצאו לוחות."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "אין חלוקה לקבוצות"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
-msgstr ""
+msgstr "אין ערך"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "אופס! משהו השתבש..."
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "אופס... משהו השתבש =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "קבוצות וצוותים אחרים"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
-msgstr ""
+msgstr "מאמץ באיחור"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
 msgid "Owner"
-msgstr ""
+msgstr "בעלים"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -241,24 +241,24 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "בעיית הורה"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
-msgstr ""
+msgstr "שאילתה"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "קבוצות וצוותים מומלצים"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "המאמץ שנותר"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
-msgstr ""
+msgstr "הסרת ווידג'ט"
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
@@ -266,7 +266,7 @@ msgstr "דווח"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
-msgstr ""
+msgstr "הדו\"ח הוא פרטי"
 
 #: src/app/burn-down-chart-form.js:222
 msgid "Report is visible to members of {{visibilityPresentation}}"
@@ -274,11 +274,11 @@ msgstr ""
 
 #: src/app/burn-down-chart-form.js:332
 msgid "Report name"
-msgstr ""
+msgstr "שם הדו\"ח"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "איפוס לברירת המחדל (בעלים)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -287,20 +287,20 @@ msgstr "שמור"
 #: ../../components/src/base-configuration/base-configuration.js:340
 #: src/app/configuration.js:560
 msgid "Select YouTrack"
-msgstr ""
+msgstr "בחירת מופע YouTrack"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "בחר לוח"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
 msgid "Select report"
-msgstr ""
+msgstr "בחר דוח"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
-msgstr ""
+msgstr "בחירת ספרינט"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
@@ -344,7 +344,7 @@ msgstr "השבוע"
 
 #: ../../components/src/report-model/report-time-ranges.js:46
 msgid "This year"
-msgstr ""
+msgstr "השנה"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
@@ -353,7 +353,7 @@ msgstr "היום"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
 msgid "Unnamed"
-msgstr ""
+msgstr "ללא שם"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -361,7 +361,7 @@ msgstr "משתמשים"
 
 #: ../../components/src/report-model/report-time-scales.js:10
 msgid "Week"
-msgstr ""
+msgstr "שבוע"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -369,15 +369,15 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "הווידג'ט מתרענן כל {{minutesCount}} דקות"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:18
 msgid "Work author"
-msgstr ""
+msgstr "מחבר העבודה"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "סוג העבודה"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
@@ -385,24 +385,24 @@ msgstr "אתמול"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "אין לך גישה לעריכת הגדרות הדו\"ח."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "לפנ\"צ|אחה\"צ"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 #: src/app/configuration.js:340
 msgid "clone"
-msgstr ""
+msgstr "שכפול"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:23
 msgid "estimation"
-msgstr ""
+msgstr "הערכה"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
-msgstr ""
+msgstr "דוחות קיימים"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -410,7 +410,7 @@ msgstr "ש'"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
-msgstr ""
+msgstr "שע׳|דק׳"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
@@ -423,7 +423,7 @@ msgstr "אני"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr ""
+msgstr "איחור"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -431,16 +431,16 @@ msgstr "פרויקט"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr ""
+msgstr "סה\"כ זמן שהושקע"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} לשכפל את זה"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
-msgstr ""
+msgstr "{{minCount}}דק׳"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
@@ -448,5 +448,5 @@ msgstr "{{minutesCount}} דקות"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
 msgid "＋Add field"
-msgstr ""
+msgstr "+ הוספת שדה"
 

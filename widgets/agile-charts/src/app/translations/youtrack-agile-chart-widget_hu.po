@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2023-03-22 09:38\n"
+"PO-Revision-Date: 2023-06-30 23:49\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -48,7 +48,7 @@ msgstr "Minden munkatípus"
 
 #: src/app/select-board-form.js:38
 msgid "Always display current sprint"
-msgstr ""
+msgstr "Mindig jelenítse meg az aktuális sprintet"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
-msgstr ""
+msgstr "Nem található tábla."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
@@ -291,7 +291,7 @@ msgstr "YouTrack kiválasztása"
 
 #: src/app/select-board-form.js:218
 msgid "Select board"
-msgstr ""
+msgstr "Válassza ki a táblát"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414

@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 48988\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2023-03-22 00:16\n"
+"PO-Revision-Date: 2023-07-25 12:59\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -60,7 +60,7 @@ msgstr "计算所有项目"
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr "正在计算..."
+msgstr "正在计算…"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -84,7 +84,7 @@ msgstr "无法加载敏捷面板列表。"
 
 #: src/app/content.js:88
 msgid "Cannot load selected report"
-msgstr "无法加载选定的报告"
+msgstr "无法加载所选报告"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
@@ -130,7 +130,7 @@ msgstr "无法找到合适的 YouTrack 安装"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr "从选定的 YouTrack 安装加载数据失败"
+msgstr "从所选 YouTrack 安装加载数据失败"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
@@ -138,7 +138,7 @@ msgstr "筛选问题"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
-msgstr "筛选用户、组和团队"
+msgstr "筛选用户、群组和团队"
 
 #: ../../components/src/report-model/report-time-ranges.js:6
 msgid "Fixed"
@@ -154,7 +154,7 @@ msgstr "对于已经存在的面板"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
-msgstr "组和团队"
+msgstr "群组和团队"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
@@ -216,15 +216,15 @@ msgstr "无值"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr "哎呀，出了些问题..."
+msgstr "哎呀，出了些问题…"
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
-msgstr "哎呀... 出了点问题=("
+msgstr "哎呀… 出了点问题=("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr "其他组和团队"
+msgstr "其他群组和团队"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
@@ -249,7 +249,7 @@ msgstr "查询"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr "推荐组和团队"
+msgstr "推荐的群组和团队"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
@@ -258,7 +258,7 @@ msgstr "剩余工作量(工时数)"
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
-msgstr "删除小部件"
+msgstr "删除微件"
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
@@ -278,7 +278,7 @@ msgstr "报告名称"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr "重置为默认值（所有者）"
+msgstr "重置为默认值(所有者)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -320,7 +320,7 @@ msgstr "周日|周一|周二|周三|周四|周五|周六"
 
 #: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr "无法计算报告：报告设置中的筛选器返回了太多的问题"
+msgstr "无法计算报告: 报告设置中的筛选器返回了太多的问题"
 
 #: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
@@ -328,7 +328,7 @@ msgstr "没有任何问题与报告设置中的筛选器匹配"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr "此字段在某些选定的项目中不存在"
+msgstr "此字段在某些所选项目中不存在"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
