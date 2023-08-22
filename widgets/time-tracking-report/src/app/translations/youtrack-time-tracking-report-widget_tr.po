@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: youtrack-custom-localization\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: youtrack-custom-localization\n"
+"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /widgets/youtrack-time-report-widget/youtrack-time-tracking-report-widget.pot\n"
+"X-Crowdin-File-ID: 652274\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"PO-Revision-Date: 2023-08-22 16:07\n"
+
+#: ../../components/src/report-form-controls/report-projects.js:53
+msgid "Add project"
+msgstr "Proje ekle"
+
+#: ../../components/src/report-form-controls/report-users.js:29
+msgid "Add user"
+msgstr "Kullanıcı ekle"
+
+#: ../../components/src/report-form-controls/report-work-types.js:44
+msgid "Add work type"
+msgstr "İş türü ekle"
+
+#: ../../components/src/report-form-controls/report-projects.js:54
+msgid "All projects"
+msgstr "Tüm projeler"
+
+#: ../../components/src/report-form-controls/report-users.js:30
+msgid "All users"
+msgstr "Tüm kullanıcılar"
+
+#: ../../components/src/report-form-controls/report-work-types.js:45
+msgid "All work types"
+msgstr "Tüm iş türleri"
+
+#: src/app/content.js:121
+msgid "Calculating..."
+msgstr "Hesaplanıyor..."
+
+#: src/app/time-tracking-report-form.js:290
+msgid "Can edit"
+msgstr "Düzenleyebilir"
+
+#: src/app/time-tracking-report-form.js:281
+msgid "Can view and use"
+msgstr "Görüntüleyebilir ve kullanabilir"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/app/content.js:87
+msgid "Cannot find YouTrack installation"
+msgstr "YouTrack yüklemesi bulunamıyor"
+
+#: src/app/content.js:92
+msgid "Cannot find any report"
+msgstr "Herhangi bir rapor bulunamıyor"
+
+#: ../../components/src/base-configuration/base-configuration.js:52
+msgid "Cannot find any time tracking reports"
+msgstr "Zaman izleme raporları bulunamıyor"
+
+#: src/app/content.js:96
+msgid "Cannot load selected report"
+msgstr "Seçili rapor yüklenemiyor"
+
+#: ../../components/src/base-configuration/base-configuration.js:239
+msgid "Cannot save report"
+msgstr "Rapor kaydedilemiyor"
+
+#: ../../components/src/base-configuration/base-configuration.js:248
+msgid "Cannot update widget"
+msgstr "Widget güncellenemiyor"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:130
+msgid "Create new report"
+msgstr "Yeni rapor oluştur"
+
+#: ../../components/src/report-form-controls/report-period.js:21
+msgid "Custom dates interval"
+msgstr "Özel tarih aralığı"
+
+#: ../../components/src/report-model/report-time-scales.js:6
+msgid "Day"
+msgstr "Gün"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:135
+msgid "Display existing report"
+msgstr "Mevcut raporu göster"
+
+#: src/app/content.js:77
+msgid "Edit settings"
+msgstr "Ayarları düzenle"
+
+#: ../../components/src/base-configuration/base-configuration.js:120
+msgid "Failed to find proper YouTrack installation"
+msgstr "Uygun YouTrack yüklemesi bulunamadı"
+
+#: ../../components/src/base-configuration/base-configuration.js:362
+msgid "Failed to load data from selected YouTrack"
+msgstr "Seçili YouTrack'ten veri yüklenemedi"
+
+#: ../../components/src/sharing-setting/sharing-setting.js:131
+msgid "Filter users, groups, and teams"
+msgstr "Kullanıcıları, grupları ve ekipleri filtrele"
+
+#: ../../components/src/report-model/report-time-ranges.js:6
+msgid "Fixed"
+msgstr "Düzeltildi"
+
+#: src/app/time-tracking-report-form.js:165
+msgid "Group by {{field}}"
+msgstr "Gruplama ölçütü: {{field}}"
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:38
+msgid "Groups and teams"
+msgstr "Gruplar ve takımlar"
+
+#: src/app/time-table.js:30
+msgid "Hide details"
+msgstr "Ayrıntıları gizle"
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
+msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
+msgstr "Bu raporun kendinize aldığınız kopyasını özelleştirmek istiyorsanız {{cloneItPlaceholder}}"
+
+#: src/app/time-tracking-report-form.js:367
+msgid "Issue filter"
+msgstr "Sorun filtresi"
+
+#: src/app/time-table-settings-toolbar.js:18
+msgid "Issues"
+msgstr "Sorunlar"
+
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
+msgid "January|February|March|April|May|June|July|August|September|October|November|December"
+msgstr "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
+
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
+msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
+msgstr "Oca|Şub|Mar|Nis|May|Haz|Tem|Ağu|Eyl|Eki|Kas|Ara"
+
+#: ../../components/src/report-model/report-time-ranges.js:54
+msgid "Last month"
+msgstr "Geçen ay"
+
+#: ../../components/src/report-model/report-time-ranges.js:50
+msgid "Last week"
+msgstr "Geçen hafta"
+
+#: ../../components/src/report-model/report-time-ranges.js:34
+msgid "Last working day"
+msgstr "Son iş günü"
+
+#: ../../components/src/report-model/report-time-scales.js:14
+msgid "Month"
+msgstr "Ay"
+
+#: src/app/time-tracking-report-form.js:389
+msgid "Name"
+msgstr "İsim"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:27
+msgid "New report"
+msgstr "Yeni rapor"
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:60
+msgid "No grouping"
+msgstr "Gruplama yok"
+
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
+msgid "No value"
+msgstr "Değer yok"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
+msgid "Oops! Something went wrong..."
+msgstr "Hay aksi! Bir şeyler ters gitti..."
+
+#: src/app/content.js:104
+msgid "Oops... Something went wrong =("
+msgstr "Hay aksi... Bir şeyler ters gitti =("
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:38
+msgid "Other groups and teams"
+msgstr "Diğer gruplar ve takımlar"
+
+#: ../../components/src/sharing-setting/sharing-setting.js:19
+#: ../../components/src/sharing-setting/sharing-setting.js:20
+msgid "Owner"
+msgstr "Sahibi"
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:23
+msgid "Parent issue"
+msgstr "Ana sorun"
+
+#: src/app/time-tracking-report-form.js:233
+msgid "Period"
+msgstr "Dönem"
+
+#: src/app/time-tracking-report-form.js:302
+msgid "Projects"
+msgstr "Projeler"
+
+#: ../../components/src/report-form-controls/report-issues-filter.js:30
+msgid "Query"
+msgstr "Sorgu"
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:37
+msgid "Recommended groups and teams"
+msgstr "Önerilen gruplar ve takımlar"
+
+#: ../../components/src/base-configuration/base-configuration.js:370
+#: src/app/content.js:58
+msgid "Remove widget"
+msgstr "Widget'ı kaldır"
+
+#: src/app/time-tracking-report-form.js:395
+msgid "Report name"
+msgstr "Rapor adı"
+
+#: ../../components/src/sharing-setting/sharing-setting.js:145
+msgid "Reset to default (owner)"
+msgstr "Varsayılana sıfırla (sahibi)"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
+msgid "Save"
+msgstr "Kaydet"
+
+#: ../../components/src/base-configuration/base-configuration.js:340
+msgid "Select YouTrack"
+msgstr "YouTrack'i seçin"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:142
+msgid "Select report"
+msgstr "Rapor seçin"
+
+#: src/app/time-tracking-report-form.js:283
+msgid "Sharing settings"
+msgstr "Paylaşım ayarları"
+
+#: src/app/time-table.js:30
+msgid "Show details"
+msgstr "Ayrıntıları göster"
+
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
+msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
+msgstr "Pazar|Pazartesi|Salı|Çarşamba|Perşembe|Cuma|Cumartesi"
+
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
+msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
+msgstr "Paz|Pzt|Sal|Çrş|Prş|Cum|Cmt"
+
+#: src/app/content.js:136
+msgid "The report cannot be calculated: the filters in the report settings return too many issues"
+msgstr "Rapor hesaplanamıyor: Rapor ayarlarındaki filtreler çok fazla sorun getiriyor"
+
+#: src/app/content.js:141
+msgid "There aren't any issues that match the filters in the report settings"
+msgstr "Rapor ayarlarındaki filtrelerle eşleşen herhangi bir sorun yok"
+
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
+msgid "This field does not exist in some of the selected projects"
+msgstr "Bu alan seçili projelerin bazılarında yok"
+
+#: ../../components/src/report-model/report-time-ranges.js:42
+msgid "This month"
+msgstr "Bu ay"
+
+#: ../../components/src/report-model/report-time-ranges.js:38
+msgid "This week"
+msgstr "Bu hafta"
+
+#: ../../components/src/report-model/report-time-ranges.js:46
+msgid "This year"
+msgstr "Bu yıl"
+
+#: src/app/time-tracking-report-form.js:189
+#: src/app/time-tracking-report-form.js:212
+msgid "Time"
+msgstr "Zaman"
+
+#: src/app/widget.js:55
+msgid "Time Tracking Report"
+msgstr "Zaman Takibi Raporu"
+
+#: ../../components/src/report-model/report-time-ranges.js:24
+msgid "Today"
+msgstr "Bugün"
+
+#: src/app/time-table-general.js:202
+msgid "Total time"
+msgstr "Toplam süre"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:26
+msgid "Unnamed"
+msgstr "Adsız"
+
+#: ../../components/src/sharing-setting/make-dropdown-options.js:39
+#: src/app/time-table-settings-toolbar.js:13
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: ../../components/src/report-model/report-time-scales.js:10
+msgid "Week"
+msgstr "Hafta"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
+msgid "Widget refreshes every minute"
+msgstr "Widget her dakika yenilenir"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
+msgid "Widget refreshes every {{minutesCount}} minutes"
+msgstr "Widget {{minutesCount}} dakikada bir yenilenir"
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:18
+#: src/app/time-tracking-report-form.js:324
+msgid "Work author"
+msgstr "İş yazarı"
+
+#: ../../components/src/report-form-controls/report-grouping-control.js:13
+#: src/app/time-tracking-report-form.js:345
+msgid "Work type"
+msgstr "İş türü"
+
+#: src/app/time-tracking-report-form.js:194
+#: src/app/time-tracking-report-form.js:212
+msgid "Work types"
+msgstr "İş türleri"
+
+#: src/app/time-tracking-report-form.js:198
+msgid "X axis"
+msgstr "X ekseni"
+
+#: ../../components/src/report-model/report-time-ranges.js:29
+msgid "Yesterday"
+msgstr "Dün"
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
+msgid "You do not have access to edit report settings."
+msgstr "Rapor ayarlarını düzenleme erişiminiz yok."
+
+#: src/app/content.js:100
+msgid "You don't have access to the report"
+msgstr "Rapora erişiminiz yok"
+
+#: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
+msgid "am|pm"
+msgstr "öö|ös"
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
+msgid "clone"
+msgstr "klonla"
+
+#: ../../components/src/spent-time-progress/spent-time-progress.js:23
+msgid "estimation"
+msgstr "tahmin"
+
+#: src/app/time-table-settings-toolbar.js:54
+msgid "group by {{field}}"
+msgstr "gruplama ölçütü: {{field}}"
+
+#: ../../components/src/spent-time-value/spent-time-value.js:28
+msgid "h"
+msgstr "sa"
+
+#: ../../components/src/spent-time-value/spent-time-value.js:19
+msgid "m"
+msgstr "dk"
+
+#: ../../components/src/report-form-controls/report-configuration-tabs.js:20
+msgid "me"
+msgstr "ben"
+
+#: ../../components/src/spent-time-progress/spent-time-progress.js:47
+msgid "overdue"
+msgstr "gecikmiş"
+
+#: ../../components/src/report-model/report-model.js:127
+msgid "project"
+msgstr "proje"
+
+#: ../../components/src/spent-time-progress/spent-time-progress.js:34
+msgid "total spent time"
+msgstr "harcanan toplam süre"
+
+#: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
+msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonlayın"
+
+#: ../../components/src/issue-link/issue-link.js:26
+msgid "{{minCount}}m"
+msgstr "{{minCount}} dk"
+
+#: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
+msgid "{{minutesCount}} min"
+msgstr "{{minutesCount}} dk"
+
+#: ../../components/src/filter-fields-selector/filter-fields-selector.js:118
+msgid "＋Add field"
+msgstr "+Alan ekle"
+
