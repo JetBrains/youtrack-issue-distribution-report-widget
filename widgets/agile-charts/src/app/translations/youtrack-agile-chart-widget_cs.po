@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-11 07:45\n"
+"PO-Revision-Date: 2023-09-11 08:20\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -52,7 +52,7 @@ msgstr "Vždy zobrazovat aktuální sprint"
 
 #: src/app/burn-down-chart.js:73
 msgid "Behind Schedule"
-msgstr ""
+msgstr "Po termínu"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
