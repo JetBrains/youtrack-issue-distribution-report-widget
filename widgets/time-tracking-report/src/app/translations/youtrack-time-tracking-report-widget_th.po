@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 652274\n"
 "Language-Team: Thai\n"
 "Language: th_TH\n"
-"PO-Revision-Date: 2023-09-15 10:34\n"
+"PO-Revision-Date: 2023-09-15 11:07\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
