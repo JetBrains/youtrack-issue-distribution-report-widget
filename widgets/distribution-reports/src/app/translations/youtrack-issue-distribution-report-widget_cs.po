@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-18 08:08\n"
+"PO-Revision-Date: 2023-09-18 08:39\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Další skupiny a týmy"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:19
 #: ../../components/src/sharing-setting/sharing-setting.js:20
@@ -196,11 +196,11 @@ msgstr "Vlastník"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Nadřazený problém"
 
 #: src/app/report-chart.js:300
 msgid "Pie chart"
-msgstr ""
+msgstr "Koláčový graf"
 
 #: src/app/distribution-report-types.js:31
 msgid "Project"
@@ -216,7 +216,7 @@ msgstr "Dotaz"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Doporučené skupiny a týmy"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
