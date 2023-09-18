@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-18 07:37\n"
+"PO-Revision-Date: 2023-09-18 09:11\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -158,7 +158,7 @@ msgstr "Skupiny a týmy"
 
 #: src/app/chart-presentation-model.js:31
 msgid "Ideal Burndown"
-msgstr ""
+msgstr "Ideální burndown"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
@@ -208,7 +208,7 @@ msgstr "Nebyly nalezeny žádné tabule."
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr ""
+msgstr "Žádné seskupení"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
@@ -224,7 +224,7 @@ msgstr ""
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
-msgstr ""
+msgstr "Další skupiny a týmy"
 
 #: src/app/chart-presentation-model.js:50
 msgid "Overdue effort"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
-msgstr ""
+msgstr "Nadřazený problém"
 
 #: ../../components/src/report-form-controls/report-issues-filter.js:30
 msgid "Query"
@@ -249,7 +249,7 @@ msgstr "Dotaz"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:37
 msgid "Recommended groups and teams"
-msgstr ""
+msgstr "Doporučené skupiny a týmy"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
