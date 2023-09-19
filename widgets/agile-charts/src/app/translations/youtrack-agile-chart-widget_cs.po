@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-19 07:24\n"
+"PO-Revision-Date: 2023-09-19 08:01\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -253,7 +253,7 @@ msgstr "Doporučené skupiny a týmy"
 
 #: src/app/chart-presentation-model.js:35
 msgid "Remaining Effort"
-msgstr ""
+msgstr "Zbývající úsilí"
 
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
@@ -328,7 +328,7 @@ msgstr ""
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Toto pole v některých vybraných projektech neexistuje"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
@@ -377,7 +377,7 @@ msgstr "Autor díla"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 msgid "Work type"
-msgstr ""
+msgstr "Typ práce"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
