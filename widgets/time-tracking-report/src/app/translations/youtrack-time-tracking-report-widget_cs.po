@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 652274\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-19 07:39\n"
+"PO-Revision-Date: 2023-09-19 08:41\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
-msgstr ""
+msgstr "Toto pole v některých vybraných projektech neexistuje"
 
 #: ../../components/src/report-model/report-time-ranges.js:42
 msgid "This month"
@@ -325,7 +325,7 @@ msgstr "Autor díla"
 #: ../../components/src/report-form-controls/report-grouping-control.js:13
 #: src/app/time-tracking-report-form.js:345
 msgid "Work type"
-msgstr ""
+msgstr "Typ práce"
 
 #: src/app/time-tracking-report-form.js:194
 #: src/app/time-tracking-report-form.js:212
@@ -334,7 +334,7 @@ msgstr "Typy práce"
 
 #: src/app/time-tracking-report-form.js:198
 msgid "X axis"
-msgstr ""
+msgstr "Osa X"
 
 #: ../../components/src/report-model/report-time-ranges.js:29
 msgid "Yesterday"
