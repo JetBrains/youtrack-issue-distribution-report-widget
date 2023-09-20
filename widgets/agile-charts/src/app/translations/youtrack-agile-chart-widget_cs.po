@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-20 08:58\n"
+"PO-Revision-Date: 2023-09-20 09:36\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -353,7 +353,7 @@ msgstr "dnes"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 #: src/app/configuration.js:91
 msgid "Unnamed"
-msgstr ""
+msgstr "Bez názvu"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 msgid "Users"
@@ -385,7 +385,7 @@ msgstr "včera"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Nemáte přístup k úpravám nastavení reportu."
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
@@ -436,7 +436,7 @@ msgstr "celkový strávený čas"
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonovat"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
