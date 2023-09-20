@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 652274\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-20 08:34\n"
+"PO-Revision-Date: 2023-09-20 09:40\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -298,7 +298,7 @@ msgstr "Celkový čas"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
-msgstr ""
+msgstr "Bez názvu"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:39
 #: src/app/time-table-settings-toolbar.js:13
@@ -342,7 +342,7 @@ msgstr "včera"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:42
 msgid "You do not have access to edit report settings."
-msgstr ""
+msgstr "Nemáte přístup k úpravám nastavení reportu."
 
 #: src/app/content.js:100
 msgid "You don't have access to the report"
@@ -362,7 +362,7 @@ msgstr "odhad"
 
 #: src/app/time-table-settings-toolbar.js:54
 msgid "group by {{field}}"
-msgstr ""
+msgstr "seskupit podle {{field}}"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -390,7 +390,7 @@ msgstr "celkový strávený čas"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 msgid "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} clone it"
-msgstr ""
+msgstr "{{ifYouWantToCustomizeYourOwnCopyOfThisReportPlaceholder}} klonovat"
 
 #: ../../components/src/issue-link/issue-link.js:26
 msgid "{{minCount}}m"
