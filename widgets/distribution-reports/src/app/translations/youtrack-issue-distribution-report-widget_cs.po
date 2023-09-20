@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266770\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-20 10:02\n"
+"PO-Revision-Date: 2023-09-20 11:14\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -31,7 +31,7 @@ msgstr "Všechny projekty"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Všichni uživatelé"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
@@ -47,7 +47,7 @@ msgstr "Pruhy"
 
 #: src/app/content.js:101
 msgid "Calculating..."
-msgstr ""
+msgstr "Probíhá výpočet..."
 
 #: src/app/distribution-report-form.js:358
 msgid "Can edit"
@@ -63,27 +63,27 @@ msgstr "Zrušit"
 
 #: src/app/content.js:77
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Nelze najít instalaci YouTrack"
 
 #: src/app/content.js:82
 msgid "Cannot find any issue distribution report"
-msgstr ""
+msgstr "Nelze najít žádnou zprávu o distribuci problému"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Nelze najít žádné přehledy sledování času"
 
 #: src/app/content.js:86
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Nelze načíst vybranou report"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 msgid "Cannot save report"
-msgstr ""
+msgstr "Report nelze uložit"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Nelze aktualizovat widget"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:130
 msgid "Create new report"
@@ -91,7 +91,7 @@ msgstr "Vytvořit nový report"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Vlastní interval dat"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -99,7 +99,7 @@ msgstr "Den"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Zobrazit existující report"
 
 #: src/app/content.js:67
 msgid "Edit settings"
@@ -107,15 +107,15 @@ msgstr "Úprava nastavení"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Nepodařilo se najít správnou instalaci YouTrack"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Nepodařilo se načíst data z vybraného YouTracku"
 
 #: src/app/distribution-report-form.js:392
 msgid "Filter issues"
-msgstr ""
+msgstr "Filtrovat problémy"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
@@ -131,11 +131,11 @@ msgstr "Skupiny a týmy"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Chcete-li přizpůsobit vlastní kopii tohto reportu, {{cloneItPlaceholder}}"
 
 #: src/app/widget.js:58
 msgid "Issue Distribution Report"
-msgstr ""
+msgstr "Zpráva o distribuci problému"
 
 #: src/app/distribution-report-form.js:307
 msgid "Issues"
@@ -167,11 +167,11 @@ msgstr "Měsíc"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:27
 msgid "New report"
-msgstr ""
+msgstr "Nový report"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:60
 msgid "No grouping"
-msgstr "Žádné seskupení"
+msgstr "Bez třídění"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:15
 msgid "No value"
@@ -183,7 +183,7 @@ msgstr "Jejda! Něco se pokazilo…"
 
 #: src/app/content.js:89
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "Jejda... Něco se pokazilo =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
@@ -221,7 +221,7 @@ msgstr "Doporučené skupiny a týmy"
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:48
 msgid "Remove widget"
-msgstr ""
+msgstr "Odstranit widget"
 
 #: src/app/distribution-report-form.js:419
 msgid "Report name"
@@ -229,7 +229,7 @@ msgstr "Název reportu"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Obnovit výchozí (vlastník)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -241,19 +241,19 @@ msgstr "Vyberte YouTrack"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 msgid "Select report"
-msgstr ""
+msgstr "Vybrat report"
 
 #: src/app/distribution-report-form.js:348
 msgid "Sharing settings"
-msgstr ""
+msgstr "Nastavení sdílení"
 
 #: src/app/distribution-report-form.js:281
 msgid "Show distribution by"
-msgstr ""
+msgstr "Zobrazit distribuci podle"
 
 #: src/app/distribution-report-form.js:299
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "Zobrazit součty pro {{aggregationPolicy}}"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -269,11 +269,11 @@ msgstr "Tabulka"
 
 #: src/app/content.js:116
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "Report nelze vypočítat: filtry v nastavení přehledu vrátí příliš mnoho problémů"
 
 #: src/app/content.js:121
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "V nastavení přehledu nejsou žádné problémy, které by odpovídaly filtrům"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
@@ -305,11 +305,11 @@ msgstr ""
 
 #: src/app/content.js:131
 msgid "Total votes count"
-msgstr ""
+msgstr "Celkový počet hlasů"
 
 #: src/app/content.js:134
 msgid "Total {{fieldName}}"
-msgstr ""
+msgstr "Celkem: {{fieldName}}"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:26
 msgid "Unnamed"
@@ -361,7 +361,7 @@ msgstr "vzestupně"
 
 #: src/app/report-chart-sort-order.js:49
 msgid "by count"
-msgstr ""
+msgstr "podle počtu"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:26
 msgid "clone"
@@ -389,7 +389,7 @@ msgstr "já"
 
 #: src/app/report-chart-sort-order.js:50
 msgid "natural"
-msgstr ""
+msgstr "přirozený"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
