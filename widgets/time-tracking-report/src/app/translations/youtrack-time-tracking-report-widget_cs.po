@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 652274\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-20 11:24\n"
+"PO-Revision-Date: 2023-09-20 12:36\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 msgid "Add project"
@@ -59,7 +59,7 @@ msgstr "Nelze najít instalaci YouTrack"
 
 #: src/app/content.js:92
 msgid "Cannot find any report"
-msgstr ""
+msgstr "Nelze najít žádnou sestavu"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
@@ -95,7 +95,7 @@ msgstr "Zobrazit existující report"
 
 #: src/app/content.js:77
 msgid "Edit settings"
-msgstr "Úprava nastavení"
+msgstr "Upravit nastavení"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
@@ -115,7 +115,7 @@ msgstr "Opraveno"
 
 #: src/app/time-tracking-report-form.js:165
 msgid "Group by {{field}}"
-msgstr ""
+msgstr "Seskupit podle {{field}}"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -286,7 +286,7 @@ msgstr "Čas"
 
 #: src/app/widget.js:55
 msgid "Time Tracking Report"
-msgstr ""
+msgstr "Sestava sledování času"
 
 #: ../../components/src/report-model/report-time-ranges.js:24
 msgid "Today"
