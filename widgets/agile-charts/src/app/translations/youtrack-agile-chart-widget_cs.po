@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2023-09-20 10:35\n"
+"PO-Revision-Date: 2023-09-20 11:50\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
@@ -28,7 +28,7 @@ msgstr "Přidat typ práce"
 
 #: src/app/widget.js:33
 msgid "Agile Chart"
-msgstr ""
+msgstr "Agilní graf"
 
 #: src/app/burn-down-chart.js:74
 msgid "Ahead of Schedule"
@@ -40,7 +40,7 @@ msgstr "Všechny projekty"
 
 #: ../../components/src/report-form-controls/report-users.js:30
 msgid "All users"
-msgstr ""
+msgstr "Všichni uživatelé"
 
 #: ../../components/src/report-form-controls/report-work-types.js:45
 msgid "All work types"
@@ -56,11 +56,11 @@ msgstr "Po termínu"
 
 #: src/app/burn-down-chart-form.js:273
 msgid "Calculate for all projects"
-msgstr ""
+msgstr "Výpočet pro všechny projekty"
 
 #: src/app/content.js:103
 msgid "Calculating..."
-msgstr ""
+msgstr "Probíhá výpočet..."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -68,33 +68,33 @@ msgstr "Zrušit"
 
 #: src/app/content.js:79
 msgid "Cannot find YouTrack installation"
-msgstr ""
+msgstr "Nelze najít instalaci YouTrack"
 
 #: src/app/content.js:84
 msgid "Cannot find any Burn Down Charts"
-msgstr ""
+msgstr "Nelze najít žádné grafy burndownu"
 
 #: ../../components/src/base-configuration/base-configuration.js:52
 msgid "Cannot find any time tracking reports"
-msgstr ""
+msgstr "Nelze najít žádné přehledy sledování času"
 
 #: src/app/select-board-form.js:170
 msgid "Cannot load list of agile boards."
-msgstr ""
+msgstr "Nelze načíst seznam agilních desek."
 
 #: src/app/content.js:88
 msgid "Cannot load selected report"
-msgstr ""
+msgstr "Nelze načíst vybranou report"
 
 #: ../../components/src/base-configuration/base-configuration.js:239
 #: src/app/configuration.js:286
 msgid "Cannot save report"
-msgstr ""
+msgstr "Report nelze uložit"
 
 #: ../../components/src/base-configuration/base-configuration.js:248
 #: src/app/configuration.js:265
 msgid "Cannot update widget"
-msgstr ""
+msgstr "Nelze aktualizovat widget"
 
 #: src/app/select-board-form.js:160
 msgid "Create board"
@@ -106,7 +106,7 @@ msgstr "Vytvořit nový report"
 
 #: ../../components/src/report-form-controls/report-period.js:21
 msgid "Custom dates interval"
-msgstr ""
+msgstr "Vlastní interval dat"
 
 #: ../../components/src/report-model/report-time-scales.js:6
 msgid "Day"
@@ -114,27 +114,27 @@ msgstr "Den"
 
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:135
 msgid "Display existing report"
-msgstr ""
+msgstr "Zobrazit existující report"
 
 #: src/app/burn-down-chart-form.js:319
 msgid "Edit report"
-msgstr ""
+msgstr "Upravit report"
 
 #: src/app/content.js:69
 msgid "Edit settings"
-msgstr "Úprava nastavení"
+msgstr "Upravit nastavení"
 
 #: ../../components/src/base-configuration/base-configuration.js:120
 msgid "Failed to find proper YouTrack installation"
-msgstr ""
+msgstr "Nepodařilo se najít správnou instalaci YouTrack"
 
 #: ../../components/src/base-configuration/base-configuration.js:362
 msgid "Failed to load data from selected YouTrack"
-msgstr ""
+msgstr "Nepodařilo se načíst data z vybraného YouTracku"
 
 #: src/app/burn-down-chart-form.js:300
 msgid "Filter issues"
-msgstr ""
+msgstr "Filtrovat problémy"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:131
 msgid "Filter users, groups, and teams"
@@ -146,11 +146,11 @@ msgstr "Opraveno"
 
 #: src/app/configuration.js:510
 msgid "For Custom Set of Issues"
-msgstr ""
+msgstr "Pro vlastní sadu problémů"
 
 #: src/app/configuration.js:504
 msgid "For Existing Board"
-msgstr ""
+msgstr "Pro stávající tabuli"
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Groups and teams"
@@ -162,7 +162,7 @@ msgstr "Ideální burndown"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:47
 msgid "If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Chcete-li přizpůsobit vlastní kopii tohto reportu, {{cloneItPlaceholder}}"
 
 #: src/app/burn-down-chart-form.js:199
 msgid "Issues"
@@ -190,7 +190,7 @@ msgstr "Poslední pracovní den"
 
 #: src/app/burn-down-chart-form.js:53
 msgid "Me only"
-msgstr ""
+msgstr "Jen já"
 
 #: ../../components/src/report-model/report-time-scales.js:14
 msgid "Month"
@@ -200,7 +200,7 @@ msgstr "Měsíc"
 #: src/app/burn-down-chart-form.js:318
 #: src/app/configuration.js:92
 msgid "New report"
-msgstr ""
+msgstr "Nový report"
 
 #: src/app/select-board-form.js:156
 msgid "No boards found."
@@ -220,7 +220,7 @@ msgstr "Jejda! Něco se pokazilo…"
 
 #: src/app/content.js:91
 msgid "Oops... Something went wrong =("
-msgstr ""
+msgstr "Jejda... Něco se pokazilo =("
 
 #: ../../components/src/sharing-setting/make-dropdown-options.js:38
 msgid "Other groups and teams"
@@ -237,7 +237,7 @@ msgstr "Vlastník"
 
 #: src/app/configuration.js:376
 msgid "Owners have exclusive access to edit report settings. If you want to customize your own copy of this report, {{cloneItPlaceholder}}"
-msgstr ""
+msgstr "Vlastníci mají výhradní přístup k úpravám nastavení reportu. Chcete-li přizpůsobit vlastní kopii této zprávy, {{cloneItPlaceholder}}"
 
 #: ../../components/src/report-form-controls/report-grouping-control.js:23
 msgid "Parent issue"
@@ -258,7 +258,7 @@ msgstr "Zbývající úsilí"
 #: ../../components/src/base-configuration/base-configuration.js:370
 #: src/app/content.js:50
 msgid "Remove widget"
-msgstr ""
+msgstr "Odstranit widget"
 
 #: src/app/burn-down-chart-form.js:315
 msgid "Report"
@@ -266,11 +266,11 @@ msgstr "Report"
 
 #: src/app/burn-down-chart-form.js:223
 msgid "Report is private"
-msgstr ""
+msgstr "Report je soukromý"
 
 #: src/app/burn-down-chart-form.js:222
 msgid "Report is visible to members of {{visibilityPresentation}}"
-msgstr ""
+msgstr "Report je viditelná pro členy {{visibilityPresentation}}"
 
 #: src/app/burn-down-chart-form.js:332
 msgid "Report name"
@@ -278,7 +278,7 @@ msgstr "Název reportu"
 
 #: ../../components/src/sharing-setting/sharing-setting.js:145
 msgid "Reset to default (owner)"
-msgstr ""
+msgstr "Obnovit výchozí (vlastník)"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -296,7 +296,7 @@ msgstr "Vybrat tabuli"
 #: ../../components/src/report-form-controls/report-configuration-tabs.js:142
 #: src/app/configuration.js:414
 msgid "Select report"
-msgstr ""
+msgstr "Vybrat report"
 
 #: src/app/select-board-form.js:230
 msgid "Select sprint"
@@ -304,7 +304,7 @@ msgstr "Vyberte sprint"
 
 #: src/app/burn-down-chart-form.js:191
 msgid "Show totals for {{aggregationPolicy}}"
-msgstr ""
+msgstr "Zobrazit součty pro {{aggregationPolicy}}"
 
 #: src/app/chart-presentation-model.js:43
 msgid "Spent time"
@@ -320,11 +320,11 @@ msgstr "Ne|Po|Út|St|Čt|Pá|So"
 
 #: src/app/content.js:118
 msgid "The report cannot be calculated: the filters in the report settings return too many issues"
-msgstr ""
+msgstr "Report nelze vypočítat: filtry v nastavení přehledu vrátí příliš mnoho problémů"
 
 #: src/app/content.js:123
 msgid "There aren't any issues that match the filters in the report settings"
-msgstr ""
+msgstr "V nastavení přehledu nejsou žádné problémy, které by odpovídaly filtrům"
 
 #: ../../components/src/filter-fields-selector/filter-fields-selector.js:132
 msgid "This field does not exist in some of the selected projects"
@@ -336,7 +336,7 @@ msgstr "tento měsíc"
 
 #: src/app/configuration.js:357
 msgid "This report is owned by {{ownerNamePlaceholder}}"
-msgstr ""
+msgstr "Vlastníkem tohoto reportu je {{ownerNamePlaceholder}}"
 
 #: ../../components/src/report-model/report-time-ranges.js:38
 msgid "This week"
@@ -402,7 +402,7 @@ msgstr "odhad"
 
 #: src/app/configuration.js:69
 msgid "existing reports"
-msgstr ""
+msgstr "stávající reporty"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:28
 msgid "h"
@@ -410,7 +410,7 @@ msgstr "h"
 
 #: src/app/chart-presentation-model.js:117
 msgid "h|m"
-msgstr ""
+msgstr "h|m"
 
 #: ../../components/src/spent-time-value/spent-time-value.js:19
 msgid "m"
@@ -423,7 +423,7 @@ msgstr "já"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:47
 msgid "overdue"
-msgstr "opožděný"
+msgstr "po termínu"
 
 #: ../../components/src/report-model/report-model.js:127
 msgid "project"
@@ -431,7 +431,7 @@ msgstr "projekt"
 
 #: ../../components/src/spent-time-progress/spent-time-progress.js:34
 msgid "total spent time"
-msgstr "celkový strávený čas"
+msgstr "celkem strávený čas"
 
 #: ../../components/src/report-form-controls/no-edit-permissions-warning.js:52
 #: src/app/configuration.js:383
