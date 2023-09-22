@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 266764\n"
 "Language-Team: Karakalpak\n"
 "Language: kaa\n"
-"PO-Revision-Date: 2023-09-22 11:26\n"
+"PO-Revision-Date: 2023-09-22 12:43\n"
 
 #: ../../components/src/report-form-controls/report-projects.js:53
 #: src/app/burn-down-chart-form.js:272
