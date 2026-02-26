@@ -1,6 +1,12 @@
 # YouTrack reports widgets
-[![Build Status][ci-img]][ci-bt] [![JetBrains team project](http://jb.gg/badges/team.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
-![Team](https://jb.gg/badges/team-plastic.svg)
+
+[![obsolete JetBrains project](https://jb.gg/badges/obsolete-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+
+---
+
+### Important: the repository is archived. Widget is converted into YouTrack App and is now hosted [here](https://github.com/JetBrains/youtrack-apps)
+
+---
 
 [YouTrack](https://www.jetbrains.com/youtrack/) dashboard widgets, which displays YouTrack reports
 
